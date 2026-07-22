@@ -1,0 +1,7 @@
+Python is a high-level programming language created by Guido van Rossum and first released in 1991. Van Rossum began working on Python in the late 1980s at CWI in the Netherlands as a successor to the ABC language. He named it after the British comedy group Monty Python, not the snake.
+
+Python 2.0 was released in 2000, introducing list comprehensions and a garbage collector based on reference counting with cycle detection. Python 3.0, released in 2008, was a major backwards-incompatible revision that cleaned up long-standing design flaws, most notably making print a function and using Unicode for all text strings. The transition from Python 2 to Python 3 took over a decade, with Python 2 finally reaching end of life in January 2020.
+
+Guido van Rossum served as the language's Benevolent Dictator For Life, guiding its development until he stepped down in 2018 after controversy over PEP 572, the walrus operator proposal. Python is now governed by a five-member Steering Council elected by core developers.
+
+Python's design philosophy is captured in The Zen of Python, a collection of aphorisms written by Tim Peters, including "Simple is better than complex" and "Readability counts." The language's emphasis on readable syntax and its vast ecosystem of libraries, including NumPy for numerical computing and PyTorch for machine learning, have made it the dominant language for data science and artificial intelligence.

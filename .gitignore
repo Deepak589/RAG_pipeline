@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Session automation artifacts (per-machine, regenerated each session)
+.claude/SESSION_SUMMARY.md
+.claude/session_hooks.log
+.claude/settings.local.json
+
+# graphify knowledge graph (regenerated from code)
+graphify-out/
+
+# RAG dense-vector cache (regenerated, fingerprinted)
+**/.dense_cache.npz
