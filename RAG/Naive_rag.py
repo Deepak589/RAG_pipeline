@@ -1,26 +1,22 @@
-"""Naive RAG from scratch: chunk -> TF-IDF embed -> cosine retrieve -> generate.
+"""Naive RAG from scratch: chunk -> embed -> cosine retrieve -> generate.
 
-No RAG frameworks, no sklearn. numpy + stdlib only.
+No RAG frameworks. numpy + sentence-transformers + stdlib.
 Generation uses a local Ollama model; falls back to printing retrieved
 chunks if Ollama is not running.
 """
 
 import hashlib
-import json
-import re
 import sys
-import urllib.error
-import urllib.request
 from pathlib import Path
 
 import numpy as np
+
+from generator import build_prompt, generate
 
 DOCS_DIR = Path(__file__).parent / "docs"
 CHUNK_SIZE = 200      # words per chunk
 CHUNK_OVERLAP = 40    # words shared between consecutive chunks
 TOP_K = 3
-OLLAMA_URL = "http://localhost:11434/api/generate"
-OLLAMA_MODEL = "qwen3.5"
 EMBED_MODEL = "all-MiniLM-L6-v2"   # dense bi-encoder, 384 dims, local
 CACHE_PATH = Path(__file__).parent / ".dense_cache.npz"   # persisted chunk vectors
 
@@ -81,65 +77,11 @@ def load_and_chunk():
 
 # ------------------------------------------------------------------- embedding
 
-def tokenize(text):
-    return re.findall(r"[a-z0-9]+", text.lower())
-
-
-class TfidfIndex:
-    """Hand-rolled TF-IDF over chunks.
-
-    TF  = term count / chunk length
-    IDF = log((1 + N) / (1 + df)) + 1
-    Rows are L2-normalized so cosine similarity is just a dot product.
-    """
-
-    def __init__(self, chunks):
-        self.chunks = chunks
-        docs_tokens = [tokenize(text) for _, text in chunks]
-
-        # vocabulary: every word that appears in any chunk
-        self.vocab = {w: i for i, w in enumerate(sorted(set(w for toks in docs_tokens for w in toks)))}
-
-        # document frequency: in how many chunks does each word appear
-        n = len(chunks)
-        df = np.zeros(len(self.vocab))
-        for toks in docs_tokens:
-            for w in set(toks):
-                df[self.vocab[w]] += 1
-        self.idf = np.log((1 + n) / (1 + df)) + 1
-
-        # chunk matrix: one TF-IDF row per chunk
-        self.matrix = np.zeros((n, len(self.vocab)))
-        for row, toks in enumerate(docs_tokens):
-            for w in toks:
-                self.matrix[row, self.vocab[w]] += 1
-            self.matrix[row] /= len(toks)          # TF
-        self.matrix *= self.idf                    # TF * IDF
-        self.matrix /= np.linalg.norm(self.matrix, axis=1, keepdims=True)
-
-    def embed_query(self, query):
-        toks = tokenize(query)
-        vec = np.zeros(len(self.vocab))
-        for w in toks:
-            if w in self.vocab:                    # unseen words carry no signal
-                vec[self.vocab[w]] += 1
-        if not vec.any():
-            return vec
-        vec = (vec / len(toks)) * self.idf
-        return vec / np.linalg.norm(vec)
-
-    def retrieve(self, query, k=TOP_K):
-        """Return top-k (score, source, chunk_text), best first."""
-        sims = self.matrix @ self.embed_query(query)
-        top = np.argsort(sims)[::-1][:k]
-        return [(sims[i], *self.chunks[i]) for i in top]
-
-
 class DenseIndex:
     """Dense semantic retrieval via sentence-transformers bi-encoder.
 
     Each chunk is a normalized embedding; cosine similarity is a dot product.
-    Handles synonyms/paraphrase that TF-IDF misses (RAG_GUIDE.md §5.2).
+    Handles synonyms/paraphrase that lexical matching misses (RAG_GUIDE.md §5.2).
     """
 
     def __init__(self, chunks, matrix=None, model_name=EMBED_MODEL):
@@ -185,41 +127,6 @@ def load_dense_index(chunks, cache_path=CACHE_PATH):
     return index
 
 
-# ------------------------------------------------------------------ generation
-
-def build_prompt(question, retrieved):
-    context = "\n\n".join(f"[{src}]\n{text}" for _, src, text in retrieved)
-    return (
-        "Answer the question using ONLY the context below. "
-        "If the context does not contain the answer, say so.\n\n"
-        f"Context:\n{context}\n\n"
-        f"Question: {question}\n"
-        "Answer:"
-    )
-
-def generate(prompt):
-    """Ask local Ollama. Returns (answer, None) on success, (None, reason) on failure.
-
-    `think: false` disables reasoning models' slow chain-of-thought — qwen3.5
-    answers in seconds instead of minutes, which is what caused earlier timeouts.
-    """
-    payload = json.dumps({
-        "model": OLLAMA_MODEL, "prompt": prompt, "stream": False, "think": False,
-    }).encode()
-    req = urllib.request.Request(OLLAMA_URL, data=payload, headers={"Content-Type": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=180) as resp:
-            return json.loads(resp.read())["response"].strip(), None
-    except (TimeoutError, urllib.error.URLError) as e:
-        # URLError wrapping a timeout still means "reachable but too slow"
-        reason = e.reason if isinstance(e, urllib.error.URLError) else e
-        if isinstance(reason, (TimeoutError, OSError)) and "timed out" in str(reason).lower():
-            return None, f"'{OLLAMA_MODEL}' did not respond within 180s (model too slow)"
-        return None, "Ollama not reachable at localhost:11434 (is `ollama serve` running?)"
-    except OSError:
-        return None, "Ollama not reachable at localhost:11434 (is `ollama serve` running?)"
-
-
 # ------------------------------------------------------------------------ main
 
 def answer(index, question):
@@ -238,21 +145,14 @@ def answer(index, question):
 
 def main():
     args = sys.argv[1:]
-    use_tfidf = "--tfidf" in args          # default: dense embeddings
-    if use_tfidf:
-        args.remove("--tfidf")
 
     chunks = load_and_chunk()
     if not chunks:
         sys.exit(f"No .md files found in {DOCS_DIR}")
 
     nfiles = len(set(s for s, _ in chunks))
-    if use_tfidf:
-        index = TfidfIndex(chunks)
-        print(f"TF-IDF index: {len(chunks)} chunks from {nfiles} files, vocab={len(index.vocab)}")
-    else:
-        index = load_dense_index(chunks)
-        print(f"Dense index ({EMBED_MODEL}): {len(chunks)} chunks from {nfiles} files")
+    index = load_dense_index(chunks)
+    print(f"Dense index ({EMBED_MODEL}): {len(chunks)} chunks from {nfiles} files")
 
     if len(args) > 1 and args[0] == "--query":   # one-shot mode
         answer(index, args[1])
