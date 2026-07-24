@@ -63,21 +63,25 @@ Retriever-agnostic retrieval eval over the 7-PDF parent-child pipeline.
 ```
 - `source` = exact PDF filename string, matching the `source` field in
   `sections.json`. The 7 valid values are the 7 PDFs in `RAG/docs/`.
-- Label granularity: **source paper only**. A retrieval is correct when the
-  gold `source` appears among the retrieved parents' sources.
+- Label granularity: **source paper only**. Ranking is at the **parent** level
+  (parents are what the LLM is fed as context), but a retrieval is correct when
+  the gold `source` appears among the top-k ranked parents' sources.
 - Sourcing: I draft ~15 (2–3 per paper) grounded in the actual corpus; the user
   adds their own questions and reviews/trims the set before it is used.
 
 **`RAG/eval/eval.py`** — the runner:
 - Retriever adapter interface:
-  `retriever_fn(query) -> [source, source, ...]` — the ranked list of parent
-  source filenames, deduped, order preserved.
+  `retriever_fn(query) -> [source, source, ...]` — the **full** ranked list of
+  parent source filenames, deduped, order preserved (not capped at 3).
 - A wrapper `parent_child_retriever()` builds the index via
-  `parent_child_rag.load_index(load_children(), load_parents())` and returns a
-  `retriever_fn` that maps `index.retrieve(query)` → `[p["source"] for _, p in ...]`.
+  `parent_child_rag.load_index(load_children(), load_parents())` and ranks the
+  **entire** parent set: score every child, collapse to unique parents keeping
+  each parent's best child score, sort descending → full ranked parent list,
+  then map to `[p["source"], ...]`. This is eval-side ranking (does not use
+  `retrieve()`'s `TOP_CHILDREN`/`TOP_PARENTS` caps, so k up to 5 is measurable).
   Future stages register a new wrapper (one function); the metric code is shared.
 - Metrics (deterministic, no LLM; one relevant paper per question):
-  - **hit@k** (= recall@k here) for k = 1 and k = 3.
+  - **hit@k** (= recall@k here) for k = 1, 3, 5.
   - **MRR** = mean of 1 / (rank of first correct source), 0 if absent.
 - Output:
   - Summary line/table: `N` questions, hit@1, hit@3, MRR.
@@ -92,16 +96,17 @@ gold.json ──► eval.py ──► for each q: retriever_fn(q) ──► rank
 ```
 
 ### Constraints
-- k capped at 3 (parent-child returns `TOP_PARENTS = 3`). If a retriever returns
-  more, larger k is still computable.
-- No change to `parent_child_rag.py`; eval imports its loaders/index.
+- Eval ranks the full parent set (7 papers, 112 parents), so k = 1, 3, 5 are all
+  computable. `retrieve()`'s top-3 cap is a runtime concern, not the eval's.
+- No change to `parent_child_rag.py`; eval imports its loaders/index and ranks
+  parents itself.
 - Naive/TF-IDF retrievers index the `.md` guide, not the PDFs, so they are not
   run by this eval (separate corpus).
 
 ### Verification
-- `python RAG/eval/eval.py` loads gold.json, runs the parent-child retriever,
-  prints the summary + per-question table with plausible hit rates (> random;
-  random hit@3 with 3 of 7 papers ≈ 0.43).
+- `python RAG/eval/eval.py` loads gold.json, ranks the full parent set with the
+  parent-child retriever, prints the summary + per-question table with plausible
+  hit rates rising with k (hit@1 ≤ hit@3 ≤ hit@5).
 - Gold `source` values validate against the 7 known PDF filenames at load time
   (fail fast on typo).
 
