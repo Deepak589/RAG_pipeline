@@ -24,8 +24,8 @@ from pathlib import Path
 
 import numpy as np
 
-from Naive_rag import EMBED_MODEL
-from generator import build_prompt as _prompt, generate
+sys.path.insert(0, str(Path(__file__).parent.parent))   # reach shared generator.py at RAG/ root
+from generator import EMBED_MODEL, build_prompt as _prompt, generate
 
 HERE = Path(__file__).parent
 CHUNKS_PATH = HERE / "chunks.json"       # children

@@ -275,21 +275,12 @@
     "title": "3.3 Training",
     "page_start": 4,
     "page_end": 5,
-    "text": "3.3. Training\nFor both pre-training and fine-tuning, we train by maxi￾mizing the log-likelihood log p(y | x) of the correct out￾put y. Since both the knowledge retriever and knowledge￾augmented encoder are differentiable neural networks, we\ncan compute the gradient of log p(y | x) (defined in Equa￾tion 1) with respect to the model parameters θ and φ, and\noptimize using stochastic gradient descent.\nThe key computational challenge is that the marginal prob￾ability p(y | x) = P\nz∈Z p(y | x, z) p(z | x) involves a sum￾mation over all documents z in the knowledge corpus Z.\nWe approximate this by instead summing over the top k\ndocuments with highest probability under p(z | x)—this is\nreasonable if most documents have near zero probability.\nEven with this approximation, we still need an efficient way\nto find the top k documents. Note that the ordering of doc￾uments under p(z | x) is the same as under the relevance\nscore f(x, z) = Embedinput(x)\n⊤Embeddoc(z), which is an\ninner product. Thus, we can employ Maximum Inner Prod￾uct Search (MIPS) algorithms to find the approximate top k\ndocuments, using running time and storage space that scale\nsub-linearly with the number of documents (Ram & Gray,\n2012; Shrivastava & Li, 2014; Shen et al., 2015).\nTo employ MIPS, we must pre-compute Embeddoc(z) for\nevery z ∈ Z and construct an efficient search index over\nthese embeddings. However, this data structure will no\nlonger be consistent with p(z | x) if the parameters θ of\nEmbeddoc are later updated. Hence, the search index goes\n“stale” after every gradient update on θ.\nOur solution is to “refresh” the index by asynchronously\nre-embedding and re-indexing all documents every several\nhundred training steps. The MIPS index is slightly stale be￾tween refreshes, but note that it is only used to select the\ntop k documents. We recompute p(z | x) and its gradient,\nusing the fresh θ, for these top k documents after retriev￾ing them. In Section 4.5, we empirically demonstrate that\nthis procedure results in stable optimization, provided that\nrefreshes happen at a sufficiently frequent rate.\nImplementing asynchronous MIPS refreshes We asyn￾chronously refresh the MIPS index by running two jobs in\nparallel: a primary trainer job, which performs gradient\nupdates on the parameters, and a secondary index builder\njob, which embeds and indexes the documents. As shown\nREALM: Retrieval-Augmented Language Model Pre-Training\nFigure 3. REALM pre-training with asynchronous MIPS re￾freshes.\nbelow, the trainer sends the index builder a snapshot of its\nparameters, θ\n′\n. The trainer then continues to train while the\nindex builder uses θ\n′\nto construct a new index in the back￾ground. As soon as the index builder is done, it sends the\nnew index back to the trainer, and the process repeats.\nWhile asynchronous refreshes can be used for both pre￾training and fine-tuning, in our experiments we only use it\nfor pre-training. For fine-tuning, we just build the MIPS in￾dex once (using the pre-trained θ) for simplicity and do not\nupdate Embeddoc.",
-    "char_len": 3040
+    "text": "3.3. Training\nFor both pre-training and fine-tuning, we train by maxi￾mizing the log-likelihood log p(y | x) of the correct out￾put y. Since both the knowledge retriever and knowledge￾augmented encoder are differentiable neural networks, we\ncan compute the gradient of log p(y | x) (defined in Equa￾tion 1) with respect to the model parameters θ and φ, and\noptimize using stochastic gradient descent.\nThe key computational challenge is that the marginal prob￾ability p(y | x) = P\nz∈Z p(y | x, z) p(z | x) involves a sum￾mation over all documents z in the knowledge corpus Z.\nWe approximate this by instead summing over the top k\ndocuments with highest probability under p(z | x)—this is\nreasonable if most documents have near zero probability.\nEven with this approximation, we still need an efficient way\nto find the top k documents. Note that the ordering of doc￾uments under p(z | x) is the same as under the relevance\nscore f(x, z) = Embedinput(x)\n⊤Embeddoc(z), which is an\ninner product. Thus, we can employ Maximum Inner Prod￾uct Search (MIPS) algorithms to find the approximate top k\ndocuments, using running time and storage space that scale\nsub-linearly with the number of documents (Ram & Gray,\n2012; Shrivastava & Li, 2014; Shen et al., 2015).\nTo employ MIPS, we must pre-compute Embeddoc(z) for\nevery z ∈ Z and construct an efficient search index over\nthese embeddings. However, this data structure will no\nlonger be consistent with p(z | x) if the parameters θ of\nEmbeddoc are later updated. Hence, the search index goes\n“stale” after every gradient update on θ.\nOur solution is to “refresh” the index by asynchronously\nre-embedding and re-indexing all documents every several\nhundred training steps. The MIPS index is slightly stale be￾tween refreshes, but note that it is only used to select the\ntop k documents. We recompute p(z | x) and its gradient,\nusing the fresh θ, for these top k documents after retriev￾ing them. In Section 4.5, we empirically demonstrate that\nthis procedure results in stable optimization, provided that\nrefreshes happen at a sufficiently frequent rate.\nImplementing asynchronous MIPS refreshes We asyn￾chronously refresh the MIPS index by running two jobs in\nparallel: a primary trainer job, which performs gradient\nupdates on the parameters, and a secondary index builder\njob, which embeds and indexes the documents. As shown\nREALM: Retrieval-Augmented Language Model Pre-Training\nFigure 3. REALM pre-training with asynchronous MIPS re￾freshes.\nbelow, the trainer sends the index builder a snapshot of its\nparameters, θ\n′\n. The trainer then continues to train while the\nindex builder uses θ\n′\nto construct a new index in the back￾ground. As soon as the index builder is done, it sends the\nnew index back to the trainer, and the process repeats.\nWhile asynchronous refreshes can be used for both pre￾training and fine-tuning, in our experiments we only use it\nfor pre-training. For fine-tuning, we just build the MIPS in￾dex once (using the pre-trained θ) for simplicity and do not\nupdate Embeddoc.\n3 Note that we still fine-tune Embedinput,\nso the retrieval function is still updated from the query side.\nWhat does the retriever learn? Since the knowledge re￾trieval of REALM is latent, it is not obvious how the train￾ing objective encourages meaningful retrievals. Here, we\nshow how it rewards retrievals that improve prediction ac￾curacy.\nFor a given query x and document z, recall that f(x, z) is\nthe “relevance score” that the knowledge retriever assigns\nto document z. We can see how a single step of gradient\ndescent during REALM pre-training alters this score by an￾alyzing the gradient with respect to the parameters of the\nknowledge retriever, θ:\n∇ log p(y | x) = X\nz∈Z\nr(z)∇f(x, z)\nr(z) = \u0014\np(y | z, x)\np(y | x)\n− 1\n\u0015\np(z | x).\nFor each document z, the gradient encourages the retriever\nto change the score f(x, z) by r(z) — increasing if r(z)\nis positive, and decreasing if negative. The multiplier r(z)\nis positive if and only if p(y | z, x) > p(y | x). The term\np(y | z, x) is the probability of predicting the correct output\ny when using document z. The term p(y | x) is the expected\nvalue of p(y | x, z) when randomly sampling a document\nfrom p(z | x). Hence, document z receives a positive up￾date whenever it performs better than expected.\n3This works because pre-training already yields a good\nEmbeddoc function. However, it is possible that refreshing the in￾dex would further improve performance.",
+    "char_len": 4460
   },
   {
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "section_idx": 7,
-    "title": "3 Note that we still fine-tune Embedinput,",
-    "page_start": 5,
-    "page_end": 5,
-    "text": "3 Note that we still fine-tune Embedinput,\nso the retrieval function is still updated from the query side.\nWhat does the retriever learn? Since the knowledge re￾trieval of REALM is latent, it is not obvious how the train￾ing objective encourages meaningful retrievals. Here, we\nshow how it rewards retrievals that improve prediction ac￾curacy.\nFor a given query x and document z, recall that f(x, z) is\nthe “relevance score” that the knowledge retriever assigns\nto document z. We can see how a single step of gradient\ndescent during REALM pre-training alters this score by an￾alyzing the gradient with respect to the parameters of the\nknowledge retriever, θ:\n∇ log p(y | x) = X\nz∈Z\nr(z)∇f(x, z)\nr(z) = \u0014\np(y | z, x)\np(y | x)\n− 1\n\u0015\np(z | x).\nFor each document z, the gradient encourages the retriever\nto change the score f(x, z) by r(z) — increasing if r(z)\nis positive, and decreasing if negative. The multiplier r(z)\nis positive if and only if p(y | z, x) > p(y | x). The term\np(y | z, x) is the probability of predicting the correct output\ny when using document z. The term p(y | x) is the expected\nvalue of p(y | x, z) when randomly sampling a document\nfrom p(z | x). Hence, document z receives a positive up￾date whenever it performs better than expected.\n3This works because pre-training already yields a good\nEmbeddoc function. However, it is possible that refreshing the in￾dex would further improve performance.",
-    "char_len": 1419
-  },
-  {
-    "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "section_idx": 8,
     "title": "3.4 Injecting inductive biases into pre-training",
     "page_start": 5,
     "page_end": 6,
@@ -298,7 +289,7 @@
   },
   {
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "section_idx": 9,
+    "section_idx": 8,
     "title": "4 Experiments",
     "page_start": 6,
     "page_end": 6,
@@ -307,7 +298,7 @@
   },
   {
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "section_idx": 10,
+    "section_idx": 9,
     "title": "4.1 Open-QA Benchmarks",
     "page_start": 6,
     "page_end": 6,
@@ -316,7 +307,7 @@
   },
   {
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "section_idx": 11,
+    "section_idx": 10,
     "title": "4.2 Approaches compared",
     "page_start": 6,
     "page_end": 6,
@@ -325,7 +316,7 @@
   },
   {
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "section_idx": 12,
+    "section_idx": 11,
     "title": "4.3 Implementation Details",
     "page_start": 6,
     "page_end": 7,
@@ -334,7 +325,7 @@
   },
   {
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "section_idx": 13,
+    "section_idx": 12,
     "title": "4.4 Main results",
     "page_start": 7,
     "page_end": 7,
@@ -343,7 +334,7 @@
   },
   {
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "section_idx": 14,
+    "section_idx": 13,
     "title": "4.5 Analysis",
     "page_start": 7,
     "page_end": 8,
@@ -352,7 +343,7 @@
   },
   {
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "section_idx": 15,
+    "section_idx": 14,
     "title": "5 Discussion and Related Work",
     "page_start": 8,
     "page_end": 9,
@@ -361,7 +352,7 @@
   },
   {
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "section_idx": 16,
+    "section_idx": 15,
     "title": "6 Future Work",
     "page_start": 9,
     "page_end": 9,

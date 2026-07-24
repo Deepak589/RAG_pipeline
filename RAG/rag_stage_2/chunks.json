@@ -1896,38 +1896,38 @@
     "title": "3.3 Training",
     "page_start": 4,
     "page_end": 5,
-    "text": "MIPS re￾freshes. below, the trainer sends the index builder a snapshot of its parameters, θ ′ . The trainer then continues to train while the index builder uses θ ′ to construct a new index in the back￾ground. As soon as the index builder is done, it sends the new index back to the trainer, and the process repeats. While asynchronous refreshes can be used for both pre￾training and fine-tuning, in our experiments we only use it for pre-training. For fine-tuning, we just build the MIPS in￾dex once (using the pre-trained θ) for simplicity and do not update Embeddoc."
+    "text": "MIPS re￾freshes. below, the trainer sends the index builder a snapshot of its parameters, θ ′ . The trainer then continues to train while the index builder uses θ ′ to construct a new index in the back￾ground. As soon as the index builder is done, it sends the new index back to the trainer, and the process repeats. While asynchronous refreshes can be used for both pre￾training and fine-tuning, in our experiments we only use it for pre-training. For fine-tuning, we just build the MIPS in￾dex once (using the pre-trained θ) for simplicity and do not update Embeddoc. 3 Note that we still fine-tune Embedinput, so the retrieval function is still updated from the query side. What does the"
+  },
+  {
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#6#5",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#6",
+    "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
+    "title": "3.3 Training",
+    "page_start": 4,
+    "page_end": 5,
+    "text": "Note that we still fine-tune Embedinput, so the retrieval function is still updated from the query side. What does the retriever learn? Since the knowledge re￾trieval of REALM is latent, it is not obvious how the train￾ing objective encourages meaningful retrievals. Here, we show how it rewards retrievals that improve prediction ac￾curacy. For a given query x and document z, recall that f(x, z) is the “relevance score” that the knowledge retriever assigns to document z. We can see how a single step of gradient descent during REALM pre-training alters this score by an￾alyzing the gradient with respect to the parameters of the knowledge retriever, θ: ∇ log p(y | x) = X z∈Z r(z)∇f(x, z) r(z) = \u0014 p(y"
+  },
+  {
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#6#6",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#6",
+    "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
+    "title": "3.3 Training",
+    "page_start": 4,
+    "page_end": 5,
+    "text": "parameters of the knowledge retriever, θ: ∇ log p(y | x) = X z∈Z r(z)∇f(x, z) r(z) = \u0014 p(y | z, x) p(y | x) − 1 \u0015 p(z | x). For each document z, the gradient encourages the retriever to change the score f(x, z) by r(z) — increasing if r(z) is positive, and decreasing if negative. The multiplier r(z) is positive if and only if p(y | z, x) > p(y | x). The term p(y | z, x) is the probability of predicting the correct output y when using document z. The term p(y | x) is the expected value of p(y | x, z) when randomly sampling a document from p(z | x). Hence, document"
+  },
+  {
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#6#7",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#6",
+    "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
+    "title": "3.3 Training",
+    "page_start": 4,
+    "page_end": 5,
+    "text": "is the expected value of p(y | x, z) when randomly sampling a document from p(z | x). Hence, document z receives a positive up￾date whenever it performs better than expected. 3This works because pre-training already yields a good Embeddoc function. However, it is possible that refreshing the in￾dex would further improve performance."
   },
   {
     "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7#0",
     "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7",
-    "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "title": "3 Note that we still fine-tune Embedinput,",
-    "page_start": 5,
-    "page_end": 5,
-    "text": "3 Note that we still fine-tune Embedinput, so the retrieval function is still updated from the query side. What does the retriever learn? Since the knowledge re￾trieval of REALM is latent, it is not obvious how the train￾ing objective encourages meaningful retrievals. Here, we show how it rewards retrievals that improve prediction ac￾curacy. For a given query x and document z, recall that f(x, z) is the “relevance score” that the knowledge retriever assigns to document z. We can see how a single step of gradient descent during REALM pre-training alters this score by an￾alyzing the gradient with respect to the parameters of the knowledge retriever, θ: ∇ log p(y | x) = X z∈Z r(z)∇f(x, z) r(z) = \u0014"
-  },
-  {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7#1",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7",
-    "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "title": "3 Note that we still fine-tune Embedinput,",
-    "page_start": 5,
-    "page_end": 5,
-    "text": "the parameters of the knowledge retriever, θ: ∇ log p(y | x) = X z∈Z r(z)∇f(x, z) r(z) = \u0014 p(y | z, x) p(y | x) − 1 \u0015 p(z | x). For each document z, the gradient encourages the retriever to change the score f(x, z) by r(z) — increasing if r(z) is positive, and decreasing if negative. The multiplier r(z) is positive if and only if p(y | z, x) > p(y | x). The term p(y | z, x) is the probability of predicting the correct output y when using document z. The term p(y | x) is the expected value of p(y | x, z) when randomly sampling a document from p(z | x). Hence,"
-  },
-  {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7#2",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7",
-    "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
-    "title": "3 Note that we still fine-tune Embedinput,",
-    "page_start": 5,
-    "page_end": 5,
-    "text": "x) is the expected value of p(y | x, z) when randomly sampling a document from p(z | x). Hence, document z receives a positive up￾date whenever it performs better than expected. 3This works because pre-training already yields a good Embeddoc function. However, it is possible that refreshing the in￾dex would further improve performance."
-  },
-  {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8#0",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "3.4 Injecting inductive biases into pre-training",
     "page_start": 5,
@@ -1935,8 +1935,8 @@
     "text": "3.4. Injecting inductive biases into pre-training In the process of developing REALM, we discovered sev￾eral additional strategies that further guide the model to￾wards meaningful retrievals, described below. Salient span masking During REALM pre-training, we want to focus on examples x that require world knowledge to predict the masked tokens. As explained in Section 2, some MLM spans only require local context. To focus on problems that require world knowledge, we mask salient spans such as “United Kingdom” or “July 1969”. We use a BERT-based tagger trained on CoNLL-2003 data (Sang & De Meulder, 2003) to identify named entities, and a regular expression to identify dates. We select and mask one of these salient spans within a sentence for the masked"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8#1",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7#1",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "3.4 Injecting inductive biases into pre-training",
     "page_start": 5,
@@ -1944,8 +1944,8 @@
     "text": "regular expression to identify dates. We select and mask one of these salient spans within a sentence for the masked language modeling task. We show that this significantly outperforms other masking strategies in Section 4.5. Null document Even with salient span masking, not all masked tokens require world knowledge to predict. We model this by adding an empty null document ∅ to the top k retrieved documents, allowing appropriate credit to be as￾signed to a consistent sink when no retrieval is necessary. Prohibiting trivial retrievals If the pre-training corpus X and the knowledge corpus Z are the same, there exists a trivial retrieval candidate z that is too informative: if the masked sentence x comes from document z, the knowledge"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8#2",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7#2",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "3.4 Injecting inductive biases into pre-training",
     "page_start": 5,
@@ -1953,8 +1953,8 @@
     "text": "a trivial retrieval candidate z that is too informative: if the masked sentence x comes from document z, the knowledge augmented encoder can trivially predict y by looking at the unmasked version of x in z. This results in a large positive gradient for p(z | x). If this occurs too often, the knowledge retriever ends up learning to look for exact string matches between x and z, which does not capture other forms of relevance. For this reason, we exclude this trivial candidate during pre-training. Initialization At the beginning of training, if the retriever does not have good embeddings for Embedinput(x) and Embeddoc(z), the retrieved documents z will likely be unre￾lated to x. This causes the knowledge augmented encoder"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8#3",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7#3",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "3.4 Injecting inductive biases into pre-training",
     "page_start": 5,
@@ -1962,8 +1962,8 @@
     "text": "for Embedinput(x) and Embeddoc(z), the retrieved documents z will likely be unre￾lated to x. This causes the knowledge augmented encoder to learn to ignore the retrieved documents. Once this oc￾curs, the knowledge retriever does not receive a meaning￾ful gradient and cannot improve, creating a vicious cycle. To avoid this cold-start problem, we warm-start Embedinput and Embeddoc using a simple training objective known as the Inverse Cloze Task (ICT) where, given a sentence, the model is trained to retrieve the document where that sen￾tence came from. We defer to Lee et al. (2019) for de￾tails. For the knowledge-augmented encoder, we warm￾start it with BERT pre-training—specifically, the uncased BERT-base model (12 layers, 768 hidden units, 12 atten￾tion heads). REALM: Retrieval-Augmented Language Model"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8#4",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7#4",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "3.4 Injecting inductive biases into pre-training",
     "page_start": 5,
@@ -1971,8 +1971,8 @@
     "text": "it with BERT pre-training—specifically, the uncased BERT-base model (12 layers, 768 hidden units, 12 atten￾tion heads). REALM: Retrieval-Augmented Language Model Pre-Training"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#9#0",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#9",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8#0",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#8",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4 Experiments",
     "page_start": 6,
@@ -1980,8 +1980,8 @@
     "text": "4. Experiments We now evaluate our approach on the Open-QA task. In this section, we describe in detail the benchmarks used and the different approaches to which we compare empirically."
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10#0",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#9#0",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#9",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.1 Open-QA Benchmarks",
     "page_start": 6,
@@ -1989,8 +1989,8 @@
     "text": "4.1. Open-QA Benchmarks A number of benchmarks have been proposed for Open￾QA. In this work, we focus on datasets where the ques￾tion writers did not already know the answer. This yields questions that reflect more realistic information-seeking needs, and also avoids artifacts that can arise if the ques￾tion is formulated with a particular answer in mind. A deeper justification is given in Lee et al. (2019). In all cases, the predicted answer is evaluated via exact match with any reference answer, following previous Open-QA work (Chen et al., 2017). NaturalQuestions-Open The NaturalQuestions dataset (Kwiatkowski et al., 2019) consists of naturally occurring Google queries and their answers. Each answer also comes with an “answer type”: following Lee et al. (2019), we"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10#1",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#9#1",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#9",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.1 Open-QA Benchmarks",
     "page_start": 6,
@@ -1998,8 +1998,8 @@
     "text": "occurring Google queries and their answers. Each answer also comes with an “answer type”: following Lee et al. (2019), we only keep questions that are categorized as “short answer type” with at most five tokens. The dataset also provides a sug￾gested Wikipedia document to retrieve; like all models we compare against, we do not provide this to our model. WebQuestions The WebQuestions dataset (Berant et al., 2013) was collected from the Google Suggest API, using one seed question and expanding the set to related ques￾tions. We follow the setting defined by Chen et al. (2017). CuratedTrec The CuratedTrec dataset is a collection of question-answer pairs drawn from real user queries issued on sites such as MSNSearch and AskJeeves. To account"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10#2",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#9#2",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#9",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.1 Open-QA Benchmarks",
     "page_start": 6,
@@ -2007,8 +2007,8 @@
     "text": "a collection of question-answer pairs drawn from real user queries issued on sites such as MSNSearch and AskJeeves. To account for multiple correct answers or different spelling variations, the answers in this dataset are defined as regular expressions that match all correct answers. It is unclear how to train generation-based models with this type of supervision, so we do not evaluate them on this dataset."
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11#0",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10#0",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.2 Approaches compared",
     "page_start": 6,
@@ -2016,8 +2016,8 @@
     "text": "4.2. Approaches compared Retrieval-based Open-QA Most existing Open-QA sys￾tems answer the input question by first retrieving poten￾tially relevant documents from a knowledge corpus, and then using a reading comprehension system to extract an answer from the documents. In this paradigm, the knowl￾edge is stored explicitly in the corpus. We wish to compare different methods for implementing retrieval. Many approaches use non-learned heuristic retrieval such as sparse bag-of-words matching (Robertson et al., 2009) or entity linking on the question to select a small set of rel￾evant documents (e.g., 20). These documents are typically then re-ranked using a learned model, but coverage may be limited by the initial heuristic retrieval step. Approaches such as DrQA (Chen et al., 2017), HardEM (Min et"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11#1",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10#1",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.2 Approaches compared",
     "page_start": 6,
@@ -2025,8 +2025,8 @@
     "text": "may be limited by the initial heuristic retrieval step. Approaches such as DrQA (Chen et al., 2017), HardEM (Min et al., 2019a), GraphRetriever (Min et al., 2019b), and PathRe￾triever (Asai et al., 2019) in Table 1 are in this category. Some recent approaches have proposed to implement learn￾able retrieval using a MIPS index. ORQA (Lee et al., 2019) formulates Open-QA using a similar latent variable model as REALM, and also trains by maximizing the marginal likelihood. However, REALM adds a novel language model pre-training step, and backpropagates into the MIPS index, rather than using a fixed index. In Table 1, we di￾rectly compare the two. It is also important to note that the retrievers for both REALM pretraining and ORQA"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11#2",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10#2",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.2 Approaches compared",
     "page_start": 6,
@@ -2034,8 +2034,8 @@
     "text": "we di￾rectly compare the two. It is also important to note that the retrievers for both REALM pretraining and ORQA are initialized using the Inverse Cloze Task, described in Sec￾tion 3.4. Generation-based Open-QA An emerging alternative approach to Open-QA is to model it as a sequence pre￾diction task: simply encode the question, and then decode the answer token-by-token based on the encoding. While it was initially unclear how large amounts of knowledge could be injected into the model, GPT-2 (Radford et al., 2019) hinted at the possibility of directly generating an￾swers without using any given context via sequence-to￾sequence. However, their performance was not competi￾tive possibly due to the lack of fine-tuning. Orthogonally, T5 (Raffel et al., 2019) showed that directly"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11#3",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10#3",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#10",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.2 Approaches compared",
     "page_start": 6,
@@ -2043,8 +2043,8 @@
     "text": "performance was not competi￾tive possibly due to the lack of fine-tuning. Orthogonally, T5 (Raffel et al., 2019) showed that directly generating an￾swers without explicit extraction from the given context is viable approach, but they only experimented on the read￾ing comprehension task, where a context document is pro￾vided. For the most competitive and comparable generation-based baseline, we compare to concurrent work which fine-tunes T5 for Open-QA (Roberts et al., 2020).4 We compare against the Base, Large, and even larger 11-billion parame￾ter model to measure the effect of model size."
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12#0",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11#0",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.3 Implementation Details",
     "page_start": 6,
@@ -2052,8 +2052,8 @@
     "text": "4.3. Implementation Details Fine-tuning We reuse all hyperparameters from Lee et al. (2019), to enable direct comparison. Our knowledge corpus is derived from the December 20, 2018 snapshot of English Wikipedia. Documents are greedily split into chunks of up to 288 BERT wordpieces, resulting in just over 13 million retrieval candidates. During fine￾tuning inference, we consider the top-5 candidates, and the 4We initially conducted our own T5 experiments using the code from https://tinyurl.com/t5-openqa-colab (Raffel et al., 2019). We now report results from the concurrent work of Roberts et al. (2020), which has an improved fine-tuning proce￾dure. REALM: Retrieval-Augmented Language Model Pre-Training Table 1. Test results on Open-QA benchmarks. The number of train/test examples are shown in paretheses below each benchmark."
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12#1",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11#1",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.3 Implementation Details",
     "page_start": 6,
@@ -2061,8 +2061,8 @@
     "text": "Pre-Training Table 1. Test results on Open-QA benchmarks. The number of train/test examples are shown in paretheses below each benchmark. Predictions are evaluated with exact match against any reference answer. Sparse retrieval denotes methods that use sparse features such as TF-IDF and BM25. Our model, REALM, outperforms all existing systems. Name Architectures Pre-training NQ (79k/4k) WQ (3k/2k) CT (1k /1k) # params BERT-Baseline (Lee et al., 2019) Sparse Retr.+Transformer BERT 26.5 17.7 21.3 110m T5 (base) (Roberts et al., 2020) Transformer Seq2Seq T5 (Multitask) 27.0 29.1 - 223m T5 (large) (Roberts et al., 2020) Transformer Seq2Seq T5 (Multitask) 29.8 32.2 - 738m T5 (11b) (Roberts et al., 2020) Transformer Seq2Seq T5 (Multitask) 34.5 37.4 - 11318m DrQA (Chen et al.,"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12#2",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11#2",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.3 Implementation Details",
     "page_start": 6,
@@ -2070,8 +2070,8 @@
     "text": "- 738m T5 (11b) (Roberts et al., 2020) Transformer Seq2Seq T5 (Multitask) 34.5 37.4 - 11318m DrQA (Chen et al., 2017) Sparse Retr.+DocReader N/A - 20.7 25.7 34m HardEM (Min et al., 2019a) Sparse Retr.+Transformer BERT 28.1 - - 110m GraphRetriever (Min et al., 2019b) GraphRetriever+Transformer BERT 31.8 31.6 - 110m PathRetriever (Asai et al., 2019) PathRetriever+Transformer MLM 32.6 - - 110m ORQA (Lee et al., 2019) Dense Retr.+Transformer ICT+BERT 33.3 36.4 30.1 330m Ours (X = Wikipedia, Z = Wikipedia) Dense Retr.+Transformer REALM 39.2 40.2 46.8 330m Ours (X = CC-News, Z = Wikipedia) Dense Retr.+Transformer REALM 40.4 40.7 42.9 330m Table 2. Ablation experiments on NQ’s development set. Ablation Exact Match Zero-shot Retrieval Recall@5 REALM 38.2 38.5 REALM"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12#3",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11#3",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.3 Implementation Details",
     "page_start": 6,
@@ -2079,8 +2079,8 @@
     "text": "42.9 330m Table 2. Ablation experiments on NQ’s development set. Ablation Exact Match Zero-shot Retrieval Recall@5 REALM 38.2 38.5 REALM retriever+Baseline encoder 37.4 38.5 Baseline retriever+REALM encoder 35.3 13.9 Baseline (ORQA) 31.3 13.9 REALM with random uniform masks 32.3 24.2 REALM with random span masks 35.3 26.1 30× stale MIPS 28.7 15.1 entire model can be run on a single machine with a 12GB GPU. Pre-training We pre-train for 200k steps on 64 Google Cloud TPUs, with a batch size of 512 and a learning rate of 3e-5, using BERT’s default optimizer. The document embedding step for the MIPS index is parallelized over 16 TPUs. For each example, we retrieve and marginalize over 8 candidate documents, including the null document"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12#4",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11#4",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#11",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.3 Implementation Details",
     "page_start": 6,
@@ -2088,8 +2088,8 @@
     "text": "is parallelized over 16 TPUs. For each example, we retrieve and marginalize over 8 candidate documents, including the null document ∅. We experiment with two choices of the pre-training corpus X: (1) Wikipedia, which is identical to the knowledge cor￾pus Z, and (2) CC-News, our reproduction of the corpus of English news proposed by Liu et al. (2019)."
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13#0",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12#0",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.4 Main results",
     "page_start": 7,
@@ -2097,8 +2097,8 @@
     "text": "4.4. Main results Table 1 shows the accuracy of different approaches on the three Open-QA datasets. REALM outperform all previous approaches by a significant margin. Table 1 also shows the number of parameters for each model. As reported in the concurrent work of Roberts et al. (2020), the generative Open-QA systems based on T5 are surpris￾ingly powerful, with the largest T5-11B model outperform￾ing the previous best Open-QA system. Increasing the size of T5 yields consistent improvement, but comes at signif￾icant computational cost (from Base to 11B, the model is 50 times larger, and gains roughly 5 points in accuracy). In contrast, REALM outperforms the largest T5-11B model while being 30 times smaller. It is also important to note that T5"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13#1",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12#1",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.4 Main results",
     "page_start": 7,
@@ -2106,8 +2106,8 @@
     "text": "contrast, REALM outperforms the largest T5-11B model while being 30 times smaller. It is also important to note that T5 accesses additional reading comprehension data from SQuAD during its pre-training (100,000+ examples). Access to such data could also benefit REALM, but was not used in our experiments. Among all systems, the most direct comparison with REALM is ORQA (Lee et al., 2019), where the fine-tuning setup, hyperparameters and training data are identical. The improvement of REALM over ORQA is purely due to bet￾ter pre-training methods. The results also indicate that our method of pre-training can be applied both on (1) the single￾corpus setting (X = Wikipedia, Z = Wikipedia), or (2) the separate-corpus setting (X = CC-News, Z = Wikipedia)."
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13#2",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12#2",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#12",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.4 Main results",
     "page_start": 7,
@@ -2115,8 +2115,8 @@
     "text": "the single￾corpus setting (X = Wikipedia, Z = Wikipedia), or (2) the separate-corpus setting (X = CC-News, Z = Wikipedia). Compared to other retrieval-based systems (Asai et al., 2019; Min et al., 2019a;b) which often retrieve from 20 to 80 documents, our system gets the overall best performance while only retrieving 5 documents."
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14#0",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13#0",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.5 Analysis",
     "page_start": 7,
@@ -2124,8 +2124,8 @@
     "text": "4.5. Analysis In Table 2 we present results for NaturalQuestions-Open after ablating critical components of REALM. In addition to the end-to-end results, we also report how often the gold answer appears in the top-5 retrievals before applying any fine-tuning. The latter metric more significantly isolates the contribution of improving the retriever during pre-training. REALM: Retrieval-Augmented Language Model Pre-Training Table 3. An example where REALM utilizes retrieved documents to better predict masked tokens. It assigns much higher probability (0.129) to the correct term, “Fermat”, compared to BERT. (Note that the blank corresponds to 3 BERT wordpieces.) x: An equilateral triangle is easily constructed using a straightedge and compass, because 3 is a prime. (a) BERT p(y = “Fermat” | x) ="
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14#1",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13#1",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.5 Analysis",
     "page_start": 7,
@@ -2133,8 +2133,8 @@
     "text": "easily constructed using a straightedge and compass, because 3 is a prime. (a) BERT p(y = “Fermat” | x) = 1.1 × 10−14 (No retrieval.) (b) REALM p(y = “Fermat” | x, z) = 1.0 (Conditional probability with document z =“257 is . . . a Fermat prime. Thus a regular polygon with 257 sides is constructible with compass . . . ”) (c) REALM p(y = “Fermat” | x) = 0.129 (Marginal probability, marginalizing over top 8 retrieved documents.) Encoder or Retriever We first aim to determine whether REALM pre-training improves the retriever or the encoder, or both. To do so, we can reset the parameters of either the retriever or the encoder to their baseline state before REALM"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14#2",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13#2",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.5 Analysis",
     "page_start": 7,
@@ -2142,8 +2142,8 @@
     "text": "do so, we can reset the parameters of either the retriever or the encoder to their baseline state before REALM pre-training, and feed that into fine-tuning. Reset￾ting both the retriever and encoder reduces the system to our main baseline, ORQA. We find that both the encoder and retriever benefit from REALM training separately, but the best result requires both components acting in unison. Masking scheme We compare our salient span masking scheme (Section 3.4) with (1) random token masking in￾troduced in BERT (Devlin et al., 2018) and (2) random span masking proposed by SpanBERT (Joshi et al., 2019). While such salient span masking has not been shown to be impactful in previous work with standard BERT train￾ing (Joshi et al.,"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14#3",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13#3",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.5 Analysis",
     "page_start": 7,
@@ -2151,8 +2151,8 @@
     "text": "salient span masking has not been shown to be impactful in previous work with standard BERT train￾ing (Joshi et al., 2019), it is crucial for REALM. Intuitively, the latent variable learning relies heavily on the utility of re￾trieval and is therefore more sensitive to a consistent learn￾ing signal. MIPS index refresh rate During pre-training, we run a parallel process to re-embed corpus documents and rebuild the MIPS index. This results in one index refresh per ap￾proximately 500 training steps. To demonstrate the impor￾tance of frequent index refreshes, we compare against using a slower refresh rate. The results in Table 2 suggests that a stale index can hurt model training, and further reducing this staleness could offer better optimization. Examples of"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14#4",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13#4",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#13",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "4.5 Analysis",
     "page_start": 7,
@@ -2160,8 +2160,8 @@
     "text": "suggests that a stale index can hurt model training, and further reducing this staleness could offer better optimization. Examples of retrieved documents Table 3 shows an example of the REALM masked language model predic￾tion. In this example, “Fermat” is the correct word, and REALM (row (c)) gives the word a much high probability compared to the BERT model (row (a)). Since REALM manages to retrieve some documents with a related fact (row (b)), the marginalized probability of the correct an￾swer dramatically increases. This shows that REALM is able to retrieve document to fill in the masked word even though it is trained with unsupervised text only."
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#15#0",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#15",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14#0",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "5 Discussion and Related Work",
     "page_start": 8,
@@ -2169,8 +2169,8 @@
     "text": "5. Discussion and Related Work We previously discussed related methods for Open-QA. Here we present several alternate ways of viewing REALM that connect it to a broader set of ideas beyond Open-QA: Language modeling with corpus as context Language representation models have been incorporating contexts of increasingly large scope when making predictions. Ex￾amples of this progression include models that condi￾tion on surrounding words (Mikolov et al., 2013a;b), sen￾tences (Kiros et al., 2015; Peters et al., 2018), and para￾graphs (Radford et al., 2018; Devlin et al., 2018). We can view REALM as a generalization of the above work to the next level of scope: the entire text corpus. Retrieve-and-edit with learned retrieval In order to better explain the variance in the"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#15#1",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#15",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14#1",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "5 Discussion and Related Work",
     "page_start": 8,
@@ -2178,8 +2178,8 @@
     "text": "level of scope: the entire text corpus. Retrieve-and-edit with learned retrieval In order to better explain the variance in the input text and en￾able controllable generation, Guu et al. (2018) proposed a language model with the retrieve-and-edit frame￾work (Hashimoto et al., 2018) that conditions on text with high lexical overlap. REALM has a similar approach, ex￾cept that the model learns for itself which texts are most useful for reducing perplexity. By jointly learning the re￾triever, REALM has the capacity to depend on information beyond lexical overlap. Scalable grounded neural memory The document in￾dex can be viewed as a memory where the keys are the document embeddings. From this view, our work share motivations with works such as product key mem￾ory"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#15#2",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#15",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14#2",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "5 Discussion and Related Work",
     "page_start": 8,
@@ -2187,8 +2187,8 @@
     "text": "the keys are the document embeddings. From this view, our work share motivations with works such as product key mem￾ory (Lample et al., 2019), which enables sub-linear mem￾ory access in a memory network (Weston et al., 2014; Graves et al., 2014; Sukhbaatar et al., 2015), allowing these scalable memory layers to be integrated into large language models. One main difference is that our memo￾ries are grounded—each memory is associated with a docu￾ment rather than unnamed value vectors. This level of inter￾pretability is crucial for applications like Open-QA, where users would require provenance for a predicted answer to be trustworthy. Unsupervised Corpus Alignment In sequence-to￾sequence models with attention (Bahdanau et al., 2014), REALM: Retrieval-Augmented Language Model Pre-Training text is generated with"
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#15#3",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#15",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14#3",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#14",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "5 Discussion and Related Work",
     "page_start": 8,
@@ -2196,8 +2196,8 @@
     "text": "Corpus Alignment In sequence-to￾sequence models with attention (Bahdanau et al., 2014), REALM: Retrieval-Augmented Language Model Pre-Training text is generated with latent selection of relevant tokens. This results in a set of model-centric unsupervised align￾ments between target and source tokens. Analogously, REALM also generates text with latent selection of relevant documents. A by-product of our method is that we offer a set of model-centric unsupervised alignments between text in the pre-training corpus X and knowledge corpus Z."
   },
   {
-    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#16#0",
-    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#16",
+    "id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#15#0",
+    "parent_id": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#15",
     "source": "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf",
     "title": "6 Future Work",
     "page_start": 9,

@@ -22,7 +22,7 @@ from pathlib import Path
 
 import pypdfium2 as pdfium
 
-DOCS_DIR = Path(__file__).parent / "docs"
+DOCS_DIR = Path(__file__).parent.parent / "docs"   # shared corpus at RAG/ root
 OUT_PATH = Path(__file__).parent / "sections.json"
 
 # Numbered heading on its own line. Arabic ("1 Introduction", "2.1 Related
@@ -51,10 +51,33 @@ def _pages_text(pdf):
 
 # ---------------------------------------------------------- section detection
 
+def _is_heading(m, last_bare_int):
+    """Reject HEADING_RE matches that are really footnotes / body fragments.
+
+    Two guards, both must pass:
+    1. No trailing sentence punctuation — real headings don't end in ,;:
+       but a footnote sentence-fragment ("3 Note that we still fine-tune...,")
+       does.
+    2. Increasing bare integer — a bare-integer heading number N (no dot,
+       Arabic) must exceed the last bare-integer section opened. A second "3"
+       after "3 Approach" is a footnote marker, not section 3 again. Dotted
+       subsections ("3.1") and Roman numerals skip this check.
+    """
+    number, text = m.group(1), m.group(2).strip()
+    if text[-1:] in ",;:":
+        return False
+    if number.isdigit():                       # bare integer (no dot, Arabic)
+        n = int(number)
+        if last_bare_int is not None and n <= last_bare_int:
+            return False
+    return True
+
+
 def _split_sections(lines):
     """Split (page, line) pairs into sections at each numbered heading."""
     sections, title, page_start, buf = [], None, lines[0][0], []
     last_page = lines[-1][0]
+    last_bare_int = None
 
     def flush(end_page):
         if buf:
@@ -65,11 +88,13 @@ def _split_sections(lines):
             })
 
     for pnum, line in lines:
-        if HEADING_RE.match(line):
+        m = HEADING_RE.match(line)
+        if m and _is_heading(m, last_bare_int):
             flush(pnum)
-            m = HEADING_RE.match(line)
             title = f"{m.group(1)} {m.group(2).strip()}"
             page_start, buf = pnum, [line]
+            if m.group(1).isdigit():
+                last_bare_int = int(m.group(1))
         else:
             buf.append(line)
     flush(last_page)

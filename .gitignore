@@ -11,3 +11,10 @@ graphify-out/
 
 # RAG dense-vector cache (regenerated, fingerprinted)
 **/.dense_cache.npz
+
+*.npz
+
+__pycache__/
+
+# RAG eval run artifacts (timestamped, regenerated per run)
+RAG/rag_stage_2/eval/results/

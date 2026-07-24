@@ -12,6 +12,8 @@ import urllib.request
 OLLAMA_URL = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "qwen3.5"
 
+EMBED_MODEL = "all-MiniLM-L6-v2"   # dense bi-encoder, 384 dims, local; shared by every RAG variant
+
 
 def build_prompt(question, retrieved):
     """Context-grounded prompt from retrieved (score, source, text) triples."""
