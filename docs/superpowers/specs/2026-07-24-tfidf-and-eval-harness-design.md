@@ -8,7 +8,7 @@ Two independent deliverables:
 
 1. **Re-add TF-IDF** to `RAG/Naive_rag.py` — restore the hand-rolled lexical
    retriever that existed in commit `72a358a` and was dropped in stage 2.
-2. **Standalone retrieval eval harness** (`RAG/eval/`) — a retriever-agnostic
+2. **Standalone retrieval eval harness** (`RAG/rag_stage_2/eval/`) — a retriever-agnostic
    runner + gold set that measures retrieval quality over the 7-PDF
    parent-child corpus. Used from here on to tune stages 3–4; not wired into
    `Naive_rag.py`.
@@ -16,51 +16,60 @@ Two independent deliverables:
 Non-goals: LLM-judge / answer-quality metrics, hybrid retrieval, any change to
 the dense or parent-child retrieval logic.
 
-## Repository layout — stage snapshot
+## Repository layout — shared root + stage folders
 
-All of this work lands in a new **frozen, standalone** folder `RAG/rag_stage_2/`.
-Stage 3 will later copy from it into `RAG/rag_stage_3/` and evolve there; each
-stage folder runs independently.
+Shared infra lives at `RAG/` root; each stage's own code lives in its own folder.
+Stage 2 gets `RAG/rag_stage_2/`; stage 3 will later get `RAG/rag_stage_3/`.
 
 ```
-RAG/rag_stage_2/
-  generator.py           # copy of RAG/generator.py
-  Naive_rag.py           # copy, with TF-IDF restored (Deliverable 1)
-  pdf_extractor.py       # copy; DOCS_DIR -> ../docs
-  chunker.py             # copy
-  parent_child_rag.py    # moved from RAG/
-  sections.json          # data (copy)
-  chunks.json            # data (copy)
-  .dense_cache_pc.npz    # cache (copy)
-  eval/
-    gold.json            # Deliverable 2
-    eval.py              # Deliverable 2
+RAG/
+  generator.py           # SHARED, root: EMBED_MODEL + build_prompt + generate
+  Naive_rag.py           # SHARED, root: stage-1 baseline, TF-IDF restored (Deliverable 1)
+  docs/                  # SHARED, root: 7 PDFs + RAG_GUIDE.md
+  rag_stage_2/
+    pdf_extractor.py     # moved; DOCS_DIR -> ../docs
+    chunker.py           # moved
+    parent_child_rag.py  # moved; imports generator from root
+    sections.json        # data (moved)
+    chunks.json          # data (moved)
+    .dense_cache_pc.npz  # cache (moved)
+    eval/
+      gold.json          # Deliverable 2
+      eval.py            # Deliverable 2
 ```
 
-- **Shared modules** (`generator.py`, `Naive_rag.py`) are **copied** in so the
-  snapshot is self-contained; the originals remain at `RAG/` root so the
-  stage-1 baseline still runs.
-- **Stage-2-unique files** (`parent_child_rag.py`, `pdf_extractor.py`,
-  `chunker.py`, the data JSONs, the `.npz` cache) are **moved** into the folder.
-- Sibling imports (`from Naive_rag import EMBED_MODEL`,
-  `from generator import ...`) resolve unchanged because Python puts the script's
-  own directory on `sys.path`.
-- Path edits required: `DOCS_DIR` in `Naive_rag.py` and `pdf_extractor.py` →
-  `Path(__file__).parent.parent / "docs"` (shared PDFs/guide stay in `RAG/docs`).
-  `eval/eval.py` inserts its parent dir on `sys.path` to import
-  `parent_child_rag`.
-- "First push" = commit the new folder and `git push origin`. Stage-3 work
-  proceeds in a separate `RAG/rag_stage_3/` folder.
+- **`generator.py` stays at root** — shared by every stage. The `EMBED_MODEL`
+  constant moves **out of `Naive_rag.py` into `generator.py`** so both the
+  baseline and stage-2 import it from one shared place.
+- **`Naive_rag.py` stays at root** — TF-IDF restored here (Deliverable 1); it
+  imports `EMBED_MODEL`/`build_prompt`/`generate` from root `generator.py`. Its
+  `DOCS_DIR` is unchanged (`RAG/docs`).
+- **Stage-2 files move** into `rag_stage_2/`: `pdf_extractor.py`, `chunker.py`,
+  `parent_child_rag.py`, the data JSONs, the `.npz` cache. After the
+  `EMBED_MODEL` move, `parent_child_rag.py` no longer imports `Naive_rag` at all
+  — it depends only on root `generator.py`.
+- **Reaching root `generator.py` from a subfolder:** each stage-2 script inserts
+  the repo `RAG/` dir on `sys.path`
+  (`sys.path.insert(0, str(Path(__file__).parent.parent))`, and `.parent.parent.parent`
+  for `eval/eval.py`) before `import generator` / `import parent_child_rag`.
+- **Path edits:** `pdf_extractor.py` `DOCS_DIR -> Path(__file__).parent.parent / "docs"`.
+  `chunker.py` reads/writes `sections.json`/`chunks.json` local to `rag_stage_2/`
+  (already `__file__`-relative). Cache path stays `__file__`-relative.
+- **"First push"** = commit the reorg + new files and `git push origin`.
+  Stage-3 work proceeds in a separate `RAG/rag_stage_3/` folder.
 
 ---
 
-## Deliverable 1 — TF-IDF in `rag_stage_2/Naive_rag.py`
+## Deliverable 1 — TF-IDF in root `RAG/Naive_rag.py`
 
 Faithful restore of the code from `72a358a:RAG/Naive_rag.py`, applied to the
-snapshot copy `RAG/rag_stage_2/Naive_rag.py` (which delegates generation to the
-in-folder `generator.py`).
+current root `RAG/Naive_rag.py` (which delegates generation to root
+`generator.py`).
 
 ### Changes
+- Move `EMBED_MODEL = "all-MiniLM-L6-v2"` from `Naive_rag.py` into
+  `generator.py`; `Naive_rag.py` imports it from `generator` alongside
+  `build_prompt`/`generate`.
 - Add `import re`.
 - Add `tokenize(text)` → `re.findall(r"[a-z0-9]+", text.lower())`.
 - Add `TfidfIndex` class:
@@ -80,9 +89,11 @@ in-folder `generator.py`).
 - No new dependencies (numpy + stdlib `re` only).
 
 ### Verification
-- `python RAG/rag_stage_2/Naive_rag.py --tfidf --query "what is dense retrieval?"`
+- `python RAG/Naive_rag.py --tfidf --query "what is dense retrieval?"`
   prints a TF-IDF index line and retrieved chunks with descending scores.
 - Same script with no flag still runs the dense path unchanged.
+- `python RAG/rag_stage_2/parent_child_rag.py --query "..."` still works after
+  the `EMBED_MODEL` move (now imported from root `generator`).
 
 ---
 
@@ -120,7 +131,7 @@ Retriever-agnostic retrieval eval over the 7-PDF parent-child pipeline.
   - **hit@k** (= recall@k here) for k = 1, 3, 5.
   - **MRR** = mean of 1 / (rank of first correct source), 0 if absent.
 - Output:
-  - Summary line/table: `N` questions, hit@1, hit@3, MRR.
+  - Summary line/table: `N` questions, hit@1, hit@3, hit@5, MRR.
   - Per-question pass/fail list: `id · ✓/✗ · rank · question`.
 
 ### Data flow
@@ -134,8 +145,10 @@ gold.json ──► eval.py ──► for each q: retriever_fn(q) ──► rank
 ### Constraints
 - Eval ranks the full parent set (7 papers, 112 parents), so k = 1, 3, 5 are all
   computable. `retrieve()`'s top-3 cap is a runtime concern, not the eval's.
-- No change to `parent_child_rag.py`; eval imports its loaders/index and ranks
-  parents itself.
+- Eval does not alter parent-child **retrieval logic**; it imports
+  `parent_child_rag`'s loaders/index and ranks parents itself. (`parent_child_rag.py`
+  still gets the reorg's import/`sys.path` edits, but its retrieval behavior is
+  unchanged.)
 - Naive/TF-IDF retrievers index the `.md` guide, not the PDFs, so they are not
   run by this eval (separate corpus).
 
