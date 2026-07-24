@@ -4,8 +4,12 @@ _Date: 2026-07-24 · Branch: stage/2_
 
 ## Goal
 
-Two independent deliverables:
+Three deliverables:
 
+0. **Clean section detection** — fix `pdf_extractor.py`'s heading regex so
+   footnotes/mis-parsed lines stop becoming junk parents, then regenerate
+   `sections.json` → `chunks.json`. Prerequisite to eval: a poisoned parent
+   store makes eval measure the extractor bug, not the retriever.
 1. **Re-add TF-IDF** to `RAG/Naive_rag.py` — restore the hand-rolled lexical
    retriever that existed in commit `72a358a` and was dropped in stage 2.
 2. **Standalone retrieval eval harness** (`RAG/rag_stage_2/eval/`) — a retriever-agnostic
@@ -57,6 +61,44 @@ RAG/
   (already `__file__`-relative). Cache path stays `__file__`-relative.
 - **"First push"** = commit the reorg + new files and `git push origin`.
   Stage-3 work proceeds in a separate `RAG/rag_stage_3/` folder.
+
+---
+
+## Deliverable 0 — Clean section detection
+
+`sections.json` currently has one junk parent: **Guu (REALM) #7**,
+`"3 Note that we still fine-tune Embedinput,"` — a footnote whose marker `3` +
+sentence text satisfies `HEADING_RE`. A full scan of all 112 parents found this
+is the **only** junk parent (two other flagged titles are legit headings with
+lowercase words). Bad parents inflate the recall denominator, so eval must run
+on a clean store.
+
+### Fix (in `rag_stage_2/pdf_extractor.py`, `_split_sections`)
+When `HEADING_RE` matches a line, accept it as a heading only if **both** guards
+pass; otherwise treat the line as body text:
+
+1. **No trailing sentence punctuation** — reject if the captured title ends with
+   `,` `;` `:` (real headings don't; sentence-fragment footnotes do).
+2. **Increasing bare integer** — for a bare-integer heading number `N` (no dot,
+   Arabic), require `N` greater than the last bare-integer section already
+   opened. Repeats/regressions (a second `3` after `3 Approach`) are rejected.
+   Dotted subsections (`3.1`) and Roman numerals skip this check.
+
+Guu#7 fails both (ends in comma; `3` repeats an opened top-level).
+
+### Regeneration (order matters)
+1. `python rag_stage_2/pdf_extractor.py` → rewrites `sections.json` (Guu#7 gone;
+   section_idx values renumber).
+2. `python rag_stage_2/chunker.py` → rewrites `chunks.json` from new sections.
+3. `.dense_cache_pc.npz` auto-invalidates on next run (sha256 fingerprint of
+   child texts changes) and recomputes.
+
+### Verification
+- `sections.json` no longer contains a Guu parent titled `"3 Note…"`; REALM
+  section count drops by 1.
+- Re-scan finds zero titles ending in `,;:` and zero non-increasing bare-integer
+  top-level headings.
+- All other papers' section counts are unchanged (guards are footnote-specific).
 
 ---
 
