@@ -16,12 +16,49 @@ Two independent deliverables:
 Non-goals: LLM-judge / answer-quality metrics, hybrid retrieval, any change to
 the dense or parent-child retrieval logic.
 
+## Repository layout — stage snapshot
+
+All of this work lands in a new **frozen, standalone** folder `RAG/rag_stage_2/`.
+Stage 3 will later copy from it into `RAG/rag_stage_3/` and evolve there; each
+stage folder runs independently.
+
+```
+RAG/rag_stage_2/
+  generator.py           # copy of RAG/generator.py
+  Naive_rag.py           # copy, with TF-IDF restored (Deliverable 1)
+  pdf_extractor.py       # copy; DOCS_DIR -> ../docs
+  chunker.py             # copy
+  parent_child_rag.py    # moved from RAG/
+  sections.json          # data (copy)
+  chunks.json            # data (copy)
+  .dense_cache_pc.npz    # cache (copy)
+  eval/
+    gold.json            # Deliverable 2
+    eval.py              # Deliverable 2
+```
+
+- **Shared modules** (`generator.py`, `Naive_rag.py`) are **copied** in so the
+  snapshot is self-contained; the originals remain at `RAG/` root so the
+  stage-1 baseline still runs.
+- **Stage-2-unique files** (`parent_child_rag.py`, `pdf_extractor.py`,
+  `chunker.py`, the data JSONs, the `.npz` cache) are **moved** into the folder.
+- Sibling imports (`from Naive_rag import EMBED_MODEL`,
+  `from generator import ...`) resolve unchanged because Python puts the script's
+  own directory on `sys.path`.
+- Path edits required: `DOCS_DIR` in `Naive_rag.py` and `pdf_extractor.py` →
+  `Path(__file__).parent.parent / "docs"` (shared PDFs/guide stay in `RAG/docs`).
+  `eval/eval.py` inserts its parent dir on `sys.path` to import
+  `parent_child_rag`.
+- "First push" = commit the new folder and `git push origin`. Stage-3 work
+  proceeds in a separate `RAG/rag_stage_3/` folder.
+
 ---
 
-## Deliverable 1 — TF-IDF in `Naive_rag.py`
+## Deliverable 1 — TF-IDF in `rag_stage_2/Naive_rag.py`
 
-Faithful restore of the code from `72a358a:RAG/Naive_rag.py`, adapted to the
-current file (which now delegates generation to `generator.py`).
+Faithful restore of the code from `72a358a:RAG/Naive_rag.py`, applied to the
+snapshot copy `RAG/rag_stage_2/Naive_rag.py` (which delegates generation to the
+in-folder `generator.py`).
 
 ### Changes
 - Add `import re`.
@@ -43,20 +80,19 @@ current file (which now delegates generation to `generator.py`).
 - No new dependencies (numpy + stdlib `re` only).
 
 ### Verification
-- `python RAG/Naive_rag.py --tfidf --query "what is dense retrieval?"` prints a
-  TF-IDF index line and retrieved chunks with descending scores.
-- `python RAG/Naive_rag.py --query "..."` (no flag) still runs the dense path
-  unchanged.
+- `python RAG/rag_stage_2/Naive_rag.py --tfidf --query "what is dense retrieval?"`
+  prints a TF-IDF index line and retrieved chunks with descending scores.
+- Same script with no flag still runs the dense path unchanged.
 
 ---
 
-## Deliverable 2 — Eval harness (`RAG/eval/`)
+## Deliverable 2 — Eval harness (`RAG/rag_stage_2/eval/`)
 
 Retriever-agnostic retrieval eval over the 7-PDF parent-child pipeline.
 
 ### Files
 
-**`RAG/eval/gold.json`** — JSON list of objects:
+**`RAG/rag_stage_2/eval/gold.json`** — JSON list of objects:
 ```json
 { "id": "q01", "question": "What loss does DPR train the dual encoders with?",
   "source": "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf" }
@@ -69,7 +105,7 @@ Retriever-agnostic retrieval eval over the 7-PDF parent-child pipeline.
 - Sourcing: I draft ~15 (2–3 per paper) grounded in the actual corpus; the user
   adds their own questions and reviews/trims the set before it is used.
 
-**`RAG/eval/eval.py`** — the runner:
+**`RAG/rag_stage_2/eval/eval.py`** — the runner:
 - Retriever adapter interface:
   `retriever_fn(query) -> [source, source, ...]` — the **full** ranked list of
   parent source filenames, deduped, order preserved (not capped at 3).
@@ -104,7 +140,7 @@ gold.json ──► eval.py ──► for each q: retriever_fn(q) ──► rank
   run by this eval (separate corpus).
 
 ### Verification
-- `python RAG/eval/eval.py` loads gold.json, ranks the full parent set with the
+- `python RAG/rag_stage_2/eval/eval.py` loads gold.json, ranks the full parent set with the
   parent-child retriever, prints the summary + per-question table with plausible
   hit rates rising with k (hit@1 ≤ hit@3 ≤ hit@5).
 - Gold `source` values validate against the 7 known PDF filenames at load time
