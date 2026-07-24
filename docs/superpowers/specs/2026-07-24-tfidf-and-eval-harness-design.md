@@ -118,26 +118,29 @@ Retriever-agnostic retrieval eval over the 7-PDF parent-child pipeline.
 
 **`RAG/rag_stage_2/eval/eval.py`** — the runner:
 - Retriever adapter interface:
-  `retriever_fn(query) -> [source, source, ...]` — the **full** ranked list of
-  parent source filenames, deduped, order preserved (not capped at 3).
+  `retriever_fn(query) -> [(parent_id, score), ...]` — the **full** ranked list
+  of unique parents (best first), each carrying its `parent_id`
+  (`"source#section_idx"`) and score. Deduped by parent, not capped at 3.
 - A wrapper `parent_child_retriever()` builds the index via
   `parent_child_rag.load_index(load_children(), load_parents())` and ranks the
   **entire** parent set: score every child, collapse to unique parents keeping
-  each parent's best child score, sort descending → full ranked parent list,
-  then map to `[p["source"], ...]`. This is eval-side ranking (does not use
-  `retrieve()`'s `TOP_CHILDREN`/`TOP_PARENTS` caps, so k up to 5 is measurable).
-  Future stages register a new wrapper (one function); the metric code is shared.
-- Metrics (deterministic, no LLM; one relevant paper per question):
+  each parent's best child score, sort descending → `[(parent_id, score), ...]`.
+  This is eval-side ranking (does not use `retrieve()`'s
+  `TOP_CHILDREN`/`TOP_PARENTS` caps, so k up to 5 is measurable). Future stages
+  register a new wrapper (one function); the metric code is shared.
+- Metrics (deterministic, no LLM; one relevant paper per question). Correctness
+  maps each `parent_id → source` (`parent_id.split("#")[0]`) and compares to gold
+  `source`:
   - **hit@k** (= recall@k here) for k = 1, 3, 5.
-  - **MRR** = mean of 1 / (rank of first correct source), 0 if absent.
+  - **MRR** = mean of 1 / (rank of first parent whose source == gold), 0 if absent.
 - Output:
   - Summary line/table: `N` questions, hit@1, hit@3, hit@5, MRR.
   - Per-question pass/fail list: `id · ✓/✗ · rank · question`.
 
 ### Data flow
 ```
-gold.json ──► eval.py ──► for each q: retriever_fn(q) ──► ranked sources
-                                    └─► compare to gold.source ──► hit@k, MRR
+gold.json ──► eval.py ──► for each q: retriever_fn(q) ──► [(parent_id, score), ...]
+                                    └─► parent_id→source, compare to gold.source ──► hit@k, MRR
                                                                         │
                                                         summary + per-q table
 ```
