@@ -148,15 +148,24 @@ Retriever-agnostic retrieval eval over the 7-PDF parent-child pipeline.
 **`RAG/rag_stage_2/eval/gold.json`** — JSON list of objects:
 ```json
 { "id": "q01", "question": "What loss does DPR train the dual encoders with?",
-  "source": "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf" }
+  "source": "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf",
+  "type": "method", "negative": false }
+
+{ "id": "n01", "question": "What is the training recipe for Stable Diffusion?",
+  "source": null, "type": "method", "negative": true }
 ```
 - `source` = exact PDF filename string, matching the `source` field in
-  `sections.json`. The 7 valid values are the 7 PDFs in `RAG/docs/`.
+  `sections.json` (the 7 PDFs in `RAG/docs/`). **`null` for negatives** (answer
+  is in none of the 7 papers).
+- `type` = content taxonomy of what the question asks for, e.g. `definition`,
+  `method`, `result`, `comparison`, `motivation`. Drives the per-type report.
+- `negative` = boolean. `true` = unanswerable from the corpus (used only for the
+  negative-gap metric, excluded from hit@k/MRR).
 - Label granularity: **source paper only**. Ranking is at the **parent** level
   (parents are what the LLM is fed as context), but a retrieval is correct when
   the gold `source` appears among the top-k ranked parents' sources.
-- Sourcing: I draft ~15 (2–3 per paper) grounded in the actual corpus; the user
-  adds their own questions and reviews/trims the set before it is used.
+- Sourcing: I draft ~15 answerable (2–3 per paper, each tagged `type`) plus ~5
+  negatives; the user adds their own questions and reviews/trims before use.
 
 **`RAG/rag_stage_2/eval/eval.py`** — the runner:
 - Retriever adapter interface:
@@ -172,12 +181,21 @@ Retriever-agnostic retrieval eval over the 7-PDF parent-child pipeline.
   register a new wrapper (one function); the metric code is shared.
 - Metrics (deterministic, no LLM; one relevant paper per question). Correctness
   maps each `parent_id → source` (`parent_id.split("#")[0]`) and compares to gold
-  `source`:
+  `source`. Computed over **answerable** questions (`negative == false`):
   - **hit@k** (= recall@k here) for k = 1, 3, 5.
   - **MRR** = mean of 1 / (rank of first parent whose source == gold), 0 if absent.
+- **Per-type report:** the same hit@1/3/5 + MRR + N, grouped by `type` (answerable
+  only) — shows which question kinds retrieval struggles on.
+- **Negative gap:** `mean(top-1 score over answerable) − mean(top-1 score over
+  negatives)`, using the score from the adapter's rank-1 tuple. Larger positive
+  gap = the retriever scores in-corpus queries higher than out-of-corpus ones
+  (basis for a future abstain threshold). Reported per retriever; needs ≥1
+  negative in the gold set.
 - Output:
-  - Summary line/table: `N` questions, hit@1, hit@3, hit@5, MRR.
-  - Per-question pass/fail list: `id · ✓/✗ · rank · question`.
+  - Overall summary: `N` answerable, hit@1, hit@3, hit@5, MRR.
+  - Per-type table: one row per `type` with N, hit@1/3/5, MRR.
+  - Negative gap: mean top-1 (answerable), mean top-1 (negatives), gap.
+  - Per-question pass/fail list: `id · ✓/✗ · rank · type · question`.
 
 ### Data flow
 ```
@@ -198,11 +216,14 @@ gold.json ──► eval.py ──► for each q: retriever_fn(q) ──► [(pa
   run by this eval (separate corpus).
 
 ### Verification
-- `python RAG/rag_stage_2/eval/eval.py` loads gold.json, ranks the full parent set with the
-  parent-child retriever, prints the summary + per-question table with plausible
-  hit rates rising with k (hit@1 ≤ hit@3 ≤ hit@5).
-- Gold `source` values validate against the 7 known PDF filenames at load time
-  (fail fast on typo).
+- `python RAG/rag_stage_2/eval/eval.py` loads gold.json, ranks the full parent
+  set with the parent-child retriever, prints overall summary + per-type table +
+  negative gap + per-question list; hit rates rise with k (hit@1 ≤ hit@3 ≤ hit@5).
+- Gold validation at load time (fail fast): answerable `source` values match one
+  of the 7 known PDF filenames; negatives have `source == null`; every entry has
+  a `type` and boolean `negative`.
+- Negative gap is a positive number on the parent-child retriever (in-corpus
+  queries score higher than negatives).
 
 ---
 
