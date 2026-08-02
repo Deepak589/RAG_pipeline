@@ -1,31 +1,292 @@
 {
   "_readme": "Golden retrieval set for the parent-child (PDF) corpus. Labels point at parent_ids = '<source>#<section_idx>' exactly as parent_child_rag builds them from sections.json. type: factual = query uses doc vocabulary; paraphrase = same target as a factual item but reworded with synonyms (tests dense > lexical); negative = answer is NOT in the corpus, a good retriever should score low / a good generator should refuse. Grow this to 50+ before trusting small deltas. relevant_parent_ids may list more than one when several sections legitimately answer.",
   "questions": [
-    {"id": "vas-attn",        "type": "factual",    "query": "What is scaled dot-product attention?",                                            "relevant_parent_ids": ["Vaswani et al. - 2017 - Attention Is All You Need.pdf#6"]},
-    {"id": "vas-mha",         "type": "factual",    "query": "How does multi-head attention work in the Transformer?",                           "relevant_parent_ids": ["Vaswani et al. - 2017 - Attention Is All You Need.pdf#7"]},
-    {"id": "vas-pos",         "type": "factual",    "query": "How does the Transformer represent the order of tokens in a sequence?",           "relevant_parent_ids": ["Vaswani et al. - 2017 - Attention Is All You Need.pdf#11"]},
-    {"id": "vas-why",         "type": "factual",    "query": "Why does the paper prefer self-attention over recurrent layers?",                 "relevant_parent_ids": ["Vaswani et al. - 2017 - Attention Is All You Need.pdf#12"]},
-    {"id": "dpr-train",       "type": "factual",    "query": "How is the DPR dual-encoder retriever trained?",                                  "relevant_parent_ids": ["Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#5"]},
-    {"id": "dpr-arch",        "type": "factual",    "query": "What is the architecture of the dense passage retriever?",                        "relevant_parent_ids": ["Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#4", "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#3"]},
-    {"id": "lewis-models",    "type": "factual",    "query": "What is the difference between RAG-Sequence and RAG-Token models?",               "relevant_parent_ids": ["Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#3"]},
-    {"id": "lewis-gen",       "type": "factual",    "query": "Which generator model does RAG use?",                                             "relevant_parent_ids": ["Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#5"]},
-    {"id": "lewis-ret",       "type": "factual",    "query": "Which retriever component does RAG build on?",                                    "relevant_parent_ids": ["Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#4"]},
-    {"id": "realm-arch",      "type": "factual",    "query": "How is REALM's knowledge retriever modeled?",                                     "relevant_parent_ids": ["Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#5"]},
-    {"id": "realm-train",     "type": "factual",    "query": "How is REALM trained with a masked language modeling objective?",                 "relevant_parent_ids": ["Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#6"]},
-    {"id": "selfrag-critic",  "type": "factual",    "query": "How is the Self-RAG critic model trained?",                                       "relevant_parent_ids": ["Asai et al. - 2023 - Self-RAG - Learning to Retrieve, Generate, and Critique through Self-Reflection.pdf#6"]},
-    {"id": "selfrag-infer",   "type": "factual",    "query": "How does Self-RAG use reflection tokens at inference time?",                      "relevant_parent_ids": ["Asai et al. - 2023 - Self-RAG - Learning to Retrieve, Generate, and Critique through Self-Reflection.pdf#8"]},
-    {"id": "react-method",    "type": "factual",    "query": "How does ReAct combine reasoning and acting?",                                    "relevant_parent_ids": ["Yao et al. - 2023 - ReAct - Synergizing Reasoning and Acting in Language Models.pdf#2"]},
-    {"id": "gao-retrieval",   "type": "factual",    "query": "What retrieval techniques does the RAG survey cover?",                            "relevant_parent_ids": ["Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#3"]},
-    {"id": "gao-eval",        "type": "factual",    "query": "How does the RAG survey approach evaluating RAG systems?",                         "relevant_parent_ids": ["Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#6"]},
-
-    {"id": "vas-pos-para",    "type": "paraphrase", "query": "With no recurrence or convolution in the network, how is token position information injected into the model?", "relevant_parent_ids": ["Vaswani et al. - 2017 - Attention Is All You Need.pdf#11"]},
-    {"id": "vas-mha-para",    "type": "paraphrase", "query": "Why run the attention mechanism several times in parallel with different learned projections?", "relevant_parent_ids": ["Vaswani et al. - 2017 - Attention Is All You Need.pdf#7"]},
-    {"id": "dpr-train-para",  "type": "paraphrase", "query": "When fitting its loss, how does DPR pick incorrect passages to contrast against the correct one?", "relevant_parent_ids": ["Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#5"]},
-    {"id": "selfrag-para",    "type": "paraphrase", "query": "How does Self-RAG teach the component that judges whether looking things up is necessary?", "relevant_parent_ids": ["Asai et al. - 2023 - Self-RAG - Learning to Retrieve, Generate, and Critique through Self-Reflection.pdf#6"]},
-    {"id": "react-para",      "type": "paraphrase", "query": "How does the agent interleave step-by-step thinking with external tool calls?", "relevant_parent_ids": ["Yao et al. - 2023 - ReAct - Synergizing Reasoning and Acting in Language Models.pdf#2"]},
-
-    {"id": "neg-rainfall",    "type": "negative",   "query": "What is the average annual rainfall in the Amazon rainforest?",                   "relevant_parent_ids": []},
-    {"id": "neg-gpu-price",   "type": "negative",   "query": "How much does an NVIDIA H100 GPU cost?",                                          "relevant_parent_ids": []},
-    {"id": "neg-lora",        "type": "negative",   "query": "How do you fine-tune Llama 3 with LoRA adapters?",                                "relevant_parent_ids": []}
+    {
+      "id": "vas-attn",
+      "type": "factual",
+      "query": "What is scaled dot-product attention?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#6"
+      ]
+    },
+    {
+      "id": "vas-mha",
+      "type": "factual",
+      "query": "How does multi-head attention work in the Transformer?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#7"
+      ]
+    },
+    {
+      "id": "vas-pos",
+      "type": "factual",
+      "query": "How does the Transformer represent the order of tokens in a sequence?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#11"
+      ]
+    },
+    {
+      "id": "vas-why",
+      "type": "factual",
+      "query": "Why does the paper prefer self-attention over recurrent layers?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#12"
+      ]
+    },
+    {
+      "id": "dpr-train",
+      "type": "factual",
+      "query": "How is the DPR dual-encoder retriever trained?",
+      "relevant_parent_ids": [
+        "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#5"
+      ]
+    },
+    {
+      "id": "dpr-arch",
+      "type": "factual",
+      "query": "What is the architecture of the dense passage retriever?",
+      "relevant_parent_ids": [
+        "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#4",
+        "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#3"
+      ]
+    },
+    {
+      "id": "lewis-models",
+      "type": "factual",
+      "query": "What is the difference between RAG-Sequence and RAG-Token models?",
+      "relevant_parent_ids": [
+        "Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#3"
+      ]
+    },
+    {
+      "id": "lewis-gen",
+      "type": "factual",
+      "query": "Which generator model does RAG use?",
+      "relevant_parent_ids": [
+        "Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#5"
+      ]
+    },
+    {
+      "id": "lewis-ret",
+      "type": "factual",
+      "query": "Which retriever component does RAG build on?",
+      "relevant_parent_ids": [
+        "Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#4"
+      ]
+    },
+    {
+      "id": "realm-arch",
+      "type": "factual",
+      "query": "How is REALM's knowledge retriever modeled?",
+      "relevant_parent_ids": [
+        "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#5"
+      ]
+    },
+    {
+      "id": "realm-train",
+      "type": "factual",
+      "query": "How is REALM trained with a masked language modeling objective?",
+      "relevant_parent_ids": [
+        "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#6"
+      ]
+    },
+    {
+      "id": "selfrag-critic",
+      "type": "factual",
+      "query": "How is the Self-RAG critic model trained?",
+      "relevant_parent_ids": [
+        "Asai et al. - 2023 - Self-RAG - Learning to Retrieve, Generate, and Critique through Self-Reflection.pdf#6"
+      ]
+    },
+    {
+      "id": "selfrag-infer",
+      "type": "factual",
+      "query": "How does Self-RAG use reflection tokens at inference time?",
+      "relevant_parent_ids": [
+        "Asai et al. - 2023 - Self-RAG - Learning to Retrieve, Generate, and Critique through Self-Reflection.pdf#8"
+      ]
+    },
+    {
+      "id": "react-method",
+      "type": "factual",
+      "query": "How does ReAct combine reasoning and acting?",
+      "relevant_parent_ids": [
+        "Yao et al. - 2023 - ReAct - Synergizing Reasoning and Acting in Language Models.pdf#2"
+      ]
+    },
+    {
+      "id": "gao-retrieval",
+      "type": "factual",
+      "query": "What retrieval techniques does the RAG survey cover?",
+      "relevant_parent_ids": [
+        "Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#3"
+      ],
+      "relevant_parent_ids_s3": [
+        "Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#3",
+        "Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#3#A",
+        "Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#3#B",
+        "Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#3#C",
+        "Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#3#D"
+      ]
+    },
+    {
+      "id": "gao-eval",
+      "type": "factual",
+      "query": "How does the RAG survey approach evaluating RAG systems?",
+      "relevant_parent_ids": [
+        "Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#6"
+      ]
+    },
+    {
+      "id": "vas-optim",
+      "type": "factual",
+      "query": "What optimizer and learning-rate schedule does the Transformer use during training?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#16"
+      ],
+      "relevant_parent_ids_s3": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#14"
+      ]
+    },
+    {
+      "id": "dpr-vs-bm25",
+      "type": "factual",
+      "query": "In DPR's qualitative analysis, how does dense retrieval compare against BM25 on the passages returned?",
+      "relevant_parent_ids": [
+        "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#12"
+      ],
+      "relevant_parent_ids_s3": [
+        "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#11"
+      ]
+    },
+    {
+      "id": "lewis-decode",
+      "type": "factual",
+      "query": "How does RAG-Token decoding differ from RAG-Sequence decoding at test time?",
+      "relevant_parent_ids": [
+        "Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#7"
+      ]
+    },
+    {
+      "id": "realm-genproc",
+      "type": "factual",
+      "query": "How does REALM decompose its output probability into a retrieve-then-predict generative process?",
+      "relevant_parent_ids": [
+        "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#4"
+      ]
+    },
+    {
+      "id": "react-decision",
+      "type": "factual",
+      "query": "How does ReAct perform on interactive decision-making tasks like ALFWorld and WebShop?",
+      "relevant_parent_ids": [
+        "Yao et al. - 2023 - ReAct - Synergizing Reasoning and Acting in Language Models.pdf#7"
+      ]
+    },
+    {
+      "id": "gao-overview",
+      "type": "factual",
+      "query": "What are the main components of a typical RAG application in the survey's overview?",
+      "relevant_parent_ids": [
+        "Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#2"
+      ]
+    },
+    {
+      "id": "vas-pos-para",
+      "type": "paraphrase",
+      "query": "With no recurrence or convolution in the network, how is token position information injected into the model?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#11"
+      ]
+    },
+    {
+      "id": "vas-mha-para",
+      "type": "paraphrase",
+      "query": "Why run the attention mechanism several times in parallel with different learned projections?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#7"
+      ]
+    },
+    {
+      "id": "dpr-train-para",
+      "type": "paraphrase",
+      "query": "When fitting its loss, how does DPR pick incorrect passages to contrast against the correct one?",
+      "relevant_parent_ids": [
+        "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#5"
+      ]
+    },
+    {
+      "id": "selfrag-para",
+      "type": "paraphrase",
+      "query": "How does Self-RAG teach the component that judges whether looking things up is necessary?",
+      "relevant_parent_ids": [
+        "Asai et al. - 2023 - Self-RAG - Learning to Retrieve, Generate, and Critique through Self-Reflection.pdf#6"
+      ]
+    },
+    {
+      "id": "react-para",
+      "type": "paraphrase",
+      "query": "How does the agent interleave step-by-step thinking with external tool calls?",
+      "relevant_parent_ids": [
+        "Yao et al. - 2023 - ReAct - Synergizing Reasoning and Acting in Language Models.pdf#2"
+      ]
+    },
+    {
+      "id": "vas-optim-para",
+      "type": "paraphrase",
+      "query": "What method ramps the training step size up early then decays it as training progresses?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#16"
+      ],
+      "relevant_parent_ids_s3": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#14"
+      ]
+    },
+    {
+      "id": "realm-train-para",
+      "type": "paraphrase",
+      "query": "How does REALM cope with summing over every document in the corpus being intractable while learning?",
+      "relevant_parent_ids": [
+        "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#6"
+      ]
+    },
+    {
+      "id": "lewis-models-para",
+      "type": "paraphrase",
+      "query": "What separates the variant that fixes one passage for the whole answer from the one that can switch passages per token?",
+      "relevant_parent_ids": [
+        "Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#3"
+      ]
+    },
+    {
+      "id": "neg-rainfall",
+      "type": "negative",
+      "query": "What is the average annual rainfall in the Amazon rainforest?",
+      "relevant_parent_ids": []
+    },
+    {
+      "id": "neg-gpu-price",
+      "type": "negative",
+      "query": "How much does an NVIDIA H100 GPU cost?",
+      "relevant_parent_ids": []
+    },
+    {
+      "id": "neg-lora",
+      "type": "negative",
+      "query": "How do you fine-tune Llama 3 with LoRA adapters?",
+      "relevant_parent_ids": []
+    },
+    {
+      "id": "neg-colbert",
+      "type": "negative",
+      "query": "How does the ColBERT late-interaction model score query-document relevance?",
+      "relevant_parent_ids": []
+    },
+    {
+      "id": "neg-gpt3-cost",
+      "type": "negative",
+      "query": "How many GPU-hours were needed to train GPT-3?",
+      "relevant_parent_ids": []
+    }
   ]
 }
