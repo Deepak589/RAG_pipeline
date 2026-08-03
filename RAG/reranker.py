@@ -85,6 +85,78 @@ def rank_reranked(index, cross_encoder, query, depth=DEFAULT_DEPTH):
     return ids, scores
 
 
+def rank_hybrid_reranked(index, bm25, cross_encoder, query, depth=DEFAULT_DEPTH, k=60):
+    """Hybrid candidate selection + cross-encoder rerank.
+
+    Same head/tail shape as rank_reranked, but the head is drawn from the
+    HYBRID child pool (RRF of dense-child-rank and BM25-child-rank), not pure
+    dense. This is the point: BM25 puts exact-term children that dense buries
+    into the CE's working set, so the CE can actually promote them. The tail is
+    the full hybrid PARENT ranking (minus head), so the recall ceiling stays at
+    the hybrid level.
+
+    Returns (ranked_parent_ids, ranked_scores) best first — same contract.
+    """
+    from hybrid import rank_hybrid
+
+    qvec = index.model.encode([query], normalize_embeddings=True)[0]
+    sims = index.matrix @ qvec
+    bm = bm25.scores(query)
+
+    # child-level RRF: rank children by dense cosine and by BM25, fuse by rank
+    dense_rank = {int(i): r for r, i in enumerate(np.argsort(sims)[::-1], 1)}
+    bm25_rank = {int(i): r for r, i in enumerate(np.argsort(bm)[::-1], 1)}
+    n = len(index.children)
+    rrf = np.array([1.0 / (k + dense_rank[i]) + 1.0 / (k + bm25_rank[i])
+                    for i in range(n)])
+    top = np.argsort(rrf)[::-1][:depth]
+
+    # HEAD — cross-encode the hybrid-selected children, collapse to parents by max CE
+    ce_scores = cross_encoder.predict(
+        [(query, index.children[i]["text"]) for i in top]
+    )
+    head_best = {}
+    for i, s in zip(top, ce_scores):
+        pid = index.children[i]["parent_id"]
+        s = float(s)
+        if pid not in head_best or s > head_best[pid]:
+            head_best[pid] = s
+    head = sorted(head_best.items(), key=lambda kv: kv[1], reverse=True)
+
+    # TAIL — full hybrid parent ranking, minus parents already in the head
+    hy_ids, _ = rank_hybrid(index, bm25, query, k)
+    head_ids = {pid for pid, _ in head}
+    tail = [(pid, 0.0) for pid in hy_ids if pid not in head_ids]
+
+    ranked = head + tail
+    return [pid for pid, _ in ranked], [s for _, s in ranked]
+
+
+def build_hybrid_reranked_ranker(depth=DEFAULT_DEPTH, stage3=False, k=60):
+    """Load dense index + BM25 + cross-encoder; return (name, rank_fn) that
+    reranks the HYBRID pool instead of the pure-dense pool."""
+    from sentence_transformers import CrossEncoder
+    sys.path.insert(0, str(Path(__file__).parent / "rag_stage_3"))  # reach hybrid.py
+    from hybrid import BM25
+
+    if stage3:
+        stage3_dir = Path(__file__).parent / "rag_stage_3"
+        children = json.loads((stage3_dir / "chunks.json").read_text())
+        secs = json.loads((stage3_dir / "sections.json").read_text())
+        parents = {f"{s['source']}#{s['section_idx']}": s for s in secs}
+        index = pc.load_index(children, parents, cache_path=stage3_dir / ".dense_cache_pc.npz")
+        name = "hybrid_rerank_s3"
+    else:
+        children, parents = pc.load_children(), pc.load_parents()
+        index = pc.load_index(children, parents)
+        name = "hybrid_rerank"
+    bm25 = BM25(children)
+    ce = CrossEncoder(RERANK_MODEL)
+    print(f"hybrid+rerank: {RERANK_MODEL}, depth={depth}, RRF k={k}, "
+          f"{len(children)} children -> {len(parents)} parents\n")
+    return name, lambda q: rank_hybrid_reranked(index, bm25, ce, q, depth, k)
+
+
 def build_reranked_ranker(depth=DEFAULT_DEPTH, stage3=False):
     """Load dense index + cross-encoder; return (name, rank_fn) for the harness.
 

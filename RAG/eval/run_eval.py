@@ -126,13 +126,37 @@ def build_parent_child_ranker_stage3():
     return "parent_child_s3", lambda q: rank_parent_child(index, q)
 
 
+STAGE4_DIR = STAGE_DIR.parent / "rag_stage_4"
+STAGE4_RESULTS_DIR = STAGE4_DIR / "eval" / "results"
+
+
+def load_stage4_parents():
+    """parent_id -> record from stage_4/sections.json. Stage 4 copies the
+    stage-3 sections verbatim (blurbs are index-time only), so ids match."""
+    secs = json.loads((STAGE4_DIR / "sections.json").read_text())
+    return {f"{s['source']}#{s['section_idx']}": s for s in secs}
+
+
+def build_parent_child_ranker_stage4():
+    """Dense-only ParentChildIndex over the BLURBED stage-4 children."""
+    import parent_child_rag as pc
+    children = json.loads((STAGE4_DIR / "chunks.json").read_text())
+    parents = load_stage4_parents()
+    index = pc.load_index(children, parents, cache_path=STAGE4_DIR / ".dense_cache_pc.npz")
+    print(f"stage-4 parent-child index (blurbed): {len(children)} children "
+          f"-> {len(parents)} parents\n")
+    return "parent_child_s4", lambda q: rank_parent_child(index, q)
+
+
 # -------------------------------------------------------------------- evaluate
 
 def gold_ids(q, stage3=False):
-    """Relevant parent_ids for a question. Under --stage3, a question may carry
-    a `relevant_parent_ids_s3` override (used where the resized chunker moved
-    an answer to a different parent id); otherwise the shared ids apply. This
-    keeps one qa.json valid for both the stage-2 baseline and stage-3."""
+    """Relevant parent_ids for a question. Under --stage3/--stage4, a question
+    may carry a `relevant_parent_ids_s3` override (used where the resized
+    chunker moved an answer to a different parent id); otherwise the shared ids
+    apply. Stage 4 reuses the stage-3 sections unchanged (blurbs don't move
+    section_idx), so the same override is valid. This keeps one qa.json valid
+    for the stage-2 baseline, stage-3, and stage-4."""
     if stage3 and "relevant_parent_ids_s3" in q:
         return q["relevant_parent_ids_s3"]
     return q["relevant_parent_ids"]
@@ -211,30 +235,34 @@ def print_report(rows, summary, metric_keys, ks):
     print("=" * 72)
 
 
-def save_results(name, rows, summary, ks, stage3=False):
-    results_dir = STAGE3_RESULTS_DIR if stage3 else RESULTS_DIR
+def save_results(name, rows, summary, ks, stage3=False, stage4=False, qa_version=None):
+    results_dir = (STAGE4_RESULTS_DIR if stage4
+                   else STAGE3_RESULTS_DIR if stage3 else RESULTS_DIR)
     results_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     out = results_dir / f"{name}_{stamp}.json"
     out.write_text(json.dumps(
-        {"retriever": name, "ks": list(ks), "summary": summary, "rows": rows},
+        {"retriever": name, "qa_version": qa_version, "ks": list(ks),
+         "summary": summary, "rows": rows},
         indent=2, ensure_ascii=False,
     ))
-    print(f"\nsaved -> {out}")
+    print(f"\nsaved -> {out}  (qa {qa_version})")
 
 
 # ---------------------------------------------------------------------- selftest
 
-def validate_labels(questions, stage3=False):
+def validate_labels(questions, stage3=False, stage4=False):
     """Every relevant_parent_id must exist in the parent store."""
-    if stage3:
+    if stage4:
+        parents = load_stage4_parents()
+    elif stage3:
         parents = load_stage3_parents()
     else:
         import parent_child_rag as pc
         parents = pc.load_parents()
     bad = []
     for q in questions:
-        for pid in gold_ids(q, stage3):
+        for pid in gold_ids(q, stage3 or stage4):
             if pid not in parents:
                 bad.append((q["id"], pid))
     if bad:
@@ -276,15 +304,25 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--k", nargs="+", type=int, default=list(DEFAULT_KS),
                     help=f"cutoffs to report; ceiling {CEILING_KS} always added")
-    ap.add_argument("--retriever", choices=["parent_child", "reranked"],
+    ap.add_argument("--retriever",
+                    choices=["parent_child", "reranked", "hybrid", "bm25",
+                             "hybrid_rerank"],
                     default="parent_child", help="which retriever to score")
     ap.add_argument("--rerank-depth", type=int, default=20,
                     help="dense children reranked per query (reranked only)")
+    ap.add_argument("--rrf-k", type=int, default=60,
+                    help="RRF damping constant (hybrid only)")
     ap.add_argument("--selftest", action="store_true",
                     help="validate labels + unit-test metrics (no model load)")
     ap.add_argument("--no-save", action="store_true")
     ap.add_argument("--stage3", action="store_true",
                     help="score the resized stage-3 chunker instead of stage-2")
+    ap.add_argument("--stage4", action="store_true",
+                    help="score the blurbed stage-4 chunker (hybrid/bm25/parent_child)")
+    ap.add_argument("--blurb-bm25", dest="blurb_bm25", action="store_true", default=True,
+                    help="stage-4: BM25 indexes blurbed text (default)")
+    ap.add_argument("--raw-bm25", dest="blurb_bm25", action="store_false",
+                    help="stage-4: BM25 indexes raw text; only dense sees blurbs")
     args = ap.parse_args()
     # Ceiling cutoffs are always included so a reranker that truncates the
     # candidate pool can't hide a dropped recall ceiling behind a good hit@3.
@@ -292,27 +330,64 @@ def main():
 
     data = json.loads(QA_PATH.read_text())
     questions = data["questions"]
+    qa_version = data.get("version", "unversioned")
 
     if args.selftest:
         print("== metric unit tests ==")
         m_ok = selftest_metrics()
         print("\n== label validation ==")
-        l_ok = validate_labels(questions, stage3=args.stage3)
+        l_ok = validate_labels(questions, stage3=args.stage3, stage4=args.stage4)
         sys.exit(0 if (m_ok and l_ok) else 1)
+
+    # Stage 4 reuses the stage-3 sections (blurbs are index-time only), so its
+    # gold labels are the stage-3 overrides.
+    label_s3 = args.stage3 or args.stage4
+
+    def _load_stage4_hybrid():
+        import importlib.util
+        path = STAGE4_DIR / "hybrid.py"
+        spec = importlib.util.spec_from_file_location("hybrid_s4_mod", path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        return mod
 
     if args.retriever == "reranked":
         sys.path.insert(0, str(RAG_ROOT))
         from reranker import build_reranked_ranker
         name, rank_fn = build_reranked_ranker(args.rerank_depth, stage3=args.stage3)
+    elif args.retriever == "hybrid_rerank":
+        sys.path.insert(0, str(RAG_ROOT))
+        from reranker import build_hybrid_reranked_ranker
+        name, rank_fn = build_hybrid_reranked_ranker(
+            args.rerank_depth, stage3=args.stage3, k=args.rrf_k)
+    elif args.retriever == "hybrid":
+        if args.stage4:
+            name, rank_fn = _load_stage4_hybrid().build_hybrid_ranker(
+                blurb_bm25=args.blurb_bm25, k=args.rrf_k)
+        else:
+            sys.path.insert(0, str(STAGE3_DIR))
+            from hybrid import build_hybrid_ranker
+            name, rank_fn = build_hybrid_ranker(stage3=args.stage3, k=args.rrf_k)
+    elif args.retriever == "bm25":
+        if args.stage4:
+            name, rank_fn = _load_stage4_hybrid().build_bm25_ranker(
+                blurb_bm25=args.blurb_bm25)
+        else:
+            sys.path.insert(0, str(STAGE3_DIR))
+            from hybrid import build_bm25_ranker
+            name, rank_fn = build_bm25_ranker(stage3=args.stage3)
+    elif args.stage4:
+        name, rank_fn = build_parent_child_ranker_stage4()
     elif args.stage3:
         name, rank_fn = build_parent_child_ranker_stage3()
     else:
         name, rank_fn = build_parent_child_ranker()
-    rows = evaluate(questions, rank_fn, ks, stage3=args.stage3)
+    rows = evaluate(questions, rank_fn, ks, stage3=label_s3)
     summary, metric_keys = aggregate(rows, ks)
     print_report(rows, summary, metric_keys, ks)
     if not args.no_save:
-        save_results(name, rows, summary, ks, stage3=args.stage3)
+        save_results(name, rows, summary, ks, stage3=args.stage3,
+                     stage4=args.stage4, qa_version=qa_version)
 
 
 if __name__ == "__main__":

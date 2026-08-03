@@ -14,7 +14,9 @@ Ollama generation is reused from Naive_rag.py (identical local call);
 retrieval + prompting here are parent-child specific.
 
 Run:  python parent_child_rag.py --query "what is dense passage retrieval?"
+      python parent_child_rag.py --query "..." --rerank   # cross-encoder rerank
       python parent_child_rag.py                 # interactive
+      python parent_child_rag.py --rerank        # interactive, reranked
 """
 
 import hashlib
@@ -112,6 +114,22 @@ def load_index(children, parents, cache_path=CACHE_PATH):
     return index
 
 
+# -------------------------------------------------------------------- reranking
+
+def reranked_retrieve(index, cross_encoder, query):
+    """Reranked variant of index.retrieve: dense top-`depth` children ->
+    cross-encoder rescore -> best parents. Returns [(score, parent_record)]
+    best first, same shape as index.retrieve, capped at TOP_PARENTS.
+
+    Reuses the shared reranker (head reranked, dense tail preserved); the tail
+    never reaches TOP_PARENTS here but keeps the ranking well-defined.
+    """
+    from reranker import rank_reranked, DEFAULT_DEPTH
+    ids, scores = rank_reranked(index, cross_encoder, query, DEFAULT_DEPTH)
+    return [(s, index.parents[pid])
+            for pid, s in zip(ids[:TOP_PARENTS], scores[:TOP_PARENTS])]
+
+
 # ------------------------------------------------------------------ generation
 
 def build_prompt(question, parents):
@@ -121,8 +139,9 @@ def build_prompt(question, parents):
     return _prompt(question, retrieved)
 
 
-def answer(index, question):
-    parents = index.retrieve(question)
+def answer(index, question, cross_encoder=None):
+    parents = (reranked_retrieve(index, cross_encoder, question)
+               if cross_encoder is not None else index.retrieve(question))
     print("\nRetrieved parents (via best child):")
     for score, p in parents:
         print(f"  {score:.3f}  {p['source'][:32]}  §\"{p['title'][:38]}\"  "
@@ -144,14 +163,23 @@ def main():
         sys.exit("Missing chunks.json / sections.json — run pdf_extractor.py "
                  "then chunker.py first")
 
+    args = sys.argv[1:]
+    cross_encoder = None
+    if "--rerank" in args:
+        args = [a for a in args if a != "--rerank"]
+        sys.path.insert(0, str(HERE.parent))
+        from sentence_transformers import CrossEncoder
+        from reranker import RERANK_MODEL
+        cross_encoder = CrossEncoder(RERANK_MODEL)
+
     children, parents = load_children(), load_parents()
     index = load_index(children, parents)
-    print(f"Parent-child index ({EMBED_MODEL}): "
+    mode = "dense + rerank" if cross_encoder is not None else "dense"
+    print(f"Parent-child index ({EMBED_MODEL}) [{mode}]: "
           f"{len(children)} children -> {len(parents)} parents")
 
-    args = sys.argv[1:]
     if len(args) > 1 and args[0] == "--query":
-        answer(index, args[1])
+        answer(index, args[1], cross_encoder)
         return
 
     while True:
@@ -159,7 +187,7 @@ def main():
         if q.lower() in ("quit", "exit", "q"):
             break
         if q:
-            answer(index, q)
+            answer(index, q, cross_encoder)
 
 
 if __name__ == "__main__":

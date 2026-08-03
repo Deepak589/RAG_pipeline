@@ -1,4 +1,5 @@
 {
+  "version": "v2-55q-2026-08-02",
   "_readme": "Golden retrieval set for the parent-child (PDF) corpus. Labels point at parent_ids = '<source>#<section_idx>' exactly as parent_child_rag builds them from sections.json. type: factual = query uses doc vocabulary; paraphrase = same target as a factual item but reworded with synonyms (tests dense > lexical); negative = answer is NOT in the corpus, a good retriever should score low / a good generator should refuse. Grow this to 50+ before trusting small deltas. relevant_parent_ids may list more than one when several sections legitimately answer.",
   "questions": [
     {
@@ -286,6 +287,162 @@
       "id": "neg-gpt3-cost",
       "type": "negative",
       "query": "How many GPU-hours were needed to train GPT-3?",
+      "relevant_parent_ids": []
+    },
+    {
+      "id": "vas-encdec",
+      "type": "factual",
+      "query": "How many identical layers are stacked in the Transformer's encoder and decoder?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#4"
+      ]
+    },
+    {
+      "id": "vas-ffn",
+      "type": "factual",
+      "query": "What is the formula for the position-wise feed-forward network in the Transformer?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#9"
+      ]
+    },
+    {
+      "id": "vas-regularize",
+      "type": "factual",
+      "query": "What regularization techniques does the Transformer use during training?",
+      "relevant_parent_ids": [
+        "Vaswani et al. - 2017 - Attention Is All You Need.pdf#17"
+      ]
+    },
+    {
+      "id": "dpr-wiki-prep",
+      "type": "factual",
+      "query": "How many Wikipedia passages does DPR use as retrieval units, and how are they created?",
+      "relevant_parent_ids": [
+        "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#7"
+      ]
+    },
+    {
+      "id": "dpr-sample-eff",
+      "type": "factual",
+      "query": "How many training examples does DPR need to already outperform BM25?",
+      "relevant_parent_ids": [
+        "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#11"
+      ]
+    },
+    {
+      "id": "dpr-runtime",
+      "type": "factual",
+      "query": "How many questions per second can DPR process using a FAISS index?",
+      "relevant_parent_ids": [
+        "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#13"
+      ]
+    },
+    {
+      "id": "lewis-methods",
+      "type": "factual",
+      "query": "What are the two components of a RAG model?",
+      "relevant_parent_ids": [
+        "Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#2"
+      ]
+    },
+    {
+      "id": "lewis-training-enc",
+      "type": "factual",
+      "query": "Does RAG update the document encoder during training, or keep it fixed?",
+      "relevant_parent_ids": [
+        "Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#6"
+      ]
+    },
+    {
+      "id": "lewis-fever",
+      "type": "factual",
+      "query": "What is the FEVER fact verification task that RAG is evaluated on?",
+      "relevant_parent_ids": [
+        "Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#12"
+      ]
+    },
+    {
+      "id": "realm-approach",
+      "type": "factual",
+      "query": "What three subsections make up REALM's Approach section?",
+      "relevant_parent_ids": [
+        "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#3"
+      ]
+    },
+    {
+      "id": "realm-salient",
+      "type": "factual",
+      "query": "What is salient span masking in REALM pre-training?",
+      "relevant_parent_ids": [
+        "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7"
+      ]
+    },
+    {
+      "id": "selfrag-formalize",
+      "type": "factual",
+      "query": "What reflection token types does Self-RAG use to formalize its generation process?",
+      "relevant_parent_ids": [
+        "Asai et al. - 2023 - Self-RAG - Learning to Retrieve, Generate, and Critique through Self-Reflection.pdf#4"
+      ]
+    },
+    {
+      "id": "yao-setup",
+      "type": "factual",
+      "query": "What two datasets does ReAct use for knowledge-intensive reasoning tasks?",
+      "relevant_parent_ids": [
+        "Yao et al. - 2023 - ReAct - Synergizing Reasoning and Acting in Language Models.pdf#4"
+      ]
+    },
+    {
+      "id": "gao-context-curation",
+      "type": "factual",
+      "query": "What problem does context curation address in the generation stage of a RAG system?",
+      "relevant_parent_ids": [
+        "Gao et al. - 2024 - Retrieval-Augmented Generation for LLMs - A Survey.pdf#4"
+      ]
+    },
+    {
+      "id": "dpr-wiki-prep-para",
+      "type": "paraphrase",
+      "query": "How is the Wikipedia corpus split into passages to build DPR's retrieval index?",
+      "relevant_parent_ids": [
+        "Karpukhin et al. - 2020 - Dense Passage Retrieval for Open-Domain QA.pdf#7"
+      ]
+    },
+    {
+      "id": "realm-salient-para",
+      "type": "paraphrase",
+      "query": "What masking strategy pushes REALM's pre-training toward examples that need world knowledge?",
+      "relevant_parent_ids": [
+        "Guu et al. - 2020 - REALM - Retrieval-Augmented Language Model Pre-Training.pdf#7"
+      ]
+    },
+    {
+      "id": "lewis-methods-para",
+      "type": "paraphrase",
+      "query": "What two parts does a RAG architecture combine to produce an answer?",
+      "relevant_parent_ids": [
+        "Lewis et al. - 2020 - Retrieval-Augmented Generation (RAG) for Knowledge-Intensive NLP Tasks.pdf#2"
+      ]
+    },
+    {
+      "id": "yao-setup-para",
+      "type": "paraphrase",
+      "query": "Which two benchmarks does ReAct use to test knowledge-heavy reasoning ability?",
+      "relevant_parent_ids": [
+        "Yao et al. - 2023 - ReAct - Synergizing Reasoning and Acting in Language Models.pdf#4"
+      ]
+    },
+    {
+      "id": "neg-quantum",
+      "type": "negative",
+      "query": "How does Shor's algorithm factor large integers on a quantum computer?",
+      "relevant_parent_ids": []
+    },
+    {
+      "id": "neg-docker",
+      "type": "negative",
+      "query": "How do you set resource limits for a Docker container using cgroups?",
       "relevant_parent_ids": []
     }
   ]
