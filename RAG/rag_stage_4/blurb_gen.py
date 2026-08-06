@@ -54,10 +54,17 @@ CHUNKS_OUT = HERE / "chunks.json"             # blurbed children
 BLURB_CACHE = HERE / "blurbs.json"            # {child_id: {"blurb":..., "fp":...}}
 
 OLLAMA_URL = "http://localhost:11434/api/generate"
-BLURB_MODEL = "qwen3.5"       # same local model as the generator
+BLURB_MODEL = "qwen3.5"       # blurb LLM. A SMALL model (qwen2.5:3b, llama3.2:3b)
+                              # is plenty for a one-line labelling task and 3-5x
+                              # faster than a big general model. Override with --model.
 BLURB_SEED = 7                # fixed -> reproducible blurbs
 PROMPT_VERSION = "v1"         # bump to invalidate every cached blurb on purpose
-PARENT_CHAR_BUDGET = 8000     # cap parent text fed to the LLM (all parents < 10k)
+PARENT_CHAR_BUDGET = 3000     # cap parent text fed to the LLM. Most of the local
+                              # runtime is PROMPT processing, so a tighter budget is
+                              # the cheapest speedup; 3k chars still covers the whole
+                              # section for the vast majority of parents.
+DEFAULT_WORKERS = 4           # concurrent Ollama requests (see --workers)
+CACHE_FLUSH_EVERY = 20        # persist cache every N new blurbs -> resumable
 
 
 # --------------------------------------------------------------- prompt + call
@@ -84,19 +91,21 @@ def build_blurb_prompt(paper, section_title, parent_text, child_text):
     )
 
 
-def _fingerprint(paper, section_title, parent_text, child_text):
+def _fingerprint(model, paper, section_title, parent_text, child_text):
+    """Cache key. MUST include the model — a blurb is model-specific, so
+    switching --model has to invalidate and regenerate, not reuse stale text."""
     h = hashlib.sha256()
-    for part in (PROMPT_VERSION, BLURB_MODEL, str(BLURB_SEED),
+    for part in (PROMPT_VERSION, model, str(BLURB_SEED),
                  paper, section_title, parent_text, child_text):
         h.update(part.encode())
         h.update(b"\0")
     return h.hexdigest()
 
 
-def call_ollama(prompt):
+def call_ollama(prompt, model=BLURB_MODEL):
     """Deterministic Ollama generate. Returns blurb string, or raises on failure."""
     payload = json.dumps({
-        "model": BLURB_MODEL,
+        "model": model,
         "prompt": prompt,
         "stream": False,
         "think": False,
@@ -124,7 +133,19 @@ def clean_blurb(text):
 
 # --------------------------------------------------------------------- driver
 
+def _parent_ctx(c, parents):
+    """(paper, section_title, parent_text) for a child, tolerating a missing parent."""
+    parent = parents.get(c["parent_id"])
+    if parent is None:
+        return c["source"], c.get("title", ""), ""
+    return c["source"], parent["title"], parent["text"]
+
+
 def main():
+    import threading
+    import time
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=None,
                     help="only process the first N children (quick trial)")
@@ -132,6 +153,10 @@ def main():
                     help="templated blurbs, no LLM (plumbing/self-test)")
     ap.add_argument("--force", action="store_true",
                     help="ignore cache, regenerate every blurb")
+    ap.add_argument("--model", default=BLURB_MODEL,
+                    help="Ollama model for blurbs (a small model is 3-5x faster)")
+    ap.add_argument("--workers", type=int, default=DEFAULT_WORKERS,
+                    help="concurrent Ollama requests (set OLLAMA_NUM_PARALLEL to match)")
     args = ap.parse_args()
 
     if not SECTIONS_PATH.exists():
@@ -149,53 +174,83 @@ def main():
     if BLURB_CACHE.exists() and not args.force:
         cache = json.loads(BLURB_CACHE.read_text())
 
-    out, made, reused, missing_parent = [], 0, 0, 0
-    for i, c in enumerate(children):
-        parent = parents.get(c["parent_id"])
-        if parent is None:
+    # 1) Split into cache hits vs work to do. Fingerprint gates reuse, so an
+    #    interrupted run resumes for free — only the un-cached children re-call.
+    model_id = "MOCK" if args.mock else args.model   # cache key must separate them
+    todo, reused, missing_parent = [], 0, 0
+    fps = {}
+    for c in children:
+        paper, section_title, parent_text = _parent_ctx(c, parents)
+        if parent_text == "":
             missing_parent += 1
-            parent_text, section_title = "", c.get("title", "")
-        else:
-            parent_text, section_title = parent["text"], parent["title"]
-        paper = c["source"]
-
-        fp = _fingerprint(paper, section_title, parent_text, c["text"])
+        fp = _fingerprint(model_id, paper, section_title, parent_text, c["text"])
+        fps[c["id"]] = fp
         hit = cache.get(c["id"])
         if hit and hit.get("fp") == fp and not args.force:
-            blurb = hit["blurb"]
             reused += 1
         else:
-            if args.mock:
-                blurb = mock_blurb(paper, section_title, c["text"])
-            else:
-                prompt = build_blurb_prompt(paper, section_title, parent_text, c["text"])
-                try:
-                    blurb = clean_blurb(call_ollama(prompt))
-                except (urllib.error.URLError, OSError, KeyError) as e:
-                    sys.exit(f"Ollama call failed at child {i} ({c['id']}): {e}\n"
-                             f"Start `ollama serve` (model {BLURB_MODEL}) or use --mock.")
-            cache[c["id"]] = {"blurb": blurb, "fp": fp}
-            made += 1
+            todo.append((c, paper, section_title, parent_text))
 
+    print(f"{len(children)} children: {reused} cached, {len(todo)} to generate "
+          f"({'MOCK' if args.mock else args.model}, {args.workers} workers)")
+
+    # 2) Generate missing blurbs (parallel), flushing the cache periodically so
+    #    a Ctrl-C never loses more than CACHE_FLUSH_EVERY blurbs.
+    lock = threading.Lock()
+    made = [0]
+    start = time.time()
+
+    def _flush():
+        BLURB_CACHE.write_text(json.dumps(cache, indent=2, ensure_ascii=False))
+
+    def work(item):
+        c, paper, section_title, parent_text = item
+        if args.mock:
+            return c["id"], mock_blurb(paper, section_title, c["text"])
+        prompt = build_blurb_prompt(paper, section_title, parent_text, c["text"])
+        return c["id"], clean_blurb(call_ollama(prompt, args.model))
+
+    try:
+        with ThreadPoolExecutor(max_workers=max(1, args.workers)) as ex:
+            futures = {ex.submit(work, it): it[0]["id"] for it in todo}
+            for fut in as_completed(futures):
+                try:
+                    cid, blurb = fut.result()
+                except (urllib.error.URLError, OSError, KeyError) as e:
+                    _flush()
+                    sys.exit(f"Ollama call failed: {e}\nProgress saved to "
+                             f"{BLURB_CACHE.name} — fix Ollama (model {args.model}) "
+                             f"and re-run to resume. Or use --mock.")
+                with lock:
+                    cache[cid] = {"blurb": blurb, "fp": fps[cid]}
+                    made[0] += 1
+                    n = made[0]
+                    if n % CACHE_FLUSH_EVERY == 0:
+                        _flush()
+                        rate = n / (time.time() - start)
+                        eta = (len(todo) - n) / rate if rate else 0
+                        print(f"  {n}/{len(todo)} new  "
+                              f"({rate:.1f}/s, ETA {eta/60:.1f} min)")
+    finally:
+        _flush()
+
+    # 3) Assemble the blurbed children in original order.
+    out = []
+    for c in children:
+        blurb = cache[c["id"]]["blurb"]
         child = dict(c)
         child["raw_text"] = c["text"]
         child["blurb"] = blurb
         child["text"] = f"{blurb}\n{c['text']}"     # what dense + BM25 will consume
         out.append(child)
-
-        if (i + 1) % 50 == 0:
-            print(f"  {i + 1}/{len(children)} blurbed "
-                  f"(new {made}, cached {reused})")
-
-    BLURB_CACHE.write_text(json.dumps(cache, indent=2, ensure_ascii=False))
     CHUNKS_OUT.write_text(json.dumps(out, indent=2, ensure_ascii=False))
 
     if missing_parent:
         print(f"WARN: {missing_parent} children had no parent in sections.json "
               f"(blurbed from title only)")
-    print(f"blurbs: {made} generated, {reused} from cache "
-          f"({'MOCK' if args.mock else BLURB_MODEL}, seed {BLURB_SEED}, "
-          f"prompt {PROMPT_VERSION})")
+    print(f"blurbs: {made[0]} generated, {reused} from cache "
+          f"({'MOCK' if args.mock else args.model}, seed {BLURB_SEED}, "
+          f"prompt {PROMPT_VERSION}), {time.time() - start:.0f}s")
     print(f"wrote {len(out)} blurbed children -> {CHUNKS_OUT.name}")
     print(f"cache -> {BLURB_CACHE.name}")
 
