@@ -274,6 +274,139 @@ still unsolved (hybrid RRF score is a weak threshold).
 
 ---
 
+## Stage 4 — RESULT: blurbs WIN, keep them (blurb in both dense + BM25)
+
+Ran on 2026-08-06, golden set `v2-55q-2026-08-02` (48 positives). Same hybrid
+retriever as stage 3, FROZEN — the only change is blurbed chunks. That's why the
+delta is attributable to the blurb alone: one knob, frozen baseline.
+
+Code shipped in `RAG/rag_stage_4/`: `blurb_gen.py` (parent-section-context blurb,
+qwen3.5 via Ollama, `temperature=0 seed=7` for determinism, fingerprinted cache in
+`blurbs.json` keyed on model|prompt-ver|parent|child so a model/prompt switch
+correctly invalidates; parallel `--workers`, cache flush every 20 = resumable),
+`hybrid.py` (imports stage-3 BM25/RRF verbatim). Harness: `run_eval.py --stage4`
++ `--raw-bm25`/`--blurb-bm25` toggle.
+
+Scoreboard (vs stage-3 hybrid baseline):
+
+| metric | S3 hybrid | S4 raw-BM25 (blurb→dense only) | S4 blurb-BM25 (blurb→both) |
+|---|---|---|---|
+| R@1 | 0.427 | 0.510 | **0.531** |
+| R@3 | 0.688 | 0.750 | **0.750** |
+| R@5 | 0.792 | 0.792 | **0.833** |
+| R@20 | 0.963 | 0.983 | 0.987 |
+| R@50 | 0.992 | 0.987 | 0.996 |
+| MRR | 0.610 | 0.654 | **0.672** |
+| factual@5 | 0.806 | 0.806 | **0.861** |
+| paraphrase@5 | 0.750 | 0.750 | 0.750 |
+
+**Decision: STAGE-4 SERVING = hybrid over blurbed chunks, blurb in BOTH dense and
+BM25 (`--blurb-bm25`, the default).** New baseline to beat = **R@5 0.833, R@1
+0.531, MRR 0.672**.
+
+Two findings, both AGAINST the going-in hypothesis:
+- **idf-skew risk did NOT materialise.** The mock (templated) blurbs dropped
+  paraphrase because they repeat boilerplate; REAL blurbs carry topic keywords, so
+  blurb-in-BM25 *helps* (0.792->0.833), doesn't hurt. The `--raw-bm25` toggle
+  earned its keep by disproving the worry cleanly.
+- **Gain split is the OPPOSITE of "blurbs mainly help dense."** The two runs
+  isolate the sides (raw-BM25 = blurbed-dense + untouched-BM25 == stage-3 BM25):
+  blurb-on-dense moved PRECISION only (R@1 +0.083, MRR +0.044, R@5 flat 0.792);
+  blurb-on-BM25 drove the RECALL gain (R@5 0.792->0.833, factual@5 0.806->0.861).
+  So on THIS corpus the recall lever is LEXICAL, not dense. NOTES' "biggest recall
+  lever, mainly dense" was wrong here.
+
+Caveats (do not over-claim):
+- Paraphrase flat at 0.750 — the thing blurbs were meant to help most didn't move;
+  gain came from factual + top-1 precision.
+- Small n: R@5 0.792->0.833 on 48 positives ≈ ~2 more questions. Modest. R@1 +0.10
+  (~5 Qs) is the robust signal. TODO: run `diagnose` to list which questions the
+  blurb fixed vs left behind before treating +0.041 as solid.
+- Gate 0.85 NOT hit (0.833, short by ~1 question). Cheapest closers, in order:
+  sweep `--rrf-k` (free, no re-embed) → better blurb prompt/model → deferred
+  token-sizing / splitter title bug. Or accept 0.833 — R@1/MRR moving this much is
+  arguably the better outcome for a top-3 served system.
+
+---
+
+## Stage 5 — scale & real-time roadmap (planned, not started)
+
+Stage 4 stays at the 7-PDF corpus on the current numpy pipeline. Stage 5 is the
+jump to a large, growing corpus (~1000 docs ≈ 70k children at today's ratio) and
+a rebuild toward a real serving system. Captured now so it isn't re-derived later.
+
+**Reframe first — three axes, not one. Two of them fight each other.**
+- *Scale* (many docs) = an INFRA problem → vector DB, ANN index, hybrid engine.
+- *Real-time* (low query latency) = a SYSTEMS problem → approximate search,
+  caching, batching.
+- *Agentic* = a REASONING-QUALITY problem → and it ADDS latency/cost/nondeterminism
+  (every agent step is another LLM call). "Real-time agentic" is near-contradiction.
+  Decide which axis the query workload actually needs before building; don't bolt
+  on agents because they're fashionable.
+
+**What breaks at ~70k children (why the current code can't just scale):**
+1. Dense is brute-force `matrix @ qvec` — O(N) scan, no index. ~107 MB in RAM,
+   survivable but it's the ceiling; past ~100k–1M needs a real ANN index.
+2. BM25 is recomputed per query in python dicts — painfully slow at 70k; needs a
+   real inverted index (bm25s / Tantivy / OpenSearch).
+3. Everything is JSON — a 70k-child chunks.json (raw_text+blurb+text) is hundreds
+   of MB to parse per load; move to parquet/sqlite or the vector DB itself.
+   → The stage-4 code validates the IDEA cheaply; it is NOT the scaled system.
+   Don't fight to make numpy scale to 70k — prove recall small, rebuild on infra.
+
+**Foundation (do first, unavoidable):**
+- Vector store: Qdrant or pgvector (self-host / learning), or Weaviate/Milvus;
+  managed = Pinecone. For native hybrid (BM25+dense) AND server-side ranking at
+  scale, look hard at Vespa or OpenSearch — it's the current hybrid design, built
+  to scale.
+- ANN tradeoff: HNSW (fast, memory-hungry) vs IVF-PQ (compressed, cheaper RAM,
+  slightly lower recall) — pick against a memory budget.
+- Metadata filtering (source/section/date) — trivial at 7 docs, essential at 1000.
+
+**Ingestion pipeline is what changes most** — from "process 7 PDFs by hand" to
+"a corpus that grows." Pipeline becomes the product: parse → chunk → (blurb) →
+embed → upsert, and it MUST be incremental, idempotent, resumable, and handle
+updates/deletes/dedup (the resumable-cache instinct from stage 4 generalizes).
+Don't reach for Airflow/Prefect/Dagster until doc churn justifies it — a plain job
+runner first.
+
+**Agentic RAG — where it earns cost, where it's a trap:**
+- Patterns: query rewriting/decomposition (compound → sub-queries); CRAG /
+  Self-RAG (retrieve → LLM-GRADE results → re-retrieve or fall back) = highest-ROI
+  quality pattern, and we already have the ingredients (refusal-signal idea +
+  hybrid; Self-RAG is one of our own source papers); multi-hop/iterative retrieval;
+  router agent (pick index/source/tool — matters with heterogeneous sources).
+- TRAP: making EVERY query agentic. Each pattern = 1–N extra LLM calls + latency +
+  nondeterminism. Discipline: keep single-shot hybrid+rerank as the default FAST
+  path; route only the queries that need it (a cheap "is this multi-hop?" gate)
+  into the agentic path. A gate in front beats an agent loop around everything.
+
+**Reranking comes back at scale.** Dropped ms-marco correctly at stage 3; at 70k
+docs top-k precision matters more (bigger haystack), so a real reranker earns its
+place — paraphrase-tolerant (BGE-reranker-v2 / mxbai) or late-interaction
+(ColBERTv2), NEVER ms-marco. Retrieve wide → rerank → serve narrow (same shape).
+
+**Latency (when you get there):** approximate search (HNSW); a SEMANTIC CACHE for
+repeated/similar queries (this is the query-time caching deferred at stage 4 — it
+becomes real at serving scale); async + batched embedding; a latency SLA (e.g. p95
+retrieval < 300 ms) designed backward from.
+
+**Recommended Stage-5 sequence (don't change ten things at once):**
+1. Swap infra: vector DB + native hybrid + ANN (makes 1000 docs possible).
+2. Build incremental ingestion (updates/deletes).
+3. Add reranking for top-k precision.
+4. Grow + re-label the golden set — synthetic QA generation to scale labeling
+   (this is the biggest HUMAN cost, not a code cost).
+5. THEN layer agentic behaviour — start with CRAG-style retrieval grading, measured
+   against the non-agentic baseline.
+6. Optimise latency/caching LAST, against an SLA.
+
+**Carry-over rule:** every one of these is a knob, measured against a versioned
+baseline. Scale doesn't excuse dropping the one-knob eval discipline — at 70k
+chunks you can't eyeball what broke, so it matters more.
+
+---
+
 ## Housekeeping to-dos
 
 - Clean `sections.json` false headings (regex ate a footnote line as a heading).
