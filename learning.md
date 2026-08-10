@@ -599,6 +599,38 @@ later stage must beat: recall@5 0.833, recall@1 0.531, MRR 0.672.
 
 ---
 
+## Stage 5 — LangChain Reproduction (framework as the only knob)
+
+**The idea.** Prove a framework reproduces the hand-rolled Stage-4 result
+(recall@5 0.833, MRR 0.672, `v2-55q-2026-08-02`) on the SAME corpus and SAME
+labels before trusting it on new data — same discipline as every stage above:
+one knob, frozen baseline. `EnsembleRetriever(c=60)` stands in for the
+hand-rolled RRF `1/(60+rank)`; `BM25Retriever` stands in for `hybrid.py`'s
+Okapi BM25.
+
+### Lesson — a framework default is a hidden knob, and it cost 0.06 recall silently
+
+First run: recall@5 **0.771** — a real regression, no error thrown. Root cause:
+LangChain's `BM25Retriever` defaults to `preprocess_func = text.split()` — no
+lowercasing, punctuation kept — so `"BART."` never matches `"bart"`. This
+corpus's dominant recall lever is exact lexical matching (established back in
+Stage 3's hybrid result), and the framework's default tokenizer silently broke
+it. Fix: pass a `preprocess_func` that mirrors `hybrid.py`'s tokenizer
+(`re.findall(r"[a-z0-9]+", text.lower())`). Result: recall@5 **0.854** —
+faithful reproduction (+0.021 ≈ 1 question, within noise), not a real
+improvement.
+
+**Takeaway:** adopting a framework component doesn't remove a design decision,
+it just hides the default until you diff it against the hand-tuned version.
+"The eval score dropped" after a framework swap is a bug-hunt, not proof the
+new method is worse — same instinct as re-baselining after any chunking
+change. New baseline going forward: **recall@5 0.854**, not 0.833 (LangChain
+fuses child rankings before collapsing to parents; the hand-rolled code
+collapses to parents first, then fuses — a real small difference, not
+reimplemented for exact parity since the gap is within noise).
+
+---
+
 ## What's next (planned, not built)
 
 - **Close the last ~1 question to the 0.85 gate, or call it.** Stage 4 lands at
