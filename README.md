@@ -1,139 +1,202 @@
 # RAG_dev
 
-Retrieval-Augmented Generation built from scratch, as a learning ladder.
+Retrieval-Augmented Generation built from scratch, one measurable stage at a
+time — no metric moved forward without an eval number behind it.
 
-The rule for this repo: **no RAG frameworks.** No LangChain, no LlamaIndex, no
-sklearn, no vector database. Every stage — chunking, embedding, similarity
-search, prompt assembly — is written out so the mechanics stay visible. The only
-heavy dependencies are numpy and a local embedding model.
+Stages 1–4 are framework-free (numpy + stdlib only) to keep every mechanic —
+chunking, BM25, RRF fusion, cross-encoder reranking, contextual embeddings —
+visible and hand-verified. Stage 5 graduates to LangChain + pgvector once the
+mechanics were proven, and scales the same pipeline to a ~740-document mixed
+corpus (arxiv, SEC filings, Wikipedia, scanned archive PDFs, ReadTheDocs).
 
-Stage 1 (naive RAG) is working. Later stages build on the same single-file
-implementation rather than replacing it.
+**Current best (v2-55q golden set, 48 positives):** hybrid BM25+dense retrieval
+over contextually-blurbed chunks — **recall@5 0.833, recall@1 0.531, MRR
+0.672**, reproduced on LangChain at **0.854 recall@5** post tokenizer-parity fix.
 
 ---
 
-## Current state — Stage 1: Naive RAG
+## Why this repo is structured the way it is
 
-`RAG/Naive_rag.py`, ~270 lines. One file, no package structure.
+Every stage is a folder, not a rewrite. Each one:
+1. Changes exactly **one knob** (chunking, retrieval, reranking, ...).
+2. Re-runs the **same eval harness** against the **same versioned golden set**.
+3. Keeps or reverts the change based on the number, not intuition.
+
+This surfaced real, non-obvious findings — not textbook ones:
+- A cross-encoder reranker **hurt** recall@1 and paraphrase recall on this
+  corpus (ms-marco is lexically biased) — dropped it, contrary to the "always
+  rerank" default.
+- **BM25 alone beat dense retrieval** on this corpus — it's lexical-heavy
+  (paper titles, model names, IDs). Hybrid still won overall, but the
+  "dense-first" assumption didn't hold.
+- Contextual blurbs (prepending an LLM-written one-line context to each chunk
+  before embedding) turned out to help **BM25's recall more than dense's** —
+  the opposite of the going-in hypothesis. Only found because both sides were
+  eval'd in isolation (`--raw-bm25` vs `--blurb-bm25`).
+- Adopting LangChain reproduced the hand-rolled baseline almost exactly
+  (0.854 vs 0.833) — but only after catching a **silent framework default**:
+  `BM25Retriever`'s default tokenizer doesn't lowercase or strip punctuation,
+  quietly costing 0.06 recall with no error raised. Diffing framework defaults
+  against the hand-tuned version before trusting them is now a hard rule.
+- Chunking changes invalidate every downstream gold label (`parent_id` shifts
+  when sections re-split) — re-baselining discipline exists because this bit
+  once for real (a "regression" that was actually stale labels, caught and
+  root-caused instead of shipped as a retrieval fix).
+
+See [`NOTES.md`](NOTES.md) for the full run log, every scoreboard, and the
+reasoning behind each decision.
+
+---
+
+## Pipeline (current — Stage 5)
 
 ```
-RAG/docs/*.md
-     │
-     ├─ split on '## ' headings          _md_sections()
-     ├─ 200-word windows, 40-word overlap _word_chunks()
-     ├─ prepend section heading to each chunk
-     └─ skip Table of Contents sections   load_and_chunk()
-     │
-     ▼
-  35 chunks
-     │
-     ├─ dense: all-MiniLM-L6-v2, 384-dim, L2-normalized   DenseIndex   (default)
-     └─ sparse: hand-rolled TF-IDF, numpy only            TfidfIndex   (--tfidf)
-     │
-     ▼
-  query embedded with same model → cosine similarity → top-3
-     │
-     ▼
-  prompt: retrieved chunks as context + "answer ONLY from context"
-     │
-     ▼
-  local Ollama (qwen3.5) → answer
-  Ollama down/slow → print retrieved chunks instead, no crash
+                         ┌─ digital PDF ─→ PyMuPDFLoader
+   corpus (~740 docs,    ├─ HTML (SEC) ──→ BSHTMLLoader
+   mixed sources)   ─────┼─ scanned PDF ──→ DoclingLoader + OCR
+                         └─ markdown ─────→ TextLoader
+                                │
+                                ▼
+                  parent/child structural chunking
+              (heading-aware split, size-variance fixed)
+                                │
+                                ▼
+              contextual blurb prepended to each child
+             (LLM-written 1-line context, cached, deterministic)
+                                │
+                    ┌───────────┴────────────┐
+                    ▼                        ▼
+              BM25 (lexical)           dense embeddings
+           blurb-aware tokenizer      (bi-encoder, pgvector)
+                    │                        │
+                    └─────────► RRF ◄────────┘
+                          (rank fusion, k=60)
+                                │
+                                ▼
+                    top-k parents → LLM answer
+                    (Ollama local model, or refuse
+                     if retrieval confidence is low)
 ```
 
-### Two retrievers, on purpose
+Reranking (cross-encoder) is validated and available but **off by default** —
+it regressed recall/paraphrase on this corpus at current scale. Slated to come
+back at 70k+ children with a paraphrase-tolerant model (BGE-reranker-v2 /
+ColBERTv2), never ms-marco.
 
-Both are kept so the difference is measurable rather than assumed:
+---
 
-| | TF-IDF (`--tfidf`) | Dense (default) |
+## Stage history
+
+| Stage | What shipped | Result |
 |---|---|---|
-| Match type | exact term overlap | semantic / paraphrase |
-| Built from | numpy + stdlib, hand-rolled | `sentence-transformers` bi-encoder |
-| Fails on | synonyms, rephrasing | rare exact terms, names, IDs |
+| 1 | Naive RAG — fixed-window chunking, TF-IDF + dense cosine top-k, Ollama generation | Working baseline, no metrics yet |
+| 2 | Retrieval-only eval harness (`recall@k`, `Hit@k`, `MRR`, per-bucket, negative-gap), framework-free, deterministic | Found retrieval was a **ranking** problem, not a recall floor (correct parent almost always in top-31) |
+| 3 | Cross-encoder reranking, then hybrid BM25+dense (RRF) | Reranker was a mixed bag (hurt R@1/paraphrase) → **dropped**. Hybrid won outright: R@5 0.792, beat dense+rerank on every axis |
+| 4 | Contextual blurb chunking (Anthropic Contextual Retrieval-style), blurb fed to both dense and BM25 | R@5 0.792 → **0.833**, R@1 +0.10. Recall gain traced to the **lexical** side (BM25), not dense — disproved the initial hypothesis with an isolation test |
+| 5 | LangChain migration (reproduced stage-4 baseline first), pgvector dense store, file-type-routed ingestion, corpus scaled 7 → ~740 docs | Faithful reproduction at 0.854 R@5 after fixing a framework tokenizer default; infra now scale-ready |
 
-### Retrieval-quality fixes already applied
+Full scoreboards, failure analyses, and the reasoning behind every drop/keep
+decision are in [`NOTES.md`](NOTES.md).
 
-- **Heading prefix** — every chunk carries its `## Section` heading, not just the
-  first window of a section. Without it, later windows lose their topic and
-  retrieve poorly on topical queries.
-- **Table-of-Contents filtering** — the ToC section lists all 14 headings, so it
-  partially matched *any* query and crowded out the section that actually held
-  the answer. It's skipped at index time.
-- **Fingerprinted vector cache** — `.dense_cache.npz` stores chunk embeddings
-  keyed by a SHA-256 of chunk texts + model name. Change the chunking or the
-  model and the cache invalidates itself. Gitignored; regenerates on first run.
+---
+
+## Eval harness (the constant across every stage)
+
+- `qa.json` — versioned golden set (`v2-55q-2026-08-02`), labeled at parent
+  level, three buckets: `factual`, `paraphrase` (tests dense > lexical),
+  `negative` (retriever should score low / generator should refuse).
+- `run_eval.py` — recall@k, Hit@k, MRR, per-bucket breakdown, negative
+  score-gap. Every result file is stamped with its `qa_version` and model
+  name so stage-to-stage comparisons are never accidentally apples-to-oranges.
+- Retriever contract is one shape: `query -> ranked [(parent_id, score)]` —
+  every retriever (TF-IDF, dense, BM25, hybrid, hybrid+rerank, LangChain)
+  plugs into the same harness.
+- `--selftest` validates labels and unit-tests the metrics with no model load.
+
+This harness is deliberately **not** migrated to LangChain — it's the judge,
+and framework default drift would silently break comparability.
+
+---
+
+## Layout
+
+```
+RAG/
+  Naive_rag.py             stage 1 — single-file naive RAG
+  reranker.py               cross-encoder reranking (stage 3, off by default)
+  rag_stage_2/eval/         eval harness origin (recall@k, MRR, ...)
+  rag_stage_3/              PDF section extractor, BM25 + RRF hybrid
+  rag_stage_4/              contextual blurb generation (Ollama, cached)
+  rag_stage_5/
+    ingest.py                file-type-routed parsing → sections/chunks + pgvector upsert
+    lc_pipeline.py            LangChain retrieval pipeline (EnsembleRetriever)
+    qa_gen.py                 synthetic QA generation for the new corpus
+  docs/RAG_GUIDE.md          theory reference doubling as stage-1 corpus
+NOTES.md                     full run log — every scoreboard, every decision
+```
 
 ---
 
 ## Quickstart
 
 ```bash
-pip install numpy sentence-transformers
+pip install -r requirements.txt   # numpy, sentence-transformers, langchain, psycopg[binary], ...
 
-# optional, for generated answers rather than raw chunks
 ollama serve
 ollama pull qwen3.5
+
+# stage 1 — naive RAG, single file
+cd RAG && python Naive_rag.py --query "how do I split documents into chunks?"
+
+# stage 3/4 — hybrid retrieval over blurbed chunks, hand-rolled
+python rag_stage_4/hybrid.py --query "..."
+
+# stage 5 — LangChain + pgvector over the full corpus
+python rag_stage_5/lc_pipeline.py --vector-store pgvector --ask "..."
+
+# eval any retriever against the golden set
+python rag_stage_2/eval/run_eval.py --retriever hybrid --stage4
 ```
 
-```bash
-cd RAG
-
-python Naive_rag.py --query "how do I split documents into chunks?"  # one-shot
-python Naive_rag.py                                                  # interactive REPL
-python Naive_rag.py --tfidf --query "..."                            # sparse retriever
-```
-
-Without Ollama running, retrieval still works — the script prints the retrieved
-chunks and the reason generation was skipped.
-
-## Configuration
-
-Constants at the top of `RAG/Naive_rag.py`:
-
-| Constant | Default | Meaning |
-|---|---|---|
-| `CHUNK_SIZE` | `200` | words per chunk |
-| `CHUNK_OVERLAP` | `40` | words shared between neighbors |
-| `TOP_K` | `3` | chunks passed to the LLM |
-| `EMBED_MODEL` | `all-MiniLM-L6-v2` | local bi-encoder, 384 dims |
-| `OLLAMA_MODEL` | `qwen3.5` | generation model |
-
-## Layout
-
-```
-RAG/
-  Naive_rag.py        the whole pipeline
-  docs/RAG_GUIDE.md   the corpus — 14 sections on RAG theory
-  RAG_GUIDE.docx      same guide, source format
-docs/superpowers/specs/
-  2026-07-19-naive-rag-design.md   original design spec (stage 1)
-```
-
-`RAG_GUIDE.md` does double duty: it's the theory reference *and* the corpus the
-pipeline retrieves over. Every technique on the roadmap below is described in it.
+Without Ollama running, retrieval still works — chunks are returned raw
+instead of an LLM answer.
 
 ---
 
-## Roadmap
+## Roadmap — what's next (Stage 5, in progress)
 
-Each stage stays framework-free and gets verified against the previous one
-before moving on.
+Reframed as three axes that partly conflict — **scale** (infra: vector DB, ANN
+index), **real-time** (systems: caching, batching), **agentic** (reasoning
+quality, but *adds* latency/cost) — so agentic work is sequenced last and
+gated behind a cheap "does this query need it" router, not applied to every
+query.
 
-- [x] **1. Naive RAG** — fixed chunking, TF-IDF, cosine top-k, context stuffing
-- [x] **1b. Dense retrieval** — MiniLM bi-encoder, cached vectors
-- [ ] **2. BM25** — proper sparse ranking, replacing raw TF-IDF
-- [ ] **3. Hybrid retrieval** — fuse sparse + dense scores (RRF)
-- [ ] **4. Reranking** — cross-encoder over the top-N candidates
-- [ ] **5. Evaluation harness** — a labeled question set, recall@k and MRR, so
-      each change above is proven rather than eyeballed
-- [ ] **6. Advanced chunking** — semantic / parent-document strategies
-- [ ] **7. Agentic RAG** — query rewriting, multi-hop retrieval
+1. **Golden set for the new 740-doc corpus** — current blocker. New chunking
+   voids every old `parent_id`; `qa_gen.py` drafts synthetic labels, human
+   spot-check required before trusting `--eval` on the new corpus.
+2. **Verify parser quality per source** (scanned PDFs via OCR, SEC HTML
+   tables) before trusting any recall number on the new corpus.
+3. **Move BM25 into Postgres full-text search** — kills the in-process
+   `rank_bm25` bottleneck, gets both retrieval sides living in the same store.
+4. **Re-tune chunking** on Docling's structure output — current ingest uses
+   blind char windows, a regression from the stage-3 heading-aware splitter.
+5. **Reranking returns at scale** — bigger candidate pool makes top-k
+   precision matter again. Paraphrase-tolerant model only.
+6. **Agentic, gated and last** — CRAG-style retrieve → grade → re-retrieve/
+   refuse (closes the refusal-signal gap open since stage 3), then self-query
+   metadata routing (`source_type=sec`) via pgvector's jsonb filter instead of
+   a hand-rolled router. Single-shot hybrid stays the default fast path.
+7. **Latency last, against an SLA** — HNSW/ANN, semantic cache, async batched
+   embedding, once a p95 target actually exists to design backward from.
 
-Stage 5 is the pivot point: everything before it is judged by spot-checking
-queries, everything after it should be judged by numbers.
+Shortlisted (not started) beyond dense+BM25 hybrid, ranked by expected
+leverage if the current pipeline plateaus: self-query metadata retriever,
+SPLADE (learned sparse, targets paraphrase), multi-query/HyDE fan-out,
+RAPTOR (hierarchical summarization, for long-doc questions only), ColBERT
+late-interaction (only if reranker latency becomes the bottleneck).
 
 ## Non-goals
 
-Production concerns are deliberately excluded — no serving layer, no auth, no
-managed vector DB, no multi-turn chat memory, no streaming. This is a repo for
-understanding RAG, not for operating it.
+No production serving layer, no auth, no multi-turn chat memory, no
+streaming. This is a repo for proving retrieval-quality decisions with
+numbers, not for operating a deployed RAG service.
