@@ -1,27 +1,23 @@
-"""Naive RAG from scratch: chunk -> TF-IDF embed -> cosine retrieve -> generate.
+"""Naive RAG from scratch: chunk -> embed -> cosine retrieve -> generate.
 
-No RAG frameworks, no sklearn. numpy + stdlib only.
+No RAG frameworks. numpy + sentence-transformers + stdlib.
 Generation uses a local Ollama model; falls back to printing retrieved
 chunks if Ollama is not running.
 """
 
 import hashlib
-import json
 import re
 import sys
-import urllib.error
-import urllib.request
 from pathlib import Path
 
 import numpy as np
+
+from generator import EMBED_MODEL, build_prompt, generate
 
 DOCS_DIR = Path(__file__).parent / "docs"
 CHUNK_SIZE = 200      # words per chunk
 CHUNK_OVERLAP = 40    # words shared between consecutive chunks
 TOP_K = 3
-OLLAMA_URL = "http://localhost:11434/api/generate"
-OLLAMA_MODEL = "qwen3.5"
-EMBED_MODEL = "all-MiniLM-L6-v2"   # dense bi-encoder, 384 dims, local
 CACHE_PATH = Path(__file__).parent / ".dense_cache.npz"   # persisted chunk vectors
 
 
@@ -139,7 +135,7 @@ class DenseIndex:
     """Dense semantic retrieval via sentence-transformers bi-encoder.
 
     Each chunk is a normalized embedding; cosine similarity is a dot product.
-    Handles synonyms/paraphrase that TF-IDF misses (RAG_GUIDE.md §5.2).
+    Handles synonyms/paraphrase that lexical matching misses (RAG_GUIDE.md §5.2).
     """
 
     def __init__(self, chunks, matrix=None, model_name=EMBED_MODEL):
@@ -183,41 +179,6 @@ def load_dense_index(chunks, cache_path=CACHE_PATH):
     np.savez(cache_path, matrix=index.matrix, fingerprint=fp)
     print(f"Computed + cached vectors to {cache_path.name}")
     return index
-
-
-# ------------------------------------------------------------------ generation
-
-def build_prompt(question, retrieved):
-    context = "\n\n".join(f"[{src}]\n{text}" for _, src, text in retrieved)
-    return (
-        "Answer the question using ONLY the context below. "
-        "If the context does not contain the answer, say so.\n\n"
-        f"Context:\n{context}\n\n"
-        f"Question: {question}\n"
-        "Answer:"
-    )
-
-def generate(prompt):
-    """Ask local Ollama. Returns (answer, None) on success, (None, reason) on failure.
-
-    `think: false` disables reasoning models' slow chain-of-thought — qwen3.5
-    answers in seconds instead of minutes, which is what caused earlier timeouts.
-    """
-    payload = json.dumps({
-        "model": OLLAMA_MODEL, "prompt": prompt, "stream": False, "think": False,
-    }).encode()
-    req = urllib.request.Request(OLLAMA_URL, data=payload, headers={"Content-Type": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=180) as resp:
-            return json.loads(resp.read())["response"].strip(), None
-    except (TimeoutError, urllib.error.URLError) as e:
-        # URLError wrapping a timeout still means "reachable but too slow"
-        reason = e.reason if isinstance(e, urllib.error.URLError) else e
-        if isinstance(reason, (TimeoutError, OSError)) and "timed out" in str(reason).lower():
-            return None, f"'{OLLAMA_MODEL}' did not respond within 180s (model too slow)"
-        return None, "Ollama not reachable at localhost:11434 (is `ollama serve` running?)"
-    except OSError:
-        return None, "Ollama not reachable at localhost:11434 (is `ollama serve` running?)"
 
 
 # ------------------------------------------------------------------------ main
