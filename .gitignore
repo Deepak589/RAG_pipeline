@@ -18,3 +18,5 @@ __pycache__/
 
 # RAG eval run artifacts (timestamped, regenerated per run)
 RAG/rag_stage_2/eval/results/
+
+RAG/.env

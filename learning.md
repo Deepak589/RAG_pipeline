@@ -430,6 +430,103 @@ same as the resize A/B taught for chunking.
 
 ---
 
+## Stage 4 — Contextual Blurb Chunking (index-time context injection)
+
+**The idea (Anthropic's Contextual Retrieval).** A 120-word child is often
+un-interpretable on its own — the 43-word Vaswani formula window embeds to
+"some math," and a bare "3.2 Retriever" fragment looks identical across five
+RAG papers. Fix: before embedding, prepend a **one-sentence, LLM-written blurb**
+that says where the passage lives and what it's about ("This passage is from
+Vaswani sec 5.3 Optimizer, on the Adam warmup+decay schedule"). Then embed and
+BM25-index `blurb + "\n" + chunk`. The parent handed to the LLM is unchanged —
+this is an **index-time** trick, not a content change.
+
+**Critically: the retriever did not change.** Stage 4 reuses the Stage-3 hybrid
+(BM25 + dense + RRF) *verbatim* — `rag_stage_4/hybrid.py` imports Stage-3's BM25
+and fusion by explicit path. Only the chunk content moved. That's what makes the
+delta attributable: **one knob, frozen baseline.**
+
+**Design decisions (each a real choice):**
+- **Blurb context = the parent section**, not the whole document. Feeds the LLM
+  paper title + section title + parent text + the child. Cheap, deterministic,
+  and strong on this clean-sectioned corpus; whole-doc would blow qwen's context
+  on the Gao survey for marginal gain.
+- **Determinism is enforced, not assumed.** Ollama samples by default, so the
+  blurb call pins `temperature=0, seed=7`. Without this, "cached and reproducible"
+  is a lie — every rebuild would produce different blurbs and a different eval.
+- **The cache is cost-only.** Each blurb is fingerprinted over
+  `model | prompt-version | parent-text | child-text`; a change in any of them
+  regenerates. The recall win comes from the blurb *text*, never from caching.
+  (A subtle bug caught here: the fingerprint must include the **model** — switch
+  the LLM and stale blurbs would otherwise be silently reused.)
+
+### Lesson — a mock is a plumbing test, not a preview of the result
+
+Before the real LLM run, a `--mock` mode (templated blurbs, no model) validated
+the cache, fingerprints, and eval wiring offline. It also *predicted the wrong
+outcome*: templated blurbs repeat the same author/section boilerplate on every
+child of a section, which inflated BM25 doc-length and **hurt** paraphrase
+(0.58 → 0.33). That scared us into building a `--raw-bm25` / `--blurb-bm25`
+toggle to measure whether the blurb belongs in the lexical index at all. Good
+that we did — but the mock's *number* was an artifact of templating, not a real
+prediction. **Takeaway:** use mocks to test that the pipe runs; never read their
+metrics as a forecast.
+
+### Result — blurbs win, and the toggle disproved our own worry
+
+55-question set (`v2-55q`), 48 answerable, hybrid retriever frozen:
+
+| retriever | hit@1 | hit@3 | hit@5 | MRR | recall@20 |
+|-----------|-------|-------|-------|-----|-----------|
+| Stage-3 hybrid (baseline) | 0.44 | 0.69 | 0.79 | 0.61 | 0.96 |
+| S4 hybrid, blurb→dense only (`--raw-bm25`) | 0.52 | 0.75 | 0.79 | 0.65 | 0.98 |
+| **S4 hybrid, blurb→both (`--blurb-bm25`)** | **0.54** | **0.75** | **0.83** | **0.67** | **0.99** |
+
+In recall terms the headline is **recall@5 0.792 → 0.833** and **recall@1
+0.427 → 0.531**. **Verdict: keep Stage 4, blurb in both.** The idf-skew risk the
+mock warned about did *not* materialise with real blurbs — they carry topic
+keywords, not boilerplate, so putting them in BM25 helps.
+
+### Lesson — the two runs isolate *where* the gain comes from, and it's the opposite of the hypothesis
+
+Because `--raw-bm25` blurbs only the dense side (BM25 stays identical to Stage
+3), the two runs cleanly decompose the effect:
+
+- **Blurb on dense → moved precision, not recall.** recall@1 +0.08, MRR +0.04,
+  but **recall@5 stayed at 0.792.** The blurb sharpened *where* the answer ranks.
+- **Blurb on BM25 → drove the recall gain.** recall@5 0.792 → 0.833, factual@5
+  0.806 → 0.861. Real keywords let lexical matching find thin chunks it missed.
+
+NOTES called blurbs "the biggest recall lever, mainly for dense." On *this*
+corpus that was wrong: the recall lever was **lexical**, and dense only bought
+top-1 precision. **Takeaway:** don't trust the mechanism you assumed — design the
+experiment so it tells you which half actually moved.
+
+### Lesson — report the caveats that shrink your win
+
+- **Paraphrase didn't budge (0.750, flat).** The bucket blurbs were *supposed*
+  to help most is exactly where nothing moved; the gain came from factual + top-1.
+- **Small n again.** recall@5 0.792→0.833 on 48 positives ≈ ~2 more questions.
+  Modest. The recall@1 jump (+0.10 ≈ 5 questions) is the trustworthy signal.
+- **The 0.85 gate was NOT hit** (0.833, ~1 question short). Cheapest closers, in
+  order: sweep `--rrf-k` (free, no re-embed) → better blurb prompt/model →
+  the deferred token-sizing / splitter-title fixes. Or accept 0.833 — for a
+  top-3 served system, recall@1/MRR moving this much is arguably the better prize.
+
+### Lesson — latency and storage costs are index-time here, not query-time
+
+The ~500 LLM calls *feel* expensive (minutes on a local model), but they're a
+**one-time offline build**, cached and amortised to zero per query. At serve
+time the blurb is already baked into the stored vector and BM25 index — **no
+extra query-time latency, and the vector count is unchanged, so no index-storage
+growth.** This is the whole reason contextual retrieval prepends at index time
+instead of doing anything per query. The cost that *does* scale is regeneration:
+1 call per chunk means a 1000-doc corpus is a multi-hour batch — which is why the
+generator was made parallel (`--workers`) and resumable (cache flushes every 20,
+so a Ctrl-C never loses more than 20 blurbs).
+
+---
+
 ## Running scoreboard
 
 **30-question set (`v1`, stage-2 chunk ids):**
@@ -448,12 +545,16 @@ same as the resize A/B taught for chunking.
 | dense only | 0.35 | 0.56 | 0.65 | 0.50 | 0.92 |
 | dense + rerank | 0.44 | 0.65 | 0.71 | 0.56 | 0.94 |
 | BM25 only | 0.38 | 0.71 | 0.77 | 0.56 | 0.98 |
-| **hybrid (dense+BM25 RRF)** | **0.44** | 0.69 | **0.79** | **0.61** | **0.98** |
+| hybrid (dense+BM25 RRF) — Stage 3 | 0.44 | 0.69 | 0.79 | 0.61 | 0.96 |
 | hybrid + rerank | 0.42 | 0.69 | 0.75 | 0.57 | 0.98 |
+| S4 hybrid, blurb→dense only | 0.52 | 0.75 | 0.79 | 0.65 | 0.98 |
+| **S4 hybrid, blurb→both (current best)** | **0.54** | **0.75** | **0.83** | **0.67** | **0.99** |
 
 The two tables aren't directly comparable (different question sets) — the v2
 table is the one to trust going forward; v1 numbers are kept for the historical
-trail of how each idea was diagnosed.
+trail of how each idea was diagnosed. **Current serving pipeline = Stage-4
+hybrid over blurbed chunks, blurb in both dense + BM25.** New baseline every
+later stage must beat: recall@5 0.833, recall@1 0.531, MRR 0.672.
 
 ---
 
@@ -479,15 +580,73 @@ trail of how each idea was diagnosed.
    helped a mediocre dense-only pool a lot; it slightly *hurt* the
    already-better hybrid pool. Re-measure every fixed pipeline stage whenever
    what feeds it changes.
+10. **Freeze the retriever to attribute a chunking win** — Stage 4 changed only
+    the chunk content and reused the hybrid retriever verbatim, so the +0.041
+    recall@5 is provably the blurb's doing and nothing else. One knob, frozen
+    baseline, every time.
+11. **Design experiments to reveal the mechanism, not just the score** — the
+    `--raw-bm25` toggle split the blurb's effect into a dense half (precision)
+    and a BM25 half (recall) and showed the recall lever was *lexical*, the
+    opposite of the going-in assumption. A single blurbed-both number would
+    have hidden that.
+12. **Mocks test the pipe, not the outcome** — templated mock blurbs ran the
+    plumbing but predicted a paraphrase drop that was a boilerplate artifact,
+    not a real forecast. Read a mock's plumbing, never its metrics.
+13. **Push cost to index time when you can** — contextual blurbs add real
+    build-time cost (1 LLM call/chunk) but *zero* query-time latency and *zero*
+    index-storage growth, because the work is baked into vectors offline. Know
+    which axis a cost lands on before calling a technique "expensive."
+
+---
+
+## Stage 5 — LangChain Reproduction (framework as the only knob)
+
+**The idea.** Prove a framework reproduces the hand-rolled Stage-4 result
+(recall@5 0.833, MRR 0.672, `v2-55q-2026-08-02`) on the SAME corpus and SAME
+labels before trusting it on new data — same discipline as every stage above:
+one knob, frozen baseline. `EnsembleRetriever(c=60)` stands in for the
+hand-rolled RRF `1/(60+rank)`; `BM25Retriever` stands in for `hybrid.py`'s
+Okapi BM25.
+
+### Lesson — a framework default is a hidden knob, and it cost 0.06 recall silently
+
+First run: recall@5 **0.771** — a real regression, no error thrown. Root cause:
+LangChain's `BM25Retriever` defaults to `preprocess_func = text.split()` — no
+lowercasing, punctuation kept — so `"BART."` never matches `"bart"`. This
+corpus's dominant recall lever is exact lexical matching (established back in
+Stage 3's hybrid result), and the framework's default tokenizer silently broke
+it. Fix: pass a `preprocess_func` that mirrors `hybrid.py`'s tokenizer
+(`re.findall(r"[a-z0-9]+", text.lower())`). Result: recall@5 **0.854** —
+faithful reproduction (+0.021 ≈ 1 question, within noise), not a real
+improvement.
+
+**Takeaway:** adopting a framework component doesn't remove a design decision,
+it just hides the default until you diff it against the hand-tuned version.
+"The eval score dropped" after a framework swap is a bug-hunt, not proof the
+new method is worse — same instinct as re-baselining after any chunking
+change. New baseline going forward: **recall@5 0.854**, not 0.833 (LangChain
+fuses child rankings before collapsing to parents; the hand-rolled code
+collapses to parents first, then fuses — a real small difference, not
+reimplemented for exact parity since the gap is within noise).
 
 ---
 
 ## What's next (planned, not built)
 
+- **Close the last ~1 question to the 0.85 gate, or call it.** Stage 4 lands at
+  recall@5 0.833. Cheapest first: sweep `--rrf-k` (free, no re-embed). Then a
+  better blurb prompt/model, then the deferred token-sizing / splitter-title
+  fixes. Or accept 0.833 and move on — recall@1/MRR are the better prize here.
+- **Audit which questions the blurb flipped** before treating +0.041 as solid —
+  the recall@5 gain is ~2 questions on n=48. A per-query flip list (same tool
+  discipline as the reranker audit) separates a real win from two lucky hits.
+- **Guard blurb quality at scale** — a wrong blurb mis-places a vector. A
+  cheap `--audit` pass (flag blurbs that are empty, too long, or don't name the
+  paper/section) is worth adding before the corpus grows.
 - **Decide hybrid's place in the live pipeline.** Eval says hybrid-alone beats
   hybrid+rerank and dense+rerank on MRR/hit@5 — `parent_child_rag.py`'s
   `--rerank` CLI flag doesn't have a `--hybrid` counterpart yet, and nothing in
-  the interactive pipeline is repointed at stage-3 chunks at all.
+  the interactive pipeline is repointed at stage-3/4 chunks at all.
 - **Explain the CE-demotes-same-document-sibling pattern more thoroughly** —
   `diagnose_demotions.py` found it on 3 examples; still don't know if it's
   systemic across the corpus or specific to homogeneous RAG-paper sections.
