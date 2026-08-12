@@ -59,6 +59,7 @@ HERE = Path(__file__).resolve().parent            # RAG/rag_stage_5
 CORPUS_DIR = HERE.parent / "corpus"
 SECTIONS_OUT = HERE / "sections.json"
 CHUNKS_OUT = HERE / "chunks.json"
+FAILED_OUT = HERE / "parse_failures.json"   # doc_id -> reason; skipped on re-run
 
 PG_CONN = os.environ.get(
     "PG_CONN", "postgresql+psycopg://postgres:postgres@localhost:5432/ragdev")
@@ -216,7 +217,9 @@ def iter_corpus(only=None, limit=None):
 def parse_phase(only, limit):
     parents_all = json.loads(SECTIONS_OUT.read_text()) if SECTIONS_OUT.exists() else []
     children_all = json.loads(CHUNKS_OUT.read_text()) if CHUNKS_OUT.exists() else []
+    failed = json.loads(FAILED_OUT.read_text()) if FAILED_OUT.exists() else {}
     done = {c["source"] for c in children_all}          # resume: skip parsed docs
+    done |= failed.keys()                                # and permanently-broken ones
 
     p_split = RecursiveCharacterTextSplitter(
         chunk_size=PARENT_CHARS, chunk_overlap=PARENT_OVERLAP)
@@ -237,6 +240,8 @@ def parse_phase(only, limit):
             text = load_text(path, lane).strip()
         except Exception as e:
             print(f"  FAIL [{lane}] {doc_id}: {str(e)[:90]}")
+            failed[doc_id] = str(e)[:200]
+            FAILED_OUT.write_text(json.dumps(failed, ensure_ascii=False, indent=2))
             continue
         if len(text) < MIN_DOC_CHARS:
             empties.append(doc_id)
@@ -256,6 +261,9 @@ def parse_phase(only, limit):
     flush()
     print(f"\nPARSE done: {processed} new docs, "
           f"{len(parents_all)} parents / {len(children_all)} children total")
+    if failed:
+        print(f"WARN: {len(failed)} docs permanently failed to parse (unloadable — "
+              f"e.g. DRM/encrypted) — logged in {FAILED_OUT.name}, skipped on future runs")
     if empties:
         print(f"WARN: {len(empties)} docs produced no usable text "
               f"(check these parsers): {empties[:8]}{'...' if len(empties)>8 else ''}")
@@ -263,7 +271,7 @@ def parse_phase(only, limit):
 
 # ------------------------------------------------------------------ embed phase
 
-def embed_phase(reset, conn, collection):
+def embed_phase(reset, conn, collection, limit=None):
     from langchain_core.documents import Document
     from langchain_huggingface import HuggingFaceEmbeddings
     from langchain_postgres import PGVector
@@ -271,6 +279,8 @@ def embed_phase(reset, conn, collection):
     if not CHUNKS_OUT.exists():
         sys.exit("chunks.json missing — run: python ingest.py --parse")
     children = json.loads(CHUNKS_OUT.read_text())
+    if limit:
+        children = children[:limit]
     print(f"embedding {len(children)} children into pgvector "
           f"collection '{collection}'  model={EMBED_MODEL}  (reset={reset})")
 
@@ -283,7 +293,7 @@ def embed_phase(reset, conn, collection):
 
     for i in range(0, len(children), EMBED_BATCH):
         batch = children[i:i + EMBED_BATCH]
-        docs = [Document(page_content=c["text"],
+        docs = [Document(page_content=c["text"].replace("\x00", ""),
                          metadata={"parent_id": c["parent_id"],
                                    "child_id": c["id"], "source": c["source"]})
                 for c in batch]
@@ -317,7 +327,7 @@ def main():
         parse_phase(args.only, args.limit)
     if do_embed:
         print("\n== EMBED ==")
-        embed_phase(args.reset, args.conn, args.collection)
+        embed_phase(args.reset, args.conn, args.collection, args.limit)
 
 
 if __name__ == "__main__":
