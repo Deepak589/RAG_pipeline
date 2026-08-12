@@ -67,7 +67,7 @@ reasoning behind each decision.
                     ┌───────────┴────────────┐
                     ▼                        ▼
               BM25 (lexical)           dense embeddings
-           blurb-aware tokenizer      (bi-encoder, pgvector)
+           blurb-aware tokenizer     (BAAI/bge-m3, pgvector)
                     │                        │
                     └─────────► RRF ◄────────┘
                           (rank fusion, k=60)
@@ -83,6 +83,15 @@ it regressed recall/paraphrase on this corpus at current scale. Slated to come
 back at 70k+ children with a paraphrase-tolerant model (BGE-reranker-v2 /
 ColBERTv2), never ms-marco.
 
+**Ingestion (`rag_stage_5/ingest.py`) is LangChain-orchestrated and resumable
+end to end.** Parsing checkpoints per document (`--parse` survives a Ctrl-C or
+a sleeping laptop) and permanently-broken sources (e.g. Archive.org's
+DRM-encrypted scans — a nonstandard filter no PDF library can open, not
+corruption) are logged to `parse_failures.json` and skipped on every future
+run rather than retried forever. Embedding is a separate phase into a
+model-tagged pgvector collection (`rag_stage5__bge_m3`) so switching embedders
+can never silently mix incompatible vector dimensions in one index.
+
 ---
 
 ## Stage history
@@ -93,7 +102,7 @@ ColBERTv2), never ms-marco.
 | 2 | Retrieval-only eval harness (`recall@k`, `Hit@k`, `MRR`, per-bucket, negative-gap), framework-free, deterministic | Found retrieval was a **ranking** problem, not a recall floor (correct parent almost always in top-31) |
 | 3 | Cross-encoder reranking, then hybrid BM25+dense (RRF) | Reranker was a mixed bag (hurt R@1/paraphrase) → **dropped**. Hybrid won outright: R@5 0.792, beat dense+rerank on every axis |
 | 4 | Contextual blurb chunking (Anthropic Contextual Retrieval-style), blurb fed to both dense and BM25 | R@5 0.792 → **0.833**, R@1 +0.10. Recall gain traced to the **lexical** side (BM25), not dense — disproved the initial hypothesis with an isolation test |
-| 5 | LangChain migration (reproduced stage-4 baseline first), pgvector dense store, file-type-routed ingestion, corpus scaled 7 → ~740 docs | Faithful reproduction at 0.854 R@5 after fixing a framework tokenizer default; infra now scale-ready |
+| 5 | LangChain migration (reproduced stage-4 baseline first), pgvector dense store, file-type-routed ingestion, corpus scaled 7 → ~740 docs, embedder swapped MiniLM → BGE-M3 | Faithful reproduction at 0.854 R@5 after fixing a framework tokenizer default; corpus parsed to 87k parents / 498k children and embedding into pgvector; new-corpus eval still pending (golden set not yet regenerated — current blocker) |
 
 Full scoreboards, failure analyses, and the reasoning behind every drop/keep
 decision are in [`NOTES.md`](NOTES.md).

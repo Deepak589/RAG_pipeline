@@ -559,6 +559,99 @@ exists (blocker #1), find the weak bucket, pick the method that targets it.
 
 ---
 
+## Stage 5 — EXECUTION LOG: embedder + chunking + labeling toolchain (2026-08-10)
+
+A working session that turned the Stage-5 plan into shipped code. Theme: get
+the ingestion + labeling pipeline ready to produce a MEASURABLE baseline on the
+740-doc corpus. Nothing here is measured yet — blocker #1 (golden set) is still
+the gate — but every piece needed to reach a first eval is now in place.
+
+### Embedding model — all-MiniLM-L6-v2 -> BGE-M3
+Decided (and shipped in `rag_stage_5/ingest.py`) to swap the dense embedder to
+`BAAI/bge-m3`. Reasons are STRUCTURAL, not a bakeoff win — a bakeoff on the clean
+7-paper set doesn't generalize to the mixed corpus, so we didn't run one:
+- 8192-token context (all-MiniLM caps at 256 → was silently truncating long
+  arxiv/SEC chunks), multi-function (dense + learned-sparse + ColBERT in ONE
+  model, so shortlist #2/#5 come for free later), domain-robust.
+- all-MiniLM was the project's weakest link (dense-only R@5 0.646, BM25 beat it).
+Cost facts settled: RAM is NOT the constraint for dense (70k×1024×4B ≈ 290 MB;
+24 GB is plenty). The real costs are ColBERT's per-TOKEN storage (~3+ GB) and
+M3's CPU-bound embed time. `normalize_embeddings=True` wired in (BGE needs it
+for cosine). pgvector collection auto-tagged by model (`rag_stage5__bge_m3`) so
+the new 1024-dim index can't collide with the old 384-dim one → first embed run
+needs `--reset`.
+**Discipline locked:** BUILD all of M3's modes, but ACTIVATE one knob at a time
+(M3-dense vs MiniLM → M3-sparse vs BM25 (replace, don't stack) → ColBERT as a
+rerank stage), keep only what earns its place. Firing dense+sparse+ColBERT+BM25
+all at once breaks the one-knob rule and repeats the "more components = better"
+mistake the reranker already disproved.
+
+### Chunking — section-aware parents are PER-LANE, and you PROBE to decide
+ingest.py had regressed to blind char-window parents (Stage 4 was section-aware).
+Rather than guess a splitter, PROBED real docs in a sandbox (which also does
+blocker #2, parser-quality verify). Findings:
+- **SEC .htm (real Wells Fargo 10-K):** ZERO `<h1/h2/h3/b/strong>` tags (inline
+  XBRL + CSS tables) → tag-based sectioning dead. BUT the `ITEM 1A. RISK FACTORS`
+  pattern is rock-solid: 22 clean headings. Extraction clean (89k/359k chars).
+  GOTCHA: in extracted text the item number and title land on SEPARATE lines
+  ("ITEM 1.\nBUSINESS") → the split regex must allow a newline (`\s+`).
+- **arxiv PDF:** NO stable heading signal across LaTeX templates. Font-size/bold
+  detection (dict mode) was inconsistent across 4 papers: 42 (with false hits like
+  author affiliations) / 0 / 2 / 5. Hand-rolling arxiv structure REJECTED.
+- **Corpus finding:** some SEC 10-Ks are SHELL filings — real Risk Factors etc.
+  incorporated BY REFERENCE to an Annual-Report exhibit the puller didn't grab
+  (WFC ITEM 1A body = 253 chars). corpus_puller/blocker-#2 gap, not a splitter bug.
+**Shipped in ingest.py:** `ITEM_RE` + `section_units(text, lane)` — sec/html splits
+on ITEM headings (each ITEM = a titled section, + a "Front Matter" unit), every
+other lane = single blob → char-window (UNCHANGED). `chunk_document(..., lane)`
+size-bounds each section, so a giant ITEM 1 (46k) → many parents that all KEEP
+the ITEM title (the stage-3 "split giant, keep heading" lesson). Verified on the
+real 10-K: 23 sections, 60 parents / 230 children. arxiv/wiki stay char-windowed
+until eval justifies Docling; scanned stays char-window (OCR structure unreliable).
+
+### Labeling toolchain — qa_gen fixes + a validation gate
+Reviewed `ingest/qa_gen.py` (synthetic golden-set generator) and fixed it:
+- CRASH: `DEFAULT_MODEL="qwen3.5"` is not a real Ollama tag → `qwen2.5:7b`
+  (same bad tag also fixed in `lc_pipeline.py --llm-model`). For a LABEL generator,
+  model quality > speed (generate once, cache forever); 24 GB RAM allows qwen2.5:14b.
+  AVOID reasoning models (deepseek-r1/QwQ) — they emit `<think>` and break JSON.
+- `"format":"json"` added to the Ollama call → kills `parse_json_obj` misses.
+- paraphrase now spread across all factuals (was `[:N]`, clustered on first sources).
+- **New `--validate` mode** — a quality GATE (not a generator) on the produced
+  qa.json, catching the mislabels qa_gen can't see itself, three checks matching
+  the three bugs: (1) groundedness — does `_answer` actually live in the labeled
+  parent? low token overlap → ungrounded (no retriever); (2) multi-label — retrieve
+  the query; if a NON-gold parent outranks gold, the answer lives in several
+  parents → suggest adding them (fixes single-label recall understatement; reuses
+  lc_pipeline's SAME retriever); (3) negative — max content-overlap vs any parent;
+  high → probably answerable → weak negative. Writes `<out>.validated.json` with a
+  `_validate` note per flagged question + a report; FLAGS for human review, does
+  NOT silently rewrite labels. Caveat: it only catches labels the retriever
+  DISAGREES with — a net, not a wall; hand-verify the flagged set still required.
+  Thresholds `--ground-min 0.5` / `--neg-max 0.6` are first guesses, to be tuned
+  after seeing a real run's flag counts.
+
+### Run order (to reach the first real Stage-5 number)
+0. Postgres+pgvector up, `ollama pull qwen2.5:7b`, deps.
+1. `ingest.py --parse` → chunks/sections; READ the WARN/FAIL lines (blocker #2).
+2. `ingest.py --embed --limit 50 --reset` smoke, then full `--embed --reset`
+   (collection `rag_stage5__bge_m3`).
+3. `qa_gen.py ... --version v3-...` → draft golden set.
+4. `qa_gen.py --validate ...` (retriever up) → auto-flag; HAND-VERIFY flagged only.
+5. `lc_pipeline.py --vector-store pgvector --collection rag_stage5__bge_m3
+   --retriever hybrid --eval --qa qa_v3.json` → NEW baseline (NOT comparable to
+   0.854 — new corpus/labels/model).
+6. From there: one knob at a time (M3-dense+BM25 → sparse → ColBERT), keep winners.
+**Hard rule:** never read an eval number before step 4 hand-verify — synthetic
+labels are a DRAFT.
+
+**Still open:** blocker #1 (verified golden set for the 740-corpus) — the gate on
+everything above; blocker #2 (per-source parser quality, esp. scanned + SEC shell
+filings); BM25 still in-process `rank_bm25` (per-query bottleneck) not yet moved
+to Postgres FTS; validate thresholds to be set from a real run.
+
+---
+
 ## Housekeeping to-dos
 
 - Clean `sections.json` false headings (regex ate a footnote line as a heading).
