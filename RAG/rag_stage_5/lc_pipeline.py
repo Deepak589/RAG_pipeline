@@ -97,24 +97,25 @@ def build_hybrid(children, embeddings, rrf_c=RRF_C, weights=(0.5, 0.5),
       memory   — InMemoryVectorStore, embeds on the fly (7-PDF reproduce; no infra)
       pgvector — an EXISTING Postgres+pgvector collection built by ingest.py
                  (persistent, scalable; nothing re-embedded at query time)
-    BM25 always indexes the children list (rank_bm25). k is the full child count
-    so the fused ranking covers every parent (the harness needs recall@50)."""
+    BM25 always indexes the children list (rank_bm25). k is fetch depth per
+    retriever, well above CEILING_KS(50) so RRF fusion doesn't lose candidates
+    before the top-50 cutoff, without paying to rank/return the full corpus."""
     docs = [
         Document(page_content=c["text"],
                  metadata={"parent_id": c["parent_id"], "child_id": c.get("id")})
         for c in children
     ]
-    n = len(docs)
+    k = max(200, max(CEILING_KS))
     if vector_store == "pgvector":
         from langchain_postgres import PGVector
         store = PGVector(embeddings=embeddings, connection=conn,
                          collection_name=collection, use_jsonb=True)
-        dense = store.as_retriever(search_kwargs={"k": n})
+        dense = store.as_retriever(search_kwargs={"k": k})
     else:
         dense = InMemoryVectorStore.from_documents(docs, embeddings).as_retriever(
-            search_kwargs={"k": n})
+            search_kwargs={"k": k})
     bm25 = BM25Retriever.from_documents(docs, preprocess_func=bm25_tokenize)
-    bm25.k = n
+    bm25.k = k
     return EnsembleRetriever(retrievers=[bm25, dense],
                              weights=list(weights), c=rrf_c)
 

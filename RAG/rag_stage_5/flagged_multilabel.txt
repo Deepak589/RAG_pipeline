@@ -1,0 +1,612 @@
+61 flagged (gold not rank-1)
+
+====================================================================================================
+ID: archive-cabrbhc-000058-0-f
+Q: Who was described as having a 'GIRAVEL-VOICE' in the Brisbane Minstrel show?
+Gold parent: archive/cabrbhc_000058#0
+  gold text: Vol.  V,  No.  10 Sec.  562, P. L.  &  R. U.  S.  POSTAGE lc  PAID Brisbane, Calif. Permit  No.  3 Brisbane  News Bulletin Prosperity Progress Brisbane, Calif., November 15, 1950 MINSTREL  MEMORIES By  Dorothy  Radoff MINSTREL  MEMORIES Things  We  W
+gold not rank-1 (rank-1=archive/cabrbhc_000058#1); consider multi-label: ['archive/cabrbhc_000058#1', 'archive/cabrbhc_000058#13', 'archive/cabrbhc_000058#5']
+  cand archive/cabrbhc_000058#1: MINSTREL  MEMORIES 'Ryan & King' . .   PEPPY motions of the Glee Club .  . the HILARIOUS  act  of  Juanita  Bur­ gess and Trantham  ..  RAPT  at­ tention of the audience . . the G i RAND job of the indefatigable [Byron  Jensen  in the  make-up  de­ p
+  cand archive/cabrbhc_000058#13: In thp classrooms, Miss Henry; In  the ^pym,  Miss  Parent; On  the teams,  Glen  South;  on  the  grounds Air. Binsacca;' Student activities, Mr. Reese; Problems of adminis­ trate, Mr. Hannah. It was a most interesting  pro­ gram  and one that shoul
+  cand archive/cabrbhc_000058#5: VOCATION  DAY  AT JEFFERSON UNION  HIGH .Stanford  Hannah, district  super­ intendent  o  f  the  local  high  school is  arranging  the  program  and ob­ taining  the  many  speakers  needed. In addition to the occupational group meetings there will
+
+====================================================================================================
+ID: sec-0000008670-26-000030-110-f
+Q: What was the amount of unrecognized tax benefits liability reported by the Company as of June 30, 2025?
+Gold parent: sec/0000008670-26-000030#110
+  gold text: taxes, deferred tax assets and liabilities, and uncertain tax positions.  Sensitivity of Estimate to ChangeWhile the Company considers all of its tax positions fully supportable, the Company is occasionally challenged by various tax authorities regar
+gold not rank-1 (rank-1=sec/0001628280-26-005731#207); consider multi-label: ['sec/0001628280-26-005731#207', 'sec/0001140859-25-000131#178', 'sec/0000899051-26-000031#380']
+  cand sec/0001628280-26-005731#207: net operating loss carryforwards were incurred in various jurisdictions, predominantly in Belgium, Brazil, Luxembourg, and Spain.F-36Table of ContentsActivity associated with the Company's valuation allowance is as follows:In millions202520242023Begi
+  cand sec/0001140859-25-000131#178: the Company is no longer subject to U.S. federal, state and local, or foreign income tax examinations by tax authorities for years before 2020. The Company believes it has adequate tax reserves to cover potential federal, state or foreign tax exposur
+  cand sec/0000899051-26-000031#380: has U.S. federal, state and foreign net operating loss (“NOL”) carryforwards. Management believes that it is more likely than not that the benefit from certain NOL carryforwards will not be fully realized. Accordingly, the Company has a valuation all
+
+====================================================================================================
+ID: sec-0000024741-26-000124-71-f
+Q: According to the passage, what specific risk could arise from difficulties in enforcing intellectual property rights?
+Gold parent: sec/0000024741-26-000124#71
+  gold text: the geographical concentration of certain of the Company’s and our contract manufacturers’ plants in Asia Pacific, the highly engineered nature of the facilities and the globally dispersed talent required to run these facilities, any event that adver
+gold not rank-1 (rank-1=sec/0000313616-26-000062#102); consider multi-label: ['sec/0000313616-26-000062#102', 'sec/0001640147-26-000008#107', 'sec/0000076334-25-000035#57']
+  cand sec/0000313616-26-000062#102: role in product development and differentiation.  We own numerous patents, trademarks, copyrights, trade secrets and other intellectual property and licenses to intellectual property owned by others, which in aggregate are important to our business. 
+  cand sec/0001640147-26-000008#107: into hedging transactions to the extent we do so in the future;•limitations on, or charges or taxes associated with, our ability to reinvest earnings from operations in one country to fund the capital needs of our operations in other countries;•laws 
+  cand sec/0000076334-25-000035#57: on reasonable terms.  In addition, the global nature of our business increases the risk that our intellectual property may be subject to infringement, theft or other unauthorized use or disclosure by others.  In some cases, our ability to protect our
+
+====================================================================================================
+ID: rtd-cryptography-204-f
+Q: According to the passage, which version added the type alias for CertificateIssuerPrivateKeyTypes?
+Gold parent: rtd/cryptography#204
+  gold text: Allowed: RSAPublicKey, DSAPublicKey, EllipticCurvePublicKey, Ed25519PublicKey, Ed448PublicKey. cryptography.hazmat.primitives.asymmetric.types.CertificateIssuerPrivateKeyTypes Added in version 40.0.0. Type alias: A union of all private key types that
+gold not rank-1 (rank-1=rtd/cryptography#58); consider multi-label: ['rtd/cryptography#58', 'rtd/cryptography#186', 'rtd/cryptography#178']
+  cand rtd/cryptography#58: • value (bytes) – The value of the attribute. Returns A new CertificateSigningRequestBuilder. sign(private_key, algorithm, *, rsa_padding=None, ecdsa_deterministic=None) Parameters • private_key – The private key that will be used to sign the request
+  cand rtd/cryptography#186: 2.4. Primitives 189 Cryptography Documentation, Release 51.0.0-dev1 cert An optional PKCS12Certificate instance belonging to the private key key. additional_certs A list of PKCS12Certificate instances. class cryptography.hazmat.primitives.serializati
+  cand rtd/cryptography#178: proper format or the incorrect password was provided. 2.4. Primitives 181 Cryptography Documentation, Release 51.0.0-dev1 • cryptography.exceptions.UnsupportedAlgorithm – If the serialized key is of a type that is not supported. OpenSSH Certificate T
+
+====================================================================================================
+ID: rtd-django-1690-f
+Q: What happens when you call save() on a model with an AutoField for the first time?
+Gold parent: rtd/django#1690
+  gold text: set of field names to exclude from validation. It will raise a ValidationError if any fields fail validation. UniqueConstraints defined in the Meta.constraints are validated by Model.validate_constraints(). Note that if you provide an exclude argumen
+gold not rank-1 (rank-1=rtd/xgboost#299); consider multi-label: ['rtd/xgboost#299', 'rtd/django#1691', 'rtd/django#370']
+  cand rtd/xgboost#299: Return type prediction save_model(fname) Save the model to a file. The model is saved in an XGBoost internal format which is universal among the various XGBoost in- terfaces. Auxiliary attributes of the Python Booster object (such as feature_names) a
+  cand rtd/django#1691: # Returns the ID of your new object. There’s no way to tell what the value of an ID will be before you call save(), because that value is calculated by your database, not by Django. 6.17. Models 1753 Django Documentation, Release 6.2.dev2026080715014
+  cand rtd/django#370: >>> f = ArticleForm(request.POST, instance=a) >>> f.save() Note that if the form hasn’t been validated, calling save() will do so by checking form.errors. A ValueError will be raised if the data in the form doesn’t validate – i.e., if form.errors eva
+
+====================================================================================================
+ID: rtd-django-3001-f
+Q: What is the CVE number associated with index 2816?
+Gold parent: rtd/django#3001
+  gold text: CVE 2014-0473, 2831 CVE 2014-0474, 2830 CVE 2014-0480, 2830 CVE 2014-0481, 2829 CVE 2014-0482, 2829 CVE 2014-0483, 2829 CVE 2014-1418, 2830 CVE 2014-3730, 2830 CVE 2015-0219, 2211, 2230, 2284, 2829 CVE 2015-0220, 2828 Index 3003 Django Documentation,
+gold not rank-1 (rank-1=sec/0001193125-26-044769#154); consider multi-label: ['sec/0001193125-26-044769#154', 'rtd/django#3002', 'rtd/django#2120']
+  cand sec/0001193125-26-044769#154: 28
+  cand rtd/django#3002: CVE 2023-46695, 2812 CVE 2024-24680, 2812 CVE 2024-27351, 2812 CVE 2024-38875, 2811 CVE 2024-39329, 2811 CVE 2024-39330, 2811 CVE 2024-39614, 2811 CVE 2024-41989, 2811 CVE 2024-41990, 2811 CVE 2024-41991, 2810 CVE 2024-42005, 2810 CVE 2024-45230, 281
+  cand rtd/django#2120: This issue has severity “moderate” according to the Django security policy. CVE-2026-1207: Potential SQL injection via raster lookups on PostGIS Raster lookups on GIS fields (only implemented on PostGIS) were subject to SQL injection if untrusted dat
+
+====================================================================================================
+ID: archive-dlibra-bibliotek-4-f
+Q: According to the passage, what specific concern does Abg. Pleß (Centr.) raise regarding local farmers?
+Gold parent: archive/dlibra.bibliotekaelblaska.pl.051.13452779#4
+  gold text: Abg. Pleß (Centr.) beschwert sich über die Schä­ digung von Landwirthen durch die Abwässer industri­ eller Etablissements. Der Ministec müsse hier bald Abhilfe schaffen. Tageblatt. Minister Frhr. v. Hammer st ein erkennt die Berechtigung der Forderun
+gold not rank-1 (rank-1=archive/dlibra.bibliotekaelblaska.pl.051.13452779#23); consider multi-label: ['archive/dlibra.bibliotekaelblaska.pl.051.13452779#23', 'archive/sim_potters-american-monthly_1873-09_2_21#53', 'archive/dlibra.bibliotekaelblaska.pl.051.13452779#8']
+  cand archive/dlibra.bibliotekaelblaska.pl.051.13452779#23: Lokale Nachrichten. - Mitgetheilt wird weiter, daS der Vorstand des Vereins im Namen des Vereins anläßlich der Annahme des LehrerbesoldungSgesetzes an den Chef der Unterrichtsverwaltung, Herrn Kultusminister Dr. Bosie, ein Dank- und Ergebenheits Tele
+  cand archive/sim_potters-american-monthly_1873-09_2_21#53: BOUNDARY DISPUTES. 1  Mr.  Dulaney  was a  lawyer  and  statesman of considerable note in  Maryland,  during  the  latter half of  the last century. He was commissarygeneral,  secretary,  attorney-general and  councillor of  Maryland  before  the  Re
+  cand archive/dlibra.bibliotekaelblaska.pl.051.13452779#8: Deutschland. Die Musik spielte die Fackeltänze, wie sie bei der Hochzeit der Königin Luise im Jahre 1793 gespielt wurden, zu dem nunmehr folgenden Rundga; g, an den sich der Tanz anschloß, der mit einer von 16 Paaren getanzten Gavotte be­ gann; unter
+
+====================================================================================================
+ID: arxiv-2608-04983v1-118-f
+Q: What is the final expression for the variance of B(1)_n,kl as given in equation (72)?
+Gold parent: arxiv/2608.04983v1#118
+  gold text: position (as in equation (C.14)): E  ∥rσ∥41{zk,σ ∈{−1, 1}}  = E  ∥rσ∥4 | zk,σ ∈{−1, 1}  ·Pr(zk,σ ∈ {−1, 1}) ≤C′ · pk,σ, where C′ < ∞since the conditional expectation is uniformly bounded by Assumption 3.5; similarly E  ∥rσ′∥21{zl,σ′ ∈{−1, 1}}  
+gold not rank-1 (rank-1=arxiv/2608.04983v1#119); consider multi-label: ['arxiv/2608.04983v1#119', 'arxiv/2608.04983v1#117', 'arxiv/2608.06053v1#21']
+  cand arxiv/2608.04983v1#119: tinct sets of nodes are independent by Assumption 1, contributing zero to the covariance. The sec- ond inequality follows from the Cauchy-Schwarz inequality and Var(X) ≤E[X2], using 1{zk,σ ∈ {−1, 1}}2 = 1{zk,σ ∈{−1, 1}}. The third inequality follows 
+  cand arxiv/2608.04983v1#117: X j′̸=i,j,i′ X i′′̸=i,j,i′ X j′′̸=i,j,j′,i′′ ∥rσ∥2∥rσ′∥1{zk,σ ∈{−1, 1}}1{zl,σ′ ∈{−1, 1}}   × ∥θk,1 −θk,2∥ + 16 sup ε∈R |f(ε)|  X i X j̸=i X i′̸=i,j X j′̸=i,j,i′ X i′′̸=i,j,i′ X j′′̸=i,j,j′,i′′ ∥rσ∥∥rσ′∥21{zk,σ ∈{−1, 1}}1{zl,σ′ ∈{−1, 1}}   × ∥θl
+  cand arxiv/2608.06053v1#21: i f X∗ Kn,iui; the leverage condition of Lemma 3 supplies the maximal-weight condition, and with the uniform conditional (2 + ϵ) moment of Assumption 1(vi) the Lyapunov (hence conditional Lindeberg–Feller) CLT gives X∗′Mu/ √ τ ∗2 ⇒N(0, σ2) (by Lemma 
+
+====================================================================================================
+ID: arxiv-2608-05112v1-41-f
+Q: What is the inequality derived from substituting ∥ξ(˜x)∥= ϵ into equation (59)?
+Gold parent: arxiv/2608.05112v1#41
+  gold text: d(Rϵ(f)|R(f)). Let x ∈Rϵ(f). By Lemma 2, we have Φ(x) ∈R(f), which yields inf z∈R(f) ∥x −z∥≤∥x −Φ(x)∥≤L(x) ≤∥ξ(x)∥ γ ≤ϵ γ . (57) Taking the supremum over x ∈Rϵ(f) establishes the upper bound in (11). Next we consider the lower bound. Let ˜x ∈Rϵ(f) su
+gold not rank-1 (rank-1=sec/0001381197-26-000062#297); consider multi-label: ['sec/0001381197-26-000062#297', 'arxiv/2608.05112v1#52', 'arxiv/2608.06206v1#70']
+  cand sec/0001381197-26-000062#297: At December 31,     At December 31,     Average     High   Market Risk Category     2025     2024     2025     2025                                     (in millions)                               Trading (1)                           Equities and Cur
+  cand arxiv/2608.05112v1#52: ℓ= 0, . . . , 4, and ϵξ(n), ϵJ(n), ϵQ(n) →0, we can choose N1 ≥N0 such that for all n ≥N1, ϵJ(n) ≤min   1,  γ 5Cµ d! , ϵξ(n) < κ 2 , 2dC2r2(n) ≤η 2, ϵQ(n) + ϵJ(n) ≤γ 2 , max 0≤ℓ≤4 Cℓrℓ(n) ≤1. Part (a): By Assumption (B1), we have K ∈C4(Rd, R), whic
+  cand arxiv/2608.06206v1#70: x∈X ∆S⋆(x) ≤ϵ∆ ∞(m, δ/2); (133) in particular ∆S⋆∈L1(Λ˜x,h). For every t ∈R, F (bS) n,˜x,h(t) −F (S⋆) ˜x,h (t)  ≤ F (bS) n,˜x,h(t) −F (bS) ˜x,h (t)  + F (bS) ˜x,h (t) −F (S⋆) ˜x,h (t) . For the first term, apply Proposition 11 with S = bS
+
+====================================================================================================
+ID: arxiv-2608-05434v1-46-f
+Q: According to TABLE S.1, which proposed method directly targets a tail quantile of the outcome distribution and explicitly considers treatment-related risks for multiple decision stages?
+Gold parent: arxiv/2608.05434v1#46
+  gold text: 36 S.8 Sensitivity Analysis for Smoothing Parameters . . . . . . . . . . . . . . . . . . 36 S.9 Sensitivity Analysis for Tolerance Level bm . . . . . . . . . . . . . . . . . . . . 38 S.10 Sensitivity Analysis for Training Sample Size ntrain . . . . .
+gold not rank-1 (rank-1=arxiv/2608.05434v1#47); consider multi-label: ['arxiv/2608.05434v1#47', 'arxiv/2608.05434v1#4', 'arxiv/2608.05434v1#0']
+  cand arxiv/2608.05434v1#47: ✓ ✓ ✓ ≥2 S.1. Methodological Novelty. To better position the proposed method relative to prior work, we summarize in Table S.1 whether each method supports lower-tail protection through quantile optimization, explicit treatment-related risk control, 
+  cand arxiv/2608.05434v1#4: an angle-based formulation jointly learns all treatment options at each decision stage. 1.2. Literature Review. A broad literature has developed model-based and value-search methods for estimating optimal treatment regimes (e.g., Murphy, 2003, 2005; 
+  cand arxiv/2608.05434v1#0: Submitted to the Annals of Applied Statistics RISK-AWARE QUANTILE LEARNING FOR PERSONALIZED DYNAMIC TREATMENT REGIMES BY CHUNYIN LEI1,a AND ANNIE QU1,b 1Department of Statistics and Applied Probability, University of California, Santa Barbara, achuny
+
+====================================================================================================
+ID: arxiv-2608-05698v1-55-f
+Q: What is the value of the anomalous part of the signal at a0 = 24?
+Gold parent: arxiv/2608.05698v1#55
+  gold text: and ε = 0.15. The first-order amplitude A1(r1) is linear in a0 only up to a0 ≃12: the measured local slopes fall from 0.99 to 0.85 over a0 = 1–12 and then rise to 1.06 and 2.04 over the last two intervals. The anomalous part of the signal at the reco
+gold not rank-1 (rank-1=sec/0001381197-26-000062#153); consider multi-label: ['sec/0001381197-26-000062#153', 'arxiv/2608.05698v1#22', 'arxiv/2608.05698v1#21']
+  cand sec/0001381197-26-000062#153: 24
+  cand arxiv/2608.05698v1#22: tron slow and pay in intensity and duration. Take the best classical point of the plane-wave grid, γ = 1, a0 = 75 and N = 32, an intensity of 1.2 × 1022 W cm−2 at 800 nm, where Θnet ≃0.4 rad and the transverse depolarization is sin2(Θnet/2) ≃4×10−2, 
+  cand arxiv/2608.05698v1#21: spread. At γ = 1 the same accuracy needs w0 > 99λ, and 10% accuracy still needs w0 > 31λ; the waist requirement relaxes as the intensity rises, as 1/a0 up to a0 ≃2, and we have not tested it above a0 = 24. However, the dominant focusing term carries 
+
+====================================================================================================
+ID: arxiv-2608-05882v1-9-f
+Q: According to the passage in arxiv/2608.05882v1, what is the first question examined using the geometric framework regarding neural representations?
+Gold parent: arxiv/2608.05882v1#9
+  gold text: compact low-dimensional structure, repeated temporal segments are more likely to yield similar empirical distributions (Weed and Bach, 2019). By contrast, when samples spread across a broader high-dimensional space, finite observations from different
+gold not rank-1 (rank-1=arxiv/2608.05882v1#20); consider multi-label: ['arxiv/2608.05882v1#20', 'arxiv/2608.05882v1#17', 'arxiv/2608.05985v1#29']
+  cand arxiv/2608.05882v1#20: Neurodegenerative disease, in contrast, is associated with collapse and rigidification of represen- tational geometry, accompanied by reduced representational flexibility and a narrower range of viable neural states. The association between intrinsic
+  cand arxiv/2608.05882v1#17: representational regime. Importantly, reduced within-condition Wasserstein distance in neurodegenerative disease 11 should not be interpreted as preserved functional stability. Rather, in the context of collapsed intrinsic dimensionality, it reflects
+  cand arxiv/2608.05985v1#29: havior. Representational convergence means that they develop similar activation geometries or latent variables. Algorithmic convergence means that they rely on similar internal transformations, orga- nizational principles, or solution strategies. Par
+
+====================================================================================================
+ID: arxiv-2608-05990v1-41-f
+Q: How many paired technical repeats were conducted for each experiment according to the passage in arxiv/2608.05990v1?
+Gold parent: arxiv/2608.05990v1#41
+  gold text: means and bars show standard deviations (n = 6 paired technical repeats per experiment; 18 paired repeat units in total). Open symbols in b denote trajectories for which no target crossing was observed; these trajectories were assigned the prespecifi
+gold not rank-1 (rank-1=arxiv/2608.05990v1#40); consider multi-label: ['arxiv/2608.05990v1#40', 'arxiv/2608.05990v1#24', 'arxiv/2608.06126v1#30']
+  cand arxiv/2608.05990v1#40: 31 Figure A8: A transferred interferometry protocol reconstructs a reflective resolution target. 32 Figure A8 (continued). a, Photograph of the reflective 1951 USAF resolution target; the marked region indicates the local evaluation area. b, Measured
+  cand arxiv/2608.05990v1#24: Table 24 and task-specific validation definitions in Supplementary Table 25. BS, beam shaping; SL3D, structured- light three-dimensional reconstruction; IF, interferometry. 15 5.5 Transfer of digital-twin protocols to optical hardware Protocols selec
+  cand arxiv/2608.06126v1#30: paired permutation test, implemented as a sign-flip test on the paired differences. Across the paired repeated runs, pretraining on the synthetic dataset reduced the MAE by an average of 0.060 compared with training from scratch. This effect was sign
+
+====================================================================================================
+ID: arxiv-2608-06141v1-28-f
+Q: According to the passage, what is emphasized as a governance commitment regarding speech AI systems?
+Gold parent: arxiv/2608.06141v1#28
+  gold text: outcome. In some contexts, opacity-by-design and selective lis- tening are necessary for privacy, safety, and cultural protocol. Communities should determine when systems listen, what gets stored, and when speech is intentionally not recognized or re
+gold not rank-1 (rank-1=arxiv/2608.06141v1#0); consider multi-label: ['arxiv/2608.06141v1#0', 'arxiv/2608.06141v1#9', 'arxiv/2608.06112v1#29']
+  cand arxiv/2608.06141v1#0: Decolonizing Linguistic Policies in Automated Speech Recognition: A Framework for Cross-Culturally Competent Speech AI Jay L. Cunningham1, Mark Atta Mensah2, Richard Martinez3, Jo˜ao Vieira da Silva Neto1, Efi Dawodu1 1 DePaul University, School of C
+  cand arxiv/2608.06141v1#9: tutions in North America, which shape access to publication venues, resources, and legitimacy. This paper aims to amplify and remain accountable to Global South knowledge-making rather than treat it as supplementary. 4. Linguistic Policies as Design 
+  cand arxiv/2608.06112v1#29: and enforceable policy boundaries, which has also been  discussed in the published work of Shneiderman, (2020)  [112]. Nevertheless, the literature seldom articulates a  formalized architectural construct, such as a hospital-specific  Agent  Orchestr
+
+====================================================================================================
+ID: arxiv-2608-06245v1-0-f
+Q: What is the adopted distance to V420 Vul in kiloparsecs according to the passage?
+Gold parent: arxiv/2608.06245v1#0
+  gold text: Astronomy & Astrophysics manuscript no. V420Vul ©ESO 2026 August 7, 2026 Letter to the Editor H i envelope around the carbon star V420 Vul Xu-Jia Ouyang1 ⋆, Yong Zhang2, 3 ⋆⋆, Chuan-Peng Zhang4, and Li-Yun Zhang1 1 College of Physics, Guizhou Univers
+gold not rank-1 (rank-1=arxiv/2608.06245v1#15); consider multi-label: ['arxiv/2608.06245v1#15', 'arxiv/2608.06245v1#16', 'arxiv/2608.06245v1#3']
+  cand arxiv/2608.06245v1#15: rms noise of ∼150 mK per 1 km s−1 velocity channel. The GALFA-H i archival data are calibrated in units of brightness temperature (TB), which can be converted to flux den- sity (S ν) via the Rayleigh–Jeans approximation, S ν = 2kBν2 c2 TBΩ, (A.1) whe
+  cand arxiv/2608.06245v1#16: hosts an unresolved long-period companion, for which orbital photocenter motion can bias both the measured parallax and the apparent proper motion over the Gaia observing baseline. Unlike the parallax, the induced proper-motion deviations can become 
+  cand arxiv/2608.06245v1#3: though Green Bank Telescope did indeed demonstrate the value Article number, page 1 of 8 arXiv:2608.06245v1  [astro-ph.SR]  6 Aug 2026 A&A proofs: manuscript no. V420Vul of mapping extended outflows (Matthews et al. 2015), its ∼9′ beam ends up blurri
+
+====================================================================================================
+ID: arxiv-2608-06275v1-25-f
+Q: What is the instance mask AP75 for the internal test set according to the given passage?
+Gold parent: arxiv/2608.06275v1#25
+  gold text: of 0.632 and an instance mask AP50:95 of 0.645, whereas the instance mask AP50 and AP75 were 0.818 and 0.774, respectively. At the validation-selected confidence threshold of 0.27, the class-aware adapted PQ was 0.780, with an SQ of 10 TABLE III: Ove
+gold not rank-1 (rank-1=sec/0001193125-26-056028#252); consider multi-label: ['sec/0001193125-26-056028#252', 'sec/0001193125-26-021017#158', 'arxiv/2608.06275v1#24']
+  cand sec/0001193125-26-056028#252: 75
+  cand sec/0001193125-26-021017#158: 35
+  cand arxiv/2608.06275v1#24: decrease the computational cost. The search space and final 0 5 10 15 20 25 30 35 40 45 50 Epoch 1 2 3 4 Loss Training Loss Validation Loss Fig. 5: Training and validation loss graph. optimal hyperparameters employed in all subsequent experi- ments a
+
+====================================================================================================
+ID: arxiv-2608-06336v1-13-f
+Q: What does the notation H = (I0, N0, I1, N1, ..., NR−1, IR) represent in the passage?
+Gold parent: arxiv/2608.06336v1#13
+  gold text: return final orbit I and accepted-doubling history H 2.3 Random doubling Fix a maximum depth kmax ∈N and write K = 2kmax. The orbit builder begins with I0 = {0}. At level r, if |Ir| = K or uz(Ir) = 1, it stops and returns Ir. Otherwise it samples a f
+gold not rank-1 (rank-1=arxiv/2608.06206v1#29); consider multi-label: ['arxiv/2608.06206v1#29', 'arxiv/2608.06056v1#40', 'arxiv/2608.05262v1#25']
+  cand arxiv/2608.06206v1#29: Fix ˜x ∈X, h ∈(0, 1] and δ ∈(0, 1). For t ∈R, set An(t) := n−1 n X i=1 w˜x,h(Xi)1{Si≤t}, Bn := n−1 n X i=1 w˜x,h(Xi), and A(t) := E  w˜x,h(X)1{S(X,Y )≤t}  . 18 Beyond Marginal Validity Conrad et al. Define the calibration event Ωcal n,˜x,h,δ := ( |
+  cand arxiv/2608.06056v1#40: operators describe the unidirectional incoherent hopping of atoms, which is identical to Eq. (58) with M = 3. We note that, at ﬁnite occupancies, the contributions from higher-order quantum ﬂuctuations do not vanish, and hence the second-order approx
+  cand arxiv/2608.05262v1#25: of the uniform exponential tail of our increments), whereby lim infNt ? ∆qKp0qu ą 0 (since Ugp8q of [16, Prop. 5] is strictly positive in our case, of a constant threshold g∆:“ ´1). Returning to our proof, note that by the Gibbs–Markov property Remar
+
+====================================================================================================
+ID: arxiv-2608-06358v1-94-f
+Q: What is the value of p(n) as defined in Lemma 3.4?
+Gold parent: arxiv/2608.06358v1#94
+  gold text: Embedding bounded degree spanning trees in random graphs. arXiv preprint arXiv:1405.6559, 2014. [70] R. Montgomery. Spanning trees in random graphs. Advances in Mathematics, 356:106793, 2019. [71] J. Park and H. Pham. A proof of the kahn–kalai conjec
+gold not rank-1 (rank-1=arxiv/2608.05871v1#39); consider multi-label: ['arxiv/2608.05871v1#39', 'arxiv/2608.05871v1#31', 'arxiv/2608.05871v1#16']
+  cand arxiv/2608.05871v1#39: implies that an upper bound for the order would be β2 2,2,2n3p4 ∼n−5p4 by Lemma 2.1. Now Lemma 2.5 yields that n−5p4σ−4 n →0. By symmetry of indices we get the same results for i3 = j1 and we have thus shown (5.7) for α ∈(3,4). At this point only the
+  cand arxiv/2608.05871v1#31: E[maxj=1,...,kn Z2 nj] is bounded in n and that max j=1,...,kn |Znj| P→0 and kn X j=1 Z2 nj P→1. Then we have Snkn d→N(0,1) as n →∞. PHASE TRANSITIONS FOR SAMPLE CORRELATION MATRICES 25 For convenience of notation, we set T3 = T1 + T2. In view of (2.
+  cand arxiv/2608.05871v1#16: THEOREM 3.1. Let α ∈(0,4) and p = pn →∞. If α ∈(0,3], additionally assume p = ω(nδ) for some δ > δ∗(α) with δ∗(α) defined in (2.14). Then, as n →∞, tr(R2) satisfies (3.1) tr(R2) −µn σn d→N(0,1). Theorem 3.1 reveals the dependence on α in the variance
+
+====================================================================================================
+ID: rtd-mypy-417-f
+Q: What is the mypy command line option for enabling HTML report generation?
+Gold parent: rtd/mypy#417
+  gold text: linecoverage_report configuration value, 166 lineprecision_report configuration value, 166 local_partial_types configuration value, 160 M modules configuration value, 150 mypy command line option -O, 131 -V, 131 --allow-redefinition, 137 --allow-rede
+gold not rank-1 (rank-1=rtd/mypy#411); consider multi-label: ['rtd/mypy#411', 'rtd/mypy#412', 'rtd/mypy#410']
+  cand rtd/mypy#411: mypy command line option, 134 --doc-dir stubgen command line option, 181 --enable-error-code mypy command line option, 141 --enable-incomplete-feature mypy command line option, 145 --exclude mypy command line option, 130 --exclude-gitignore mypy comm
+  cand rtd/mypy#412: --json dmypy command line option, 172 --junit-format mypy command line option, 146 --junit-xml mypy command line option, 146 --limit dmypy command line option, 173 --linecount-report mypy command line option, 145 --linecoverage-report mypy command li
+  cand rtd/mypy#410: • genindex • search 357 Mypy Documentation, Release 2.4.0+dev.14be7ab05211f6b4f6504bbd19af315c6db7dec6 358 Chapter 2. Indices and tables INDEX Symbols -O mypy command line option, 131 -V mypy command line option, 131 --allow-redefinition mypy command
+
+====================================================================================================
+ID: rtd-pytest-2-f
+Q: What section of the document discusses Python version support for pytest?
+Gold parent: rtd/pytest#2
+  gold text: . . . . . . . . . . . . . . . . . . . . . . . . 446 5 Further topics 451 5.1 Examples and customization tricks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 451 i 5.2 Backwards Compatibility Policy . . . . . . . . . . . . . 
+gold not rank-1 (rank-1=rtd/pytest-django#41); consider multi-label: ['rtd/pytest-django#41', 'rtd/pytest#518', 'rtd/pytest-django#42']
+  cand rtd/pytest-django#41: • Official Python 3.11 support. • Drop support for Python version 3.5, 3.6 & 3.7. • Drop official support for Django 4.0 and 2.2 • Drop support for pytest < 7. Improvements • Add support for setting available_apps in the django_db marker. • Convert D
+  cand rtd/pytest#518: These warnings may be suppressed using the standard means: -W command-line flag or filterwarnings configuration option (see How to capture warnings), but we suggest to use these sparingly and temporarily, and heed the warnings when possible. We will 
+  cand rtd/pytest-django#42: 4.9.13 v4.4.0 (2021-06-06) Improvements • Add a fixture django_capture_on_commit_callbacks to capture transaction.on_commit() callbacks in tests. 4.9.14 v4.3.0 (2021-05-15) Improvements • Add experimental multiple databases (multi db) support. • Add 
+
+====================================================================================================
+ID: rtd-requests-87-f
+Q: What does the function prepare_cookies do if called multiple times on the same PreparedRequest object without removing the "Cookie" header first?
+Gold parent: rtd/requests#87
+  gold text: >>> s = requests.Session() >>> s.send(r) <Response [200]> body: _t.BodyType request body to send to the server. deregister_hook(event: str, hook: Callable[[Response], Any]) →bool Deregister a previously registered hook. Returns True if the hook exist
+gold not rank-1 (rank-1=rtd/django#2669); consider multi-label: ['rtd/django#2669', 'rtd/requests#64', 'rtd/requests#15']
+  cand rtd/django#2669: intended to be imported in this fashion can or will be imported. Caching of anonymous pages could reveal CSRF token Django includes both a caching framework and a system for preventing cross-site request forgery (CSRF) attacks. The CSRF-protection sy
+  cand rtd/requests#64: • Updated internal urllib3. • Fixed @Lukasa’s lack of taste. 3.9.83 2.0.1 (2013-10-24) • Updated included CA Bundle with new mistrusts and automated process for the future • Added MD5-sess to Digest Auth • Accept per-file headers in multipart file PO
+  cand rtd/requests#15: prepped = req.prepare() # do something with prepped.body prepped.body = 'No, I want exactly this as the body.' # do something with prepped.headers del prepped.headers['Content-Type'] resp = s.send(prepped, stream=stream, verify=verify, proxies=proxie
+
+====================================================================================================
+ID: rtd-twisted-355-f
+Q: What is the name attribute value for an instance of MyPerspective when a user logs in anonymously?
+Gold parent: rtd/twisted#355
+  gold text: pbAnonServer.py #!/usr/bin/env python # Copyright (c) Twisted Matrix Laboratories. # See LICENSE for details. """ Implement the realm for and run on port 8800 a PB service which allows both anonymous and username/password based access. Successful use
+gold not rank-1 (rank-1=rtd/django#1140); consider multi-label: ['rtd/django#1140', 'rtd/django#596', 'rtd/django#597']
+  cand rtd/django#1140: by the AuthenticationMiddleware (representing the currently logged-in user), you should know this attribute is True for any User instance. is_anonymous Read-only attribute which is always False. This is a way of differentiating User and AnonymousUser
+  cand rtd/django#596: you want prompted for when a user is created interactively. REQUIRED_FIELDS has no effect in other parts of Django, like creating a user in the admin. For example, here is the partial definition for a user model that defines two required fields - a d
+  cand rtd/django#597: clean() Normalizes the username by calling normalize_username(). If you override this method, be sure to call super() to retain the normalization. classmethod get_email_field_name() Returns the name of the email field specified by the EMAIL_FIELD att
+
+====================================================================================================
+ID: sec-0000064040-26-000013-177-f
+Q: What was the percentage increase in revenue from 2024 to 2025?
+Gold parent: sec/0000064040-26-000013#177
+  gold text: and segment operating profit information for the years ended December 31:(in millions)Year ended December 31,% Change 202520242023’25 vs ’24’24 vs ’23Revenue$2,299 $2,142 $1,946 7 %10 %Subscription revenue $2,016 $1,873 $1,707 8 %10 %Sales usage-base
+gold not rank-1 (rank-1=sec/0001628280-26-003942#192); consider multi-label: ['sec/0001628280-26-003942#192', 'sec/0001262039-26-000007#187', 'sec/0000883241-25-000028#125']
+  cand sec/0001628280-26-003942#192: by an increase in advertising demand, which we believe is mostly due to ongoing improvements to our ad performance from our ad targeting and measurement tools. This increase was partially offset by a higher number of ad impressions delivered, especia
+  cand sec/0001262039-26-000007#187: support is offered 24x7 with flexible add-ons, including enhanced SLAs and priority hardware replacement through in-country and local depots. Organizations have the flexibility to procure different levels of service for different solutions based on t
+  cand sec/0000883241-25-000028#125: The increase for fiscal 2024 compared to fiscal 2023 was primarily due to an increase in the sale of IP and hardware products driven by higher demand from customers.Upfront products revenue as a percentage of total revenue will likely fluctuate based
+
+====================================================================================================
+ID: sec-0000066740-26-000014-138-f
+Q: According to the passage, what is one of the objectives of a company's internal control over financial reporting regarding the maintenance of records?
+Gold parent: sec/0000066740-26-000014#138
+  gold text: all material respects.Our audits of the consolidated financial statements included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures t
+gold not rank-1 (rank-1=sec/0000064040-26-000013#220); consider multi-label: ['sec/0000064040-26-000013#220', 'sec/0001381197-26-000062#429', 'sec/0000318154-26-000010#247']
+  cand sec/0000064040-26-000013#220: Our responsibility is to express an opinion on the Company’s internal control over financial reporting based on our audit. We are a public accounting firm registered with the PCAOB and are required to be independent with respect to the Company in acc
+  cand sec/0001381197-26-000062#429: our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether effective internal control over financial reporting was maintained in all material respec
+  cand sec/0000318154-26-000010#247: expressed an unqualified opinion thereon.Basis for OpinionThe Company’s management is responsible for maintaining effective internal control over financial reporting and for its assessment of the effectiveness of internal control over financial repor
+
+====================================================================================================
+ID: sec-0000077476-26-000007-77-f
+Q: What specific commodities are mentioned as being necessary for products and potentially affected by climate change-induced disruptions in supply chains?
+Gold parent: sec/0000077476-26-000007#77
+  gold text: to build and sustain the proper information technology infrastructure, or if we fail to achieve the expected benefits from this initiative, our business could be adversely affected.Climate change or measures to address climate change and other sustai
+gold not rank-1 (rank-1=sec/0000089800-26-000008#43); consider multi-label: ['sec/0000089800-26-000008#43', 'sec/0000101829-26-000006#107', 'sec/0001628280-26-005345#67']
+  cand sec/0000089800-26-000008#43: requirements such as new or increased tariffs, sanctions, quotas or trade barriers), business disruptions due to cybersecurity incidents, terrorist activity, armed conflicts and wars (including the ongoing conflict between Russia and Ukraine), public
+  cand sec/0000101829-26-000006#107: could be commenced against us, could be costly to defend, and could adversely affect our business. Moreover, our business, the businesses of our suppliers, subcontractors, service providers, distributors, and customers, and the industries in which we
+  cand sec/0001628280-26-005345#67: water risk; health pandemics; forest fires and other natural disasters; acts of terrorism; geopolitical regional conflicts; cybersecurity incidents; supplier capacity; and consumer or industrial demand. During 2025, price volatility and higher aggreg
+
+====================================================================================================
+ID: sec-0000086312-26-000065-442-f
+Q: As of December 31, 2025, how much did the Company's claims and claim adjustment expense reserves include for asbestos-related claims, net of reinsurance?
+Gold parent: sec/0000086312-26-000065#442
+  gold text: claims with zero claim dollars may still generate some level of claim adjustment expenses.  Claim counts for assumed business are included only to the extent such counts are available. The Company generally does not receive claim count information fo
+gold not rank-1 (rank-1=sec/0000086312-26-000065#309); consider multi-label: ['sec/0000086312-26-000065#309', 'sec/0000086312-26-000065#122', 'sec/0000086312-26-000065#252']
+  cand sec/0000086312-26-000065#309: are changed.There are also additional risks which impact the estimation of ultimate costs for catastrophes. For example, the estimation of reserves related to hurricanes, tornadoes, wildfires and other catastrophic events can be affected by the inabi
+  cand sec/0000086312-26-000065#122: date for a claim, and reporting lags (the time between the occurrence of the insured event and when it is actually reported to the insurer). Informed judgment is applied throughout the process. The Company derives estimates for unreported claims and 
+  cand sec/0000086312-26-000065#252: In addition to claims against policyholders, proceedings have been launched directly against insurers, including the Company, by individuals challenging insurers’ conduct with respect to the handling of past asbestos claims and by individuals seeking
+
+====================================================================================================
+ID: sec-0000107263-26-000006-349-f
+Q: What is the balance at the end of period for Year Ended December 31, 2025?
+Gold parent: sec/0000107263-26-000006#349
+  gold text: value hierarchy.Year Ended December 31,20252024(Millions)Balance at beginning of period$48 $53 Gains (losses) included in Williams’ Consolidated Statement of Income50 (5)Purchases, issuances, and settlements(31)(1)Transfers into Level 3(78)1 Transfer
+gold not rank-1 (rank-1=sec/0001104659-26-015365#426); consider multi-label: ['sec/0001104659-26-015365#426', 'sec/0001437749-26-006113#277', 'sec/0001193125-26-082531#444']
+  cand sec/0001104659-26-015365#426: Table of ContentsIndex to Financial Statements​DIGITAL REALTY TRUST, INC.DIGITAL REALTY TRUST, L.P.SCHEDULE IIIPROPERTIES AND ACCUMULATED DEPRECIATIONDecember 31, 2025(Dollar amounts in thousands)(1) Tax CostThe aggregate gross cost of the Company’s 
+  cand sec/0001437749-26-006113#277: Period   Balance at Beginning of Period   Additions   Reductions   Balance at End of Period   Year ended December 31, 2023  $20,321  $15,405  $(718) $35,008   Year ended December 31, 2024 (As Restated)  $35,008  $3,575,542  $(2,079) $3,608,471   Year
+  cand sec/0001193125-26-082531#444: Item 7A. Quantitative and Qualitative Disclosures About Market Risk Our predominant exposure to market risk is related to our role as general partner or investment adviser to the Blackstone Funds and the sensitivities to movements in the fair value o
+
+====================================================================================================
+ID: sec-0000277948-26-000006-24-f
+Q: What was the approximate aggregate market value of CSX Corporation's voting stock held by non-affiliates as of the required date mentioned in the passage?
+Gold parent: sec/0000277948-26-000006#24
+  gold text: and the required date to use), the aggregate market value of the Registrant’s voting stock held by non-affiliates was approximately $61 billion (based on the close price as reported on the NASDAQ National Market System on such date).There were 1,859,
+gold not rank-1 (rank-1=sec/0000745732-26-000006#9); consider multi-label: ['sec/0000745732-26-000006#9', 'sec/0001596532-26-000013#11', 'sec/0000320193-25-000079#10']
+  cand sec/0000745732-26-000006#9: of the Act).  Yes ☐   No ☒The aggregate market value of the voting common stock held by non-affiliates of the Registrant as of August 2, 2025 was $43,685,150,538, based on the closing price on that date as reported by the Nasdaq Global Select Market®
+  cand sec/0001596532-26-000013#11: those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant’s executive officers during the relevant recovery period pursuant to §240.10D-1(b).    ☐  Indicate by check m
+  cand sec/0000320193-25-000079#10: financial statements.          ☐Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant’s executive officers during the relevan
+
+====================================================================================================
+ID: sec-0000319201-26-000027-93-f
+Q: In 2026, what type of financial instruments did the company enter into to manage its exposure to interest rate risks?
+Gold parent: sec/0000319201-26-000027#93
+  gold text: to fluctuations in interest rates and the market values of our portfolio investments, and an impairment of our investments could harm our earnings. In addition, we and our stockholders are exposed to risks related to the volatility of the market for 
+gold not rank-1 (rank-1=sec/0001628280-26-009059#200); consider multi-label: ['sec/0001628280-26-009059#200', 'sec/0001755672-26-000004#183', 'sec/0000313616-26-000062#158']
+  cand sec/0001628280-26-009059#200: Leases (a)Finance Leases (b)Total2026$387 $248 $635 2027289 226 515 2028190 188 378 202958 152 210 203044 136 180 Thereafter68 226 294 Total lease payments1,036 1,176 2,212 Less: Discount(81)(177)(258)Total lease liabilities$955 $999 $1,954 (a)The we
+  cand sec/0001755672-26-000004#183: a more resilient agriculture value chain, while also working to reduce greenhouse gas emissions through cost effective operational improvements.  59Table Of ContentsPart IIITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISKThe company
+  cand sec/0000313616-26-000062#158: COMPREHENSIVE INCOMEComprehensive income increased by approximately $4.2 billion in 2025 as compared to 2024, primarily driven by the impact of gains from foreign currency translation adjustments and cash flow hedges in 2025 compared to losses in 202
+
+====================================================================================================
+ID: sec-0000732717-26-000120-115-f
+Q: What was the percentage change in Mexico Wireless Net Additions from 2024 to 2025 for prepaid subscribers?
+Gold parent: sec/0000732717-26-000120#115
+  gold text: Operating Expenses4,234 4,192 4,073 1.0 2.9 Operating Income (Loss)$145 $40 $(141)— %— %The following tables highlight other key measures of performance for Mexico:SubscribersPercent Change(in 000s)2025202420232025 vs. 20242024 vs. 2023Postpaid6,751 
+gold not rank-1 (rank-1=sec/0000732717-26-000120#67); consider multi-label: ['sec/0000732717-26-000120#67', 'sec/0000732717-26-000120#111', 'sec/0001283699-26-000010#131']
+  cand sec/0000732717-26-000120#67: 3% of 2025 segment operating revenues and less than 1% of our 2025 total segment operating income. We divide our revenue into the following categories: service and equipment.ServiceWe provide postpaid and prepaid wireless services in Mexico to approx
+  cand sec/0000732717-26-000120#111: 2023, respectively. Wearables and other net adds were 44, 430 and 639 for the years ended December 31, 2025, 2024 and 2023, respectively.2Excludes migrations between wireless subscriber categories, including connected devices, and acquisition-related
+  cand sec/0001283699-26-000010#131: 26%, primarily from:•Higher postpaid other net customer additions, primarily due to•Higher net additions from mobile internet devices, including success from business customers and higher prior year deactivations of lower ARPU mobile internet devices
+
+====================================================================================================
+ID: sec-0000813672-26-000016-146-f
+Q: What was the total interest expense for fiscal year 2025?
+Gold parent: sec/0000813672-26-000016#146
+  gold text: with our business strategy. Restructuring charges and related benefits are derived from management's estimates during the formulation of the restructuring plans, based on then-currently available information. As a result, our restructuring plans may 
+gold not rank-1 (rank-1=sec/0000883241-25-000028#131); consider multi-label: ['sec/0000883241-25-000028#131', 'sec/0000723254-26-000028#74', 'sec/0000820318-25-000014#136']
+  cand sec/0000883241-25-000028#131: End of Period(dollars in millions)2025$4.6 $— $(0.8)$3.8 2024$8.2 $— $(3.6)$4.6 2023$— $53.1 $(44.9)$8.2 In November 2025, we initiated a restructuring plan for involuntary employee terminations as part of a business reorganization (the 2026 Plan) up
+  cand sec/0000723254-26-000028#74: First Aid and Safety Services reportable operating segment.Selling and administrative expenses increased $271.7 million, to 27.4% as a percent of revenue, compared to 27.2% in fiscal 2025. In fiscal 2025 we recorded a $15.0 million gain on a sale of 
+  cand sec/0000820318-25-000014#136: new term loans (the “New Term B-2 Loans”) having substantially similar terms as the New Term B Loans, except with respect to the interest rate applicable to the New Term B-2 Loans and certain other provisions. As further amended, the New Term B-2 Loa
+
+====================================================================================================
+ID: sec-0000821189-26-000054-198-f
+Q: What was the weighted average price per barrel for Mont Belvieu Propane (Tet) contracts sold in January - December 2026?
+Gold parent: sec/0000821189-26-000054#198
+  gold text: - December 2026NYMEX Henry Hub70 4.23 3.71 January - December 2027NYMEX Henry Hub120 4.41 3.42 Ethane Financial Price Swap ContractsContracts SoldPeriodSettlement IndexVolume(MBbld)Weighted Average Price($/Bbl)August - December 2025 (closed)Mont Belv
+gold not rank-1 (rank-1=sec/0001193125-26-063120#656); consider multi-label: ['sec/0001193125-26-063120#656', 'sec/0000821189-26-000054#122', 'sec/0000821189-26-000054#121']
+  cand sec/0001193125-26-063120#656: ability from time to time to increase such amount at its option. Except in certain circumstances, Dominion Energy can elect physical, cash or net settlement of the forward sale agreements. During the second quarter of 2025, Dominion Energy entered in
+  cand sec/0000821189-26-000054#122: ContractsContracts SoldPeriodSettlement IndexVolume(MBbld)Weighted Average Price($/Bbl)August - December 2025 (closed)Mont Belvieu Ethane (non-Tet)11 $10.46 January 2026 (closed)Mont Belvieu Ethane (non-Tet)11 10.94 February - December 2026Mont Belvi
+  cand sec/0000821189-26-000054#121: Risk Factors.46Financial Commodity and Other Derivative TransactionsPresented below is a comprehensive summary of EOG's financial commodity derivative contracts settled during the year ended December 31, 2025 (closed) and remaining for 2026 and there
+
+====================================================================================================
+ID: sec-0000831001-26-000011-602-f
+Q: What was the total amount of corporate loans managed by Citigroup in North American offices as of December 31, 2025, in millions of dollars?
+Gold parent: sec/0000831001-26-000011#602
+  gold text: nonrecurring fair value measurements. Life-to-date amounts on securities still heldIn millions of dollarsDecember 31, 2025Measurement alternative:Impairment losses$555 Downward changes for observable prices40 Upward changes for observable prices1,062
+gold not rank-1 (rank-1=sec/0000831001-26-000011#367); consider multi-label: ['sec/0000831001-26-000011#367', 'sec/0000831001-26-000011#615', 'sec/0000831001-26-000011#746']
+  cand sec/0000831001-26-000011#367: corporate loans. (4)    Asia Consumer includes the three remaining consumer loan portfolios: Korea, Poland (through the first quarter of 2025) and Russia until the completion of its consumer loan portfolio wind-down in the second quarter of 2025. 89 
+  cand sec/0000831001-26-000011#615: income on consumer loans primarily represents loan origination fees, net of certain direct origination costs, that are deferred and recognized as Interest income over the lives of the related loans, except for credit cards (see Note 5).(13)Not includ
+  cand sec/0000831001-26-000011#746: potential amount of future paymentsIn billions of dollars at December 31, 2024InvestmentgradeNon-investmentgradeNotratedTotalFinancial standby letters of credit$63.2 $15.6 $0.2 $79.0 Loans sold with recourse— — 1.0 1.0 Other— 8.4 — 8.4 Total$63.2 $24
+
+====================================================================================================
+ID: sec-0000885725-26-000010-60-f
+Q: What is one potential consequence for medical device companies when countries without previous regulatory requirements for medical devices establish such regulations?
+Gold parent: sec/0000885725-26-000010#60
+  gold text: as a result, our sales growth, market share and operating profits from our international operations may be adversely affected.Our international operations are subject to established and developing legal and regulatory requirements for medical devices
+gold not rank-1 (rank-1=sec/0000885725-26-000010#80); consider multi-label: ['sec/0000885725-26-000010#80', 'sec/0000313616-26-000062#119', 'sec/0000318154-26-000010#74']
+  cand sec/0000885725-26-000010#80: medical device industry. Medical devices that have a valid CE Certificate issued before May 2021 can continue to be sold during the applicable transition period or until the CE Certificate expires, whichever comes first, provided there are no signifi
+  cand sec/0000313616-26-000062#119: regulating fraud and abuse in the healthcare industry and the privacy and security of health information.  Failure to comply with those regulations could adversely affect our business and financial statements.Certain of our products are medical devic
+  cand sec/0000318154-26-000010#74: product designation for BLINCYTO in the EU and may seek medicinal product designation for a number of our products in the future.Other countries such as those in Latin America and the Middle East have review processes and data requirements similar to
+
+====================================================================================================
+ID: sec-0000898173-26-000009-63-f
+Q: According to the passage, what could negatively impact the market price of a company's common stock even if the difference is slight?
+Gold parent: sec/0000898173-26-000009#63
+  gold text: may not align with an average market participant.  The market price of our common stock may also be affected by our ability to meet analysts’ expectations and failure to meet such expectations, even slightly, could have an adverse effect on the marke
+gold not rank-1 (rank-1=sec/0000200406-26-000016#104); consider multi-label: ['sec/0000200406-26-000016#104', 'sec/0001510295-26-000009#122', 'sec/0001628280-26-008819#117']
+  cand sec/0000200406-26-000016#104: the Company's common stock may fluctuate significantlyThe Company cannot predict the effect of the planned separation on the trading price of shares of its common stock, and market value of shares of its common stock may be less than, equal to or gre
+  cand sec/0001510295-26-000009#122: preferences and relative, participating, optional and other special rights, including preferences over our common stock respecting dividends and distributions, as our board of directors generally may determine. The terms of one or more classes or ser
+  cand sec/0001628280-26-008819#117: imposed restrictions on including companies with multiple class share structures in certain of their indexes. Given the sustained flow of investment funds into passive strategies that seek to track certain indexes, exclusion from stock indexes would 
+
+====================================================================================================
+ID: sec-0001039684-26-000006-90-f
+Q: According to the passage, what additional channels of distribution do they use besides SEC filings and their website to reach public investors?
+Gold parent: sec/0001039684-26-000006#90
+  gold text: or otherwise furnishing it to the SEC.  Copies of our Code of Business Conduct and Ethics, Corporate Governance Guidelines, Director Independence Guidelines, Corporate Sustainability Report and the written charters of our Board Committees also are av
+gold not rank-1 (rank-1=sec/0001628280-25-040830#51); consider multi-label: ['sec/0001628280-25-040830#51', 'sec/0002046386-26-000009#70', 'sec/0001065280-26-000034#28']
+  cand sec/0001628280-25-040830#51: Annual Report.Available InformationOur website is located at www.lumentum.com, and our investor relations website is located at www.investor.lumentum.com. Copies of our Annual Reports on Form 10-K, Quarterly Reports on Form 10-Q, Current Reports on F
+  cand sec/0002046386-26-000009#70: our foreign operations, including the U.S. Foreign Corrupt Practices Act (the “FCPA”), U.S. export control laws, the UK Bribery Act, German anti-corruption laws, and other anti-bribery laws and laws pertaining to the accuracy of our internal books an
+  cand sec/0001065280-26-000034#28: and their families and provide a variety of benefit programs based on region, including health benefits.  In the U.S., employees generally receive an annual cash health benefit allowance that they may allocate to medical, dental and vision premiums i
+
+====================================================================================================
+ID: sec-0001048911-26-000105-282-f
+Q: What two new reportable segments were identified following the Spin-Off according to the passage?
+Gold parent: sec/0001048911-26-000105#282
+  gold text: will no longer consolidate FedEx Freight, and FedEx Freight is no longer a reportable segment. Following the Spin-Off, we realigned our internal reporting and management structure, resulting in the identification of two new reportable segments: Expre
+gold not rank-1 (rank-1=sec/0001048911-26-000105#35); consider multi-label: ['sec/0001048911-26-000105#35', 'sec/0001048911-26-000105#36', 'sec/0001048911-26-000105#222']
+  cand sec/0001048911-26-000105#35: comparisons are to the corresponding period of the prior year.Spin-Off and New Reportable SegmentsIn December 2024, we announced that FedEx’s Board of Directors decided to pursue a full separation of FedEx’s less-than-truckload freight transportation
+  cand sec/0001048911-26-000105#36: this Annual Report contains certain references to the financial and operational performance of our reportable segments in place prior to the Spin-Off. Additional information regarding our reportable segments in place during 2026 and 2025 can be found
+  cand sec/0001048911-26-000105#222: be a reportable segment. Following the Spin-Off, we realigned our internal reporting and management structure, resulting in the identification of two new reportable segments: Express U.S. Domestic and Express International. These changes had no impac
+
+====================================================================================================
+ID: sec-0001067701-26-000007-112-f
+Q: According to the passage, which method is used to value non-compete agreements and customer relationships in acquisitions?
+Gold parent: sec/0001067701-26-000007#112
+  gold text: values of these intangible assets reflect various assumptions about discount rates, revenue growth rates, operating margins, terminal values, useful lives and other prospective financial information. Non-compete agreements, customer relationships and
+gold not rank-1 (rank-1=sec/0001506307-26-000011#215); consider multi-label: ['sec/0001506307-26-000011#215', 'sec/0001067701-26-000007#149', 'sec/0002046386-26-000009#256']
+  cand sec/0001506307-26-000011#215: resulting in a net $28 million decrease to goodwill. The goodwill consists primarily of synergies expected from the business combination and $124 million of the goodwill recorded is expected to be tax deductible. The acquired assets are included in o
+  cand sec/0001067701-26-000007#149: the straight-line method. The range of estimated useful lives for property and equipment is three to 40 years. Ordinary repair and maintenance costs are charged to expense as incurred. Leasehold improvements are amortized using the straight-line meth
+  cand sec/0002046386-26-000009#256: acquired, at fair value$905 The excess of the purchase price over the fair value of the net identifiable tangible and intangible assets was recorded as goodwill. $427 million of the goodwill is estimated to be tax deductible over the amortizable peri
+
+====================================================================================================
+ID: sec-0001099219-26-000013-531-f
+Q: What was the net investment income for the Group segment in 2025, according to the provided financial information?
+Gold parent: sec/0001099219-26-000013#531
+  gold text: Accounting Policies.”Set forth in the tables below is certain financial information with respect to the Company’s segments for the years ended December 31, 2025, 2024 and 2023.Year Ended December 31, 2025GroupBenefitsRISAsiaLatinAmericaEMEAMIM (In mi
+gold not rank-1 (rank-1=sec/0000086312-26-000065#247); consider multi-label: ['sec/0000086312-26-000065#247', 'sec/0000086312-26-000065#240', 'sec/0000086312-26-000065#244']
+  cand sec/0000086312-26-000065#247: income (loss) before income taxes2,538 1,543 (231)Income tax expense (benefit)485 294 (103)Segment income (loss)$2,053 $1,249 $(128)Loss and loss adjustment expense ratio65.0 %69.7 %80.4 %Underwriting expense ratio24.5 24.7 24.4 Combined ratio89.5 %9
+  cand sec/0000086312-26-000065#240: claims and expenses21,432 20,570 18,910 Segment income before income taxes4,586 4,087 2,951 Income tax expense891 781 368 Segment income$3,695 $3,306 $2,583 Loss and loss adjustment expense ratio62.2 %63.1 %65.3 %Underwriting expense ratio29.5 29.4 2
+  cand sec/0000086312-26-000065#244: expense ratio39.3 39.9 36.8 Combined ratio81.9 %84.3 %76.9 %OverviewSegment income in 2025 was $950 million, $135 million or 17% higher than segment income of $815 million in 2024. The increase in segment income before income taxes primarily reflecte
+
+====================================================================================================
+ID: sec-0001101239-26-000032-93-f
+Q: What is one potential risk mentioned regarding the accuracy of projections for an acquisition?
+Gold parent: sec/0001101239-26-000032#93
+  gold text: and have a negative effect on our earnings per share). Acquisitions expose us to potential risks, including but not limited to:•the possible disruption of our ongoing business and diversion of management's attention by acquisition, transition and int
+gold not rank-1 (rank-1=sec/0000833444-25-000097#161); consider multi-label: ['sec/0000833444-25-000097#161', 'sec/0000721371-25-000079#124', 'sec/0001628280-26-006516#233']
+  cand sec/0000833444-25-000097#161: as we considered necessary in the circumstances. We believe that our audits provide a reasonable basis for our opinions.Definition and Limitations of Internal Control over Financial ReportingA company’s internal control over financial reporting is a 
+  cand sec/0000721371-25-000079#124: (3) provide reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use, or disposition of the company’s assets that could have a material effect on the financial statements.Because of its inherent limitations, inte
+  cand sec/0001628280-26-006516#233: of the company; and (3) provide reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use, or disposition of the company’s assets that could have a material effect on the financial statements.Because of its inhere
+
+====================================================================================================
+ID: sec-0001104659-25-122321-292-f
+Q: What is the specific date for which Deere & Company's internal control over financial reporting was audited according to the passage?
+Gold parent: sec/0001104659-25-122321#292
+  gold text: Table of Contents​​REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRMTo the stockholders and the Board of Directors of Deere & Company:Opinion on the Financial StatementsWe have audited the accompanying consolidated balance sheets of Deere & Com
+gold not rank-1 (rank-1=sec/0001104659-25-122321#299); consider multi-label: ['sec/0001104659-25-122321#299', 'sec/0000899051-26-000031#407', 'sec/0001193125-26-323660#345']
+  cand sec/0001104659-25-122321#299: Table of Contents​REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRMTo the stockholders and the Board of Directors of Deere & Company:Opinion on Internal Control over Financial ReportingWe have audited the internal control over financial reporti
+  cand sec/0000899051-26-000031#407: financial reporting  Management is responsible for establishing and maintaining adequate internal control over financial reporting as defined in Rule 13a-15(f) under the Securities Exchange Act of 1934.Under the supervision and with the participation
+  cand sec/0001193125-26-323660#345: provide absolute assurance that a misstatement of our consolidated financial statements would be prevented or detected. Management conducted an evaluation of the effectiveness of our internal control over financial reporting based on the framework in
+
+====================================================================================================
+ID: sec-0001104659-26-020831-90-f
+Q: According to the passage, which raw materials are owned by third-party suppliers with proprietary rights and not shared with other customers?
+Gold parent: sec/0001104659-26-020831#90
+  gold text: the United States are subject to risks relating to: appropriate compliance with legal and regulatory requirements in local jurisdictions; difficulties in staffing and managing local operations, which has, at times, necessitated enhanced local trainin
+gold not rank-1 (rank-1=sec/0000318154-26-000010#169); consider multi-label: ['sec/0000318154-26-000010#169', 'sec/0000318154-26-000010#66', 'sec/0001104659-26-020831#39']
+  cand sec/0000318154-26-000010#169: to operate in Puerto Rico, and could materially and adversely affect our ability to supply our products and affect our product sales. See Manufacturing difficulties, disruptions or delays could limit supply of our products and limit our product sales
+  cand sec/0000318154-26-000010#66: future tariffs. See Item 1A. Risk factors—Our sales and operations are subject to the risks of doing business internationally, including in new or emerging markets, and Part II—Item 7. Management’s Discussion and Analysis of Financial Condition and R
+  cand sec/0001104659-26-020831#39: and/or beverage bases from flavor suppliers including TCCC in the United States and abroad, and may purchase certain other ingredients from independent suppliers located in the United States and abroad.For certain flavors purchased from third-party s
+
+====================================================================================================
+ID: sec-0001133421-26-000003-59-f
+Q: According to the passage, what are some potential consequences for a company due to improper actions by its employees or partners?
+Gold parent: sec/0001133421-26-000003#59
+  gold text: information security and data privacy, intellectual property and contract terms. Improper actions by our employees, agents or others working with us or on our behalf also subject us to risk of administrative, civil or criminal investigations and enfo
+gold not rank-1 (rank-1=sec/0001104659-26-017530#70); consider multi-label: ['sec/0001104659-26-017530#70', 'sec/0000032604-25-000087#56', 'sec/0000076334-25-000035#55']
+  cand sec/0001104659-26-017530#70: Table of ContentsMisconduct by our employees, subcontractors or partners or our failure to comply with laws or regulations could harm our reputation, damage our relationships with customers, reduce our revenue and profits, and subject us to criminal 
+  cand sec/0000032604-25-000087#56: could be affected by changes in the mix of earnings in countries 9with different statutory tax rates, as well as by changes in the local tax laws and regulations, or the interpretations thereof, including multiple, overlapping tax regimes enacted as 
+  cand sec/0000076334-25-000035#55: by U.S. GAAP, we establish reserves based on our assessment of contingencies, including contingencies related to legal claims asserted against us.  Subsequent developments in legal proceedings may affect our assessment and estimates of the loss conti
+
+====================================================================================================
+ID: sec-0001156039-26-000013-105-f
+Q: What significant change did CMS make to the hierarchical condition category model in version 28 that impacted RAF scores for Medicare Advantage beneficiaries?
+Gold parent: sec/0001156039-26-000013#105
+  gold text: Rates may be affected by federal and state budgetary constraints. Certain state contracts are subject to cancellation in the event of the unavailability of state funds. Additionally, ongoing CMS changes to the calculation of risk in the Medicare Adva
+gold not rank-1 (rank-1=sec/0000064803-26-000010#191); consider multi-label: ['sec/0000064803-26-000010#191', 'sec/0000064803-26-000010#106', 'sec/0000064803-26-000010#190']
+  cand sec/0000064803-26-000010#191: changes to the structure of the hierarchical condition category model in version 28, which may impact RAF scores for a larger percentage of Medicare Advantage beneficiaries and could result in changes to beneficiary RAF scores with or without a chang
+  cand sec/0000064803-26-000010#106: Medicare Advantage, Medicare stand-alone Part D PDP and other Medicare products are highly regulated by CMS. The regulations and contractual requirements applicable to the Company and other private participants in Medicare programs are complex, expen
+  cand sec/0000064803-26-000010#190: ratings” from CMS for our Medicare Advantage plans will continue to have a significant effect on our plans’ operating results. Only Medicare Advantage plans with a star rating of 4 or higher (out of 5) are eligible for a quality bonus in their basic 
+
+====================================================================================================
+ID: sec-0001163165-26-000009-234-f
+Q: According to the passage, what is the net property, plant and equipment (PP&E) value for operating leases as of December 31, 2025?
+Gold parent: sec/0001163165-26-000009#234
+  gold text: sheet on a gross basis. While we record lease costs on a gross basis in our consolidated income statement and statement of cash flows, such costs are offset by the reimbursement we receive from our coventurers for their share of the lease cost as the
+gold not rank-1 (rank-1=sec/0000885725-26-000010#212); consider multi-label: ['sec/0000885725-26-000010#212', 'sec/0001510295-26-000009#295', 'sec/0001571996-26-000008#209']
+  cand sec/0000885725-26-000010#212: were classified as finance leases. The purchase has resulted in the recognition of buildings and land included within Property, plant and equipment, net.The following table presents supplemental balance sheet information related to our operating leas
+  cand sec/0001510295-26-000009#295: lease payment receipts under our sales-type leases were as follows as of December 31, 2025:(Millions of dollars)2026$181 2027163 2028154 2029146 2030138 2031 and thereafter903 Total minimum future rentals1,685 Less: imputed interest691 Lease receivab
+  cand sec/0001571996-26-000008#209: 31, 2025Fiscal Year of Origination20252024202320222021Years PriorTotal(in millions)Higher$2,295 $2,160 $1,217 $357 $102 $4 $6,135 Mid2,455 695 464 107 17 4 3,742 Lower552 407 283 68 28 1 1,339 Total$5,302 $3,262 $1,964 $532 $147 $9 $11,216 The catego
+
+====================================================================================================
+ID: sec-0001193125-26-021017-149-f
+Q: What was the amount of SLB Limited's short-term borrowings and current portion of long-term debt as of the latest reporting period shown in the passage?
+Gold parent: sec/0001193125-26-021017#149
+  gold text: Current Liabilities               Accounts payable and accrued liabilities     11,490       10,375     Estimated liability for taxes on income     894       982     Short-term borrowings and current portion of long-term debt     1,894       1,051    
+gold not rank-1 (rank-1=sec/0002046386-26-000009#264); consider multi-label: ['sec/0002046386-26-000009#264', 'sec/0001193125-26-021017#227', 'sec/0001783180-26-000008#162']
+  cand sec/0002046386-26-000009#264: AGREEMENTS AND BORROWINGSThe Company’s current portion of long-term borrowings and other short-term borrowings consists of the following as of:(in millions)December 31, 2025December 31, 2024Current portion of long-term debt (1)$76 $76 Other short-ter
+  cand sec/0001193125-26-021017#227: Mine Safety Disclosure (*)   95           Policy for Recovery of Performance-Based Compensation from Senior Officers (*)   97           Inline XBRL Instance Document (*)   101.INS           Inline XBRL Taxonomy Extension Schema Document (*)   101.SCH
+  cand sec/0001783180-26-000008#162: existed. Upon completion of the test, the reporting unit had a fair value of approximately 14% above its carrying value. Key assumptions used in estimating future cash flows included the revenue growth rate, earnings before interest and income taxes 
+
+====================================================================================================
+ID: sec-0001193125-26-082531-1-f
+Q: What specific Secured Borrowings Due were repaid during the year ended December 31, 2025?
+Gold parent: sec/0001193125-26-082531#1
+  gold text: falseFY0001393818During the period presented, Blackstone also had one share outstanding of each of series I and Series II preferred stock, with par value of each less than one cent.Represents freestanding derivatives, corporate treasury investments a
+gold not rank-1 (rank-1=sec/0001193125-26-082531#554); consider multi-label: ['sec/0001193125-26-082531#554', 'sec/0001193125-26-082531#557', 'sec/0000068505-26-000010#147']
+  cand sec/0001193125-26-082531#554: (c)  The Secured Borrowings Due 10/27/2033 and 1/29/2035 were repaid during the year ended December 31, 2025.         (d)  Blackstone Fund Facilities represent borrowing facilities for the various consolidated Blackstone Funds that are used to meet l
+  cand sec/0001193125-26-082531#557: 3.200%, Due 1/30/2052       987,969        670,740        987,682        652,770                                                                          12,318,723        11,264,939        11,193,519        9,817,009      Other (b)                  
+  cand sec/0000068505-26-000010#147: purchases under our share repurchase program in 2024 compared to $804 million in 2023.47Sales of ReceivablesWe may choose to sell accounts receivable and long-term receivables to third-parties under one-time arrangements. We may or may not retain the
+
+====================================================================================================
+ID: sec-0001326160-26-000014-457-f
+Q: What is the amount of AROs – nuclear and other as of the latest reporting period mentioned in the passage?
+Gold parent: sec/0001326160-26-000014#457
+  gold text: LiabilitiesCOR regulatory liability$5,336 $5,302 $3,084 $2,984 Net regulatory liability related to income taxes4,748 5,356 1,741 1,882 AROs – nuclear and other2,982 2,289 — — Deferred nuclear PTC1,377 676 197 95 Hedge cost deferrals582 583 248 281 Re
+gold not rank-1 (rank-1=archive/caorihs_000222#41); consider multi-label: ['archive/caorihs_000222#41', 'sec/0001628280-26-009043#214', 'sec/0000107263-26-000006#333']
+  cand archive/caorihs_000222#41: raiser __?__, etq. n---- , ---- ----------; ., 16 = . ., 1 = . ., 2 = . ., 3 = . ., 4 = . ., 5 = . ., 6 = . ., 7 = . ., 8 = . ., 9 = . ., 10 = . ., 11 = . ., 12 = . ., 13 = . ., 14 = . ., 15 = . ., 16 = . ________... i, 1 = _____1. ________... i, 2 =
+  cand sec/0001628280-26-009043#214: December 31 were:in $ millions202520242023Accretion11912Depreciation331227Total costs442139AROs are reported within Other current liabilities and Other noncurrent liabilities in the Consolidated Balance Sheets. As of December 31, 2025 and 2024, the c
+  cand sec/0000107263-26-000006#333: marginal state income tax rate, and a state income tax adjustment associated with changes in ownership. The timing of the refund of the regulatory liability to rate payers is stated in the Docket No. RP22-1155 rate case settlement. Additionally, as o
+
+====================================================================================================
+ID: sec-0001437749-26-006113-218-f
+Q: What was the total stockholders' equity for Monolithic Power Systems, Inc. as of December 31, 2025?
+Gold parent: sec/0001437749-26-006113#218
+  gold text: See accompanying notes to consolidated financial statements.         46         Table of Contents              MONOLITHIC POWER SYSTEMS, INC. CONSOLIDATED STATEMENTS OF STOCKHOLDERS’ EQUITY (In thousands, except per share amounts)                    
+gold not rank-1 (rank-1=sec/0001437749-26-006113#207); consider multi-label: ['sec/0001437749-26-006113#207', 'sec/0001437749-26-006113#212', 'sec/0001437749-26-006113#307']
+  cand sec/0001437749-26-006113#207: Report of Independent Registered Public Accounting Firm   To the Stockholders and the Board of Directors of Monolithic Power Systems, Inc.   Opinion on the Financial Statements   We have audited the accompanying consolidated balance sheets of Monolit
+  cand sec/0001437749-26-006113#212: Report of Independent Registered Public Accounting Firm   To the Stockholders and the Board of Directors of Monolithic Power Systems, Inc.   Opinion on Internal Control Over Financial Reporting   We have audited Monolithic Power Systems, Inc.’s inter
+  cand sec/0001437749-26-006113#307: Item 15.   Exhibits and Financial Statement Schedules       (a) Documents filed as part of this report   (1) All financial statements         Page     Reports of Independent Registered Public Accounting Firm (PCAOB ID: 42)  42    Consolidated Balance
+
+====================================================================================================
+ID: sec-0001477333-26-000016-144-f
+Q: What is the maximum penalty for noncompliance with GDPR as mentioned in the passage?
+Gold parent: sec/0001477333-26-000016#144
+  gold text: our expansion into a variety of new fields also could raise a number of new regulatory issues. These factors could negatively affect our business and results of operations in material ways.Our actual or perceived failure to comply with privacy, data 
+gold not rank-1 (rank-1=sec/0001327567-25-000027#119); consider multi-label: ['sec/0001327567-25-000027#119', 'sec/0001535527-26-000010#117', 'sec/0001628280-26-003942#259']
+  cand sec/0001327567-25-000027#119: may require significant resources, and failure to comply with resulting regulations and restrictions may have an adverse impact on our business or results of operation.RISKS RELATED TO PRIVACY AND DATA PROTECTIONWe may incur increased costs to comply
+  cand sec/0001535527-26-000010#117: privacy and security legal framework with which we must comply. For example, we are required to comply with the European Union (“EU”) General Data Protection Regulation (“GDPR”) and its equivalent in the U.K. (“U.K. GDPR”), which impose stringent obl
+  cand sec/0001628280-26-003942#259: Data Protection Regulation (GDPR), of certain other personal data breaches and privacy issues, issue similar notifications to European regulators under other laws (such as UK GDPR and Member State implementations of the ePrivacy Directive), and are s
+
+====================================================================================================
+ID: sec-0001510295-26-000009-261-f
+Q: What is the total payout cap for the earnout payments tied to EBITDA growth from 2026 to 2029?
+Gold parent: sec/0001510295-26-000009#261
+  gold text: was estimated using discounted cash flows based on a Monte Carlo simulation. Future earnout payments are tied to the achievement of EBITDA growth from 2026 to 2029, which includes significant unobservable input of forecasted throughput volumes. The e
+gold not rank-1 (rank-1=sec/0001510295-26-000009#260); consider multi-label: ['sec/0001510295-26-000009#260', 'sec/0001552000-26-000009#275', 'sec/0000068505-26-000010#253']
+  cand sec/0001510295-26-000009#260: We have elected to offset the fair value amounts recognized for multiple derivative contracts executed with the same counterparty, including any related cash collateral as shown below; however, fair value amounts by hierarchy level are presented on a
+  cand sec/0001552000-26-000009#275: Gas and NGL Services segment for the years ended December 31, 2025 and 2024 was $105 million and $99 million, respectively.Estimated future amortization expense related to the intangible assets at December 31, 2025 is as follows:(In millions)2026$164
+  cand sec/0000068505-26-000010#253: Intangible Assets and GoodwillThe Company accounts for acquisitions using purchase accounting with the results of operations for each acquiree included in the Company’s consolidated financial statements for the period subsequent to the date of acquis
+
+====================================================================================================
+ID: sec-0001601046-25-000127-253-f
+Q: What is the expected contribution to Non-U.S. Defined Benefit Plans in 2025 according to the passage?
+Gold parent: sec/0001601046-25-000127#253
+  gold text: to contribute to our U.S. Defined Benefit Plans or U.S. Post-Retirement Benefit Plan, and we expect to contribute $14 million to our Non-U.S. Defined Benefit Plans. The following table presents expected future benefit payments for the next 10 years.U
+gold not rank-1 (rank-1=sec/0000062709-26-000022#139); consider multi-label: ['sec/0000062709-26-000022#139', 'sec/0000062709-26-000022#221', 'sec/0000077476-26-000007#201']
+  cand sec/0000062709-26-000022#139: in 2025 compared to $4.3 billion in 2024. These amounts reflect the net income of the Company during those periods, excluding gains or losses from investments, adjusted for non-cash charges, and changes in working capital which relate primarily to th
+  cand sec/0000062709-26-000022#221: 4.5% of that plan's assets at December 31, 2025. 90The components of the net benefit (credit) cost for the U.S. defined benefit and other post-retirement benefit plans are as follows:U.S. Plans onlyPensionBenefitsPost-retirementBenefitsFor the Years 
+  cand sec/0000077476-26-000007#201: the total projected pension benefit obligation as of December 27, 2025, approximately $632 million relates to plans that we do not fund because the funding of such plans does not receive favorable tax treatment.Future Benefit Payments    Our estimate
+
+====================================================================================================
+ID: sec-0001628280-26-004195-197-f
+Q: What was the carrying amount of the investments at December 31, 2025?
+Gold parent: sec/0001628280-26-004195#197
+  gold text: to fair value only if there is an observable price change or reduced for impairment, if applicable. The carrying amounts of the investments were $669 million and $600 million at December 31, 2025 and December 31, 2024 and are included on our consolid
+gold not rank-1 (rank-1=sec/0001628280-26-010047#294); consider multi-label: ['sec/0001628280-26-010047#294', 'sec/0001628280-26-004195#196', 'sec/0001551152-26-000008#226']
+  cand sec/0001628280-26-010047#294: paid, net of refunds$2,873 1The Company’s U.S. federal payments were reduced by foreign tax credits, general business credits and prior year overpayments. These general business credits include tax credits related to the Company’s investments in limi
+  cand sec/0001628280-26-004195#196: 2025, $346 million in 2024 and $263 million in 2023.Fair value of financial instruments – We measure the fair value of our financial instruments using observable and unobservable inputs. Observable inputs reflect market data obtained from independent
+  cand sec/0001551152-26-000008#226: 2Level 3LiabilitiesCurrent portion of long-term debt and finance lease obligations (a)$6,797 $6,767 $6,620 $147 $— Long-term debt and finance lease obligations (a)60,243 55,836 53,441 2,395 — Total liabilities$67,040 $62,603 $60,061 $2,542 $— (a)Excl
+
+====================================================================================================
+ID: sec-0001628280-26-006268-71-f
+Q: What was the percentage change in railway operating expenses from 2024 to 2025?
+Gold parent: sec/0001628280-26-006268#71
+  gold text: per share amounts)Railway operating expenses$9,305 $(1,116)$8,189 Income from railway operations$2,851 $1,116 $3,967 Net income$1,827 $846 $2,673 Diluted earnings per share$8.02 $3.72 $11.74 Railway operating ratio (percent)76.5 (9.1)67.4 K29In the t
+gold not rank-1 (rank-1=sec/0001628280-26-006268#68); consider multi-label: ['sec/0001628280-26-006268#68', 'sec/0001193125-26-083899#257', 'sec/0001193125-26-083899#260']
+  cand sec/0001628280-26-006268#68: delivering notable improvements in labor productivity and fuel efficiency.  Despite periods of macroeconomic uncertainty, growth in automotive and chemicals traffic, reflecting improved service and customer demand, drove merchandise revenues higher a
+  cand sec/0001193125-26-083899#257: attributable to higher average revenue per car/unit and a volume increase of 1.1%. The volume increase was primarily due to the competitive effects of higher natural gas prices. Railroad operating expenses were $15.3 billion in 2025, a decline of $59
+  cand sec/0001193125-26-083899#260: was primarily due to lower natural gas prices. Railroad operating expenses were $15.9 billion in 2024, a decrease of $173 million (1.1%) compared to 2023. The operating ratio declined 0.4 percentage points to 68.0% in 2024 versus 2023. Railroad compe
+
+====================================================================================================
+ID: sec-0001628280-26-009136-169-f
+Q: What percentage of Moody's revenue was denominated in currencies other than the U.S. dollar in 2025?
+Gold parent: sec/0001628280-26-009136#169
+  gold text: in both the U.S. (16%) and internationally (7%), reflecting:–higher issuance in U.S. Public Finance, particularly within the state, regional, and healthcare sectors; and–higher investment‑grade issuance within U.S. Infrastructure Finance, most notabl
+gold not rank-1 (rank-1=sec/0001104659-25-109150#105); consider multi-label: ['sec/0001104659-25-109150#105', 'sec/0001104659-25-109150#106', 'sec/0001628280-25-056698#113']
+  cand sec/0001104659-25-109150#105: Table of ContentsResults of OperationsNet SalesThe following table presents our net sales and the percentage of total net sales by segment:​​​​​​​​​​​​​​​​Fiscal​​    2025        2024        ​ ($ in millions)​Transportation Solutions​$ 9,388      54%
+  cand sec/0001104659-25-109150#106: 130 countries, and approximately 60% of our net sales were invoiced in currencies other than the U.S. dollar in fiscal 2025. The percentage of net sales in fiscal 2025 by major currencies invoiced was as follows:​​​​​Currencies    Percentage       U.
+  cand sec/0001628280-25-056698#113: using floating-to-fixed rate interest rate swaps, our earnings and cash flows from operations could be impacted by changes in interest rates related to the floating rate of interest on our Refinanced 2030 Term Loan. We have entered into interest rate
+
+====================================================================================================
+ID: sec-0001645590-25-000130-129-f
+Q: According to the passage, what could prevent Hewlett Packard Enterprise from completing a divestiture transaction?
+Gold parent: sec/0001645590-25-000130#129
+  gold text: to incur additional material charges relating to the impairment of those assets.•For a divestiture, we may encounter difficulty in finding buyers or alternative exit strategies on acceptable terms in a timely manner, or we may dispose of a business a
+gold not rank-1 (rank-1=sec/0001645590-25-000130#402); consider multi-label: ['sec/0001645590-25-000130#402', 'sec/0001645590-25-000130#384', 'sec/0001645590-25-000130#401']
+  cand sec/0001645590-25-000130#402: 26, 20244.7Twenty-Third Supplemental Indenture, dated as of September 26, 2024, between Hewlett Packard Enterprise Company and The Bank of New York Mellon Trust Company, N.A., as Trustee, relating to Hewlett Packard Enterprise Company’s 4.400% notes 
+  cand sec/0001645590-25-000130#384: Hewlett Packard Enterprise and HP Inc., Hewlett Packard Enterprise and DXC, and Hewlett Packard Enterprise and Seattle SpinCo, the parties to each agreement agreed to cooperate with each other in managing certain existing litigation related to both p
+  cand sec/0001645590-25-000130#401: Trustee8-K001-374834.1October 13, 20154.2Sixth Supplemental Indenture, dated as of October 9, 2015, between Hewlett Packard Enterprise Company and The Bank of New York Mellon Trust Company, N.A., as Trustee, relating to Hewlett Packard Enterprise Com
+
+====================================================================================================
+ID: sec-0001730168-25-000121-180-f
+Q: What was the total plan assets on November 3, 2024?
+Gold parent: sec/0001730168-25-000121#180
+  gold text: with smaller allocations to Treasury Inflation-Protected Securities and high-yield bonds.71Table of ContentsFair Value Measurement of Plan AssetsNovember 2, 2025Fair Value Measurements at Reporting Date UsingLevel 1Level 2Total(In millions)Cash equiv
+gold not rank-1 (rank-1=sec/0001730168-25-000121#178); consider multi-label: ['sec/0001730168-25-000121#178', 'sec/0000899051-26-000031#392', 'sec/0000050863-26-000011#248']
+  cand sec/0001730168-25-000121#178: assets — beginning of period$1,158 $1,105 Actual return on plan assets120 123 Employer contributions28 21 Plan participants’ contributions1 1 Benefit payments(107)(108)Plan assets acquired in VMware acquisition— 18 Foreign currency impact(3)(2)Fair v
+  cand sec/0000899051-26-000031#392: to assets sold during the periodRelating to assets still held at the reporting datePurchases, sales and settlements, netNet transfers in (out) of Level 3Balance as of December 31, 2025Bank loans$81 $— $— $(3)$— $78 Total Level 3 plan assets$81 $— $— 
+  cand sec/0000050863-26-000011#248: toward our core client and server businesses by reducing lower-priority programs and initiatives. Restructuring charges are primarily comprised of employee severance and benefit arrangements, non-cash asset impairment and accelerated depreciation cha
+
+====================================================================================================
+ID: sec-0001751008-26-000010-142-f
+Q: What was the percentage increase in general and administrative expenses from 2024 to 2025?
+Gold parent: sec/0001751008-26-000010#142
+  gold text: in stock-based compensation related payroll costs.General and administrativeYear Ended December 31,2024 to 2025% change2023 to 2024% change202520242023(in thousands, except percentages)General and administrative$233,502 $164,916 $150,932 42 %9 %Perce
+gold not rank-1 (rank-1=sec/0001099590-26-000006#192); consider multi-label: ['sec/0001099590-26-000006#192', 'sec/0001652044-26-000018#107', 'sec/0001628280-26-003942#194']
+  cand sec/0001099590-26-000006#192: expenses consist primarily of salaries for management and administrative staff, compensation of non-employee directors, long term retention program compensation, expenses for legal, audit and other professional services, contingencies, insurance expe
+  cand sec/0001652044-26-000018#107: increase in other cost of revenues from 2024 to 2025 was primarily due to increases in content acquisition costs, largely for YouTube, depreciation expense, and other technical infrastructure operations costs.Research and DevelopmentThe following tab
+  cand sec/0001628280-26-003942#194: and development expenses in 2025 increased $13.50 billion, or 31%, compared to 2024. The increase was mostly due to higher employee compensation and infrastructure costs related to research and development, including our AI initiatives.The higher emp
+
+====================================================================================================
+ID: sec-0001858681-26-000013-544-f
+Q: What was the carrying value of Apollo Global Management's investment funds as of December 31, 2025?
+Gold parent: sec/0001858681-26-000013#544
+  gold text: these non-consolidated investments:December 31, 2025December 31, 2024(In millions)Carrying ValueMaximum Loss ExposureCarrying ValueMaximum Loss ExposureInvestment funds$108 $458 $107 $987 Investment in related parties – investment funds2,149 5,859 1,
+gold not rank-1 (rank-1=sec/0001858681-26-000013#136); consider multi-label: ['sec/0001858681-26-000013#136', 'sec/0001858681-26-000013#300', 'sec/0001858681-26-000013#456']
+  cand sec/0001858681-26-000013#136: investment process and, where applicable, may commit capital alongside investors. We seek to align our economic interests with those of investors through investment terms, co-investment and governance arrangements. The design and management of each p
+  cand sec/0001858681-26-000013#300: 2.0% in 2027. The U.S. Bureau of Labor Statistics reported the U.S. unemployment rate increased to 4.4% as of December 31, 2025, compared to 4.1% as of December 31, 2024.Foreign exchange rates can materially impact the valuations of our investments a
+  cand sec/0001858681-26-000013#456: of subsidiary equity interests— — (5)— — (5)(575)(580)Subsidiary issuance of equity interests— — 11 — 3 14 570 584 Net income (loss)— 46 — 5,001 — 5,047 1,421 6,468 Other comprehensive income (loss)— — — — 1,757 1,757 270 2,027 Balance at December 31
+
+====================================================================================================
+ID: wikipedia-environmental--2-f
+Q: According to J. Donald Hughes in 2006, what does environmental history seek to understand?
+Gold parent: wikipedia/Environmental_history#2
+  gold text: quoted 1988 definition states that environmental history is the "interaction between human cultures and the environment in the past".[12] In 2001, J. Donald Hughes defined the subject as the "study of human relationships through time with the natural
+gold not rank-1 (rank-1=wikipedia/Environmental_history#37); consider multi-label: ['wikipedia/Environmental_history#37', 'wikipedia/History#59', 'wikipedia/Environmental_history#3']
+  cand wikipedia/Environmental_history#37: History 10 (2004), pp. 407–38 Conway, Richard. "The Environmental History of Colonial Mexico," History Compass (2017) 15#7 DOI: 10.1111/hic3.12388 Cronon, William, ed. (1995). Uncommon Ground: Toward Reinventing Nature (https://archiv e.org/details/u
+  cand wikipedia/History#59: Press. ISBN 978-0-19-283098-2. Howard, Michael; Bond, Brian; Stagg, J. C. A.; Chandler, David; Best, Geoffrey; Terrine, John (1988). "What Is Military History ... ?" (https://link.springer.com/chapter/10.1007/978-1- 349-19161-1_2). In Gardiner, Julie
+  cand wikipedia/Environmental_history#3: the notion of the cultural landscape. Worster also questioned the scope of the discipline, asking: "We study humans and nature; therefore can anything human or natural be outside our enquiry?"[18] Environmental history is generally treated as a subfi
+
+====================================================================================================
+ID: wikipedia-law-62-f
+Q: What is the title of John Locke's work mentioned in the passage from 1689?
+Gold parent: wikipedia/Law#62
+  gold text: Catholic University Law Review. 53: 413–457. doi:10.2139/ssrn.421040 (https://doi.org/10.2 139%2Fssrn.421040). S2CID 54617575 (https://api.semanticscholar.org/CorpusID:5461757 5). SSRN 421040 (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=42104
+gold not rank-1 (rank-1=sec/0001193125-26-021017#112); consider multi-label: ['sec/0001193125-26-021017#112', 'sec/0001193125-26-063120#450', 'wikipedia/Portal:Philosophy#6']
+  cand sec/0001193125-26-021017#112: 16
+  cand sec/0001193125-26-063120#450: Notional value       X   X       Time value   X   X   X      Levels The Companies also utilize the following fair value hierarchy, which prioritizes the inputs to valuation techniques used to measure fair value into three broad levels: •Level 1—Quote
+  cand wikipedia/Portal:Philosophy#6: philosophy)   Portrait of Immanuel Kant, c. 1790 (from Western philosophy)   Bertrand Russell (from Western philosophy) Ferdinand de Saussure (from Western philosophy)   From left to right: Virchand Gandhi, Anagarika Dharmapala, Swami Vivekananda, G.
+

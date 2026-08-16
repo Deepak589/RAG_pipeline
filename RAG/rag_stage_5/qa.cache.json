@@ -1,0 +1,1316 @@
+{
+  "factual:archive/cabrbhc_000058#0": {
+    "fp": "ae9ef6110e3b7e6dadec664cc830b0132ab7e607cb09274b00092e2955e311e8",
+    "val": {
+      "question": "Who was described as having a 'GIRAVEL-VOICE' in the Brisbane Minstrel show?",
+      "answer": "Alfreda Pistohl"
+    }
+  },
+  "factual:archive/caorihs_000458#95": {
+    "fp": "7c4372f64cac82c7472831e828f8e0b3997e3b9a6dc3b7698794d8ab699d889f",
+    "val": {
+      "question": "Who was the matron of honor at Margaret Brown's wedding in Carson City, Nevada?",
+      "answer": "Mrs. Annie Murphy"
+    }
+  },
+  "factual:arxiv/2607.25459v1#0": {
+    "fp": "523df28f29cec21141c210f070467ac75b378724f49f05f81792f38bfb48fc03",
+    "val": {
+      "question": "In the study described in arxiv/2607.25459v1, what specific type of model setting is used to provide a benchmark for mechanistic interpretability under partial observability?",
+      "answer": "controlled multivariate stochastic volatility setting"
+    }
+  },
+  "factual:arxiv/2608.00306v2#151": {
+    "fp": "7aa5ad92b454762c9a5b26a65778ba4a840cbc7f19f3cc2f42c6624c6ccbab23",
+    "val": {
+      "question": "How long did it take to extract features for the complete dataset using 128 V100 GPUs with 32 GB of memory each?",
+      "answer": "approximately 24 h"
+    }
+  },
+  "factual:sec/0000008670-26-000030#110": {
+    "fp": "ff90435d2de88b4ec6743e2d0236a023cb77912f11d6d93b21d09f55f1e78b4e",
+    "val": {
+      "question": "What was the amount of unrecognized tax benefits liability reported by the Company as of June 30, 2025?",
+      "answer": "$163.0 million"
+    }
+  },
+  "factual:sec/0000024741-26-000124#71": {
+    "fp": "6d6a7849875900b509d32558ac8e900dbcc2b19beede0837137dc02dce11f7bf",
+    "val": {
+      "question": "According to the passage, what specific risk could arise from difficulties in enforcing intellectual property rights?",
+      "answer": "loss of market share and decreased sales and profits"
+    }
+  },
+  "factual:sec/0000035527-26-000124#190": {
+    "fp": "0332974ff83d77326cd26423ae47da61795af83c5ee1e430a0d682e31c4da917",
+    "val": {
+      "question": "What was The Bancorp's net income available to common shareholders for the year ended December 31, 2025, before deducting preferred stock dividends?",
+      "answer": "$2.546 billion"
+    }
+  },
+  "factual:sec/0000037996-26-000015#282": {
+    "fp": "2659d9afa024b782a06f79778043cfccb91c81b452a7b6454cb6d5ed4c7d4b36",
+    "val": {
+      "question": "What is the filing date for Exhibit 10-V Description of Cash Bonus Plan?",
+      "answer": "Quarterly Report on Form 10-Q for the quarter ended June 30, 2025"
+    }
+  },
+  "factual:sec/0000049826-26-000008#171": {
+    "fp": "da8db0df9ab5d1630c48188090b2f25e1b25d3cefc85086c85321c108296ca92",
+    "val": {
+      "question": "What is the filing date of the document containing the Form of Stock Option Agreement pursuant to the Illinois Tool Works Inc. 2024 Long-Term Incentive Plan?",
+      "answer": "December 31, 2024"
+    }
+  },
+  "factual:rtd/cryptography#204": {
+    "fp": "bd8b208e97d56b958b0929e96f5ea9465923d5cc6e8c236d1cb28636059894ec",
+    "val": {
+      "question": "According to the passage, which version added the type alias for CertificateIssuerPrivateKeyTypes?",
+      "answer": "40.0.0"
+    }
+  },
+  "factual:rtd/django#380": {
+    "fp": "2e53c1c64b86ea13f44a8ecd229ba01daeb71fefa3589e48d15a3b4f3e949ce9",
+    "val": {
+      "question": "What parameter can be used in modelformset_factory to enable localization for specific fields?",
+      "answer": "localized_fields"
+    }
+  },
+  "factual:rtd/django#1035": {
+    "fp": "b52c6ab6a074e31e954db592f4ffc59193d50589f80be2fe9629c6958f18d5da",
+    "val": {
+      "question": "What does get_paginate_orphans() return by default?",
+      "answer": "the value of paginate_orphans"
+    }
+  },
+  "factual:rtd/django#1690": {
+    "fp": "e84892dfdd32a7806298ffc25964cf8321325daabe915f8f19b8a6f75ac391a2",
+    "val": {
+      "question": "What happens when you call save() on a model with an AutoField for the first time?",
+      "answer": "The auto-incremented value will be calculated and saved as an attribute on your object."
+    }
+  },
+  "factual:rtd/django#2345": {
+    "fp": "7627cf43464a1d033a41468873abcfbf46732d468e13d8b5fd1d249f550e918a",
+    "val": {
+      "question": "What must be updated for proxy model permission strings when the app_label differs from its concrete model?",
+      "answer": "proxy model permission strings must be updated to use their own app_label"
+    }
+  },
+  "factual:rtd/django#3001": {
+    "fp": "431e71b2b9fe2b05351abc8328a1fa47de878b17c306cf17525d21a815e7d6d0",
+    "val": {
+      "question": "What is the CVE number associated with index 2816?",
+      "answer": "CVE 2021-3281"
+    }
+  },
+  "factual:archive/dlibra.bibliotekaelblaska.pl.051.13452779#4": {
+    "fp": "ed1acddb68be560aa2d19284b1df9c8bcc54f099c71db10b5b95c664a9fd082b",
+    "val": {
+      "question": "According to the passage, what specific concern does Abg. Pleß (Centr.) raise regarding local farmers?",
+      "answer": "damage caused by industrial establishments' wastewater"
+    }
+  },
+  "factual:arxiv/2608.01405v1#16": {
+    "fp": "c01d2af326164e0ae6fee93085cb89260ef0a9913290bb9569cd28b542ed5810",
+    "val": {
+      "question": "What does the notation mN(θ) represent in the context of Theorem 1?",
+      "answer": "mN(θ) ≡ N−1 Σi∈IN zN;i(yN;i − d⊤N;iθ)"
+    }
+  },
+  "factual:arxiv/2608.02704v1#94": {
+    "fp": "2af4c2f7f958d920f4d879082c440e635eabc056ed0119b4daa86c65c61b1821",
+    "val": {
+      "question": "According to the passage, what is demoted to an ordinary state in comparison operations, eliminating the need for a meta-language hierarchy?",
+      "answer": "Limitation information"
+    }
+  },
+  "factual:arxiv/2608.03773v1#3": {
+    "fp": "2225f5cf76d193b3efd9d8c7f823c7742a402c53416b3579a3a3715cdf35cb29",
+    "val": {
+      "question": "What does the paper suggest about the long-run equilibrium relation represented by matrix Π after a major intervention at time t∗?",
+      "answer": "The post-intervention change in Π(δ) is interpreted as evidence that the pre-intervention long-run structure has become unstable."
+    }
+  },
+  "factual:arxiv/2608.04629v1#1": {
+    "fp": "4cfa80522146bab69a34427a6b155a1d473093b74d9349e7263121de2a837982",
+    "val": {
+      "question": "What type of model does the paper develop to analyze qualifying and race outcomes while separating driver and constructor abilities?",
+      "answer": "a Bayesian state-space model"
+    }
+  },
+  "factual:arxiv/2608.04983v1#118": {
+    "fp": "405e01d07099c161dabfbef41d9f70358de56481aea382bc60f30e77a777a0fb",
+    "val": {
+      "question": "What is the final expression for the variance of B(1)_n,kl as given in equation (72)?",
+      "answer": "O(n^{11}\\sqrt{p_n,k p_n,l})"
+    }
+  },
+  "factual:arxiv/2608.05112v1#41": {
+    "fp": "f592c5943729056df846cefc668be53a2c0395fb457ef9a1b2beb833447f7ca3",
+    "val": {
+      "question": "What is the inequality derived from substituting ∥ξ(˜x)∥= ϵ into equation (59)?",
+      "answer": "ϵ ≤L∥v∥+ M∥v∥2 ≤(L + Mϵ/γ)∥v∥"
+    }
+  },
+  "factual:arxiv/2608.05283v1#5": {
+    "fp": "31e9e5dec1ef53a25c1ee3ebd99932b612c91f69fbbc2631b3c035309e26766e",
+    "val": {
+      "question": "What is the order of magnitude for the number of scatterings required for the recoil offset to be comparable to the Doppler width?",
+      "answer": "106"
+    }
+  },
+  "factual:arxiv/2608.05434v1#46": {
+    "fp": "a23188c485d522c8553fc4ee1326546a84f7a099b7596f3f595dfe90e6093780",
+    "val": {
+      "question": "According to TABLE S.1, which proposed method directly targets a tail quantile of the outcome distribution and explicitly considers treatment-related risks for multiple decision stages?",
+      "answer": "Proposed method"
+    }
+  },
+  "factual:arxiv/2608.05516v1#38": {
+    "fp": "3e7de832435c4da043412fe5e9b6521bc93fda112e91e552f3599970aebf8362",
+    "val": {
+      "question": "According to Giani et al. (2023), what conditions are necessary for achieving a high fractional abundance of CH3CN (∼10−7) in dense gas?",
+      "answer": "dense (n >∼106–107 cm−3) and warm (T >∼100 K) gas"
+    }
+  },
+  "factual:arxiv/2608.05698v1#55": {
+    "fp": "a1e0b502fe10b484abbbaf390fecabf32805453835fd33dbf36b77f9a3b87ded",
+    "val": {
+      "question": "What is the value of the anomalous part of the signal at a0 = 24?",
+      "answer": "3.9 × 10⁻⁵ rad"
+    }
+  },
+  "factual:arxiv/2608.05882v1#9": {
+    "fp": "73066e38582faf2930c853e2a9972bb7b4ad33ab9cabe384d1b73903f0676e52",
+    "val": {
+      "question": "According to the passage in arxiv/2608.05882v1, what is the first question examined using the geometric framework regarding neural representations?",
+      "answer": "whether neural representations remain stable over time under fixed cognitive conditions"
+    }
+  },
+  "factual:arxiv/2608.05990v1#41": {
+    "fp": "85cb033ef4f4443e47814b32ef772327d69899b9ca1fcf58b7e29815fd908dc7",
+    "val": {
+      "question": "How many paired technical repeats were conducted for each experiment according to the passage in arxiv/2608.05990v1?",
+      "answer": "6"
+    }
+  },
+  "factual:arxiv/2608.06056v1#44": {
+    "fp": "7c9f9fe6a37719c07fa550bb719349d4d12d9291b88b6c0e2817f6ec9362f91b",
+    "val": {
+      "question": "What condition causes the first-order approximation to break down in open quantum systems as described in Sec. 5 of arxiv/2608.06056v1 [44]?",
+      "answer": "the leading-order term of the dissipative drift term in the classical equation of motion vanishes"
+    }
+  },
+  "factual:arxiv/2608.06141v1#28": {
+    "fp": "cdd3bdd7c68c25f2240c92b594b634836abdf3d9abf334e3690edc1ee445668b",
+    "val": {
+      "question": "According to the passage, what is emphasized as a governance commitment regarding speech AI systems?",
+      "answer": "defaults, interfaces, and guardrails that restrict capture, limit downstream reuse, and preserve opacity when recognition would amplify risk or reproduce colonial linguistic hierarchies"
+    }
+  },
+  "factual:arxiv/2608.06193v1#26": {
+    "fp": "03d91d1a20748daf34e11529317e80dfd02f54a2a7c84b22b0972415b45ea3ae",
+    "val": {
+      "question": "Which paper by Ngeow et al. was published in the year 2023?",
+      "answer": "The Astronomical Journal, 166, 96"
+    }
+  },
+  "factual:arxiv/2608.06245v1#0": {
+    "fp": "14a0417a4d8f564567dca33d7723505ba3bc472e1ef7e9c2a70cd820442e28c6",
+    "val": {
+      "question": "What is the adopted distance to V420 Vul in kiloparsecs according to the passage?",
+      "answer": "1.9"
+    }
+  },
+  "factual:arxiv/2608.06275v1#25": {
+    "fp": "6616a81dbcc077d8ddd17e9f8fbe9b1912018ca479707643df255643528fcf69",
+    "val": {
+      "question": "What is the instance mask AP75 for the internal test set according to the given passage?",
+      "answer": "0.774"
+    }
+  },
+  "factual:arxiv/2608.06336v1#13": {
+    "fp": "c923d0773e7aedb442713f9a2321b3baa28c50107c44ff914bafb502800bd9c7",
+    "val": {
+      "question": "What does the notation H = (I0, N0, I1, N1, ..., NR−1, IR) represent in the passage?",
+      "answer": "The history of accepted doublings and intermediate orbits during the orbit building process."
+    }
+  },
+  "factual:arxiv/2608.06358v1#94": {
+    "fp": "5fa87f9d2fabb46111c53990c8934040ee0521daccdf76c67c17cb7fbcc2ee45",
+    "val": {
+      "question": "What is the value of p(n) as defined in Lemma 3.4?",
+      "answer": "p(n) := 2C0δ(ln n)^ψ(n)/n"
+    }
+  },
+  "factual:rtd/mypy#417": {
+    "fp": "56d870862a926047f02a9bf4e612f8e3b1abcd1776bbc1810f6e2b298a81839b",
+    "val": {
+      "question": "What is the mypy command line option for enabling HTML report generation?",
+      "answer": "--html-report"
+    }
+  },
+  "factual:rtd/networkx#658": {
+    "fp": "ea254677de91a579dc4669577e6bf847d62edc0332096957cc477c7da400e283",
+    "val": {
+      "question": "What page number is associated with the module networkx.algorithms.tree.recognition?",
+      "answer": "419"
+    }
+  },
+  "factual:rtd/pybind11#90": {
+    "fp": "7f6caff3f1e6ebad0d586af1fc90cc83ee86f4db0d10f99e439bd37675d1ff1d",
+    "val": {
+      "question": "What is the alternative method to specify a hierarchical relationship in pybind11 when binding the Dog class, besides using the template parameter approach?",
+      "answer": "assign a name to the previously bound Pet py::class_ object and reference it when binding the Dog class"
+    }
+  },
+  "factual:rtd/pytest#2": {
+    "fp": "aeafc05d4d11948ff20900e6031a8280d6bc4d4e5608f67ccf4c913813946d7e",
+    "val": {
+      "question": "What section of the document discusses Python version support for pytest?",
+      "answer": "5.4"
+    }
+  },
+  "factual:rtd/requests#87": {
+    "fp": "513fad2e3e58a68ac92af6b0daa8a31a621cc555fad8cb81e941fe8e1e64c6f0",
+    "val": {
+      "question": "What does the function prepare_cookies do if called multiple times on the same PreparedRequest object without removing the \"Cookie\" header first?",
+      "answer": "Any subsequent calls to prepare_cookies will have no actual effect."
+    }
+  },
+  "factual:rtd/twisted#355": {
+    "fp": "74bdd727f3ce5e294346aeeb46313160ac6b67243747416e6fb8fa5e516e86fe",
+    "val": {
+      "question": "What is the name attribute value for an instance of MyPerspective when a user logs in anonymously?",
+      "answer": "\"Anonymous\""
+    }
+  },
+  "factual:rtd/xgboost#389": {
+    "fp": "2f7f986977e1d6a879c9f4f6c2932a7384eddbc446475c239474c251a9a69577",
+    "val": {
+      "question": "What are the keys of the dictionary returned by the function train_interval_model when training both quantile and expectile models?",
+      "answer": "{\"quantile\": quantile_evals, \"expectile\": expectile_evals}"
+    }
+  },
+  "factual:sec/0000064040-26-000013#177": {
+    "fp": "5a455bdc80bff1bdae171d7d5eaad3f119b256a99df326b0d013a5bb3d68671d",
+    "val": {
+      "question": "What was the percentage increase in revenue from 2024 to 2025?",
+      "answer": "7"
+    }
+  },
+  "factual:sec/0000066740-26-000014#138": {
+    "fp": "b26f0f0ea25f5b9aef40e56161d0b88f50abf632e501305e54c6de145056b077",
+    "val": {
+      "question": "According to the passage, what is one of the objectives of a company's internal control over financial reporting regarding the maintenance of records?",
+      "answer": "to maintain records that accurately and fairly reflect the transactions and dispositions of the assets of the company in reasonable detail"
+    }
+  },
+  "factual:sec/0000077476-26-000007#77": {
+    "fp": "a26ca01de2340eb3a53e4ef98fdf320b09ca526005d861fdc1386f7738ba3aa4",
+    "val": {
+      "question": "What specific commodities are mentioned as being necessary for products and potentially affected by climate change-induced disruptions in supply chains?",
+      "answer": "potatoes, sugar cane, corn, wheat, rice, oats, oranges"
+    }
+  },
+  "factual:sec/0000086312-26-000065#442": {
+    "fp": "59384759cf6b188001b6183507f3e3643d03fd4e68dd5d91fadbdfc15ef763d9",
+    "val": {
+      "question": "As of December 31, 2025, how much did the Company's claims and claim adjustment expense reserves include for asbestos-related claims, net of reinsurance?",
+      "answer": "$1.36 billion"
+    }
+  },
+  "factual:sec/0000092122-26-000006#632": {
+    "fp": "663c4a9203451316ef59311987f47027de55b94e893f198320494d240c26521f",
+    "val": {
+      "question": "What was the revenue related to alternative revenue programs for Atlanta Gas Light in 2025?",
+      "answer": "$(53) million"
+    }
+  },
+  "factual:sec/0000093410-26-000078#53": {
+    "fp": "283b49c32831daba6bc713c23862acb38cf60092678a3b7a25d698949566e0d2",
+    "val": {
+      "question": "According to the passage, which organization's production levels are mentioned as a major factor in determining worldwide supply of crude oil and its products?",
+      "answer": "Organization of Petroleum Exporting Countries (OPEC)"
+    }
+  },
+  "factual:sec/0000101829-26-000006#153": {
+    "fp": "8315d2c8de45db7d7f616d2e3ce3917d054cf6a172aeb3c105e13708e469d825",
+    "val": {
+      "question": "What was the charge related to the Raytheon Contract Termination that had an unfavorable impact on diluted EPS?",
+      "answer": "$0.33"
+    }
+  },
+  "factual:sec/0000107263-26-000006#349": {
+    "fp": "674731cc390b124d3fcc9359c952698f5570be0302fc1f3bcc3963218eaf2787",
+    "val": {
+      "question": "What is the balance at the end of period for Year Ended December 31, 2025?",
+      "answer": "$(15)$"
+    }
+  },
+  "factual:sec/0000277948-26-000006#24": {
+    "fp": "2a0feb402879dc70e6b246121ef0ea57af06272a9132c4d3c07c0d478f890495",
+    "val": {
+      "question": "What was the approximate aggregate market value of CSX Corporation's voting stock held by non-affiliates as of the required date mentioned in the passage?",
+      "answer": "$61 billion"
+    }
+  },
+  "factual:sec/0000316709-26-000009#106": {
+    "fp": "cc44775eb2c5a8630be1b5e502e8f68a95cc0ae0c5f32c5a6e55d3f601d7888b",
+    "val": {
+      "question": "According to the passage, what could cause material financial losses for Schwab even if they are not at fault?",
+      "answer": "Failure or breach of systems, cybersecurity controls, operational processes of Schwab or third-party service providers resulting in loss of client digital assets."
+    }
+  },
+  "factual:sec/0000319201-26-000027#93": {
+    "fp": "1b9c32b571131946d6b8a25c98bd15d7d25b35e3681ee0a0c299240bf3446681",
+    "val": {
+      "question": "In 2026, what type of financial instruments did the company enter into to manage its exposure to interest rate risks?",
+      "answer": "interest rate swaps"
+    }
+  },
+  "factual:sec/0000707549-25-000075#169": {
+    "fp": "7dd9e14264a7aca2b1bc78ce226d8dc5304ac013ec7971982b41efb1895a65ed",
+    "val": {
+      "question": "How many shares did the Company initially receive under the April 2025 ASRs agreements?",
+      "answer": "approximately 5.2 million shares"
+    }
+  },
+  "factual:sec/0000721371-25-000079#205": {
+    "fp": "389c0c110b14e47c3072132f2c2d2e0dab9e547fe6a20b243854f8fb93cc6c7c",
+    "val": {
+      "question": "What was the total share-based compensation expense recognized by GIA during fiscal 2025?",
+      "answer": "$123 million"
+    }
+  },
+  "factual:sec/0000732717-26-000120#115": {
+    "fp": "f78e35aef023076bff14a74eba3280f4ef22a74768c9b31d87e53e4287754884",
+    "val": {
+      "question": "What was the percentage change in Mexico Wireless Net Additions from 2024 to 2025 for prepaid subscribers?",
+      "answer": "-70.4"
+    }
+  },
+  "factual:sec/0000764180-26-000017#150": {
+    "fp": "480f093e96329da3e72e7f2f02cb8498f0d8c24df022233ec2fbead4f02d9f81",
+    "val": {
+      "question": "Which government agencies issued subpoenas to the company regarding its former investment in JUUL?",
+      "answer": "the New York State Office of the Attorney General and the Commonwealth of Massachusetts Office of the Attorney General"
+    }
+  },
+  "factual:sec/0000773840-26-000013#178": {
+    "fp": "f3f8be1566c9d7b2e6c95943f11b85c4e2ed458accbd8dc2fa3686ff121fe1da",
+    "val": {
+      "question": "What was the amount of deferred contract fulfillment costs as of December 31, 2025?",
+      "answer": "$1,193 million"
+    }
+  },
+  "factual:sec/0000813672-26-000016#146": {
+    "fp": "f32450d47cefdcf1a7f67987bacc3e943bbb71ca6d3f0319a2041c323894513b",
+    "val": {
+      "question": "What was the total interest expense for fiscal year 2025?",
+      "answer": "$116.5"
+    }
+  },
+  "factual:sec/0000821189-26-000054#198": {
+    "fp": "f96dfbdb26ccf46a5a04eb966ed448932a053aa4ec7f77f0889f6da53602da1c",
+    "val": {
+      "question": "What was the weighted average price per barrel for Mont Belvieu Propane (Tet) contracts sold in January - December 2026?",
+      "answer": "30.24"
+    }
+  },
+  "factual:sec/0000831001-26-000011#602": {
+    "fp": "5a837fc1a697245edfbe02c155512b2c61ddd7c701a68139d9cb5569fa3044ff",
+    "val": {
+      "question": "What was the total amount of corporate loans managed by Citigroup in North American offices as of December 31, 2025, in millions of dollars?",
+      "answer": "170,667"
+    }
+  },
+  "factual:sec/0000858877-25-000111#225": {
+    "fp": "1d7eab0219d0a25bfcaf16961f6f1cc8c83d7cb6985dcacefc6413a6845950b1",
+    "val": {
+      "question": "What was the total compensation cost related to unvested share-based awards not yet recognized by Cisco Systems, Inc. as of July 26, 2025?",
+      "answer": "$4.5 billion"
+    }
+  },
+  "factual:sec/0000882095-26-000006#109": {
+    "fp": "85123e6122287c6304d40318b5ff4b91d9e5275639f5c57e1178ab454ffac7fb",
+    "val": {
+      "question": "According to the passage, what specific requirement might healthcare companies face due to plans by many nations in the EU to decarbonize their healthcare systems by 2050?",
+      "answer": "Incurring material costs to decarbonize or comply with climate-related requirements"
+    }
+  },
+  "factual:sec/0000885725-26-000010#60": {
+    "fp": "1755b21c587d8edbf74c20c1b92065655da09ade4aeae7aa1b77c41ccadb5853",
+    "val": {
+      "question": "What is one potential consequence for medical device companies when countries without previous regulatory requirements for medical devices establish such regulations?",
+      "answer": "These factors have caused or may cause us to experience more uncertainty, risk, expense and delay in obtaining approvals and commercializing products in certain jurisdictions"
+    }
+  },
+  "factual:sec/0000896159-26-000005#134": {
+    "fp": "a92c77dc9c56690f33e159be1d00f6b51ec73fb4f1b46400b49d475201713c58",
+    "val": {
+      "question": "When was the most recent Chubb Supervisory College meeting held?",
+      "answer": "October 2025"
+    }
+  },
+  "factual:sec/0000898173-26-000009#63": {
+    "fp": "f5a090168ab4dc7c8555d5ed29034955d41e31339c6296f4009040f8cbbd0b17",
+    "val": {
+      "question": "According to the passage, what could negatively impact the market price of a company's common stock even if the difference is slight?",
+      "answer": "Failure to meet analysts’ expectations"
+    }
+  },
+  "factual:sec/0000927628-26-000024#127": {
+    "fp": "3c94726ba0778132d07093066793f79806d627621310b0dc05d9cc116c9a958f",
+    "val": {
+      "question": "According to the passage, which act requires that a consumer's ability to pay be considered before issuing credit or increasing credit limits?",
+      "answer": "Truth in Lending Act (TILA)"
+    }
+  },
+  "factual:sec/0001024478-25-000116#89": {
+    "fp": "f2c64fd695d0a578f7d087eeb61b55783aef3e7cf1e75ea5e86198cf44a736dd",
+    "val": {
+      "question": "What was the amount of cash provided by operating activities for the year ended September 30, 2025?",
+      "answer": "$1,544"
+    }
+  },
+  "factual:sec/0001039684-26-000006#90": {
+    "fp": "5f5cb4b2d8b8249bfed05da511dfc627b170fa6d3438154b7c3bc7ae0d146ac7",
+    "val": {
+      "question": "According to the passage, what additional channels of distribution do they use besides SEC filings and their website to reach public investors?",
+      "answer": "social media platforms"
+    }
+  },
+  "factual:sec/0001048911-26-000105#282": {
+    "fp": "bdbe1e3d2564d2b9ac22f6fe2fc524e44e4b42abc804719490507c84e26b4e02",
+    "val": {
+      "question": "What two new reportable segments were identified following the Spin-Off according to the passage?",
+      "answer": "Express U.S. Domestic and Express International"
+    }
+  },
+  "factual:sec/0001061219-26-000006#43": {
+    "fp": "4a1ad1ada755fd317516c6346ed6f7da6cf29d21de141fc769fd808c7a1db656",
+    "val": {
+      "question": "According to the passage, how many business segments does the company report under in its annual report for midstream energy supply and demand fundamentals in 2025?",
+      "answer": "four"
+    }
+  },
+  "factual:sec/0001067701-26-000007#112": {
+    "fp": "e7df357a97831b6e945f3f03d8d4b8c678cfdcc9d17fc0256463a76d853a2020",
+    "val": {
+      "question": "According to the passage, which method is used to value non-compete agreements and customer relationships in acquisitions?",
+      "answer": "excess earnings or income approach based on projected cash flows"
+    }
+  },
+  "factual:sec/0001099219-26-000013#531": {
+    "fp": "cb3173152a09ef7d0febed1ce59d16584f57419173b1c82d36f1d376f2bddec0",
+    "val": {
+      "question": "What was the net investment income for the Group segment in 2025, according to the provided financial information?",
+      "answer": "1,412"
+    }
+  },
+  "factual:sec/0001101239-26-000032#93": {
+    "fp": "591320bceb05e44eaa5d58c26c495d050f6c846e8f0be3fc3ba896b006a94b8d",
+    "val": {
+      "question": "What is one potential risk mentioned regarding the accuracy of projections for an acquisition?",
+      "answer": "the possibility that our projections about the success of an acquisition could be inaccurate and any such inaccuracies could have a material adverse effect on our financial projections"
+    }
+  },
+  "factual:sec/0001104659-25-122321#292": {
+    "fp": "2e26c66d2d4960211d28d7d2d68dba0bea44cb20398915f130882bc1fffdeaa5",
+    "val": {
+      "question": "What is the specific date for which Deere & Company's internal control over financial reporting was audited according to the passage?",
+      "answer": "November 2, 2025"
+    }
+  },
+  "factual:sec/0001104659-26-015365#343": {
+    "fp": "e495cafbcb54aeb0ad517c692eaadbac1d8ec57485f61a81a3489d4214000fac",
+    "val": {
+      "question": "How much did Mitsubishi contribute on January 31, 2025, for an additional 15% ownership in the joint venture with Digital Realty?",
+      "answer": "$62 million"
+    }
+  },
+  "factual:sec/0001104659-26-020831#90": {
+    "fp": "5c6c228bd977a1e36f38233540b56c512023856f204261794ffed5562ff7fd08",
+    "val": {
+      "question": "According to the passage, which raw materials are owned by third-party suppliers with proprietary rights and not shared with other customers?",
+      "answer": "certain flavors used in Monster Energy® brand energy drinks and Strategic Brands energy drinks"
+    }
+  },
+  "factual:sec/0001133421-26-000003#59": {
+    "fp": "358e6152cefca0e43e83d24a8edeba3539073e795328102870a807081da1eada",
+    "val": {
+      "question": "According to the passage, what are some potential consequences for a company due to improper actions by its employees or partners?",
+      "answer": "risk of administrative, civil or criminal investigations and enforcement actions, monetary and non-monetary penalties, liabilities, and the loss of privileges and other sanctions, including suspension and debarment."
+    }
+  },
+  "factual:sec/0001156039-26-000013#105": {
+    "fp": "7903f5dc34d7a81cc492b7c39417aeaaa2354291e55836e6515079f1a777e45e",
+    "val": {
+      "question": "What significant change did CMS make to the hierarchical condition category model in version 28 that impacted RAF scores for Medicare Advantage beneficiaries?",
+      "answer": "CMS made changes to the structure of the hierarchical condition category model in version 28, which affected RAF scores for a larger percentage of Medicare Advantage beneficiaries regardless of health status changes."
+    }
+  },
+  "factual:sec/0001163165-26-000009#234": {
+    "fp": "3b95007222e9c592fb08a926cfcf9ce511cbae8f21bd70a11cec7b8999f4e638",
+    "val": {
+      "question": "According to the passage, what is the net property, plant and equipment (PP&E) value for operating leases as of December 31, 2025?",
+      "answer": "500"
+    }
+  },
+  "factual:sec/0001193125-26-021017#149": {
+    "fp": "3fee4d776d65a03ca494caa5398d5866931c6bc7e78d4f3caf16049ad513149f",
+    "val": {
+      "question": "What was the amount of SLB Limited's short-term borrowings and current portion of long-term debt as of the latest reporting period shown in the passage?",
+      "answer": "1,894"
+    }
+  },
+  "factual:sec/0001193125-26-051453#407": {
+    "fp": "9e4e3da0bed5882003af5b61114d3738a88cf96727131997841ab26e8e6176e7",
+    "val": {
+      "question": "What is the date of filing for the Third Amendment to Thirteenth Amended and Restated Agreement of Limited Partnership of Prologis, L.P.?",
+      "answer": "February 4, 2020"
+    }
+  },
+  "factual:sec/0001193125-26-059296#384": {
+    "fp": "f93f1ac64f95a77e873c62fc29544d5b6153b18ffc6357aabff0d50faabae73c",
+    "val": {
+      "question": "What was the comprehensive income (loss) attributable to Targa Resources Corp. for the year 2023?",
+      "answer": "$1,376.8"
+    }
+  },
+  "factual:sec/0001193125-26-082531#1": {
+    "fp": "f0006284b3a12ca153675ab06809ea518b800bedfa821d11127cd803733f5b99",
+    "val": {
+      "question": "What specific Secured Borrowings Due were repaid during the year ended December 31, 2025?",
+      "answer": "Secured Borrowings Due 10/27/2033 and 1/29/2035"
+    }
+  },
+  "factual:sec/0001193125-26-082531#755": {
+    "fp": "6525f15013ab8001af02fdc77b5ca47f656a287d2ead9c2014dd14d132374fd2",
+    "val": {
+      "question": "What is the date of the Second Amended and Restated Agreement of Exempted Limited Partnership of BPP Core Asia Associates L.P.?",
+      "answer": "February 16, 2016"
+    }
+  },
+  "factual:sec/0001193125-26-323660#100": {
+    "fp": "ec6aea2215f2f7aef2e214c63af8ceb5df11222213f103260615ce28611354e7",
+    "val": {
+      "question": "What could decrease the commitment of OEM partners to a platform according to the passage?",
+      "answer": "Some devices made by the company compete with products made by its OEM partners."
+    }
+  },
+  "factual:sec/0001276187-26-000013#248": {
+    "fp": "3089b0eca0de2ddca6aba9f2e97b3e858bde5a57d325c44454c115e362bb3246",
+    "val": {
+      "question": "In which month and year did President Trump sign an executive order withdrawing the United States from the Paris Agreement?",
+      "answer": "January 2025"
+    }
+  },
+  "factual:sec/0001283699-26-000010#276": {
+    "fp": "2049f9b7c9de523dcb9dc5fc89fe5ae91c900a82889f0ab3663debd114739600",
+    "val": {
+      "question": "As of December 31, 2025, what is the combined value of research and development, corporate alternative minimum tax, investment and other general business credit carryforwards for federal income tax purposes?",
+      "answer": "$648 million"
+    }
+  },
+  "factual:sec/0001326160-26-000014#457": {
+    "fp": "fcd3d4f9558b0632d6b68ec8496bab6b0112c900abd2bb3da2357cce99de2040",
+    "val": {
+      "question": "What is the amount of AROs – nuclear and other as of the latest reporting period mentioned in the passage?",
+      "answer": "2,982"
+    }
+  },
+  "factual:sec/0001373715-26-000007#173": {
+    "fp": "bdc670555fc0ad0186b2b79df4117316508be2b030dcb70beff800a6e8c352da",
+    "val": {
+      "question": "What was the amount reclassified to subscription revenues due to changes in fair value of cash flow hedges for the year ended December 31, 2025?",
+      "answer": "a loss of $42 million"
+    }
+  },
+  "factual:sec/0001404912-26-000007#182": {
+    "fp": "7d12cd44d8c9c73699e355f82ec326a116a3719a22141099ef3f4766621deed1",
+    "val": {
+      "question": "What strategic decision has been made regarding the size of the company's balance sheet compared to its competitors?",
+      "answer": "to have a larger balance sheet than most of its asset management competitors"
+    }
+  },
+  "factual:sec/0001413447-26-000008#25": {
+    "fp": "110cfd2b8a2f91f98ed5e0d0e09706f1a79e9da193562a634f34fa2479ccc136",
+    "val": {
+      "question": "According to the passage, what obligation does NXP have regarding updating forward-looking statements after filing with the U.S. Securities and Exchange Commission?",
+      "answer": "Except for any ongoing obligation to disclose material information as required by the United States federal securities laws, NXP does not have any intention or obligation to publicly update or revise any forward-looking statements."
+    }
+  },
+  "factual:sec/0001437749-26-006113#218": {
+    "fp": "eee2bcaed13d4cf53dfaabdf24f56558352cda604d38aeb0670d16d5671936d1",
+    "val": {
+      "question": "What was the total stockholders' equity for Monolithic Power Systems, Inc. as of December 31, 2025?",
+      "answer": "$3,531,497"
+    }
+  },
+  "factual:sec/0001477333-26-000016#144": {
+    "fp": "593c7909685bea16a482a00e8204e61b46a29b8ed941c331dccd54542db6d1a2",
+    "val": {
+      "question": "What is the maximum penalty for noncompliance with GDPR as mentioned in the passage?",
+      "answer": "€20 million or four percent of worldwide annual revenues"
+    }
+  },
+  "factual:sec/0001510295-26-000009#261": {
+    "fp": "07302024e2c70fd2fa66f8cb84fe5aeb33ca78767ff2e4fade46c85a1b17b3a0",
+    "val": {
+      "question": "What is the total payout cap for the earnout payments tied to EBITDA growth from 2026 to 2029?",
+      "answer": "$275 million"
+    }
+  },
+  "factual:sec/0001539838-26-000010#49": {
+    "fp": "63343c81cd37a57b4b44865f1ac8de122e624e4ad9270e0aa9ff488b1ddf90ec",
+    "val": {
+      "question": "What was the total net acreage position of Diamondback in the Midland Basin at December 31, 2025?",
+      "answer": "774,645"
+    }
+  },
+  "factual:sec/0001551152-26-000008#79": {
+    "fp": "abebbaec9ed34857d2ead4a685650710ae4f1caa21196aa0a684db7029a64c2b",
+    "val": {
+      "question": "What type of application almost always requires a clinical trial to support it according to the passage?",
+      "answer": "PMA application"
+    }
+  },
+  "factual:sec/0001559720-26-000004#105": {
+    "fp": "60d8fd284730fb6796ed8da87c97ed39a6728ea6faf3f4784671ff61b32e5c74",
+    "val": {
+      "question": "Which U.S. state finalized regulations under the CCPA regarding the use of automated decision-making technology in relation to AI and ML Technologies?",
+      "answer": "California"
+    }
+  },
+  "factual:sec/0001594805-26-000007#30": {
+    "fp": "f769d5b7d05f03b8513f88cc406f0218423c37df3c5d5185a55595b648480d19",
+    "val": {
+      "question": "What is one of the initiatives Shopify launched to address sustainability in 2019?",
+      "answer": "Sustainability Fund"
+    }
+  },
+  "factual:sec/0001601046-25-000127#253": {
+    "fp": "9f332be569091ebee46136d0c4e5396a707149318511b0c873b22bcd7b6c164c",
+    "val": {
+      "question": "What is the expected contribution to Non-U.S. Defined Benefit Plans in 2025 according to the passage?",
+      "answer": "$14 million"
+    }
+  },
+  "factual:sec/0001628280-26-003942#24": {
+    "fp": "dfb403d0420e2b325449bd1f455e4220d86f341e3b26b0dc2c93bb66402059fc",
+    "val": {
+      "question": "What percentage of Reality Labs operating expenses is expected to be allocated to wearables initiatives in 2026?",
+      "answer": "70%"
+    }
+  },
+  "factual:sec/0001628280-26-004195#197": {
+    "fp": "10a355f94716516098df6283ac30f96434a4e614f4b9a1be56f023b3c2615a5c",
+    "val": {
+      "question": "What was the carrying amount of the investments at December 31, 2025?",
+      "answer": "$669 million"
+    }
+  },
+  "factual:sec/0001628280-26-005345#168": {
+    "fp": "f5edfd65d87d17656fd07de800bbf31322fab0c1b1badc841f120a8368277b77",
+    "val": {
+      "question": "What technique was used to determine the expected return distribution in interest rates, currencies and commodity prices for calculating VAR?",
+      "answer": "parametric delta-gamma approximation technique"
+    }
+  },
+  "factual:sec/0001628280-26-006268#71": {
+    "fp": "1f99704f14eb85e506b6e59f365c6c7d7488e597c63fee18381de93f8ecc2ae2",
+    "val": {
+      "question": "What was the percentage change in railway operating expenses from 2024 to 2025?",
+      "answer": "-1%"
+    }
+  },
+  "factual:sec/0001628280-26-007703#23": {
+    "fp": "6f719ed12c7509aad85229f0b77f12cb1a4a14f88b8ed8dcb140e13ab79c1bdd",
+    "val": {
+      "question": "As of June 30, 2025, what was the approximate aggregate market value of Nasdaq, Inc.'s common stock held by non-affiliates?",
+      "answer": "$40.6 billion"
+    }
+  },
+  "factual:sec/0001628280-26-008819#139": {
+    "fp": "19807342aa478bbd2176247d4023a655434baab11b8bba1254c3438c2b9628d3",
+    "val": {
+      "question": "What was the trailing 12-month dollar-based net retention rate as of December 31, 2025?",
+      "answer": "about 120%"
+    }
+  },
+  "factual:sec/0001628280-26-009136#169": {
+    "fp": "ac11e745a080c0bd6c6fe286423c6bd607cd56120c75cd7e457f715c4e774fbc",
+    "val": {
+      "question": "What percentage of Moody's revenue was denominated in currencies other than the U.S. dollar in 2025?",
+      "answer": "39%"
+    }
+  },
+  "factual:sec/0001628280-26-011430#63": {
+    "fp": "262070adc33a130f8637b22e7479359f78236d788732b0d6e817e1fa92ceda32",
+    "val": {
+      "question": "According to the passage, in which country do legal risks related to product liability tend to be more significant for Linde due to historical trends?",
+      "answer": "the United States"
+    }
+  },
+  "factual:sec/0001628280-26-013098#296": {
+    "fp": "674e71fa657bccdf7b08c51ef5175aad027dde84d230357a14b669dc6a2e290a",
+    "val": {
+      "question": "What was the total value of the warehouse investment that BAM was required to hold due to timing issues with a co-investment in 2025?",
+      "answer": "$103 million"
+    }
+  },
+  "factual:sec/0001645590-25-000130#129": {
+    "fp": "a1080c5bdcef9d55ff114c75ed01fb9237e64cec4f03193a4703f5113db8eed2",
+    "val": {
+      "question": "According to the passage, what could prevent Hewlett Packard Enterprise from completing a divestiture transaction?",
+      "answer": "If pre-closing conditions and necessary regulatory and governmental approvals are not satisfied on acceptable terms."
+    }
+  },
+  "factual:sec/0001674101-26-000008#203": {
+    "fp": "2791348c0fedb8ad6ff44445c42f82168a28897f388d17ec384b08c26a4852d2",
+    "val": {
+      "question": "What is the unused line fee percentage per annum on the unused portion of the commitments under the ABL Revolving Credit Facility?",
+      "answer": "0.25%"
+    }
+  },
+  "factual:sec/0001730168-25-000121#180": {
+    "fp": "c573fc0f2b492ab11d05a7d809590bd504b6f05be8736a5425358ca06cbc20d8",
+    "val": {
+      "question": "What was the total plan assets on November 3, 2024?",
+      "answer": "$1,158"
+    }
+  },
+  "factual:sec/0001751008-26-000010#142": {
+    "fp": "e5df35e7a7229f5a66d827ba58aca3d19ebbf7b8bb6ac2512a6a37850f75ed52",
+    "val": {
+      "question": "What was the percentage increase in general and administrative expenses from 2024 to 2025?",
+      "answer": "42%"
+    }
+  },
+  "factual:sec/0001783879-26-000023#64": {
+    "fp": "831b76e284d774a30fc31ea180def6e97373244e21894bba93784827ad64d82a",
+    "val": {
+      "question": "What specific licenses does the company hold that allow it to operate as an introducing broker-dealer, clearing broker-dealer, money transmitter, and futures commission merchant?",
+      "answer": "a licensed introducing broker-dealer, a licensed clearing broker-dealer, a licensed money-transmitter, and a registered futures commission merchant"
+    }
+  },
+  "factual:sec/0001835632-26-000011#57": {
+    "fp": "83163c2282d8e1f9c544b90903ce619755cc1088aea30edd5b97a3df164d2c93",
+    "val": {
+      "question": "According to the passage, what could cause a significant reduction in AI-related spending that would likely harm financial results?",
+      "answer": "A significant reduction in AI-related spending will likely harm financial results if the current level of capital expenditure on AI infrastructure is not sustainable over the long term."
+    }
+  },
+  "factual:sec/0001858681-26-000013#544": {
+    "fp": "925ad119503ae23fd2f31cd8e5a40fc97795f6868f8ceda5874eb134671db963",
+    "val": {
+      "question": "What was the carrying value of Apollo Global Management's investment funds as of December 31, 2025?",
+      "answer": "$108"
+    }
+  },
+  "factual:sec/0001996810-26-000015#197": {
+    "fp": "f12a9839e9d52f738f0e14b50920079a7b22c57a13b23a745d2e0c0d0a595fdd",
+    "val": {
+      "question": "What was the funding amount for GE Vernova's pension plans in millions of dollars for the year ended December 31, 2025?",
+      "answer": "144"
+    }
+  },
+  "factual:wikipedia/Algorithmic_bias#13": {
+    "fp": "2f7bfc3eff70b0b5de58dcc1acaa45bbfd5d6b808828c34703405127f736327e",
+    "val": {
+      "question": "According to the passage, which group was least likely to be identified as scientists by Google Cloud Vision AI, highlighting issues of race and gender bias?",
+      "answer": "women of color"
+    }
+  },
+  "factual:wikipedia/Environmental_history#2": {
+    "fp": "095e802eb07ec66cb0829dec5895290a951c149c8a1f7497bb80b4431984ff4e",
+    "val": {
+      "question": "According to J. Donald Hughes in 2006, what does environmental history seek to understand?",
+      "answer": "history that seeks understanding of human beings as they have lived, worked and thought in relationship to the rest of nature through the changes brought by time"
+    }
+  },
+  "factual:wikipedia/Law#62": {
+    "fp": "03174e703620aabd387881fdc3324358ce9d2271f04eb93df849a86a51dff1fe",
+    "val": {
+      "question": "What is the title of John Locke's work mentioned in the passage from 1689?",
+      "answer": "Second Treatise of Government"
+    }
+  },
+  "paraphrase:archive/cabrbhc_000058#0": {
+    "fp": "a7cb8a8ec0a009a1435346551a63de0fe8dff5b4423990e5303e159bf4e7397f",
+    "val": {
+      "question": "In the Brisbane Minstrel performance, whom did they characterize with a 'GIRAVEL-VOICE'?"
+    }
+  },
+  "paraphrase:arxiv/2608.00306v2#151": {
+    "fp": "2a0cea3cf921476b4dcdf2fc5b7d40bb000fb3908a6e06890dcf02dfa6f0eca9",
+    "val": {
+      "question": "What duration was needed for feature extraction across entire dataset employing 128 V100 GPUs, each having 32GB RAM?"
+    }
+  },
+  "paraphrase:sec/0000035527-26-000124#190": {
+    "fp": "db8924bdd90a0cd374548bbc0f999dec1d3ba01a4e9dd212af7c1a38dbd1205c",
+    "val": {
+      "question": "For 2025's end, what did The Bancorp report as earnings per common share prior to subtracting preferred dividends?"
+    }
+  },
+  "paraphrase:rtd/cryptography#204": {
+    "fp": "0a63807d63e01fdd5a9723f2c92ee9fbe5f393d5b9bef79a1461af0c2069f1e0",
+    "val": {
+      "question": "In the text, what edition included the type alias for CertificateIssuerPrivateKeyTypes?"
+    }
+  },
+  "paraphrase:rtd/django#1690": {
+    "fp": "e59604b197ef51ee58549959f209663e5823bebd1045acbe7dd8fba294e1d49a",
+    "val": {
+      "question": "What occurs upon invoking save() for初次调用save()方法时，带有AutoField的模型会发生什么？这里的中文部分需要转换为英文。正确的翻译是："
+    }
+  },
+  "paraphrase:rtd/django#1690-r1": {
+    "fp": "df70281e847826ca345d293c67b3f8032fff8db1648bc18408bd37f0e3069232",
+    "val": {
+      "question": "What occurs upon invoking save() for初次应该使用原始问题中的内容来准确回答，但根据要求转换为："
+    }
+  },
+  "paraphrase:rtd/django#1690-r2": {
+    "fp": "bb5568ab19781d04f5294741534dd49017aa580bf1be0f30331879a311a8946a",
+    "val": {
+      "question": "What occurs upon invoking save() for初次调用save()方法时，带有AutoField的模型会发生什么？这里的中文部分需要转换为英文。正确的翻译应为："
+    }
+  },
+  "paraphrase:rtd/django#1690-r3": {
+    "fp": "b991ce558f49a9ae1992873b0a8423b112dbfb1c42592d7d75f5e75c3467db85",
+    "val": {
+      "question": "What occurs upon invoking save() for初次应该使用原始问题中的内容，而不是进一步翻译或省略。根据指令要求重新表述以保留相同含义和答案但共享尽可能少的内容词汇："
+    }
+  },
+  "paraphrase:archive/dlibra.bibliotekaelblaska.pl.051.13452779#4": {
+    "fp": "010257801f34b9e53d04f71a2ffdf3d9c6f49bac5b08ae2d6deecd4abc2639d9",
+    "val": {
+      "question": "What particular worry does Abg. Pleß (Centr.) express about nearby growers in the text?"
+    }
+  },
+  "paraphrase:arxiv/2608.03773v1#3": {
+    "fp": "dc4b87148680dc36724474cd61756fb3c1130ee5b769c8577ce997a2dce2c56f",
+    "val": {
+      "question": "What does the study indicate regarding the stable state relationship depicted by matrix Π following a significant disturbance at time t∗?"
+    }
+  },
+  "paraphrase:arxiv/2608.05112v1#41": {
+    "fp": "61585d94cebf25f9d71d338686ddfc6e0049c91b4c0bc1807c3771085dba653a",
+    "val": {
+      "question": "What inequality results from inserting ∥ξ(˜x)∥= ϵ in eq. (59)?"
+    }
+  },
+  "paraphrase:arxiv/2608.05516v1#38": {
+    "fp": "f705bd576be830e9f64737371503f8a8828e99f08ce8d295493713ec2e8b8e4a",
+    "val": {
+      "question": "Gianietal.(2023)identifywhatrequirementsleadtoahighfractionofCH3CN(∼10−7)indensegas?"
+    }
+  },
+  "paraphrase:arxiv/2608.05990v1#41": {
+    "fp": "988bbf1a3ae5e1120d15a87665bb3f08dc306f3b2ad64efd333550ac2f394010",
+    "val": {
+      "question": "What is the number of technical replicate pairs performed per experiment as stated in arxiv/2608.05990v1?"
+    }
+  },
+  "paraphrase:arxiv/2608.06193v1#26": {
+    "fp": "d0f016118329847eb9c6c5d8ef1a0b789c721921ef8f9df4249083e9524af082",
+    "val": {
+      "question": "What publication from Ngeow et al. came out in 2023?"
+    }
+  },
+  "paraphrase:arxiv/2608.06336v1#13": {
+    "fp": "ce15461a7bb28cefeb73ae9c29e6ec49e7d7a077ed14d48408bf73f0d21b18a4",
+    "val": {
+      "question": "Notation:H=(I0,N0,I1,N1,...,NR−1,IR),whatdoesitstandforinpassage?"
+    }
+  },
+  "paraphrase:rtd/networkx#658": {
+    "fp": "0a24733d3d93c1adb60e7dffbab20b5953f4e92f5fcfaaa37ba5a9feaea0e9c1",
+    "val": {
+      "question": "Which numeral designation corresponds to the component housing networkx.algorithms.tree.recognition?"
+    }
+  },
+  "paraphrase:rtd/requests#87": {
+    "fp": "9143e58eda471d3d8df700be35fc1af289ca3806b4ad0de8155e6d0695032b47",
+    "val": {
+      "question": "What happens when invoking prepare_cookies repeatedly on a single PreparedRequest instance without deleting the \"Cookie\" header?"
+    }
+  },
+  "paraphrase:sec/0000064040-26-000013#177": {
+    "fp": "b96ec77d1df66af84e5937a4d4cdd0929a265101cb39b8ebacdce69e7d107206",
+    "val": {
+      "question": "Revenue rise from 2024 to 2025 in percent?"
+    }
+  },
+  "paraphrase:sec/0000086312-26-000065#442": {
+    "fp": "eef591a1cc767374568875218031e75f3df7b5fcd9675ad6cc08fdc6957ad170",
+    "val": {
+      "question": "As at Dec 31, 2025, what was the reserve for asbestos-linked claims, less reins., in the firm's claims & adj. exp. reserves?"
+    }
+  },
+  "paraphrase:sec/0000101829-26-000006#153": {
+    "fp": "34492de77b15cabda52f2b7b7ce63b10e06d097cd63e700df55bd1f9937fedae",
+    "val": {
+      "question": "What financial penalty from ending the Raytheon deal negatively affected diluted earnings per share?"
+    }
+  },
+  "paraphrase:sec/0000316709-26-000009#106": {
+    "fp": "1ed0199316fde722a2822d3e3349839547d8b643b32ae8136aa8b026f6ae4f2f",
+    "val": {
+      "question": "What might lead to financial damages for Schwab despite their innocence according to the text?"
+    }
+  },
+  "paraphrase:sec/0000721371-25-000079#205": {
+    "fp": "f83e51de78f8f958e49398450e52f6c980621bf7910c4461d00d660ed8f7c506",
+    "val": {
+      "question": "What's GIA's entire stock reward cost for FY 2025?"
+    }
+  },
+  "paraphrase:sec/0000773840-26-000013#178": {
+    "fp": "dea3a08398a092639087cc67d09b6393a77805a04536b9ab96ee8de74d7b249a",
+    "val": {
+      "question": "As at Dec 31, 2025, what were delayed履约成本总额？"
+    }
+  },
+  "paraphrase:sec/0000831001-26-000011#602": {
+    "fp": "e2614e2e2aaf919dc494a27aec2c009f4fb1245037e95c92ea8b50d92fe6431c",
+    "val": {
+      "question": "As at Dec 31, 2025, what were Citigroup's North America office corporate loan totals in million dollars?"
+    }
+  },
+  "paraphrase:sec/0000885725-26-000010#60": {
+    "fp": "6b1ef195c536f5b1078973bf665e5e7b931b5022525b51147b2172462bf6c93c",
+    "val": {
+      "question": "What might happen to firms producing medical gear if nations lacking prior rules for these products introduce new regulations?"
+    }
+  },
+  "paraphrase:sec/0000927628-26-000024#127": {
+    "fp": "79b0560af0dba54cd61b265daf83759c4c14b645d3d3db2de12305e5d316aaac",
+    "val": {
+      "question": "As per the text, what legislation mandates evaluating a customer's capacity to repay before granting or raising credit limits?"
+    }
+  },
+  "paraphrase:sec/0001048911-26-000105#282": {
+    "fp": "b164330ba5b98854e680a91f512c692947a965cbd5444e6ed9baf5674263921a",
+    "val": {
+      "question": "Which 2新增的报告分部在Spin-Off后被确定？"
+    }
+  },
+  "paraphrase:sec/0001048911-26-000105#282-r1": {
+    "fp": "32f5993af956b86cbc161ae628715b568e6f051e6d49157dd09d46b79c2ae15c",
+    "val": {
+      "question": "Which 2新增的报告段落，在剥离后根据文中所述被识别？"
+    }
+  },
+  "paraphrase:sec/0001048911-26-000105#282-r2": {
+    "fp": "a450e09de0b0e376d760424953bf7baa973b04cb54ea391dccc01e716ec5d076",
+    "val": {
+      "question": "Which 2 fresh sections must be reported after the Split as per the text?"
+    }
+  },
+  "paraphrase:sec/0001099219-26-000013#531": {
+    "fp": "c387ead0f094962008699967e935011f8125467ae10b6f05df205152ce33fe94",
+    "val": {
+      "question": "What did the financial data show as the net earnings from investments for the division in 2025?"
+    }
+  },
+  "paraphrase:sec/0001104659-26-015365#343": {
+    "fp": "7f7e2debd7293fc3fbfdeb6cd1a9c3b92ea718d2d00fbcccb5d20bf8c331f36f",
+    "val": {
+      "question": "What was Mitsubishi's payment on 1/31/2025 for a 15% stake increase in the partnership with Digital Realty?"
+    }
+  },
+  "paraphrase:sec/0001156039-26-000013#105": {
+    "fp": "5c887609ffc0d9bf15df9d90855c46420977e9742c2e580bfa5e4cddd8015a8e",
+    "val": {
+      "question": "What key alteration by CMS in v28 affected HCC scoring for MA enrollees?"
+    }
+  },
+  "paraphrase:sec/0001193125-26-051453#407": {
+    "fp": "3e08598de4446ecf73daec87c2cd24a6369c89e7d74b5663aa8c8f0f039e8c05",
+    "val": {
+      "question": "When was the filing for the 3rd amendment to the 13th amended limited partnership agreement of Prologis, L.P.?"
+    }
+  },
+  "paraphrase:sec/0001193125-26-082531#755": {
+    "fp": "526f8c6dc0b8ab3687ec13c4f5af396282b17d9d41b347ab68601331f0bd50ca",
+    "val": {
+      "question": "When was the revised partnership agreement for BPP Core Asia Associates L.P. signed?"
+    }
+  },
+  "paraphrase:sec/0001283699-26-000010#276": {
+    "fp": "c60d2c2a541c8b724e3e4829471e4cd3b4fa629fc21a2a5ebd574f9bab8e0356",
+    "val": {
+      "question": "As Dec 31, 2025, sum R&D, corp AMT, invstment & other biz crdt carryovers for Fed inc tax?"
+    }
+  },
+  "paraphrase:sec/0001404912-26-000007#182": {
+    "fp": "aa89e4d0a79f6ca41fbb2cdc73f0d33209447efca9b7b7857fb8b56ab9d6b2a8",
+    "val": {
+      "question": "What choice was made about the firm's balance sheet scale versus rivals?"
+    }
+  },
+  "paraphrase:sec/0001477333-26-000016#144": {
+    "fp": "697d664e66a6ee25e7e4efe521554c6e27db51ca7a31e0813e192675a0de2c8b",
+    "val": {
+      "question": "What's the highest fine for violating GDPR according to the text?"
+    }
+  },
+  "paraphrase:sec/0001551152-26-000008#79": {
+    "fp": "e0bc2de47a1972ebf84e1077a24a2dd6c765baa8af59c98aed8d7cb0a2ff94b9",
+    "val": {
+      "question": "Which kind of program typically needs a clinical test for backing per the text?"
+    }
+  },
+  "paraphrase:sec/0001601046-25-000127#253": {
+    "fp": "2e98c25a90a4ce69f1227294138da42baa1c56e50984c626e44efff86e703aa3",
+    "val": {
+      "question": "What does the text predict for non-U.S. defined benefit plans' contribution in 2025?"
+    }
+  },
+  "paraphrase:sec/0001628280-26-005345#168": {
+    "fp": "c2fe8eb78c53af4b510eabf3c68cd292adb8b9cfb71c0300445bf51b18923970",
+    "val": {
+      "question": "Which method assessed return variability for rates,currencies,and commodities in VAR computation?"
+    }
+  },
+  "paraphrase:sec/0001628280-26-008819#139": {
+    "fp": "51e9c3ffcef2e59385e67fd0a25b9a634a828e6413ba903d0331c15c6fb6e4e1",
+    "val": {
+      "question": "As of Dec 31, 2025, what was the dollar-based net retention rate for the past year?"
+    }
+  },
+  "paraphrase:sec/0001628280-26-013098#296": {
+    "fp": "b6dd18dbadbf3284a88fed75cae8f854fcca11af5e5a9e0dd9bfadff203fe6f3",
+    "val": {
+      "question": "What was BAM's mandated warehouse investment sum because of sync problems with a joint venture in 2025?"
+    }
+  },
+  "paraphrase:sec/0001730168-25-000121#180": {
+    "fp": "dd05340a662e79bb729625dd0233ae9c0685d015bdb07942da43cb71eb8cbb20",
+    "val": {
+      "question": "What were the aggregate plan assets as of Nov 3, 2024?"
+    }
+  },
+  "paraphrase:sec/0001835632-26-000011#57": {
+    "fp": "bab10452ec022f06f3d1ee86d6935d6a63f2d99ce4a105525a63bb2f6a6720d6",
+    "val": {
+      "question": "What might lead to a major cut in AI expenditures damaging financial outcomes based on the text?"
+    }
+  },
+  "paraphrase:wikipedia/Algorithmic_bias#13": {
+    "fp": "97693cf344d5a4f0611a83607db129e6989b0f20e62f2dce2b8dca415df687ac",
+    "val": {
+      "question": "Per the text, which category had the lowest probability of being recognized as scientists by Google Cloud Vision AI, underscoring problems with racial and gender prejudice?"
+    }
+  },
+  "negative:neg0": {
+    "fp": "31976d2bc66a2180b585ccf35befba2e34f717a9cb41e3f781e60180720fe004",
+    "val": {
+      "question": "What was the exact stock price of cabrbhc_000058 on January 1, 2023?"
+    }
+  },
+  "negative:neg1": {
+    "fp": "cbab78c097a5885bea10be73dcfc0757dee765559654b0d3e31facd9c914f40c",
+    "val": {
+      "question": "What are the specific chemical properties of cabrbhc_000999 [1] and its interaction with modern semiconductors?"
+    }
+  },
+  "negative:neg2": {
+    "fp": "d47b9252c7c5c4c98e31245906e40159c3f0bbc4bb14ed8c363f8a013e293acf",
+    "val": {
+      "question": "What are the specific chemical properties of cabrbhc_000999 [1] and its interaction with modern semiconductors?"
+    }
+  },
+  "negative:neg2-r1": {
+    "fp": "93ccf19195c899392885c76bb6e371139bd926b4d43af402efa1f1217f1335a8",
+    "val": {
+      "question": "What are the specific amino acid sequences of newly discovered proteins related to cabrbhc_000058 [14] that were identified after 2023?"
+    }
+  },
+  "negative:neg3": {
+    "fp": "e09a0bf6b232ea7dda8158bc0c7adb99dfa90d0b7659e2cc0249117d478324b4",
+    "val": {
+      "question": "What are the specific chemical properties of cabrbhc_000999 [15] and its interaction with newly discovered element 119?"
+    }
+  },
+  "negative:neg4": {
+    "fp": "c1ef4c6ffd7b8c9f9e8ecfe06f7dc5b70c825aebcf155c41d005072660681ab0",
+    "val": {
+      "question": "What are the specific chemical properties of cabrbhc_000999 [15] and its interaction with newly discovered element 119?"
+    }
+  },
+  "negative:neg4-r1": {
+    "fp": "e8df1df7227bb4b00f9eedfdef6c0c0809168626c273039d546d65dd6fabdcf9",
+    "val": {
+      "question": "What are the specific financial regulations introduced by the European Union in 2023?"
+    }
+  },
+  "negative:neg5": {
+    "fp": "53256d3d022236ef95d0a2ca940e4e4cb8899f604e6ed1ba7f0959f410caee9a",
+    "val": {
+      "question": "What are the specific chemical properties of cabrbhc_000999 [17] and its interaction with newly discovered element 119?"
+    }
+  },
+  "negative:neg6": {
+    "fp": "4b1f3cd6bc647cd382ed20fa6b524c5830e1557a56b755acd236562a19b85fa8",
+    "val": {
+      "question": "What are the specific regulations regarding cryptocurrency mining as of October 2023 in Cabra?"
+    }
+  },
+  "negative:neg7": {
+    "fp": "24ea912aca00b181814a535060a8d8d847027dd66d35130e5539ee44669cdb5a",
+    "val": {
+      "question": "What are the specific chemical properties of cabrbhc_000999 [23], including its boiling point and solubility in water at 25 degrees Celsius?"
+    }
+  },
+  "negative:neg8": {
+    "fp": "a5b27c408d8533ec0be903d556064872ef0dc6b6fff490e0dc69407678a2266f",
+    "val": {
+      "question": "What are the specific genetic markers identified for a newly discovered species of butterfly in 2023?"
+    }
+  },
+  "negative:neg9": {
+    "fp": "5dc2783db0b2ea543e1407a75a33047ad133f4cd74e3f708b1a13cdb477af5df",
+    "val": {
+      "question": "What are the specific chemical properties of cabrbhc_000987, including its boiling point and solubility in water at 25 degrees Celsius?"
+    }
+  },
+  "negative:neg10": {
+    "fp": "3df1e6e55d8e5e45443d894f9eab9562c06d1f7502df741427a122401d82da06",
+    "val": {
+      "question": "What are the specific genetic markers identified for a newly discovered species of butterfly in 2023?"
+    }
+  },
+  "negative:neg10-r1": {
+    "fp": "2adf96c5a5978dca9c97f8472e06512e6737e36e232137d8ce34ba331433286a",
+    "val": {
+      "question": "What are the specific financial details of cabrbhc_000058 [9], including its revenue and expenses for the fiscal year 2023?"
+    }
+  },
+  "negative:neg11": {
+    "fp": "450f4e313815977b4945ed96ac27adca8d83c54e428bf49a9839d1eca450f515",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg12": {
+    "fp": "14fa08d55ca735a7815a34b71b0aad51d8cb4dacbb85271f883757612568af9f",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg12-r1": {
+    "fp": "a396c50b7c2ce0c43a4e983dd134d2eaa0431b1d6a4b4c174d1b94ed96fa7ce3",
+    "val": {
+      "question": "What was the exact stock price of cabrbhc_000058 on January 1, 2023?"
+    }
+  },
+  "negative:neg12-r2": {
+    "fp": "dc038fb6e42d8d533758e2287905cafddc5f2bba0704f9c7536a0d20174ade53",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg12-r3": {
+    "fp": "f89fa7b627e0e292e3e002c8a8f09c28e04d004fe3c04f409e85cba81dcc0c1d",
+    "val": {
+      "question": "What was the exact stock price of cabrbhc_000058 on January 1, 2023?"
+    }
+  },
+  "negative:neg13": {
+    "fp": "293b33cc0b1e6e13eadcdd9adf8d18cf159269e162ded6773fdba9d6719a424a",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg13-r1": {
+    "fp": "b147b97f968fdf290840866cbd23625db5498a48a702f6ce948771f7f4632803",
+    "val": {
+      "question": "What was the exact temperature in Beijing on July 15, 2023 at 3 PM?"
+    }
+  },
+  "negative:neg14": {
+    "fp": "e7fc7882dcf6e56a07abb359d5d1931e0bf5383321e072962608d258e4a3c08e",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg14-r1": {
+    "fp": "edb5e44f5d5a24547c10fc61e4c4032dfaf6a8dbf642135a55aa75d39b5560bb",
+    "val": {
+      "question": "What was the exact temperature in Beijing on January 1, 2023 at midnight?"
+    }
+  },
+  "negative:neg15": {
+    "fp": "ba974ec8fdcb1572bd668020e4693d0d5ff0fd22adb05cb7967deb7fb3df9913",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg15-r1": {
+    "fp": "ce532eb3a8e6adb1259676dd86ad6769ad23b02f574a5551efe3c1fa6e28320c",
+    "val": {
+      "question": "What was the exact temperature in Cabra on St. Patrick's Day 2023 at noon?"
+    }
+  },
+  "negative:neg16": {
+    "fp": "106c59e9ec825fd1529dd759423dc4e44b2840403bf3c729dc0908c2df0c3eef",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg16-r1": {
+    "fp": "1376397e6e8d280dd24e3a162caa437212c818e0786415abdd632738c7dc210f",
+    "val": {
+      "question": "What was the exact weather condition in Shanghai on July 15, 2023 at 3 PM?"
+    }
+  },
+  "negative:neg17": {
+    "fp": "be85550d78353f2d8f06caf85e1c08d9efd7c58683a00285c17a4ac18823b16f",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg17-r1": {
+    "fp": "908c793723ca14e0c2a425579c90ce60ff98555902d3bbecdbfa085c457342fb",
+    "val": {
+      "question": "What was the exact weather condition in Shanghai on February 29, 2024?"
+    }
+  },
+  "negative:neg18": {
+    "fp": "a97270808a78a6d06da72506788f6b9b78879de7c7324cab33eb0489ad820cf8",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg18-r1": {
+    "fp": "79817167dbea481e265146fa9caed58439db5100c05db2c016b68bbc0fd762e6",
+    "val": {
+      "question": "What was the exact weather condition in Beijing on February 29, 2024?"
+    }
+  },
+  "negative:neg19": {
+    "fp": "df2de72ba20cc7a47a2496c22f02c4b553b419c1f2f7164d526c9f8564582829",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg19-r1": {
+    "fp": "1edf066de3192610b266a01fb952723c577c336dd18d1640b12d826de89adbd5",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?"
+    }
+  },
+  "negative:neg19-r2": {
+    "fp": "cd374c4ac9fec052a9d656bad599fde433d36f4be372a1db31943c1a2bb20ef9",
+    "val": {
+      "question": "What was the exact stock price of Alibaba Holding Group Limited on December 31, 2022?"
+    }
+  }
+}

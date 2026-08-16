@@ -42,6 +42,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -54,15 +55,17 @@ PARENT_CHAR_BUDGET = 3500
 MIN_PARENT_CHARS = 400          # skip stubs too thin to ask a real question about
 SKIP_TITLE_RE = re.compile(r"content|reference|bibliograph|acknowledg|appendix",
                            re.I)
+MIN_SPACE_RATIO = 0.02          # below this it's XBRL-tag soup, not prose
+RETRY_ATTEMPTS = 4              # bump seed and retry on dup/garbage LLM output
 
 
 # ------------------------------------------------------------------ ollama call
 
-def call_ollama(prompt, model):
+def call_ollama(prompt, model, seed=SEED, temperature=0):
     payload = json.dumps({
         "model": model, "prompt": prompt, "stream": False, "think": False,
         "format": "json",          # force valid JSON out -> kills parse_json_obj misses
-        "options": {"temperature": 0, "seed": SEED},
+        "options": {"temperature": temperature, "seed": seed},
     }).encode()
     req = urllib.request.Request(OLLAMA_URL, data=payload,
                                  headers={"Content-Type": "application/json"})
@@ -93,6 +96,15 @@ def factual_prompt(paper, title, text):
         f"Paper: {paper}\nSection: {title}\n\nPassage:\n{text[:PARENT_CHAR_BUDGET]}\n\n"
         "JSON:"
     )
+
+
+def is_clean_text(text, max_non_ascii_ratio=0.2):
+    """Reject LLM output that wandered into another script or dropped in
+    invisible/format unicode chars (seen: CJK output, U+2062 INVISIBLE TIMES)."""
+    if any(unicodedata.category(ch) == "Cf" for ch in text):
+        return False
+    non_ascii = sum(1 for ch in text if ord(ch) > 127)
+    return non_ascii / max(1, len(text)) <= max_non_ascii_ratio
 
 
 def paraphrase_prompt(question):
@@ -244,6 +256,8 @@ def load_parents(path):
             continue
         if SKIP_TITLE_RE.search(s.get("title", "")):
             continue
+        if text.count(" ") / len(text) < MIN_SPACE_RATIO:
+            continue  # raw XBRL fact dump (concatenated tags, no prose)
         parents.append({"pid": pid, "source": s["source"],
                         "title": s.get("title", ""), "text": text})
     return parents
@@ -341,13 +355,21 @@ def main():
     fact_qs = [q for q in questions if q["type"] == "factual"]
     p_step = max(1, len(fact_qs) // max(1, args.paraphrase))
     for q in fact_qs[::p_step][:args.paraphrase]:
-        def make(q=q):
-            if args.mock:
-                return {"question": "Reworded: " + q["query"]}
-            return parse_json_obj(call_ollama(
-                paraphrase_prompt(q["query"]), args.model)) or {}
-        obj = cached("paraphrase", q["relevant_parent_ids"][0], q["query"], make)
-        pq = (obj or {}).get("question", "").strip()
+        pq = None
+        for attempt in range(RETRY_ATTEMPTS):
+            def make(q=q, attempt=attempt):
+                if args.mock:
+                    return {"question": "Reworded: " + q["query"]}
+                return parse_json_obj(call_ollama(
+                    paraphrase_prompt(q["query"]), args.model,
+                    seed=SEED + attempt,
+                    temperature=0 if attempt == 0 else 0.8)) or {}
+            pid = q["relevant_parent_ids"][0] + (f"-r{attempt}" if attempt else "")
+            obj = cached("paraphrase", pid, q["query"], make)
+            cand = (obj or {}).get("question", "").strip()
+            if cand and is_clean_text(cand):
+                pq = cand
+                break
         if not pq:
             continue
         questions.append({"id": q["id"].rsplit("-", 1)[0] + "-p",
@@ -357,17 +379,28 @@ def main():
 
     # ---- negatives (on-domain, answer absent) ----
     titles = [p["title"] for p in parents if p["title"]]
+    seen_negatives = set()
     for j in range(args.negative):
         # vary the title window per index so negatives aren't identical
         window = titles[j % max(1, len(titles) - 12): j % max(1, len(titles) - 12) + 12] or titles
-        def make(window=window, j=j):
-            if args.mock:
-                return {"question": f"Mock negative #{j} about an uncovered topic?"}
-            return parse_json_obj(call_ollama(negative_prompt(window), args.model)) or {}
-        obj = cached("negative", f"neg{j}", " ".join(window), make)
-        nq = (obj or {}).get("question", "").strip()
+        nq = None
+        for attempt in range(RETRY_ATTEMPTS):
+            def make(window=window, j=j, attempt=attempt):
+                if args.mock:
+                    return {"question": f"Mock negative #{j}-{attempt} about an "
+                            "uncovered topic?"}
+                return parse_json_obj(call_ollama(
+                    negative_prompt(window), args.model, seed=SEED + attempt,
+                    temperature=0 if attempt == 0 else 0.8)) or {}
+            pid = f"neg{j}" + (f"-r{attempt}" if attempt else "")
+            obj = cached("negative", pid, " ".join(window), make)
+            cand = (obj or {}).get("question", "").strip()
+            if cand and cand.lower() not in seen_negatives:
+                nq = cand
+                break
         if not nq:
-            continue
+            continue  # exhausted retries on duplicates — drop rather than repeat
+        seen_negatives.add(nq.lower())
         questions.append({"id": f"neg-{j}", "type": "negative", "query": nq,
                           "relevant_parent_ids": [], "_gen": True})
 

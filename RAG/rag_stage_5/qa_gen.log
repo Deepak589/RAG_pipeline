@@ -1,0 +1,17 @@
+78676 candidate parents (>= 400 chars, non-boilerplate)
+  factual 10/120
+  factual 20/120
+  factual 30/120
+  factual 40/120
+  factual 50/120
+  factual 60/120
+  factual 70/120
+  factual 80/120
+  factual 90/120
+  factual 100/120
+  factual 110/120
+  factual 120/120
+
+wrote 178 questions -> qa.json  (version stage5_v2)
+  factual 120  paraphrase 39  negative 19
+REMINDER: synthetic labels are a DRAFT — hand-verify a sample before trusting eval numbers, and drop the `_answer`/`_gen` helper fields once validated.
