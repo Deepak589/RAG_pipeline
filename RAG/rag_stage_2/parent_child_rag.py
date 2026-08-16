@@ -26,7 +26,7 @@ from pathlib import Path
 
 import numpy as np
 
-sys.path.insert(0, str(Path(__file__).parent.parent))   # reach shared generator.py at RAG/ root
+sys.path.insert(0, str(Path(__file__).parent.parent / "root"))   # reach shared generator.py at RAG/root/
 from generator import EMBED_MODEL, build_prompt as _prompt, generate
 
 HERE = Path(__file__).parent
@@ -167,7 +167,7 @@ def main():
     cross_encoder = None
     if "--rerank" in args:
         args = [a for a in args if a != "--rerank"]
-        sys.path.insert(0, str(HERE.parent))
+        sys.path.insert(0, str(HERE.parent / "root"))
         from sentence_transformers import CrossEncoder
         from reranker import RERANK_MODEL
         cross_encoder = CrossEncoder(RERANK_MODEL)

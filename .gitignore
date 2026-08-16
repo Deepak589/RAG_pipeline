@@ -22,3 +22,5 @@ RAG/rag_stage_2/eval/results/
 RAG/.env
 
 RAG/corpus/
+
+.json
