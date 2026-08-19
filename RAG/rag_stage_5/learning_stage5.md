@@ -41,3 +41,24 @@ retriever). Neither depends on or reranks the other's output — it's parallel
 signals, not a pipeline stage. BM25 needs raw text (`chunks.json`), not
 embeddings, because it's counting term overlap/IDF, not vector distance —
 that's why it can't reuse the pgvector store.
+
+## Paraphrase queries need more dense weight than factual queries
+
+`build_hybrid(weights=(bm25, dense))` defaulted to 0.5/0.5 — no CLI flag
+existed to change it, so it never got tuned. Added `--weights <dense> <bm25>`.
+
+Paraphrase-type questions reword the source text (synonyms, restructured
+phrasing), which breaks BM25's lexical-overlap signal specifically — the
+correct chunk drops in BM25's rank even though dense (bge-m3) still ranks it
+high on meaning alone. Under RRF, a doc's fused score is the *sum of per-
+retriever rank scores*, so if BM25 ranks it low/absent, that pulls the fused
+rank down even when dense alone would've surfaced it.
+
+Reweighting toward dense (0.7/0.3) let dense's better rank dominate the sum,
+closing most of the gap: ALL_POSITIVE R@5 0.803→0.830 (now matches the
+hand-rolled 0.833 baseline), paraphrase R@5 0.667→0.692. Gain wasn't
+paraphrase-only though — factual also rose (0.855→0.882), so it's a general
+"trust dense more" tune, not a paraphrase-specific fix. Also note paraphrase
+R@50 slipped slightly (0.897→0.872) at 0.7/0.3 — some paraphrase misses are
+genuine embedding-similarity misses, not just a fusion-weight artifact, so
+weight tuning alone won't fully close that group's gap.

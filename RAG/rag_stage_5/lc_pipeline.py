@@ -245,6 +245,8 @@ def main():
     ap.add_argument("--embed-model", default=None)
     ap.add_argument("--llm-model", default="qwen2.5:14b")  # was qwen3.5 (bad tag)
     ap.add_argument("--rrf-c", type=int, default=RRF_C)
+    ap.add_argument("--weights", nargs=2, type=float, default=[0.5, 0.5],
+                    help="dense weight, bm25 weight")
     ap.add_argument("--vector-store", choices=["memory", "pgvector"], default="memory",
                     help="dense index: in-memory (reproduce) or pgvector (scaled corpus)")
     ap.add_argument("--conn", default=os.environ.get(
@@ -257,6 +259,7 @@ def main():
           f"(dense={args.vector_store})")
     embeddings = make_embeddings(args.embeddings, args.embed_model)
     ensemble = build_hybrid(children, embeddings, rrf_c=args.rrf_c,
+                            weights=(args.weights[1], args.weights[0]),
                             vector_store=args.vector_store, conn=args.conn,
                             collection=args.collection)
 

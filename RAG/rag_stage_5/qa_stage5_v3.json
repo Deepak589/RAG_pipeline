@@ -2,16 +2,6 @@
   "version": "stage5_v3",
   "questions": [
     {
-      "id": "archive-cabrbhc-000058-0-f",
-      "type": "factual",
-      "query": "Who was described as having a 'GIRAVEL-VOICE' in the Brisbane Minstrel show?",
-      "relevant_parent_ids": [
-        "archive/cabrbhc_000058#0"
-      ],
-      "_answer": "Alfreda Pistohl",
-      "_gen": true
-    },
-    {
       "id": "archive-caorihs-000458-95-f",
       "type": "factual",
       "query": "Who was the matron of honor at Margaret Brown's wedding in Carson City, Nevada?",
@@ -39,26 +29,6 @@
         "arxiv/2608.00306v2#151"
       ],
       "_answer": "approximately 24 h",
-      "_gen": true
-    },
-    {
-      "id": "sec-0000008670-26-000030-110-f",
-      "type": "factual",
-      "query": "What was the amount of unrecognized tax benefits liability reported by the Company as of June 30, 2025?",
-      "relevant_parent_ids": [
-        "sec/0000008670-26-000030#110"
-      ],
-      "_answer": "$163.0 million",
-      "_gen": true
-    },
-    {
-      "id": "sec-0000024741-26-000124-71-f",
-      "type": "factual",
-      "query": "According to the passage, what specific risk could arise from difficulties in enforcing intellectual property rights?",
-      "relevant_parent_ids": [
-        "sec/0000024741-26-000124#71"
-      ],
-      "_answer": "loss of market share and decreased sales and profits",
       "_gen": true
     },
     {
@@ -343,7 +313,7 @@
       "type": "factual",
       "query": "What is the value of p(n) as defined in Lemma 3.4?",
       "relevant_parent_ids": [
-        "arxiv/2608.06358v1#94"
+        "arxiv/2608.06358v1#27"
       ],
       "_answer": "p(n) := 2C0δ(ln n)^ψ(n)/n",
       "_gen": true
@@ -423,26 +393,6 @@
       "_gen": true
     },
     {
-      "id": "sec-0000064040-26-000013-177-f",
-      "type": "factual",
-      "query": "What was the percentage increase in revenue from 2024 to 2025?",
-      "relevant_parent_ids": [
-        "sec/0000064040-26-000013#177"
-      ],
-      "_answer": "7",
-      "_gen": true
-    },
-    {
-      "id": "sec-0000066740-26-000014-138-f",
-      "type": "factual",
-      "query": "According to the passage, what is one of the objectives of a company's internal control over financial reporting regarding the maintenance of records?",
-      "relevant_parent_ids": [
-        "sec/0000066740-26-000014#138"
-      ],
-      "_answer": "to maintain records that accurately and fairly reflect the transactions and dispositions of the assets of the company in reasonable detail",
-      "_gen": true
-    },
-    {
       "id": "sec-0000077476-26-000007-77-f",
       "type": "factual",
       "query": "What specific commodities are mentioned as being necessary for products and potentially affected by climate change-induced disruptions in supply chains?",
@@ -495,16 +445,6 @@
       "_gen": true
     },
     {
-      "id": "sec-0000107263-26-000006-349-f",
-      "type": "factual",
-      "query": "What is the balance at the end of period for Year Ended December 31, 2025?",
-      "relevant_parent_ids": [
-        "sec/0000107263-26-000006#349"
-      ],
-      "_answer": "$(15)$",
-      "_gen": true
-    },
-    {
       "id": "sec-0000277948-26-000006-24-f",
       "type": "factual",
       "query": "What was the approximate aggregate market value of CSX Corporation's voting stock held by non-affiliates as of the required date mentioned in the passage?",
@@ -522,16 +462,6 @@
         "sec/0000316709-26-000009#106"
       ],
       "_answer": "Failure or breach of systems, cybersecurity controls, operational processes of Schwab or third-party service providers resulting in loss of client digital assets.",
-      "_gen": true
-    },
-    {
-      "id": "sec-0000319201-26-000027-93-f",
-      "type": "factual",
-      "query": "In 2026, what type of financial instruments did the company enter into to manage its exposure to interest rate risks?",
-      "relevant_parent_ids": [
-        "sec/0000319201-26-000027#93"
-      ],
-      "_answer": "interest rate swaps",
       "_gen": true
     },
     {
@@ -583,16 +513,6 @@
         "sec/0000773840-26-000013#178"
       ],
       "_answer": "$1,193 million",
-      "_gen": true
-    },
-    {
-      "id": "sec-0000813672-26-000016-146-f",
-      "type": "factual",
-      "query": "What was the total interest expense for fiscal year 2025?",
-      "relevant_parent_ids": [
-        "sec/0000813672-26-000016#146"
-      ],
-      "_answer": "$116.5",
       "_gen": true
     },
     {
@@ -657,16 +577,6 @@
       "_gen": true
     },
     {
-      "id": "sec-0000898173-26-000009-63-f",
-      "type": "factual",
-      "query": "According to the passage, what could negatively impact the market price of a company's common stock even if the difference is slight?",
-      "relevant_parent_ids": [
-        "sec/0000898173-26-000009#63"
-      ],
-      "_answer": "Failure to meet analysts’ expectations",
-      "_gen": true
-    },
-    {
       "id": "sec-0000927628-26-000024-127-f",
       "type": "factual",
       "query": "According to the passage, which act requires that a consumer's ability to pay be considered before issuing credit or increasing credit limits?",
@@ -684,16 +594,6 @@
         "sec/0001024478-25-000116#89"
       ],
       "_answer": "$1,544",
-      "_gen": true
-    },
-    {
-      "id": "sec-0001039684-26-000006-90-f",
-      "type": "factual",
-      "query": "According to the passage, what additional channels of distribution do they use besides SEC filings and their website to reach public investors?",
-      "relevant_parent_ids": [
-        "sec/0001039684-26-000006#90"
-      ],
-      "_answer": "social media platforms",
       "_gen": true
     },
     {
@@ -740,16 +640,6 @@
       "_gen": true
     },
     {
-      "id": "sec-0001101239-26-000032-93-f",
-      "type": "factual",
-      "query": "What is one potential risk mentioned regarding the accuracy of projections for an acquisition?",
-      "relevant_parent_ids": [
-        "sec/0001101239-26-000032#93"
-      ],
-      "_answer": "the possibility that our projections about the success of an acquisition could be inaccurate and any such inaccuracies could have a material adverse effect on our financial projections",
-      "_gen": true
-    },
-    {
       "id": "sec-0001104659-25-122321-292-f",
       "type": "factual",
       "query": "What is the specific date for which Deere & Company's internal control over financial reporting was audited according to the passage?",
@@ -779,36 +669,6 @@
         "sec/0001104659-26-020831#90"
       ],
       "_answer": "certain flavors used in Monster Energy® brand energy drinks and Strategic Brands energy drinks",
-      "_gen": true
-    },
-    {
-      "id": "sec-0001133421-26-000003-59-f",
-      "type": "factual",
-      "query": "According to the passage, what are some potential consequences for a company due to improper actions by its employees or partners?",
-      "relevant_parent_ids": [
-        "sec/0001133421-26-000003#59"
-      ],
-      "_answer": "risk of administrative, civil or criminal investigations and enforcement actions, monetary and non-monetary penalties, liabilities, and the loss of privileges and other sanctions, including suspension and debarment.",
-      "_gen": true
-    },
-    {
-      "id": "sec-0001156039-26-000013-105-f",
-      "type": "factual",
-      "query": "What significant change did CMS make to the hierarchical condition category model in version 28 that impacted RAF scores for Medicare Advantage beneficiaries?",
-      "relevant_parent_ids": [
-        "sec/0001156039-26-000013#105"
-      ],
-      "_answer": "CMS made changes to the structure of the hierarchical condition category model in version 28, which affected RAF scores for a larger percentage of Medicare Advantage beneficiaries regardless of health status changes.",
-      "_gen": true
-    },
-    {
-      "id": "sec-0001163165-26-000009-234-f",
-      "type": "factual",
-      "query": "According to the passage, what is the net property, plant and equipment (PP&E) value for operating leases as of December 31, 2025?",
-      "relevant_parent_ids": [
-        "sec/0001163165-26-000009#234"
-      ],
-      "_answer": "500",
       "_gen": true
     },
     {
@@ -941,16 +801,6 @@
         "sec/0001437749-26-006113#218"
       ],
       "_answer": "$3,531,497",
-      "_gen": true
-    },
-    {
-      "id": "sec-0001477333-26-000016-144-f",
-      "type": "factual",
-      "query": "What is the maximum penalty for noncompliance with GDPR as mentioned in the passage?",
-      "relevant_parent_ids": [
-        "sec/0001477333-26-000016#144"
-      ],
-      "_answer": "€20 million or four percent of worldwide annual revenues",
       "_gen": true
     },
     {
@@ -1135,16 +985,6 @@
         "sec/0001730168-25-000121#180"
       ],
       "_answer": "$1,158",
-      "_gen": true
-    },
-    {
-      "id": "sec-0001751008-26-000010-142-f",
-      "type": "factual",
-      "query": "What was the percentage increase in general and administrative expenses from 2024 to 2025?",
-      "relevant_parent_ids": [
-        "sec/0001751008-26-000010#142"
-      ],
-      "_answer": "42%",
       "_gen": true
     },
     {
