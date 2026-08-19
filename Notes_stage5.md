@@ -294,3 +294,53 @@ Delivered `RAG/rag_stage_5/triage_apply.py` (run locally, needs sections.json �
 3. Re-run eval on `qa_stage5_v3.json` → **real Stage-5 baseline** (expect R@1/R@5 up once verified siblings credited).
 4. If many gray SEC generics → hardened entity-anchored qa_gen prompt + regenerate SEC factuals so dropping them doesn't gut SEC coverage.
 5. THEN one knob vs the weak bucket (paraphrase): blurb re-embed vs query-translation. Char-window chunking is the standing regression behind both the multi-label noise and generic ambiguity — structure-aware (Docling) for digital-PDF lanes is the deferred fix.
+
+---
+
+## Stage 5 — GOLDEN-SET HAND-RESOLVE COMPLETE (2026-08-17): qa_stage5_v3 finalized
+
+Finished the 43-item hand pass on top of the auto-triage. `qa_stage5_v3.json` is now the cleaned set: **176 → 160 Q** (102 factual / 39 paraphrase / 19 negative). Backup: `qa_stage5_v3.autotriage.bak.json`.
+
+**Dropped 16** (generic / not gold-unique — the entity-anchoring root cause, NOT bad retrieval): 15 SEC + 1 archive. SEC drops were template questions answerable by many 10-Ks ("the Company's revenue % 2024→2025", ICFR "maintain records" SOX boilerplate, "failure to meet analysts' expectations", social-media-channel line, GDPR €20M penalty, CMS HCC v28 shared across MA insurers, generic M&A/compliance risk factors). Archive drop = OCR-garbled scanned doc, answer ungroundable.
+
+**Kept 18 specific misses** (entity-named or doc-unique, genuine retriever miss, gold correct): CSX $61B, Citigroup 170,667, SLB 1,894, AROs 2,982, MPS equity, Apollo $108, MetLife 1,412, $14M pension, HPE divestiture, django CVE index, twisted "Anonymous", requests prepare_cookies, 2 arxiv, 2 wikipedia, etc.
+
+**Fixed 1 gold** (mislabeled parent): `arxiv-2608-06358v1-94-f` #94 (bibliography) → **#27** (constants/Lemma 3.4 section where p(n) is defined). Verified 2/2 answer terms.
+
+**Negatives: kept all 7.** The validator's "possibly ANSWERABLE" flags were FALSE POSITIVES — topical similarity, not answerability (exact stock prices / Beijing weather / vague EU regs don't exist in the corpus). Refusal-test set is solid.
+
+**Lesson — verify against FULL parent text, not a clip.** 2 of 3 suspected-mislabels (Moody's 39% FX, sec-077476 commodity list) were FALSE alarms from a 600-char triage-dump truncation; the answer sat later in the long parent. A same-doc term-search (not eyeballing a snippet) is the correct check. The apply script term-searched and correctly left both on their original gold.
+
+**RISK flagged:** `sections.json` (175M) + `chunks.json` (262M) are gitignored (`*.json`) — they were briefly lost this session then recovered by the user. They are NOT backed up and NOT rebuildable from git. Rebuild path if lost again: reconstruct from pgvector (`rag_stage5__bge_m3`, 497,563 children carry `{parent_id, child_id, source}` + child text) — chunks.json exact, sections.json parent text stitched from children; OR `python ingest.py --parse` (re-OCRs scanned lane, hours).
+
+**Next (in order):**
+1. Interim baseline — run eval on `qa_stage5_v3.json`:
+   `python lc_pipeline.py --eval --qa qa_stage5_v3.json --vector-store pgvector --collection rag_stage5__bge_m3 --k 1 5`
+   (expect R@1/R@5 UP vs 0.704: 16 ambiguous questions gone + 23 auto-siblings + 1 gold fix credited.)
+2. Refill dropped SEC coverage — entity-anchor the qa_gen prompt (force "{company} … {period}"), regenerate SEC factuals, re-validate. THIS is the real Stage-5 baseline.
+3. Then one knob vs the weak bucket (paraphrase 0.667): blurb re-embed vs query-translation; structure-aware (Docling) chunking is the standing root fix.
+
+---
+
+## Stage 5 — REAL BASELINE (2026-08-17): qa_stage5_v3, cleanup + weight knob
+
+First trustworthy Stage-5 numbers (bge-m3 1024-dim, pgvector `rag_stage5__bge_m3`, 160-Q cleaned set). Ran as TWO isolated knobs.
+
+| group | R@5 v2 (pre-clean) | R@5 v3 @50/50 | R@5 v3 @70/30 |
+|---|---|---|---|
+| ALL_POSITIVE | 0.704 | 0.803 | **0.830** |
+| factual | 0.717 | 0.855 | **0.882** |
+| paraphrase | 0.667 | 0.667 | **0.692** |
+
+**Two effects, separated (one-knob discipline):**
+1. **Cleanup (v2→v3 @50/50): +0.099 ALL** (0.704→0.803). The dominant move — dropping 16 ambiguous Qs + crediting 23 auto-siblings + 1 gold fix. Confirms 0.704 was understated by bad labels, not bad retrieval.
+2. **Weights (50/50→70/30 dense-heavy): +0.027 ALL, uniform across buckets.** ~4 questions flipped. Small but directionally consistent (both factual AND paraphrase up under more semantic weight) → a modest REAL gain, not noise. Paraphrase +0.025 alone ≈ 1 Q = would be noise; the cross-bucket consistency is what makes it credible.
+
+**CURRENT BASELINE = v3 @ 70/30 → ALL R@5 0.830.** Run flag: `--weights 0.7 0.3` (first number = DENSE; main() flips the pair). Default in code still 50/50 — 70/30 is passed at runtime, NOT hardcoded.
+
+**Caveats (do not misread the number):**
+- NOT comparable to old 0.833/0.854 — different corpus + labels + embed model. factual 0.882 crossing 0.854 is a DIFFERENT ruler, not a record.
+- **Weight 70/30 is PROVISIONAL.** SEC refill (regenerate the 14 dropped SEC factuals, entity-anchored) will add lexical/number Qs that may pull optimal weight back toward BM25. Re-confirm the weight after any set change.
+- Paraphrase 0.692 is still the weak bucket — weights nudged it; the real lever (blurb re-embed / query-translation / structure-aware chunking) is untouched.
+
+**Decision point:** SEC refill (eval-fidelity, not a system gain — 118 factual Qs remain so SEC isn't gutted) vs move to agentic (CRAG retrieve→grade, also unlocks the refusal metric via the 19 negatives) measured against THIS 0.830 baseline.
