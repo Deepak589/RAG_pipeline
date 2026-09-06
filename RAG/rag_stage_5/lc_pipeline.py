@@ -89,34 +89,71 @@ def make_embeddings(kind, model):
 
 # --------------------------------------------------------------- hybrid wiring
 
+def _pg_engine_ef_search(conn, ef_search):
+    """SQLAlchemy engine that forces `hnsw.ef_search` on EVERY pooled connection.
+
+    ef_search is a session GUC (default 40 in pgvector). If it is below the fetch
+    depth `k`, HNSW explores too few candidates and recall silently collapses —
+    the top-K returned is approximate and incomplete. Setting it via a connect
+    event (not a one-off `SET`) means it survives connection pooling and process
+    restarts, so it can't quietly reset the way an `ALTER DATABASE` can be missed
+    on a fresh DB. Rule of thumb: ef_search >= k; raise it to trade latency for
+    recall until recall plateaus."""
+    from sqlalchemy import create_engine, event
+    engine = create_engine(conn)
+
+    @event.listens_for(engine, "connect")
+    def _set_ef(dbapi_conn, _rec):          # fires once per new DBAPI connection
+        cur = dbapi_conn.cursor()
+        try:
+            cur.execute(f"SET hnsw.ef_search = {int(ef_search)}")
+        finally:
+            cur.close()
+
+    return engine
+
+
 def build_hybrid(children, embeddings, rrf_c=RRF_C, weights=(0.5, 0.5),
-                 vector_store="memory", conn=None, collection="rag_stage5"):
-    """BM25 + dense, RRF-fused — the whole stage-3/4 hybrid in ~6 lines.
+                 vector_store="memory", conn=None, collection="rag_stage5",
+                 ef_search=400):
+    """BM25/full-text + dense, RRF-fused — the whole stage-3/4 hybrid in ~6 lines.
 
     dense side is pluggable:
       memory   — InMemoryVectorStore, embeds on the fly (7-PDF reproduce; no infra)
       pgvector — an EXISTING Postgres+pgvector collection built by ingest.py
                  (persistent, scalable; nothing re-embedded at query time)
-    BM25 always indexes the children list (rank_bm25). k is fetch depth per
-    retriever, well above CEILING_KS(50) so RRF fusion doesn't lose candidates
-    before the top-50 cutoff, without paying to rank/return the full corpus."""
-    docs = [
-        Document(page_content=c["text"],
-                 metadata={"parent_id": c["parent_id"], "child_id": c.get("id")})
-        for c in children
-    ]
+    sparse side follows the same split:
+      memory   — in-memory rank_bm25 over the children list (small corpus, no infra)
+      pgvector — Postgres full-text search (tsvector+GIN, built by
+                 `ingest.py --index`) — avoids loading/tokenizing all 497K
+                 children into memory on every process start, see
+                 rag_stage_6/stage6_learning.md.
+    k is fetch depth per retriever, well above CEILING_KS(50) so RRF fusion
+    doesn't lose candidates before the top-50 cutoff, without paying to
+    rank/return the full corpus."""
     k = max(200, max(CEILING_KS))
     if vector_store == "pgvector":
         from langchain_postgres import PGVector
-        store = PGVector(embeddings=embeddings, connection=conn,
+        from pg_search import PGFullTextRetriever
+        # Pass an engine (not the raw string) so ef_search is pinned >= k on every
+        # connection; default ef_search < k is what tanked recall after HNSW.
+        ef = max(ef_search, k)
+        engine = _pg_engine_ef_search(conn, ef)
+        store = PGVector(embeddings=embeddings, connection=engine,
                          collection_name=collection, use_jsonb=True)
         dense = store.as_retriever(search_kwargs={"k": k})
+        sparse = PGFullTextRetriever(conn=conn, collection=collection, k=k)
     else:
+        docs = [
+            Document(page_content=c["text"],
+                     metadata={"parent_id": c["parent_id"], "child_id": c.get("id")})
+            for c in children
+        ]
         dense = InMemoryVectorStore.from_documents(docs, embeddings).as_retriever(
             search_kwargs={"k": k})
-    bm25 = BM25Retriever.from_documents(docs, preprocess_func=bm25_tokenize)
-    bm25.k = k
-    return EnsembleRetriever(retrievers=[bm25, dense],
+        sparse = BM25Retriever.from_documents(docs, preprocess_func=bm25_tokenize)
+        sparse.k = k
+    return EnsembleRetriever(retrievers=[sparse, dense],
                              weights=list(weights), c=rrf_c)
 
 
@@ -252,6 +289,9 @@ def main():
     ap.add_argument("--conn", default=os.environ.get(
         "PG_CONN", "postgresql+psycopg://postgres:postgres@localhost:5432/rag"))
     ap.add_argument("--collection", default="rag_stage5")
+    ap.add_argument("--ef-search", type=int, default=400,
+                    help="HNSW ef_search (pgvector); forced >= fetch k. Raise to "
+                         "recover recall lost to the approximate index.")
     args = ap.parse_args()
 
     children = load_children(args.chunks)
@@ -261,7 +301,7 @@ def main():
     ensemble = build_hybrid(children, embeddings, rrf_c=args.rrf_c,
                             weights=(args.weights[1], args.weights[0]),
                             vector_store=args.vector_store, conn=args.conn,
-                            collection=args.collection)
+                            collection=args.collection, ef_search=args.ef_search)
 
     if args.eval:
         ks = tuple(sorted(set(args.k) | set(CEILING_KS)))

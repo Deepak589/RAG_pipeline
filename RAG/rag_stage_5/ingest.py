@@ -41,9 +41,16 @@ Run:
     export PG_CONN="postgresql+psycopg://postgres:postgres@localhost:5432/rag"
     python ingest.py --parse                # route + chunk -> sections.json/chunks.json
     python ingest.py --embed                # chunks.json  -> pgvector
-    python ingest.py --all                  # both (default)
+    python ingest.py --index                # HNSW + full-text indexes (one-time, idempotent)
+    python ingest.py --all                  # parse + embed + index (default)
     python ingest.py --parse --only archive # just the scanned lane
     python ingest.py --embed --reset        # rebuild the pgvector collection
+
+--index builds a vector HNSW index (dense ANN) and a tsvector+GIN index
+(sparse full-text) directly on langchain_pg_embedding. At 497K rows this is
+a one-time, multi-minute build (HNSW graph construction + a table rewrite
+for the generated tsvector column) — expected, not a bug. Safe to re-run
+(IF NOT EXISTS); only needed again if the collection is rebuilt (--reset).
 """
 
 import argparse
@@ -302,13 +309,52 @@ def embed_phase(reset, conn, collection, limit=None):
     print(f"pgvector collection '{collection}' ready on {conn.split('@')[-1]}")
 
 
+# ------------------------------------------------------------------- index phase
+
+def ensure_indexes(conn):
+    """HNSW (dense ANN) + tsvector/GIN (sparse full-text) on langchain_pg_embedding.
+    Idempotent — safe to re-run. Replaces brute-force vector scan and the
+    in-memory rank_bm25 corpus (see rag_stage_6/stage6_learning.md)."""
+    import psycopg
+    dsn = conn.replace("postgresql+psycopg://", "postgresql://")
+    print(f"building indexes on {conn.split('@')[-1]} (one-time, may take minutes)...")
+    with psycopg.connect(dsn, autocommit=True) as c, c.cursor() as cur:
+        # PGVector creates `embedding` as an untyped `vector` column (no fixed
+        # dimension) — HNSW requires a fixed-dim column. All rows are already
+        # 1024-dim (BGE-M3), so this is a safe typmod-only ALTER.
+        cur.execute("""
+            ALTER TABLE langchain_pg_embedding
+              ALTER COLUMN embedding TYPE vector(1024)
+        """)
+        # 'simple' (no stemming/stopwords) matches the hand-tuned lowercase
+        # tokenizer stage-5's rank_bm25 path used (lc_pipeline.bm25_tokenize) —
+        # 'english' stemming was tried first and measurably hurt grading
+        # recall (see rag_stage_6/stage6_learning.md A/B numbers).
+        cur.execute("""
+            ALTER TABLE langchain_pg_embedding
+              ADD COLUMN IF NOT EXISTS document_tsv tsvector
+              GENERATED ALWAYS AS (to_tsvector('simple', document)) STORED
+        """)
+        cur.execute("""
+            CREATE INDEX IF NOT EXISTS langchain_pg_embedding_tsv_gin
+              ON langchain_pg_embedding USING gin (document_tsv)
+        """)
+        cur.execute("""
+            CREATE INDEX IF NOT EXISTS langchain_pg_embedding_hnsw
+              ON langchain_pg_embedding USING hnsw (embedding vector_cosine_ops)
+        """)
+    print("indexes ready: langchain_pg_embedding_hnsw, langchain_pg_embedding_tsv_gin")
+
+
 # ---------------------------------------------------------------------- main
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--parse", action="store_true", help="route + chunk -> json")
     ap.add_argument("--embed", action="store_true", help="chunks.json -> pgvector")
-    ap.add_argument("--all", action="store_true", help="parse then embed (default)")
+    ap.add_argument("--all", action="store_true", help="parse, embed, index (default)")
+    ap.add_argument("--index", action="store_true",
+                    help="build HNSW + full-text indexes (idempotent)")
     ap.add_argument("--only", help="restrict to one corpus subdir (e.g. archive)")
     ap.add_argument("--limit", type=int, help="cap docs (quick trial)")
     ap.add_argument("--reset", action="store_true", help="drop+rebuild pgvector collection")
@@ -316,8 +362,10 @@ def main():
     ap.add_argument("--collection", default=COLLECTION)
     args = ap.parse_args()
 
-    do_parse = args.parse or args.all or not (args.parse or args.embed)
-    do_embed = args.embed or args.all or not (args.parse or args.embed)
+    any_explicit = args.parse or args.embed or args.index
+    do_parse = args.parse or args.all or not any_explicit
+    do_embed = args.embed or args.all or not any_explicit
+    do_index = args.index or args.all or not any_explicit
 
     if not CORPUS_DIR.exists():
         sys.exit(f"corpus not found at {CORPUS_DIR} — run ingest/corpus_puller.py first")
@@ -328,6 +376,9 @@ def main():
     if do_embed:
         print("\n== EMBED ==")
         embed_phase(args.reset, args.conn, args.collection, args.limit)
+    if do_index:
+        print("\n== INDEX ==")
+        ensure_indexes(args.conn)
 
 
 if __name__ == "__main__":
