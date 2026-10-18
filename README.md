@@ -29,6 +29,22 @@ The refusal metric had been an open hole since Stage 3 — nothing in the
 single-shot pipeline ever declined to answer. CRAG closes it at 100/0 on the
 negatives without the false-refusal cost running away.
 
+**A/B vs the single-shot control (`--max-steps 0`, same golden set) — is CRAG
+worth the extra hop?**
+
+| metric | single-shot (0 steps) | CRAG (2 steps) | delta |
+|---|---|---|---|
+| end-to-end correct | 64.5% | **69.5%** | +5.0 pts |
+| false refusal | 27.7% | **22.7%** | −5.0 pts |
+| retrieval hit@K | 79.4% | **82.3%** | +2.9 pts |
+| latency | 15.8 s/q | **8.1 s/q** | CRAG is *faster* — a smaller graded/kept
+set shortens the generate prompt more than grading+refine adds |
+
+Yes, on every axis — refusal, answer correctness, and latency. Caveat: one run
+each side, 160 Q, no seed/variance check — directional, not statistically
+proven. This was Stage 6's open item (CRAG's value was asserted, not measured)
+and is now closed.
+
 ---
 
 ## Why this repo is structured the way it is

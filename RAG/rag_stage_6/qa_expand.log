@@ -1,0 +1,23 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+factual: 100 kept of 170 tried
+paraphrase: 38 kept of 40
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 80135.49it/s]
+  reject neg (answerable): In the NetworkX 2.0rc1.dev20170910155312 documentation for network_simplex, what is the default valu
+  reject neg (answerable): In what year was the photograph of the panoramic view between Segla and Hesten mountain summits on S
+  reject neg (answerable): On what date was the Men's Fellowship club's last spring meeting held at the Niles Congregational Ch
+  reject neg (answerable): In which version of Pillow was CVE-2024-28219 (the buffer overflow in _imagingcms.c) fixed?
+  reject neg (answerable): What was the total upfront and potential milestone payment amount AbbVie agreed to pay for its acqui
+  reject neg (answerable): What was Apollo's Spread Related Earnings for its Retirement Services segment as a percentage change
+  reject neg (answerable): What was CrowdStrike Holdings, Inc.'s total revenue for the fiscal year ended January 31, 2026?
+  reject neg (answerable): In the paper by Rietz, Radin, Swinney, and Schröter titled "Nucleation in sheared granular matter" p
+  reject neg (answerable): In which h5py release version was the special_dtype()/check_dtype() API officially deprecated in fav
+  reject neg (answerable): What was the effective date on which FedEx's stockholders of record became entitled to receive share
+  reject neg (answerable): In JPMorgan Chase's December 2025 Form 10-K, what was the total amount of goodwill recorded on the b
+  reject neg (answerable): In the Director Task analysis from arXiv paper 2608.00261v1, what is the reported gap value for gemi
+  reject neg (answerable): In the arXiv paper 2608.06246v1, what is the table number (and total number of rows) of the table th
+  reject neg (answerable): What is the maturity date of the €750 million cross-currency fair value hedge with the 3.75% receive
+  reject neg (answerable): In the NLTK documentation's discussion of feature structures, what is the exact function signature (
+  reject neg (answerable): In the paper "Beyond Marginal Validity" by Conrad et al. (arXiv:2608.06206), how many total training
+  reject neg (answerable): What was the total fair value of the contingent consideration MPLX recognized in connection with its
+negative: 20 kept of 60 tried
+wrote qa_stage6_v4.json: +100 factual +38 paraphrase +20 negative  -> Counter({'factual': 202, 'paraphrase': 77, 'negative': 39})

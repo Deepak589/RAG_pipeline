@@ -14,6 +14,9 @@ graphify-out/
 
 *.npz
 
+# LLM response cache (stage 6 spend guards; regenerated)
+**/llm_cache.sqlite
+
 __pycache__/
 
 # RAG eval run artifacts (timestamped, regenerated per run)

@@ -189,3 +189,14 @@ the implementation.
 
 **Fix path:** Update it, or archive it as a historical record of stage 1's original
 scope.
+
+---
+
+### L-cost — Paid eval runs (from tasks/mistakes.md, 2026-10-07)
+
+Session bill > $20. Rules:
+1. Screen knobs on the 30–48 Q slice; full set only to confirm a winner.
+2. Bounded timeout + retries + progress watchdog before any run > 5 min.
+3. Cache judge verdicts by (qid, answer hash); Haiku judge for screening.
+4. Smoke-test generators on ≥20 items with a hard validator before scaling.
+5. Estimate calls/cost before launching; ≤2 concurrent eval processes.

@@ -31,6 +31,7 @@ Run (on your Mac):
 
 import argparse
 import json
+import sys
 import time
 from pathlib import Path
 from typing import Literal
@@ -38,6 +39,8 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 import crag_pipeline as crag
+
+PROJECT_AFTER = 10   # Qs before the spend projection can abort the run
 
 
 class Judgement(BaseModel):
@@ -56,6 +59,23 @@ def gold_answer(q, parents):
     return "\n".join(parents[p]["text"][:1500] for p in pids if p in parents)
 
 
+def answer_pos(q, parents):
+    """Char offset of the gold _answer inside its gold parent (-1 = not verbatim).
+    > 1200 means the grader (which sees text[:1200]) could not see it."""
+    ans = (q.get("_answer") or "").lower().strip()
+    if not ans:
+        return None
+    for p in q.get("relevant_parent_ids", []):
+        if p in parents:
+            i = parents[p]["text"].lower().find(ans)
+            if i >= 0:
+                return i
+    return -1
+
+
+# ponytail: the global LLM cache doubles as the verdict cache only while k=1.
+# A k>1 judge ensemble would get the same cached sample k times -> give it
+# cache=False and cache the aggregated verdict instead.
 def judge_answer(judge_llm, question, gold, answer) -> Judgement:
     prompt = (
         "Grade the ANSWER against the GOLD reference for the question. Be strict: "
@@ -69,7 +89,7 @@ def pct(n, d):
     return float("nan") if not d else round(100.0 * n / d, 1)
 
 
-def evaluate(app, parents, judge_llm, qa_path, out_path):
+def evaluate(app, parents, judge_llm, qa_path, out_path, corpus="full"):
     data = json.loads(Path(qa_path).read_text())
     qs = data["questions"]
     ver = data.get("version", "?")
@@ -79,11 +99,25 @@ def evaluate(app, parents, judge_llm, qa_path, out_path):
 
     rows = []
     t0 = time.time()
+    done = 0
+
+    def project_cost():
+        """After PROJECT_AFTER Qs, extrapolate spend and abort before the cap is hit."""
+        nonlocal done
+        done += 1
+        if done != PROJECT_AFTER:
+            return
+        # ponytail: extrapolates from the first Qs (negatives run first), directional only
+        proj = crag.METER.usd / done * len(qs)
+        print(f"  projected ${proj:.2f} for {len(qs)} Q (cap ${crag.METER.max_usd:.2f})")
+        if proj > crag.METER.max_usd:
+            raise crag.BudgetExceeded(f"projected ${proj:.2f} > cap ${crag.METER.max_usd:.2f}")
 
     # ---- negatives: did we correctly refuse? --------------------------------
     neg_refused = 0
     for i, q in enumerate(negatives, 1):
         r = crag.run_query(app, q["query"])
+        project_cost()
         if r["refused"]:
             neg_refused += 1
         rows.append({"id": q["id"], "type": "negative", "refused": r["refused"],
@@ -105,12 +139,20 @@ def evaluate(app, parents, judge_llm, qa_path, out_path):
                    "answered_wrong": 0, "correct": 0}
     for i, q in enumerate(positives, 1):
         r = crag.run_query(app, q["query"])
+        project_cost()
         gold = set(q.get("relevant_parent_ids", []))
         graded_pids = {g["parent_id"] for g in r.get("grades", [])}
         hit = bool(gold & graded_pids)
         retrieval_hits += int(hit)
+        kept_pids = {d["parent_id"] for d in r.get("kept", [])}
         row = {"id": q["id"], "type": q["type"], "refused": r["refused"],
-               "steps_used": r["trace"].count("refine"), "retrieval_hit": hit}
+               "steps_used": r["trace"].count("refine"), "retrieval_hit": hit,
+               # diagnostics: grader verdicts on gold + did gold reach the generator
+               "gold_verdicts": [g["verdict"] for g in r.get("grades", [])
+                                 if g["parent_id"] in gold],
+               "gold_in_kept": bool(gold & kept_pids),
+               "answer_pos": answer_pos(q, parents),
+               "answer": r["answer"]}
         if r["refused"]:
             pos_false_refusal += 1
             row["verdict"] = "refused"
@@ -136,7 +178,8 @@ def evaluate(app, parents, judge_llm, qa_path, out_path):
     answered = sum(judged.values())
     summary = {
         "version": ver,
-        "config": {"max_steps": app_max_steps(app)},
+        "corpus": corpus,   # 40pct numbers are NOT comparable to full-corpus ones
+        "config": getattr(app, "_crag_config", {}),
         "counts": {"negatives": len(negatives), "positives": n_pos},
         "refusal": {
             "correct_refusal_pct": pct(neg_refused, len(negatives)),
@@ -156,8 +199,10 @@ def evaluate(app, parents, judge_llm, qa_path, out_path):
             "retrieval_hit_pct": pct(retrieval_hits, n_pos),
             "attribution": attribution,   # where each positive was lost
         },
+        # sec_per_q is meaningless when llm.by_model shows cache_hits > 0
         "cost": {"wall_seconds": round(elapsed, 1),
-                 "sec_per_q": round(elapsed / max(1, len(qs)), 2)},
+                 "sec_per_q": round(elapsed / max(1, len(qs)), 2),
+                 "llm": crag.METER.report()},
     }
 
     Path(out_path).write_text(json.dumps(
@@ -167,17 +212,13 @@ def evaluate(app, parents, judge_llm, qa_path, out_path):
     return summary
 
 
-def app_max_steps(app):
-    # best-effort: pull the guard out of the compiled graph if exposed, else '?'
-    return getattr(app, "_crag_max_steps", "?")
-
-
 def _print_report(s, out_path):
     print("\n" + "=" * 68)
-    print(f"CRAG eval — qa {s['version']}   max_steps={s['config']['max_steps']}")
+    print(f"CRAG eval — qa {s['version']}   corpus={s['corpus']}   "
+          + "   ".join(f"{k}={v}" for k, v in s["config"].items()))
     print("=" * 68)
     r, a = s["refusal"], s["answer_quality"]
-    print(f"REFUSAL   correct-refusal (19 neg): {r['correct_refusal_pct']:>5}%   "
+    print(f"REFUSAL   correct-refusal ({s['counts']['negatives']} neg): {r['correct_refusal_pct']:>5}%   "
           f"false-refusal (pos): {r['false_refusal_pct']:>5}%")
     print(f"ANSWER    correct: {a['correct_pct']:>5}%   partial: {a['partial_pct']:>5}%"
           f"   wrong: {a['wrong_pct']:>5}%   (of {a['answered']} answered)")
@@ -189,8 +230,10 @@ def _print_report(s, out_path):
               f"lost to -> retrieval_miss:{at['retrieval_miss']}  "
               f"refused_on_hit:{at['refused_on_hit']}  "
               f"answered_wrong:{at['answered_wrong']}  correct:{at['correct']}")
+    llm = s["cost"]["llm"]
+    hits = sum(m["cache_hits"] for m in llm["by_model"].values())
     print(f"COST      {s['cost']['wall_seconds']}s total, "
-          f"{s['cost']['sec_per_q']}s/q")
+          f"{s['cost']['sec_per_q']}s/q   ${llm['usd']}   cache_hits={hits}")
     print("=" * 68)
     print(f"written {out_path}")
     print("A/B: run again with --max-steps 0 (control) and diff correct-refusal "
@@ -204,14 +247,22 @@ def main():
     ap.add_argument("--out", default="crag_eval.json")
     ap.add_argument("--judge-model", default="claude-sonnet-5")
     args = ap.parse_args()
+    crag.enable_guards(args)
 
     app, parents = crag.build_from_args(args)
-    app._crag_max_steps = args.max_steps  # stash for the report
+    # stash every knob for the report so runs are self-describing
+    app._crag_config = {k: getattr(args, k) for k in crag.KNOBS}
 
     judge_llm = crag.make_chat_anthropic(
         args.judge_model, temperature=0).with_structured_output(Judgement)
 
-    evaluate(app, parents, judge_llm, args.qa, args.out)
+    # corpus tag comes from the collection suffix (build_subset.py: <name>__40pct)
+    corpus = args.collection.rsplit("__", 1)[-1] if args.collection.endswith("pct") else "full"
+    try:
+        evaluate(app, parents, judge_llm, args.qa, args.out, corpus)
+    except crag.BudgetExceeded as e:
+        # finished calls are in the LLM cache: rerun the same command to resume free
+        sys.exit(f"STOPPED: {e}\n{json.dumps(crag.METER.report(), indent=1)}")
 
 
 if __name__ == "__main__":
