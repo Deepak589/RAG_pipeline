@@ -1,0 +1,44 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 83374.32it/s]
+  neg 1/39  refused=True
+  neg 2/39  refused=True
+  neg 3/39  refused=True
+  neg 4/39  refused=True
+  neg 5/39  refused=False
+  neg 6/39  refused=True
+  neg 7/39  refused=True
+  neg 8/39  refused=True
+  neg 9/39  refused=True
+  projected $1.34 for 78 Q (cap $4.00)
+  neg 10/39  refused=True
+  neg 11/39  refused=False
+  neg 12/39  refused=True
+  neg 13/39  refused=True
+  neg 14/39  refused=True
+  neg 15/39  refused=True
+  neg 16/39  refused=True
+  neg 17/39  refused=True
+  neg 18/39  refused=True
+  neg 19/39  refused=True
+  neg 20/39  refused=False
+  neg 21/39  refused=False
+  neg 22/39  refused=False
+  neg 23/39  refused=False
+  neg 24/39  refused=False
+  neg 25/39  refused=False
+  neg 26/39  refused=False
+  neg 27/39  refused=False
+  neg 28/39  refused=True
+  neg 29/39  refused=False
+  neg 30/39  refused=False
+  neg 31/39  refused=False
+  neg 32/39  refused=False
+  neg 33/39  refused=False
+  neg 34/39  refused=False
+  neg 35/39  refused=False
+  neg 36/39  refused=False
+  neg 37/39  refused=False
+  neg 38/39  refused=False
+  neg 39/39  refused=False
+/opt/anaconda3/envs/ragenv/lib/python3.12/multiprocessing/resource_tracker.py:279: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

@@ -1,0 +1,47 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 68655.46it/s]
+  neg 1/19  refused=True
+  neg 2/19  refused=True
+  neg 3/19  refused=True
+  neg 4/19  refused=True
+  neg 5/19  refused=False
+  neg 6/19  refused=True
+  neg 7/19  refused=True
+  neg 8/19  refused=True
+  neg 9/19  refused=True
+  neg 10/19  refused=True
+  neg 11/19  refused=True
+  neg 12/19  refused=True
+  neg 13/19  refused=True
+  neg 14/19  refused=True
+  neg 15/19  refused=True
+  neg 16/19  refused=True
+  neg 17/19  refused=True
+  neg 18/19  refused=True
+  neg 19/19  refused=True
+  pos 10/141
+  pos 20/141
+  pos 30/141
+  pos 40/141
+  pos 50/141
+  pos 60/141
+  pos 70/141
+  pos 80/141
+  pos 90/141
+  pos 100/141
+  pos 110/141
+  pos 120/141
+  pos 130/141
+  pos 140/141
+
+====================================================================
+CRAG eval — qa stage5_v3   corpus=40pct   max_steps=2   retry_on_refusal=False   top_k=5   sparse_mode=or   grade_mode=doc   grader_chars=1200
+====================================================================
+REFUSAL   correct-refusal (19 neg):  94.7%   false-refusal (pos):  17.0%
+ANSWER    correct:  87.2%   partial:   4.3%   wrong:   8.5%   (of 117 answered)
+END-TO-END correct (of all positives): 72.3%
+RETRIEVAL gold-in-topK:  89.4%   lost to -> retrieval_miss:14  refused_on_hit:11  answered_wrong:14  correct:102
+COST      1309.9s total, 8.19s/q
+====================================================================
+written f160_b2_or.json
+A/B: run again with --max-steps 0 (control) and diff correct-refusal + end-to-end-correct. That delta = CRAG's measured effect.

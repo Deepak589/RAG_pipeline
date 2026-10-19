@@ -28,7 +28,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).parent
-sys.path.insert(0, str(HERE.parent))          # RAG/ root -> shared generator.py
+sys.path.insert(0, str(HERE.parent / "root"))  # RAG/root/ -> shared generator.py
 import hybrid                                  # stage-4 hybrid.py (this same dir)
 from generator import build_prompt, generate
 

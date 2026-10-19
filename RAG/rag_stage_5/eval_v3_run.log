@@ -1,0 +1,32 @@
+/Users/deepakkatukuri/RAG_dev/RAG/rag_stage_5/lc_pipeline.py:41: DeprecationWarning: `langchain-community` is being sunset and is no longer actively maintained. See https://github.com/langchain-ai/langchain-community/issues/674 for details and migration guidance toward standalone integration packages.
+  from langchain_community.retrievers import BM25Retriever
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+loaded 497563 children from chunks.json (dense=pgvector)
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 98656.85it/s]
+  eval 10/160
+  eval 20/160
+  eval 30/160
+  eval 40/160
+  eval 50/160
+  eval 60/160
+  eval 70/160
+  eval 80/160
+  eval 90/160
+  eval 100/160
+  eval 110/160
+  eval 120/160
+  eval 130/160
+  eval 140/160
+  eval 150/160
+  eval 160/160
+
+======================================================================
+LangChain hybrid — qa stage5_v3   (compare vs hand-rolled R@5 0.833)
+======================================================================
+group            n           mrr    recall@1    recall@3    recall@5   recall@20   recall@50       hit@1       hit@3       hit@5      hit@20      hit@50
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+ALL_POSITIVE   141         0.703       0.547       0.728       0.803       0.904       0.940       0.603       0.773       0.830       0.915       0.950
+factual        102         0.789       0.628       0.790       0.855       0.926       0.956       0.706       0.853       0.892       0.941       0.971
+paraphrase      39         0.477       0.333       0.564       0.667       0.846       0.897       0.333       0.564       0.667       0.846       0.897
+======================================================================
+note: negative score-gap not reported — EnsembleRetriever gives rank, not similarity. Keep the hand-rolled harness for the refusal metric.

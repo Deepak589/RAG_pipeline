@@ -1,0 +1,35 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 86775.64it/s]
+  neg 1/19  refused=True
+  neg 2/19  refused=True
+  neg 3/19  refused=True
+  neg 4/19  refused=True
+  neg 5/19  refused=True
+  neg 6/19  refused=True
+  neg 7/19  refused=True
+  neg 8/19  refused=True
+  neg 9/19  refused=True
+  neg 10/19  refused=True
+  neg 11/19  refused=True
+  neg 12/19  refused=True
+  neg 13/19  refused=True
+  neg 14/19  refused=True
+  neg 15/19  refused=True
+  neg 16/19  refused=True
+  neg 17/19  refused=True
+  neg 18/19  refused=True
+  neg 19/19  refused=True
+  pos 10/29
+  pos 20/29
+
+====================================================================
+CRAG eval — qa stage5_v3-slice48-cause[refused_on_hit]-s0   corpus=40pct   max_steps=2   retry_on_refusal=False
+====================================================================
+REFUSAL   correct-refusal (19 neg): 100.0%   false-refusal (pos):  24.1%
+ANSWER    correct:  77.3%   partial:   4.5%   wrong:  18.2%   (of 22 answered)
+END-TO-END correct (of all positives): 58.6%
+RETRIEVAL gold-in-topK: 100.0%   lost to -> retrieval_miss:0  refused_on_hit:7  answered_wrong:5  correct:17
+COST      401.1s total, 8.36s/q
+====================================================================
+written a1_control.json
+A/B: run again with --max-steps 0 (control) and diff correct-refusal + end-to-end-correct. That delta = CRAG's measured effect.

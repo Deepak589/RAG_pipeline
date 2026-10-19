@@ -15,19 +15,43 @@ miss, and **refuses** when the corpus genuinely can't answer.
 **Current best — retrieval (`qa_stage5_v3`, 160 Q: 102 factual / 39 paraphrase /
 19 negative):** hybrid BM25+dense, BGE-M3 on pgvector — **recall@5 0.830**.
 
-**Current best — end-to-end (Stage 6 CRAG, same golden set):**
+**Current best — end-to-end (Stage 6 CRAG + grader sees 4000 chars,
+`v4_a3_gc4000.json`, 2026-10-07):** golden set v4 (`qa_stage6_v4.json`, 318 Q:
+279 positive / 39 near-miss negative) on the **40pct corpus** (35k parents /
+199k children). Not comparable to the full-corpus 160-Q numbers below.
 
 | metric | value |
 |---|---|
-| correct refusal (19 negatives) | **100%** |
-| false refusal (141 positives) | **22.7%** |
-| answer correctness (of answered) | **89.9%** |
-| end-to-end correct | **69.5%** |
-| latency | **8.1 s/query** |
+| correct refusal (39 negatives) | **92.3%** |
+| false refusal (279 positives) | **13.3%** |
+| answer correctness (of answered) | **91.3%** |
+| end-to-end correct | **79.2%** |
+| retrieval hit@K | 87.1% |
+| latency | 11.3 s/query |
+
+Grader context 1200 → 4000 chars was the win: 72.8% → 79.2% end-to-end on the
+same set (the grader had been dropping gold whose answer sat past the cut).
+3 of the 39 negatives are known bad labels, so correct-refusal is understated.
 
 The refusal metric had been an open hole since Stage 3 — nothing in the
-single-shot pipeline ever declined to answer. CRAG closes it at 100/0 on the
+single-shot pipeline ever declined to answer. CRAG closes it on the
 negatives without the false-refusal cost running away.
+
+**Historical A/B vs the single-shot control (`--max-steps 0`, full corpus,
+`qa_stage5_v3` 160 Q, 2026-09) — is CRAG worth the extra hop?**
+
+| metric | single-shot (0 steps) | CRAG (2 steps) | delta |
+|---|---|---|---|
+| end-to-end correct | 64.5% | **69.5%** | +5.0 pts |
+| false refusal | 27.7% | **22.7%** | −5.0 pts |
+| retrieval hit@K | 79.4% | **82.3%** | +2.9 pts |
+| latency | 15.8 s/q | **8.1 s/q** | CRAG is *faster* — a smaller graded/kept
+set shortens the generate prompt more than grading+refine adds |
+
+Yes, on every axis — refusal, answer correctness, and latency. Caveat: one run
+each side, 160 Q, no seed/variance check — directional, not statistically
+proven. This was Stage 6's open item (CRAG's value was asserted, not measured)
+and is now closed.
 
 ---
 
@@ -99,6 +123,9 @@ reasoning behind each decision.
                     │                        │
                     └─────────► RRF ◄────────┘
                        (rank fusion, c=60, 70/30 dense)
+                  NOTE: sparse side returns ~nothing
+                  (plainto_tsquery ANDs every word) →
+                  retrieval is effectively dense-only
                                 │
                                 ▼
                     top-K parents (K=5)
@@ -120,7 +147,10 @@ reasoning behind each decision.
 
 Dense side is HNSW-indexed, sparse side is a Postgres `tsvector` + GIN index —
 both retrieval paths are now real indexes in the same store, no in-process
-`rank_bm25` scan. `MAX_STEPS=0` collapses CRAG back to single-shot Stage-5
+`rank_bm25` scan. In practice the sparse side matched 0/141 positives, so every
+Stage 6 number is a dense-only number. Fixing it didn't pay on BGE-M3: OR-tsquery
+regressed, real BM25 (0.5/0.5) netted ≈ +1 pt (noise) — it rescued 10/34 dense
+misses but lost 7 dense hits. Sparse dropped (2026-10-18). `MAX_STEPS=0` collapses CRAG back to single-shot Stage-5
 behaviour, which is the A/B control for "did the agentic layer help?".
 
 Grading runs on Claude Haiku 4.5, generation and the eval judge on Claude
@@ -143,7 +173,7 @@ ColBERTv2), never ms-marco.
 | 3 | Cross-encoder reranking, then hybrid BM25+dense (RRF) | Reranker was a mixed bag (hurt R@1/paraphrase) → **dropped**. Hybrid won outright: R@5 0.792, beat dense+rerank on every axis |
 | 4 | Contextual blurb chunking (Anthropic Contextual Retrieval-style), blurb fed to both dense and BM25 | R@5 0.792 → **0.833**, R@1 +0.10. Recall gain traced to the **lexical** side (BM25), not dense — disproved the initial hypothesis with an isolation test |
 | 5 | LangChain migration (reproduced stage-4 baseline first), pgvector dense store, file-type-routed ingestion, corpus scaled 7 → ~740 docs | Faithful reproduction at 0.854 R@5 after fixing a framework tokenizer default; infra now scale-ready |
-| 6 | CRAG loop (LangGraph state machine: retrieve → grade → refine/refuse), Claude grading + generation, HNSW + tsvector/GIN indexes, automated refusal + answer-quality gate | Refusal closed: **100% correct-refusal / 22.7% false-refusal**, **69.5% end-to-end correct**, 8.1 s/q. Two findings: ANN `ef_search` default silently cost recall; grader prompt was the biggest single lever |
+| 6 | CRAG loop (LangGraph state machine: retrieve → grade → refine/refuse), Claude grading + generation, HNSW + tsvector/GIN indexes, automated refusal + answer-quality gate | Refusal closed: **100% correct-refusal / 22.7% false-refusal**, **69.5% end-to-end correct**, 8.1 s/q. Two findings: ANN `ef_search` default silently cost recall; grader prompt was the biggest single lever. Knob sweep on 40pct corpus + v4 gold (318 Q): grader context 4000 chars → **79.2% end-to-end**; retry-on-refusal, top_k=10, set-grading, OR-tsquery, BM25 all dropped |
 
 Full scoreboards, failure analyses, and the reasoning behind every drop/keep
 decision are in [`NOTES.md`](NOTES.md).
@@ -254,9 +284,10 @@ Done in Stage 6:
   since Stage 3.
 
 Next, in order:
-1. **Attribution says where to work.** Current loss buckets on 160 Q:
-   `retrieval_miss` 23, `refused_on_hit` 14, `answered_wrong` 6. Retrieval is
-   again the top bucket — the grader is no longer the bottleneck.
+1. **Attribution says where to work.** Current loss buckets on v4 (279
+   positives): `retrieval_miss` 34, `answered_wrong` 13, `refused_on_hit` 11.
+   Retrieval is the top bucket. Of the 34 misses, gold ranks 6–20 for only 12;
+   most are wrong-company SEC hits (chunks carry no title/company context).
 2. **Self-query metadata routing** — `source_type=sec` etc. via pgvector's jsonb
    filter instead of a hand-rolled router. Targets `retrieval_miss` directly.
 3. **Re-tune chunking on Docling's structure output** — current ingest uses blind
