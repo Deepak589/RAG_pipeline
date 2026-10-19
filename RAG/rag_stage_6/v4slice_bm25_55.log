@@ -1,0 +1,189 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 98912.72it/s]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 1/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 2/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 3/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 4/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 5/39  refused=False
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 6/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 7/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 8/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 9/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  projected $0.00 for 91 Q (cap $4.00)
+  neg 10/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 11/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 12/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 13/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 14/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 15/39  refused=True
+  neg 16/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 17/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 18/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 19/39  refused=True
+  neg 20/39  refused=True
+  neg 21/39  refused=True
+  neg 22/39  refused=True
+  neg 23/39  refused=True
+  neg 24/39  refused=True
+  neg 25/39  refused=True
+  neg 26/39  refused=True
+  neg 27/39  refused=True
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  neg 28/39  refused=True
+  neg 29/39  refused=True
+  neg 30/39  refused=True
+  neg 31/39  refused=True
+  neg 32/39  refused=True
+  neg 33/39  refused=False
+  neg 34/39  refused=False
+  neg 35/39  refused=True
+  neg 36/39  refused=True
+  neg 37/39  refused=True
+  neg 38/39  refused=True
+  neg 39/39  refused=True
+  pos 10/52
+  pos 20/52
+  pos 30/52
+  pos 40/52
+  pos 50/52
+
+====================================================================
+CRAG eval — qa stage6_v4-40pct-318q-slice91-bm25ab[miss+neg+losers+ctrl10]-s0   corpus=40pct   max_steps=2   retry_on_refusal=False   top_k=5   sparse_mode=bm25   grade_mode=doc   grader_chars=4000
+====================================================================
+REFUSAL   correct-refusal (39 neg):  92.3%   false-refusal (pos):  44.2%
+ANSWER    correct:  72.4%   partial:  10.3%   wrong:  17.2%   (of 29 answered)
+END-TO-END correct (of all positives): 40.4%
+RETRIEVAL gold-in-topK:  42.3%   lost to -> retrieval_miss:29  refused_on_hit:0  answered_wrong:2  correct:21
+COST      696.5s total, 7.65s/q   $0.906   cache_hits=65
+====================================================================
+written v4slice_bm25_55.json
+A/B: run again with --max-steps 0 (control) and diff correct-refusal + end-to-end-correct. That delta = CRAG's measured effect.

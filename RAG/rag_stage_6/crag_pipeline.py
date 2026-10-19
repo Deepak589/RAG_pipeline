@@ -387,10 +387,9 @@ def add_common_args(ap):
     ap.add_argument("--rrf-c", type=int, default=s5.RRF_C)
     ap.add_argument("--weights", nargs=2, type=float, default=[0.7, 0.3],
                     help="dense weight, bm25 weight (Stage-5 baseline = 0.7 0.3)")
-    ap.add_argument("--sparse-mode", choices=["plain", "or", "bm25"], default="plain",
+    ap.add_argument("--sparse-mode", choices=["plain", "or"], default="plain",
                     help="KNOB B2: pgvector full-text query. plain = AND of every "
-                         "word (matches ~nothing); or = OR of content words; "
-                         "bm25 = in-memory BM25 over --chunks (real IDF).")
+                         "word (matches ~nothing); or = OR of content words.")
     ap.add_argument("--grade-mode", choices=["doc", "set"], default="doc",
                     help="KNOB A2: doc = keep/drop each doc; set = one verdict "
                          "on the whole retrieved set, keep all if sufficient.")

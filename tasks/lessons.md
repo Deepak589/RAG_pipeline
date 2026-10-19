@@ -200,3 +200,9 @@ Session bill > $20. Rules:
 3. Cache judge verdicts by (qid, answer hash); Haiku judge for screening.
 4. Smoke-test generators on ≥20 items with a hard validator before scaling.
 5. Estimate calls/cost before launching; ≤2 concurrent eval processes.
+
+## Null result = stop (2026-10-19)
+**Pattern:** Paid A/B showed BM25 net +3/91 (≈+1pt, inside noise). I proposed another
+"free" variant (union+rerank) instead of calling it.
+**Rule:** If a knob shows no real end-to-end gain, recommend dropping it. Don't chain
+rescue experiments onto a null result unless the user asks.

@@ -113,18 +113,6 @@ def _pg_engine_ef_search(conn, ef_search):
     return engine
 
 
-def _docs(children):
-    return [Document(page_content=c["text"],
-                     metadata={"parent_id": c["parent_id"], "child_id": c.get("id")})
-            for c in children]
-
-
-def _bm25(docs, k):
-    sparse = BM25Retriever.from_documents(docs, preprocess_func=bm25_tokenize)
-    sparse.k = k
-    return sparse
-
-
 def build_hybrid(children, embeddings, rrf_c=RRF_C, weights=(0.5, 0.5),
                  vector_store="memory", conn=None, collection="rag_stage5",
                  ef_search=400, sparse_mode="plain"):
@@ -154,19 +142,18 @@ def build_hybrid(children, embeddings, rrf_c=RRF_C, weights=(0.5, 0.5),
         store = PGVector(embeddings=embeddings, connection=engine,
                          collection_name=collection, use_jsonb=True)
         dense = store.as_retriever(search_kwargs={"k": k})
-        if sparse_mode == "bm25":
-            # real IDF BM25 in memory: 40pct (199K) builds in ~4s. ts_rank_cd has
-            # no IDF and recovered 3/34 dense misses vs 11/34 for this.
-            # ponytail: in-RAM, rebuilt per process; bm25s/ParadeDB at full corpus
-            sparse = _bm25(_docs(children), k)
-        else:
-            sparse = PGFullTextRetriever(conn=conn, collection=collection, k=k,
-                                         mode=sparse_mode)
+        sparse = PGFullTextRetriever(conn=conn, collection=collection, k=k,
+                                     mode=sparse_mode)
     else:
-        docs = _docs(children)
+        docs = [
+            Document(page_content=c["text"],
+                     metadata={"parent_id": c["parent_id"], "child_id": c.get("id")})
+            for c in children
+        ]
         dense = InMemoryVectorStore.from_documents(docs, embeddings).as_retriever(
             search_kwargs={"k": k})
-        sparse = _bm25(docs, k)
+        sparse = BM25Retriever.from_documents(docs, preprocess_func=bm25_tokenize)
+        sparse.k = k
     return EnsembleRetriever(retrievers=[sparse, dense],
                              weights=list(weights), c=rrf_c)
 
