@@ -24,13 +24,17 @@ miss, and **refuses** when the corpus genuinely can't answer.
 |---|---|
 | correct refusal (39 negatives) | **92.3%** |
 | false refusal (279 positives) | **13.3%** |
-| answer correctness (of answered) | **91.3%** |
-| end-to-end correct | **79.2%** |
+| answer correctness (of answered) | **92.6%** |
+| end-to-end correct | **80.3%** |
 | retrieval hit@K | 87.1% |
 | latency | 11.3 s/query |
 
 Grader context 1200 → 4000 chars was the win: 72.8% → 79.2% end-to-end on the
 same set (the grader had been dropping gold whose answer sat past the cut).
+A judge fix (full gold passage instead of `text[:1500]`) re-scored the same
+answers 79.2% → 80.3% (`v4_a3_rejudge.json`); that is a measurement fix, not a
+pipeline gain. These are synthetic single-chunk questions tuned on the test
+set (±4.7 pt CI) — an A/B signal, not a production accuracy claim.
 3 of the 39 negatives are known bad labels, so correct-refusal is understated.
 
 The refusal metric had been an open hole since Stage 3 — nothing in the
@@ -173,7 +177,7 @@ ColBERTv2), never ms-marco.
 | 3 | Cross-encoder reranking, then hybrid BM25+dense (RRF) | Reranker was a mixed bag (hurt R@1/paraphrase) → **dropped**. Hybrid won outright: R@5 0.792, beat dense+rerank on every axis |
 | 4 | Contextual blurb chunking (Anthropic Contextual Retrieval-style), blurb fed to both dense and BM25 | R@5 0.792 → **0.833**, R@1 +0.10. Recall gain traced to the **lexical** side (BM25), not dense — disproved the initial hypothesis with an isolation test |
 | 5 | LangChain migration (reproduced stage-4 baseline first), pgvector dense store, file-type-routed ingestion, corpus scaled 7 → ~740 docs | Faithful reproduction at 0.854 R@5 after fixing a framework tokenizer default; infra now scale-ready |
-| 6 | CRAG loop (LangGraph state machine: retrieve → grade → refine/refuse), Claude grading + generation, HNSW + tsvector/GIN indexes, automated refusal + answer-quality gate | Refusal closed: **100% correct-refusal / 22.7% false-refusal**, **69.5% end-to-end correct**, 8.1 s/q. Two findings: ANN `ef_search` default silently cost recall; grader prompt was the biggest single lever. Knob sweep on 40pct corpus + v4 gold (318 Q): grader context 4000 chars → **79.2% end-to-end**; retry-on-refusal, top_k=10, set-grading, OR-tsquery, BM25 all dropped |
+| 6 | CRAG loop (LangGraph state machine: retrieve → grade → refine/refuse), Claude grading + generation, HNSW + tsvector/GIN indexes, automated refusal + answer-quality gate | Refusal closed: **100% correct-refusal / 22.7% false-refusal**, **69.5% end-to-end correct**, 8.1 s/q. Two findings: ANN `ef_search` default silently cost recall; grader prompt was the biggest single lever. Knob sweep on 40pct corpus + v4 gold (318 Q): grader context 4000 chars → **79.2% end-to-end** (80.3% after judge fix); retry-on-refusal, top_k=10, set-grading, OR-tsquery, BM25 all dropped |
 
 Full scoreboards, failure analyses, and the reasoning behind every drop/keep
 decision are in [`NOTES.md`](NOTES.md).
@@ -223,6 +227,8 @@ RAG/
     crag_pipeline.py          CRAG LangGraph state machine (retrieve → grade → refine/generate/refuse)
     crag_eval.py              refusal + answer-quality gate, Claude-as-judge
     crag_*.json               run results (ef400, grader_v2, indexed, ...)
+  rag_stage_7/
+    README.md                 enterprise RAG plan: gaps, phases 0–9, verify gates
     stage6_learning.md        ANN / inverted-index scaling decisions
   docs/RAG_GUIDE.md          theory reference doubling as stage-1 corpus
 NOTES.md                     full run log — every scoreboard, every decision
@@ -271,7 +277,7 @@ instead of an LLM answer.
 
 ---
 
-## Roadmap — what's next (Stage 6 shipped, Stage 7 next)
+## Roadmap — what's next (Stage 6 shipped, Stage 7 in progress)
 
 Three axes that partly conflict — **scale** (infra: ANN index, inverted index),
 **real-time** (caching, batching, SLA), **agentic** (reasoning quality, but
@@ -283,33 +289,29 @@ Done in Stage 6:
 - ~~CRAG retrieve → grade → re-retrieve/refuse~~ — closes the refusal gap open
   since Stage 3.
 
-Next, in order:
-1. **Attribution says where to work.** Current loss buckets on v4 (279
-   positives): `retrieval_miss` 34, `answered_wrong` 13, `refused_on_hit` 11.
-   Retrieval is the top bucket. Of the 34 misses, gold ranks 6–20 for only 12;
-   most are wrong-company SEC hits (chunks carry no title/company context).
-2. **Self-query metadata routing** — `source_type=sec` etc. via pgvector's jsonb
-   filter instead of a hand-rolled router. Targets `retrieval_miss` directly.
-3. **Re-tune chunking on Docling's structure output** — current ingest uses blind
-   char windows, a regression from the stage-3 heading-aware splitter.
-4. **Reranking returns at scale** — bigger candidate pool makes top-k precision
-   matter again. Paraphrase-tolerant model only (BGE-reranker-v2 / ColBERTv2),
-   never ms-marco.
-5. **Embedder A/B, CRAG held fixed** — BGE-M3 vs Voyage vs OpenAI, isolated,
-   after the cheaper knobs are exhausted (a re-embed of 497k children is not
-   free). Anthropic ships no embedding model; Claude is generation + grading only.
-6. **Serving — Stage 7.** API wrapper, tracing (LangSmith/OTel), latency SLA to
-   design backward from, semantic cache, async batched embedding.
-7. **Web/tool fallback node** — real CRAG re-retrieves from the web on hard-fail;
-   here that path is `refuse` because eval is offline. Production adds it.
+Next — **Stage 7: enterprise RAG** (full plan + verify gates:
+[`RAG/rag_stage_7/README.md`](RAG/rag_stage_7/README.md)). Retrieval-only
+tuning on the synthetic gold set has stopped; work now targets what a company
+deployment needs:
 
-Shortlisted (not started), ranked by expected leverage if the pipeline plateaus:
-SPLADE (learned sparse, targets paraphrase), multi-query/HyDE fan-out, RAPTOR
-(hierarchical summarization, long-doc questions only), ColBERT late-interaction
-(only if reranker latency becomes the bottleneck).
+0. Honest eval — frozen realistic question set + reference-free faithfulness.
+1. Metadata layer — entity, doc type, date, version, ACL on every chunk
+   (also the fix for wrong-company retrieval misses).
+2. Access control — 0 cross-group leaks is a hard gate.
+3. Incremental ingestion — connectors, re-index on change, delete on removal.
+4. Version conflicts — prefer latest policy / flag conflicts.
+5. Citations + API.
+6. Multi-turn — query condensation over chat history.
+7. Monitoring — faithfulness, refusal rate, cost per query.
+8. Tool-using agent (agentic level 2) — decompose, filtered search, calculator, SQL.
+9. Learn from mistakes (agentic level 3) — ACL-scoped, human-approved feedback
+   memory, run as an offline loop.
+
+Parked (retrieval-only, revisit only if a Stage 7 gate needs it): Docling
+chunking re-tune, rerankers, embedder A/B, SPLADE, HyDE, RAPTOR, ColBERT.
 
 ## Non-goals
 
-No production serving layer, no auth, no multi-turn chat memory, no
-streaming. This is a repo for proving retrieval-quality decisions with
-numbers, not for operating a deployed RAG service.
+Retrieval-only tuning on the synthetic v4 gold set, web fallback, and any
+fine-tuning before Stage 7 phase 9. Serving, auth, and multi-turn are now
+**in scope** (Stage 7).
