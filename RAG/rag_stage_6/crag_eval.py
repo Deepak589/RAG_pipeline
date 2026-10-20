@@ -36,7 +36,7 @@ import time
 from pathlib import Path
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ValidationError
 
 import crag_pipeline as crag
 
@@ -51,12 +51,14 @@ class Judgement(BaseModel):
 
 
 def gold_answer(q, parents):
-    """Ground truth for the judge: explicit _answer if present, else the gold
-    parent text (paraphrase Qs have no _answer, only a gold parent)."""
-    if q.get("_answer"):
-        return q["_answer"]
+    """Ground truth for the judge: the FULL gold parent text, led by `_answer`
+    when present (paraphrase Qs have no _answer, only a gold parent).
+    Was text[:1500] + bare _answer: v4_a3_gc4000 marked 4 answers 'wrong' that
+    sat past char 1500, and correct answers 'partial' over units the bare
+    _answer lacked ("$1,544" vs "$1,544 million")."""
     pids = q.get("relevant_parent_ids", [])
-    return "\n".join(parents[p]["text"][:1500] for p in pids if p in parents)
+    passage = "\n".join(parents[p]["text"] for p in pids if p in parents)
+    return f"{q['_answer']}\nSource passage:\n{passage}" if q.get("_answer") else passage
 
 
 def answer_pos(q, parents):
@@ -82,7 +84,12 @@ def judge_answer(judge_llm, question, gold, answer) -> Judgement:
         "an answer that is on-topic but omits the specific fact is 'partial'; an "
         "answer that states something the gold does not support is 'wrong'.\n\n"
         f"Question: {question}\nGold: {gold}\nAnswer: {answer}")
-    return judge_llm.invoke(prompt)
+    try:
+        return judge_llm.invoke(prompt)
+    except ValidationError:
+        # judge sometimes nests verdict inside `reason`; the bad reply is cached,
+        # so re-ask with a changed prompt (= new cache key) instead of retrying
+        return judge_llm.invoke(prompt + "\n\nReturn `verdict` and `reason` as separate fields.")
 
 
 def pct(n, d):
@@ -212,6 +219,41 @@ def evaluate(app, parents, judge_llm, qa_path, out_path, corpus="full"):
     return summary
 
 
+def rejudge(results_path, qa_path, parents, judge_llm, out_path):
+    """Re-run ONLY the judge over a saved run's answers (no retrieval, no
+    generation). Use after a judge/gold fix; refusals and retrieval are kept."""
+    data = json.loads(Path(results_path).read_text())
+    qs = {q["id"]: q for q in json.loads(Path(qa_path).read_text())["questions"]}
+    pos = [r for r in data["rows"] if r["type"] != "negative"]
+    for i, r in enumerate(pos, 1):
+        if r["refused"]:
+            continue
+        q = qs[r["id"]]
+        j = judge_answer(judge_llm, q["query"], gold_answer(q, parents), r["answer"])
+        r["verdict"], r["judge_reason"] = j.verdict, j.reason
+        r["cause"] = ("correct" if j.verdict == "correct"
+                      else "answered_wrong" if r["retrieval_hit"] else "retrieval_miss")
+        if i % 25 == 0:
+            print(f"  rejudged {i}/{len(pos)}  ${crag.METER.usd:.2f}")
+
+    s = data["summary"]
+    answered = [r["verdict"] for r in pos if not r["refused"]]
+    n = lambda v: answered.count(v)
+    s["answer_quality"] = {
+        "answered": len(answered),
+        "correct_pct": pct(n("correct"), len(answered)),
+        "partial_pct": pct(n("partial"), len(answered)),
+        "wrong_pct": pct(n("wrong"), len(answered)),
+        "end_to_end_correct_pct": pct(n("correct"), len(pos)),
+    }
+    s["retrieval"]["attribution"] = {k: sum(r["cause"] == k for r in pos) for k in
+                                     ("retrieval_miss", "refused_on_hit", "answered_wrong", "correct")}
+    s["rejudged_from"] = results_path
+    s["cost"]["llm"] = crag.METER.report()
+    Path(out_path).write_text(json.dumps(data, indent=1))
+    _print_report(s, out_path)
+
+
 def _print_report(s, out_path):
     print("\n" + "=" * 68)
     print(f"CRAG eval — qa {s['version']}   corpus={s['corpus']}   "
@@ -246,15 +288,24 @@ def main():
     ap.add_argument("--qa", default=str(crag.S5_DIR / "qa_stage5_v3.json"))
     ap.add_argument("--out", default="crag_eval.json")
     ap.add_argument("--judge-model", default="claude-sonnet-5")
+    ap.add_argument("--rejudge", metavar="RESULTS_JSON",
+                    help="re-judge a saved run's answers only (no retrieval/generation)")
     args = ap.parse_args()
     crag.enable_guards(args)
+
+    judge_llm = crag.make_chat_anthropic(
+        args.judge_model, temperature=0).with_structured_output(Judgement)
+    if args.rejudge:
+        try:
+            rejudge(args.rejudge, args.qa, crag.s5.load_parents(args.sections),
+                    judge_llm, args.out)
+        except crag.BudgetExceeded as e:
+            sys.exit(f"STOPPED: {e}\n{json.dumps(crag.METER.report(), indent=1)}")
+        return
 
     app, parents = crag.build_from_args(args)
     # stash every knob for the report so runs are self-describing
     app._crag_config = {k: getattr(args, k) for k in crag.KNOBS}
-
-    judge_llm = crag.make_chat_anthropic(
-        args.judge_model, temperature=0).with_structured_output(Judgement)
 
     # corpus tag comes from the collection suffix (build_subset.py: <name>__40pct)
     corpus = args.collection.rsplit("__", 1)[-1] if args.collection.endswith("pct") else "full"
