@@ -1,0 +1,652 @@
+{
+ "summary": {
+  "version": "stage5_v3-slice48-cause[refused_on_hit]-s0",
+  "corpus": "40pct",
+  "config": {
+   "max_steps": 2,
+   "retry_on_refusal": true
+  },
+  "counts": {
+   "negatives": 19,
+   "positives": 29
+  },
+  "refusal": {
+   "correct_refusal_pct": 100.0,
+   "false_refusal_pct": 24.1
+  },
+  "answer_quality": {
+   "answered": 22,
+   "correct_pct": 77.3,
+   "partial_pct": 4.5,
+   "wrong_pct": 18.2,
+   "end_to_end_correct_pct": 58.6
+  },
+  "retrieval": {
+   "retrieval_hit_pct": 100.0,
+   "attribution": {
+    "retrieval_miss": 0,
+    "refused_on_hit": 7,
+    "answered_wrong": 5,
+    "correct": 17
+   }
+  },
+  "cost": {
+   "wall_seconds": 506.2,
+   "sec_per_q": 10.55
+  }
+ },
+ "rows": [
+  {
+   "id": "neg-0",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-1",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-2",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-3",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-4",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate",
+    "refine",
+    "retrieve",
+    "grade",
+    "generate",
+    "refine",
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-5",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-6",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "generate",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-7",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-8",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-9",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "generate",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-10",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-11",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-13",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-14",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-15",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-16",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-17",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-18",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-19",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "rtd-cryptography-204-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer \"Version 40.0.0\" matches the gold reference \"40.0.0\" exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-django-380-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies 'localized_fields' as the parameter, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05434v1-46-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "Answer correctly identifies 'Proposed method' matching the gold reference, with additional supporting details consistent with the table.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05698v1-55-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer states the exact value 3.9 \u00d7 10\u207b\u2075 rad matching the gold, with additional context that doesn't contradict it.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-pybind11-90-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly describes assigning a name to the previously bound Pet py::class_ object and referencing it (passing it as parent) when binding Dog, matching the gold reference, with accurate example code.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000092122-26-000006-632-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0000101829-26-000006-153-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer includes the exact EPS impact figure of $0.33 matching the gold reference, along with additional consistent detail.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000773840-26-000013-178-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "wrong",
+   "judge_reason": "The answer states $438 million, which does not match the gold reference of $1,193 million.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "sec-0000821189-26-000054-198-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 30.24 per barrel exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001024478-25-000116-89-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "partial",
+   "judge_reason": "The numeric value $1,544 matches the gold, but the answer adds 'million' as a unit which is not specified or confirmed in the gold reference, introducing unsupported specificity.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "sec-0001104659-26-015365-343-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer states $62 million, matching the gold reference exactly, with accurate supporting context.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001193125-26-051453-407-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states the filing date as February 4, 2020, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001193125-26-082531-1-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, listing both Secured Borrowings Due dates.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001413447-26-000008-25-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly in substance, including the exception for material information disclosure obligations under U.S. federal securities laws and the lack of obligation to update forward-looking statements.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001510295-26-000009-261-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold value of $275 million.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001551152-26-000008-79-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001559720-26-000004-105-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "Answer matches the gold reference exactly: California.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001594805-26-000007-30-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies the Sustainability Fund as the initiative, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001601046-25-000127-253-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-009136-169-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "wrong",
+   "judge_reason": "The answer states 29%, while the gold reference specifies 39%. This is a factual mismatch, not a minor omission.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "sec-0001628280-26-013098-296-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001783879-26-000023-64-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001996810-26-000015-197-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "retrieval_hit": true,
+   "verdict": "wrong",
+   "judge_reason": "The gold answer is 144, but the answer provides different figures (356 and 281) that do not match the gold reference.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "wikipedia-algorithmic-bi-13-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, identifying women of color as the group least likely to be identified as scientists.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-00306v2-151-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "wrong",
+   "judge_reason": "The gold reference does not mention any specific duration like '24 hours'; it discusses cost analysis methodology without providing this figure, so the answer's specific claim is unsupported.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "sec-0000035527-26-000124-190-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001601046-25-000127-253-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001628280-26-013098-296-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "wikipedia-algorithmic-bi-13-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies women of color as the category with the lowest probability of being recognized as scientists by Google Cloud Vision AI, matching the gold reference.",
+   "cause": "correct"
+  }
+ ]
+}

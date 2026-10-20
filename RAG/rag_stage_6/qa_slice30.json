@@ -1,0 +1,295 @@
+{
+ "version": "stage5_v3-slice30-balanced-s0",
+ "questions": [
+  {
+   "id": "sec-0000049826-26-000008-171-f",
+   "type": "factual",
+   "query": "What is the filing date of the document containing the Form of Stock Option Agreement pursuant to the Illinois Tool Works Inc. 2024 Long-Term Incentive Plan?",
+   "relevant_parent_ids": [
+    "sec/0000049826-26-000008#171"
+   ],
+   "_answer": "December 31, 2024",
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-01405v1-16-f",
+   "type": "factual",
+   "query": "What does the notation mN(θ) represent in the context of Theorem 1?",
+   "relevant_parent_ids": [
+    "arxiv/2608.01405v1#16"
+   ],
+   "_answer": "mN(θ) ≡ N−1 Σi∈IN zN;i(yN;i − d⊤N;iθ)",
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-05112v1-41-f",
+   "type": "factual",
+   "query": "What is the inequality derived from substituting ∥ξ(˜x)∥= ϵ into equation (59)?",
+   "relevant_parent_ids": [
+    "arxiv/2608.05112v1#41",
+    "arxiv/2608.05112v1#52"
+   ],
+   "_answer": "ϵ ≤L∥v∥+ M∥v∥2 ≤(L + Mϵ/γ)∥v∥",
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-06245v1-0-f",
+   "type": "factual",
+   "query": "What is the adopted distance to V420 Vul in kiloparsecs according to the passage?",
+   "relevant_parent_ids": [
+    "arxiv/2608.06245v1#15",
+    "arxiv/2608.06245v1#16",
+    "arxiv/2608.06245v1#0",
+    "arxiv/2608.06245v1#3"
+   ],
+   "_answer": "1.9",
+   "_gen": true
+  },
+  {
+   "id": "rtd-pytest-2-f",
+   "type": "factual",
+   "query": "What section of the document discusses Python version support for pytest?",
+   "relevant_parent_ids": [
+    "rtd/pytest#2",
+    "rtd/pytest#518"
+   ],
+   "_answer": "5.4",
+   "_gen": true
+  },
+  {
+   "id": "rtd-xgboost-389-f",
+   "type": "factual",
+   "query": "What are the keys of the dictionary returned by the function train_interval_model when training both quantile and expectile models?",
+   "relevant_parent_ids": [
+    "rtd/xgboost#389"
+   ],
+   "_answer": "{\"quantile\": quantile_evals, \"expectile\": expectile_evals}",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000086312-26-000065-442-f",
+   "type": "factual",
+   "query": "As of December 31, 2025, how much did the Company's claims and claim adjustment expense reserves include for asbestos-related claims, net of reinsurance?",
+   "relevant_parent_ids": [
+    "sec/0000086312-26-000065#309",
+    "sec/0000086312-26-000065#442",
+    "sec/0000086312-26-000065#252"
+   ],
+   "_answer": "$1.36 billion",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000721371-25-000079-205-f",
+   "type": "factual",
+   "query": "What was the total share-based compensation expense recognized by GIA during fiscal 2025?",
+   "relevant_parent_ids": [
+    "sec/0000721371-25-000079#205"
+   ],
+   "_answer": "$123 million",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000821189-26-000054-198-f",
+   "type": "factual",
+   "query": "What was the weighted average price per barrel for Mont Belvieu Propane (Tet) contracts sold in January - December 2026?",
+   "relevant_parent_ids": [
+    "sec/0000821189-26-000054#122",
+    "sec/0000821189-26-000054#198"
+   ],
+   "_answer": "30.24",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000858877-25-000111-225-f",
+   "type": "factual",
+   "query": "What was the total compensation cost related to unvested share-based awards not yet recognized by Cisco Systems, Inc. as of July 26, 2025?",
+   "relevant_parent_ids": [
+    "sec/0000858877-25-000111#225"
+   ],
+   "_answer": "$4.5 billion",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000885725-26-000010-60-f",
+   "type": "factual",
+   "query": "What is one potential consequence for medical device companies when countries without previous regulatory requirements for medical devices establish such regulations?",
+   "relevant_parent_ids": [
+    "sec/0000885725-26-000010#60"
+   ],
+   "_answer": "These factors have caused or may cause us to experience more uncertainty, risk, expense and delay in obtaining approvals and commercializing products in certain jurisdictions",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001104659-25-122321-292-f",
+   "type": "factual",
+   "query": "What is the specific date for which Deere & Company's internal control over financial reporting was audited according to the passage?",
+   "relevant_parent_ids": [
+    "sec/0001104659-25-122321#292",
+    "sec/0001104659-25-122321#299"
+   ],
+   "_answer": "November 2, 2025",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001104659-26-015365-343-f",
+   "type": "factual",
+   "query": "How much did Mitsubishi contribute on January 31, 2025, for an additional 15% ownership in the joint venture with Digital Realty?",
+   "relevant_parent_ids": [
+    "sec/0001104659-26-015365#343"
+   ],
+   "_answer": "$62 million",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001193125-26-021017-149-f",
+   "type": "factual",
+   "query": "What was the amount of SLB Limited's short-term borrowings and current portion of long-term debt as of the latest reporting period shown in the passage?",
+   "relevant_parent_ids": [
+    "sec/0001193125-26-021017#149"
+   ],
+   "_answer": "1,894",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001193125-26-051453-407-f",
+   "type": "factual",
+   "query": "What is the date of filing for the Third Amendment to Thirteenth Amended and Restated Agreement of Limited Partnership of Prologis, L.P.?",
+   "relevant_parent_ids": [
+    "sec/0001193125-26-051453#407"
+   ],
+   "_answer": "February 4, 2020",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001404912-26-000007-182-f",
+   "type": "factual",
+   "query": "What strategic decision has been made regarding the size of the company's balance sheet compared to its competitors?",
+   "relevant_parent_ids": [
+    "sec/0001404912-26-000007#182"
+   ],
+   "_answer": "to have a larger balance sheet than most of its asset management competitors",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001835632-26-000011-57-f",
+   "type": "factual",
+   "query": "According to the passage, what could cause a significant reduction in AI-related spending that would likely harm financial results?",
+   "relevant_parent_ids": [
+    "sec/0001835632-26-000011#57"
+   ],
+   "_answer": "A significant reduction in AI-related spending will likely harm financial results if the current level of capital expenditure on AI infrastructure is not sustainable over the long term.",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001858681-26-000013-544-f",
+   "type": "factual",
+   "query": "What was the carrying value of Apollo Global Management's investment funds as of December 31, 2025?",
+   "relevant_parent_ids": [
+    "sec/0001858681-26-000013#544"
+   ],
+   "_answer": "$108",
+   "_gen": true
+  },
+  {
+   "id": "wikipedia-environmental--2-f",
+   "type": "factual",
+   "query": "According to J. Donald Hughes in 2006, what does environmental history seek to understand?",
+   "relevant_parent_ids": [
+    "wikipedia/Environmental_history#2"
+   ],
+   "_answer": "history that seeks understanding of human beings as they have lived, worked and thought in relationship to the rest of nature through the changes brought by time",
+   "_gen": true
+  },
+  {
+   "id": "archive-dlibra-bibliotek-4-p",
+   "type": "paraphrase",
+   "query": "What particular worry does Abg. Pleß (Centr.) express about nearby growers in the text?",
+   "relevant_parent_ids": [
+    "archive/dlibra.bibliotekaelblaska.pl.051.13452779#4"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-05112v1-41-p",
+   "type": "paraphrase",
+   "query": "What inequality results from inserting ∥ξ(˜x)∥= ϵ in eq. (59)?",
+   "relevant_parent_ids": [
+    "arxiv/2608.05112v1#41"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-06193v1-26-p",
+   "type": "paraphrase",
+   "query": "What publication from Ngeow et al. came out in 2023?",
+   "relevant_parent_ids": [
+    "arxiv/2608.06193v1#26"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0000316709-26-000009-106-p",
+   "type": "paraphrase",
+   "query": "What might lead to financial damages for Schwab despite their innocence according to the text?",
+   "relevant_parent_ids": [
+    "sec/0000316709-26-000009#106"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0000831001-26-000011-602-p",
+   "type": "paraphrase",
+   "query": "As at Dec 31, 2025, what were Citigroup's North America office corporate loan totals in million dollars?",
+   "relevant_parent_ids": [
+    "sec/0000831001-26-000011#602"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0000927628-26-000024-127-p",
+   "type": "paraphrase",
+   "query": "As per the text, what legislation mandates evaluating a customer's capacity to repay before granting or raising credit limits?",
+   "relevant_parent_ids": [
+    "sec/0000927628-26-000024#127"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0001628280-26-008819-139-p",
+   "type": "paraphrase",
+   "query": "As of Dec 31, 2025, what was the dollar-based net retention rate for the past year?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-008819#139"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "neg-3",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000999 [15] and its interaction with newly discovered element 119?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-11",
+   "type": "negative",
+   "query": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-16",
+   "type": "negative",
+   "query": "What was the exact weather condition in Shanghai on July 15, 2023 at 3 PM?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-18",
+   "type": "negative",
+   "query": "What was the exact weather condition in Beijing on February 29, 2024?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  }
+ ]
+}

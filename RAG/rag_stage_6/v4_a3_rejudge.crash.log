@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "/Users/deepakkatukuri/RAG_dev/RAG/rag_stage_6/crag_eval.py", line 315, in <module>
+    main()
+  File "/Users/deepakkatukuri/RAG_dev/RAG/rag_stage_6/crag_eval.py", line 295, in main
+    rejudge(args.rejudge, args.qa, crag.s5.load_parents(args.sections),
+  File "/Users/deepakkatukuri/RAG_dev/RAG/rag_stage_6/crag_eval.py", line 227, in rejudge
+    j = judge_answer(judge_llm, q["query"], gold_answer(q, parents), r["answer"])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/deepakkatukuri/RAG_dev/RAG/rag_stage_6/crag_eval.py", line 87, in judge_answer
+    return judge_llm.invoke(prompt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 3456, in invoke
+    input_ = context.run(step.invoke, input_, config)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_core/output_parsers/base.py", line 211, in invoke
+    return self._call_with_config(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 2301, in _call_with_config
+    context.run(
+  File "/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_core/runnables/config.py", line 526, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_core/output_parsers/base.py", line 212, in <lambda>
+    lambda inner_input: self.parse_result(
+                        ^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_core/output_parsers/openai_tools.py", line 368, in parse_result
+    pydantic_objects.append(tool(**res["args"]))
+                            ^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/pydantic/main.py", line 263, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Judgement
+verdict
+  Field required [type=missing, input_value={'reason': 'The gold answ...name="verdict">partial'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing

@@ -1,0 +1,1427 @@
+{
+ "summary": {
+  "version": "stage5_v3",
+  "config": {
+   "max_steps": 2
+  },
+  "counts": {
+   "negatives": 19,
+   "positives": 141
+  },
+  "refusal": {
+   "correct_refusal_pct": 100.0,
+   "false_refusal_pct": 33.3
+  },
+  "answer_quality": {
+   "answered": 94,
+   "correct_pct": 81.9,
+   "partial_pct": 5.3,
+   "wrong_pct": 12.8,
+   "end_to_end_correct_pct": 54.6
+  },
+  "cost": {
+   "wall_seconds": 1494.0,
+   "sec_per_q": 9.34
+  }
+ },
+ "rows": [
+  {
+   "id": "neg-0",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-1",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-2",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-3",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-4",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-5",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-6",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-7",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-8",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-9",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-10",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-11",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-13",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-14",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-15",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-16",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-17",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-18",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-19",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "archive-caorihs-000458-95-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Answer matches the gold reference, naming Mrs. Annie Murphy as matron of honor."
+  },
+  {
+   "id": "arxiv-2607-25459v1-0-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer identifies the controlled multivariate stochastic volatility setting, matching the gold reference, with accurate additional context."
+  },
+  {
+   "id": "arxiv-2608-00306v2-151-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0000035527-26-000124-190-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly computes and states $2.546 billion, matching the gold reference."
+  },
+  {
+   "id": "sec-0000037996-26-000015-282-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "partial",
+   "judge_reason": "The answer correctly cites the source filing (10-Q for quarter ended June 30, 2025) matching the gold, but explicitly denies that this constitutes a filing date, undermining a direct answer to the question despite containing the correct information."
+  },
+  {
+   "id": "sec-0000049826-26-000008-171-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "wrong",
+   "judge_reason": "The answer fails to provide the filing date (December 31, 2024) and instead conflates the fiscal year end with the filing date, explicitly stating the filing date is not provided."
+  },
+  {
+   "id": "rtd-cryptography-204-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "rtd-django-380-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Answer correctly identifies 'localized_fields' as the parameter, matching the gold reference, with accurate additional detail."
+  },
+  {
+   "id": "rtd-django-1035-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly in meaning."
+  },
+  {
+   "id": "rtd-django-1690-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "partial",
+   "judge_reason": "The answer correctly conveys that the ID is calculated by the database and unknown before save(), but it fails to state the key gold fact that the auto-incremented value is saved as an attribute on the object after calling save(). It focuses on 'returns' rather than 'saved as an attribute', missing the specific fact required."
+  },
+  {
+   "id": "rtd-django-2345-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, stating that proxy model permission strings must be updated to use their own app_label, and provides an accurate illustrative example."
+  },
+  {
+   "id": "rtd-django-3001-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "arxiv-2608-01405v1-16-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold definition exactly, including the summation formula and terms."
+  },
+  {
+   "id": "arxiv-2608-02704v1-94-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer identifies 'limitation' information as being demoted to an ordinary state, matching the gold reference, with additional accurate elaboration."
+  },
+  {
+   "id": "arxiv-2608-03773v1-3-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer explicitly includes the gold statement verbatim: 'A post-intervention change in \u03a0(\u03b4) is interpreted as evidence that the pre-intervention long-run structure has become unstable,' and adds consistent elaboration without contradicting the gold."
+  },
+  {
+   "id": "arxiv-2608-04629v1-1-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer explicitly states 'Bayesian state-space model', matching the gold reference, with additional accurate detail."
+  },
+  {
+   "id": "arxiv-2608-04983v1-118-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "arxiv-2608-05112v1-41-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 2,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, including the inequality structure and terms."
+  },
+  {
+   "id": "arxiv-2608-05283v1-5-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold value of 10^6 scatterings."
+  },
+  {
+   "id": "arxiv-2608-05434v1-46-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "arxiv-2608-05516v1-38-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer includes the exact conditions from the gold reference (dense n>~10^6-10^7 cm^-3 and warm T>~100 K gas) and adds extra mechanistic detail that does not contradict the gold answer."
+  },
+  {
+   "id": "arxiv-2608-05698v1-55-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer states the value 3.9 \u00d7 10\u207b\u2075 rad, matching the gold reference exactly, with additional supplementary information that does not contradict the gold."
+  },
+  {
+   "id": "arxiv-2608-05882v1-9-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly."
+  },
+  {
+   "id": "arxiv-2608-05990v1-41-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer states 6 paired technical repeats per experiment, matching the gold reference of 6."
+  },
+  {
+   "id": "arxiv-2608-06056v1-44-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer states the exact condition matching the gold: the leading-order term of the dissipative drift term vanishes, plus additional supporting details that do not contradict the gold."
+  },
+  {
+   "id": "arxiv-2608-06141v1-28-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 2,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, including all key details about defaults, interfaces, guardrails, restricting capture, limiting downstream reuse, and preserving opacity to prevent amplifying risk or reproducing colonial linguistic hierarchies."
+  },
+  {
+   "id": "arxiv-2608-06193v1-26-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "arxiv-2608-06245v1-0-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 1.9 kpc."
+  },
+  {
+   "id": "arxiv-2608-06275v1-25-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 2,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 0.774 exactly."
+  },
+  {
+   "id": "arxiv-2608-06358v1-94-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "wrong",
+   "judge_reason": "The gold defines p(n) = 2C0\u00b7\u03b4\u00b7(ln n)^\u03c8(n)/n, with \u03b4 multiplying C0, whereas the answer states p(n) = 2C\u2080/\u03b4 \u00b7 (ln n)\u03c8(n)/n, dividing by \u03b4 instead of multiplying. This changes the formula's meaning, so it does not match the gold reference."
+  },
+  {
+   "id": "rtd-mypy-417-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer includes the correct option --html-report matching the gold reference, along with additional detail."
+  },
+  {
+   "id": "rtd-networkx-658-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference page number exactly."
+  },
+  {
+   "id": "rtd-pybind11-90-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, correctly stating the alternative method of assigning a name to the previously bound Pet py::class_ object and referencing it when binding Dog, with accurate supporting code example."
+  },
+  {
+   "id": "rtd-pytest-2-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "partial",
+   "judge_reason": "The answer correctly identifies section 5.4 matching the gold reference, but adds an unverified page number (521) not supported by the gold answer, introducing extra unsupported detail."
+  },
+  {
+   "id": "rtd-requests-87-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "rtd-twisted-355-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, stating the name attribute value is \"Anonymous\"."
+  },
+  {
+   "id": "rtd-xgboost-389-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "wrong",
+   "judge_reason": "The gold specifies keys \"quantile\" and \"expectile\", but the answer states \"Train\" and \"Test\", which does not match the gold reference."
+  },
+  {
+   "id": "sec-0000077476-26-000007-77-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "wrong",
+   "judge_reason": "The answer lists sugarcane, corn, sugar beets, citrus/other fruits, coffee and tea, but the gold reference specifies potatoes, sugar cane, corn, wheat, rice, oats, and oranges. Only sugar cane and corn overlap; the answer introduces unsupported items (sugar beets, coffee, tea) and omits key gold items (potatoes, wheat, rice, oats), making it incorrect rather than partially correct."
+  },
+  {
+   "id": "sec-0000086312-26-000065-442-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly."
+  },
+  {
+   "id": "sec-0000092122-26-000006-632-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 1,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0000093410-26-000078-53-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies OPEC as mentioned in the gold reference, matching the required fact, though it adds extra details about Russia and the US."
+  },
+  {
+   "id": "sec-0000101829-26-000006-153-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states the $0.33 unfavorable impact on diluted EPS, matching the gold reference, with additional supporting detail."
+  },
+  {
+   "id": "sec-0000277948-26-000006-24-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0000316709-26-000009-106-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 1,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0000707549-25-000075-169-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, stating approximately 5.2 million shares were initially received."
+  },
+  {
+   "id": "sec-0000721371-25-000079-205-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer states $123 million, matching the gold reference exactly."
+  },
+  {
+   "id": "sec-0000732717-26-000120-115-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of -70.4% exactly."
+  },
+  {
+   "id": "sec-0000764180-26-000017-150-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, naming both agencies."
+  },
+  {
+   "id": "sec-0000773840-26-000013-178-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0000821189-26-000054-198-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 30.24 (expressed as $30.24 per barrel)."
+  },
+  {
+   "id": "sec-0000831001-26-000011-602-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold value of 170,667 million."
+  },
+  {
+   "id": "sec-0000858877-25-000111-225-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states the total compensation cost of $4.5 billion, matching the gold reference, with additional accurate detail."
+  },
+  {
+   "id": "sec-0000882095-26-000006-109-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference, stating that healthcare companies may incur material costs to decarbonize or comply with climate-related requirements."
+  },
+  {
+   "id": "sec-0000885725-26-000010-60-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer directly matches the gold reference, stating the same consequence of increased uncertainty, risk, expense and delay in obtaining approvals and commercializing products, with additional consistent detail."
+  },
+  {
+   "id": "sec-0000896159-26-000005-134-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold exactly: October 2025."
+  },
+  {
+   "id": "sec-0000927628-26-000024-127-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001024478-25-000116-89-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Answer matches the gold figure of $1,544, including proper context."
+  },
+  {
+   "id": "sec-0001048911-26-000105-282-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, identifying Express U.S. Domestic and Express International as the two new reportable segments."
+  },
+  {
+   "id": "sec-0001061219-26-000006-43-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer states four business segments, matching the gold reference, with plausible segment names."
+  },
+  {
+   "id": "sec-0001067701-26-000007-112-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "partial",
+   "judge_reason": "The gold states both non-compete agreements and customer relationships are valued using the excess earnings/income approach based on projected cash flows. The answer correctly identifies the excess earnings method for customer relationships (a form of income approach based on cash flows), but incorrectly states non-compete agreements are valued using a 'differential cash flow method' rather than the excess earnings/income approach specified in the gold. This introduces a claim not supported by the gold and misses the specific method for non-compete agreements as stated in the reference."
+  },
+  {
+   "id": "sec-0001099219-26-000013-531-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001104659-25-122321-292-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold date exactly."
+  },
+  {
+   "id": "sec-0001104659-26-015365-343-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer states $62 million, matching the gold reference exactly."
+  },
+  {
+   "id": "sec-0001104659-26-020831-90-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "partial",
+   "judge_reason": "Answer correctly includes Monster Energy and Strategic Brands flavors as gold specifies, but adds an unsupported extra category ('ready-to-drink alcohol drinks') not mentioned in the gold reference, introducing inaccurate information."
+  },
+  {
+   "id": "sec-0001193125-26-021017-149-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001193125-26-051453-407-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001193125-26-059296-384-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value exactly, with unit clarification."
+  },
+  {
+   "id": "sec-0001193125-26-082531-1-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, specifying the same two Secured Borrowings Due dates."
+  },
+  {
+   "id": "sec-0001193125-26-082531-755-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Answer includes the correct date, February 16, 2016, matching the gold reference, with additional supplementary detail that does not contradict it."
+  },
+  {
+   "id": "sec-0001193125-26-323660-100-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference, stating that the company's own devices compete with its OEM partners' products, affecting their commitment to the platform."
+  },
+  {
+   "id": "sec-0001276187-26-000013-248-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly: January 2025."
+  },
+  {
+   "id": "sec-0001283699-26-000010-276-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference value of $648 million exactly."
+  },
+  {
+   "id": "sec-0001326160-26-000014-457-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer includes the gold value 2,982 (as Duke Energy's regulatory liability), matching the reference figure, along with additional context."
+  },
+  {
+   "id": "sec-0001373715-26-000007-173-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Matches gold exactly: a loss of $42 million."
+  },
+  {
+   "id": "sec-0001404912-26-000007-182-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001413447-26-000008-25-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference precisely, including the exception for legally required disclosures and the lack of obligation to update forward-looking statements."
+  },
+  {
+   "id": "sec-0001437749-26-006113-218-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001510295-26-000009-261-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference of $275 million exactly."
+  },
+  {
+   "id": "sec-0001539838-26-000010-49-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold value exactly (774,645 net acres)."
+  },
+  {
+   "id": "sec-0001551152-26-000008-79-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001559720-26-000004-105-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold exactly."
+  },
+  {
+   "id": "sec-0001594805-26-000007-30-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies the Sustainability Fund as launched by Shopify in 2019, matching the gold reference, and adds accurate supporting detail."
+  },
+  {
+   "id": "sec-0001601046-25-000127-253-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 1,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001628280-26-003942-24-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001628280-26-004195-197-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "verdict": "wrong",
+   "judge_reason": "The answer states $1.3 billion, which contradicts the gold value of $669 million."
+  },
+  {
+   "id": "sec-0001628280-26-005345-168-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, correctly naming the parametric delta-gamma approximation technique."
+  },
+  {
+   "id": "sec-0001628280-26-006268-71-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "wrong",
+   "judge_reason": "The answer states a -3.7% change, but the gold reference indicates -1%, which is a significantly different figure."
+  },
+  {
+   "id": "sec-0001628280-26-007703-23-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer states the aggregate market value as approximately $40.6 billion, matching the gold reference, with additional supporting detail that does not contradict the gold answer."
+  },
+  {
+   "id": "sec-0001628280-26-008819-139-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference value of about 120%."
+  },
+  {
+   "id": "sec-0001628280-26-009136-169-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001628280-26-011430-63-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001628280-26-013098-296-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001645590-25-000130-129-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer accurately captures the gold reference: failure to satisfy pre-closing conditions and necessary regulatory/governmental approvals on acceptable terms."
+  },
+  {
+   "id": "sec-0001674101-26-000008-203-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 0.25% exactly and correctly describes it as the unused line fee on the unused portion of commitments."
+  },
+  {
+   "id": "sec-0001730168-25-000121-180-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001783879-26-000023-64-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001835632-26-000011-57-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001858681-26-000013-544-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001996810-26-000015-197-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "wikipedia-algorithmic-bi-13-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, identifying women of color as the least likely group to be identified as scientists."
+  },
+  {
+   "id": "wikipedia-environmental--2-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference verbatim."
+  },
+  {
+   "id": "wikipedia-law-62-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies the title 'Second Treatise of Government' matching the gold reference, with additional accurate context."
+  },
+  {
+   "id": "archive-cabrbhc-000058-0-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "arxiv-2608-00306v2-151-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0000035527-26-000124-190-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "rtd-cryptography-204-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "archive-dlibra-bibliotek-4-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer accurately captures Ple\u00df's complaint about farmers being harmed by wastewater from industrial establishments and the call for ministerial action, matching the gold text."
+  },
+  {
+   "id": "arxiv-2608-03773v1-3-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "wrong",
+   "judge_reason": "The gold reference describes an event-anchored time-varying cointegration model where, after t*, \u03a0 = \u03b1(\u03b4)\u03b2(\u03b4)\u2032 evolves gradually with rescaled time \u03b4 = t/T, and the equilibrium relation or adjustment speed may no longer hold as in the pre-intervention benchmark. The answer instead describes specific 'Scenario 1/2/3' simulation designs (smooth transition, break points, specific parameter values like -1.20, -1.80, \u03b1smo1, \u03b1Abr1) that are not supported by or mentioned in the gold text. This appears to be fabricated detail not grounded in the given reference, rather than a genuine summary of the paper's actual claim about gradual post-event evolution of \u03b2(\u03b4) and \u03b1(\u03b4). Hence it states things the gold does not support, making it wrong rather than merely partial."
+  },
+  {
+   "id": "arxiv-2608-05112v1-41-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches exactly the inequality (60) derived from substituting \u2016\u03be(x\u0303)\u2016=\u03f5 into eq. (59): \u03f5 \u2264 L\u2016v\u2016 + M\u2016v\u2016\u00b2 \u2264 (L + M\u03f5/\u03b3)\u2016v\u2016, which is precisely what the gold reference states."
+  },
+  {
+   "id": "arxiv-2608-05516v1-38-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 1,
+   "verdict": "correct",
+   "judge_reason": "The answer accurately captures the specific Giani et al. (2023) requirements from the gold: dense (n\u227310^6\u201310^7 cm^-3) and warm (T\u2273100 K) gas with barrierless ion-molecule reactions involving CH3+ and HCN forming CH3CN, matching the gold reference precisely."
+  },
+  {
+   "id": "arxiv-2608-05990v1-41-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference's key fact: 6 paired technical repeats per experiment."
+  },
+  {
+   "id": "arxiv-2608-06193v1-26-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "arxiv-2608-06336v1-13-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "rtd-networkx-658-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "rtd-requests-87-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0000064040-26-000013-177-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 1,
+   "verdict": "wrong",
+   "judge_reason": "The gold reference indicates revenue rose 7% from 2024 ($2,142M) to 2025 ($2,299M). The answer cites entirely different figures (7,003.1M to 9,005.7M with 28.6% growth, and 3,224,058K to 5,480,717K with 70% growth) that do not match the gold data at all, and does not provide the correct 7% figure."
+  },
+  {
+   "id": "sec-0000086312-26-000065-442-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "wrong",
+   "judge_reason": "The gold indicates the reserve was $1.3 billion, but the answer states $769 million, which does not match."
+  },
+  {
+   "id": "sec-0000101829-26-000006-153-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer accurately isolates the Raytheon Contract Termination charge ($0.4 billion, net of tax) and its unfavorable diluted EPS impact of $0.33, matching the specific figure in the gold reference."
+  },
+  {
+   "id": "sec-0000316709-26-000009-106-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0000721371-25-000079-205-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0000773840-26-000013-178-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0000831001-26-000011-602-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states the total of $170,667 million, matching the gold reference figure for North America office corporate loans as of December 31, 2025."
+  },
+  {
+   "id": "sec-0000885725-26-000010-60-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer accurately captures the key facts from the gold reference: increased uncertainty, risk, expense, and delay in approvals for firms in newly regulated jurisdictions, and the resulting adverse impact on sales growth, market share, and operating profits from international operations."
+  },
+  {
+   "id": "sec-0000927628-26-000024-127-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001048911-26-000105-282-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "wrong",
+   "judge_reason": "The gold indicates the two new reportable segments are Express U.S. Domestic and Express International, but the answer states 'Datacenter and Communications, and Industrial', which is unsupported and incorrect."
+  },
+  {
+   "id": "sec-0001099219-26-000013-531-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 1,
+   "verdict": "wrong",
+   "judge_reason": "The gold reference provides segment-level net investment income figures (e.g., $1,412M for Group, $8,774M for Benefits/RIS, $5,187M for Asia, $1,698M for Latin America, $253M for EMEA, $6M for MIM) for 2025. The answer instead fabricates entirely different figures ($15,310 million premiums/investment income, $49 million expenses, $15,261 million earnings before taxes) that do not correspond to any figures in the gold reference, and misidentifies the metric as 'Investment Income segment' rather than net investment income by division. This is unsupported and inconsistent with the gold data."
+  },
+  {
+   "id": "sec-0001104659-26-015365-343-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states the $62 million payment on 1/31/2025 for the 15% increase, matching the gold reference. The additional detail about going from 65% to 80% is consistent with the gold's statement that Mitsubishi ended up at 80% (implying prior stake was 65%), so it's accurate."
+  },
+  {
+   "id": "sec-0001156039-26-000013-105-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer directly matches the key fact in the gold reference regarding CMS's changes to the HCC model structure in version 28 and its effect on RAF scores."
+  },
+  {
+   "id": "sec-0001193125-26-051453-407-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001193125-26-082531-755-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Matches gold: signed February 16, 2016, deemed effective March 18, 2015."
+  },
+  {
+   "id": "sec-0001283699-26-000010-276-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states the $648 million combined value matching the gold reference."
+  },
+  {
+   "id": "sec-0001404912-26-000007-182-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001477333-26-000016-144-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold's figure of up to \u20ac20 million or 4% of worldwide annual revenue, whichever is greater."
+  },
+  {
+   "id": "sec-0001551152-26-000008-79-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "wrong",
+   "judge_reason": "The gold text identifies Class III devices (life-supporting/implantable or not substantially equivalent) requiring PMA and clinical testing, but the answer refers to PMA/de novo requests and 510(k) submissions, which is not supported by the gold reference."
+  },
+  {
+   "id": "sec-0001601046-25-000127-253-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 1,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001628280-26-005345-168-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001628280-26-008819-139-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states the trailing 12-month dollar-based net retention rate as of Dec 31, 2025 was about 120%, matching the gold reference's key fact."
+  },
+  {
+   "id": "sec-0001628280-26-013098-296-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001730168-25-000121-180-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 1,
+   "verdict": "refused"
+  },
+  {
+   "id": "sec-0001835632-26-000011-57-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "verdict": "refused"
+  },
+  {
+   "id": "wikipedia-algorithmic-bi-13-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 2,
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, correctly identifying women of color as the group least likely to be identified as scientists, indicating compounding race and gender effects."
+  }
+ ]
+}

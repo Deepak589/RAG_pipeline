@@ -1,0 +1,1358 @@
+{
+ "summary": {
+  "version": "stage6_v4-40pct-318q-slice91-bm25ab[miss+neg+losers+ctrl10]-s0",
+  "corpus": "40pct",
+  "config": {
+   "max_steps": 2,
+   "retry_on_refusal": false,
+   "top_k": 5,
+   "sparse_mode": "bm25",
+   "grade_mode": "doc",
+   "grader_chars": 4000
+  },
+  "counts": {
+   "negatives": 39,
+   "positives": 52
+  },
+  "refusal": {
+   "correct_refusal_pct": 92.3,
+   "false_refusal_pct": 44.2
+  },
+  "answer_quality": {
+   "answered": 29,
+   "correct_pct": 72.4,
+   "partial_pct": 10.3,
+   "wrong_pct": 17.2,
+   "end_to_end_correct_pct": 40.4
+  },
+  "retrieval": {
+   "retrieval_hit_pct": 42.3,
+   "attribution": {
+    "retrieval_miss": 29,
+    "refused_on_hit": 0,
+    "answered_wrong": 2,
+    "correct": 21
+   }
+  },
+  "cost": {
+   "wall_seconds": 696.5,
+   "sec_per_q": 7.65,
+   "llm": {
+    "usd": 0.906,
+    "by_model": {
+     "claude-haiku-4-5": {
+      "calls": 126,
+      "cache_hits": 63,
+      "in": 416202,
+      "out": 31844,
+      "usd": 0.5754
+     },
+     "claude-sonnet-5": {
+      "calls": 99,
+      "cache_hits": 2,
+      "in": 133344,
+      "out": 6394,
+      "usd": 0.3306
+     }
+    }
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "neg-0",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-1",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-2",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-3",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-4",
+   "type": "negative",
+   "refused": false,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-5",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-6",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 1,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-7",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-8",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-9",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-10",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-11",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-13",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-14",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-15",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-16",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-17",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-18",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-19",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0000766704-26-000010-125",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0001467858-26-000013-128",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0001104659-26-012049-223",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0000773840-26-000013-252",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-wikipedia-machine-learni-9",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0001559720-26-000004-170",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 1,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-arxiv-2608-05996v1-10",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-rtd-pillow-326",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0000884887-26-000007-127",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 1,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0001755672-26-000004-255",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0001640147-26-000008-76",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0000026172-26-000009-275",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0001104659-26-012049-115",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0000004281-26-000012-62",
+   "type": "negative",
+   "refused": false,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0001783879-26-000023-298",
+   "type": "negative",
+   "refused": false,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0001510295-26-000009-293",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0000753308-26-000015-227",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-arxiv-2608-05408v1-22",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-rtd-xgboost-561",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "neg-x-sec-0001099219-26-000013-727",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 0,
+   "trace": [
+    "retrieve",
+    "grade",
+    "generate"
+   ]
+  },
+  {
+   "id": "arxiv-2608-06358v1-94-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": -1,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000077476-26-000007-77-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 948,
+   "answer": "Based on the context, two sets of commodities are mentioned across different filings:\n\n1. **[sec/0000077476-26-000007]**: potatoes, sugar cane, corn, wheat, rice, oats, oranges, and other commodities.\n\n2. **[sec/0001628280-26-010047]**: sugarcane, corn, sugar beets, citrus and other fruits, coffee, and tea.",
+   "verdict": "partial",
+   "judge_reason": "The answer includes the gold list (potatoes, sugar cane, corn, wheat, rice, oats, oranges) within its first set, so it contains the required facts, but it adds extra unsupported commodities from a second filing not referenced in the gold answer, making it imprecise and not a clean match.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "sec-0000277948-26-000006-24-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 1,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 132,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000316709-26-000009-106-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "Failure or breach of Schwab's or third-party service providers' systems, cybersecurity controls, or operational processes, which could result in loss of client digital assets that may not be recoverable in full or at all.",
+   "verdict": "correct",
+   "judge_reason": "The answer accurately captures the gold's key elements: failure/breach of Schwab's or third-party systems, cybersecurity controls, or operational processes leading to loss of client digital assets, adding a reasonable elaboration without contradicting the gold.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000831001-26-000011-602-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1406,
+   "answer": "$170,667 million.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 170,667 million dollars exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001099219-26-000013-531-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 418,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001193125-26-021017-149-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 229,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001437749-26-006113-218-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 1945,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001730168-25-000121-180-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 28,
+   "answer": "$1,158 million",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of $1,158 (million units), providing the exact figure.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001858681-26-000013-544-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 168,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "arxiv-2608-03773v1-3-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "A post-intervention change in \u03a0(\u03b4) is interpreted as evidence that the pre-intervention long-run structure has become unstable.",
+   "verdict": "partial",
+   "judge_reason": "The answer captures the general idea that \u03a0 changes after t* indicating departure from pre-intervention structure, but omits key specifics from the gold: that \u03b2(\u03b4) and \u03b1(\u03b4) may evolve gradually over rescaled time, capturing gradual structural adjustment (e.g., learning/adapting to new policy), and that this contrasts with abrupt break or fixed structure in standard models. It lacks the detail about gradual vs abrupt change and the mechanism of time-varying cointegration.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "arxiv-2608-06336v1-13-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "H is the history returned by Algorithm 1, consisting of the sequence of successive orbits and proposed blocks: starting orbit I0, proposed adjacent block N0, resulting orbit I1, proposed block N1, and so on up to the final returned orbit IR. This history is needed only to define BPS; multinomial NUTS uses only IR.",
+   "verdict": "correct",
+   "judge_reason": "The answer accurately describes H as the sequence of orbits and proposed blocks culminating in final orbit IR, matching the gold's description and includes the correct additional detail about its use for BPS vs NUTS.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-networkx-658-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "419",
+   "verdict": "correct",
+   "judge_reason": "Gold text indicates networkx.algorithms.tree.recognition module is at page 419, matching the answer.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000064040-26-000013-177-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000101829-26-000006-153-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000316709-26-000009-106-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "Based on the context, Schwab may incur losses due to its exposure to credit risk from its obligation to settle transactions with clearing corporations, mutual funds, and other financial institutions **even if Schwab's clients or a counterparty fail to meet their obligations to the Company**.\n\nAdditionally, Schwab may incur losses if parties fail to perform their contractual obligations related to client transactions, though the text notes this risk is mitigated by requiring deposits from clients in excess of regulatory requirements for certain types of trades, making \"the potential to make payments under these client transactions... remote.\"",
+   "verdict": "wrong",
+   "judge_reason": "The gold answer identifies third-party service provider failures, cyberattacks, fraud, and regulatory compliance deficiencies (e.g., in crypto-related services) as the source of potential financial damages despite Schwab's innocence. The provided answer instead discusses credit risk from clearing corporations, mutual funds, and client transaction settlement failures, which is a different topic not supported by the gold text. It does not mention third-party service providers, cybersecurity, or crypto industry risks at all, so it does not match the gold reference's specific facts.",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000831001-26-000011-602-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "$170,667 million",
+   "verdict": "correct",
+   "judge_reason": "The gold reference shows the total corporate loans in North America offices as $170,667 million as of December 31, 2025, which matches the answer exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000885725-26-000010-60-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001048911-26-000105-282-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 1,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001099219-26-000013-531-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001104659-26-015365-343-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "$62 million.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold fact that Mitsubishi made a $62 million additional cash capital contribution on 1/31/2025 for the 15% stake increase.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001283699-26-000010-276-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001730168-25-000121-180-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "Based on the context, the fair value of plan assets at the end of the period for November 3, 2024 was $1,158 million.",
+   "verdict": "correct",
+   "judge_reason": "The gold text shows total plan assets as of November 3, 2024 equal $1,158 million, matching the answer provided.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-011430-152-x-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": -1,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001193125-26-057025-259-x-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": -1,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000732717-26-000120-217-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The projected benefit obligation for AT&T Inc.'s supplemental retirement plans was $1,199 million at December 31, 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of $1,199 million exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001467858-26-000013-204-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "6.7%",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly (6.7%).",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000066740-26-000014-285-x-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": -1,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "rtd-pytest-385-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "According to the documentation, in pytest version 9.2, you can pass a type expression such as int, int | str, or a Literal of strings.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, listing int, int | str, or a Literal of strings.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-django-1768-x-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 131,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000068505-26-000010-163-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 198,
+   "answer": "I don't have enough information in the corpus to answer that.\n\nThe context contains notional values from multiple different companies' foreign exchange contracts (e.g., $5.2 billion, $702 million, $308 million, $7.2 billion, $7.8 billion), but there is no single, unified \"total notional value of outstanding foreign exchange contracts\" figure that applies across the corpus as a whole for December 31, 2025.",
+   "verdict": "wrong",
+   "judge_reason": "The gold answer specifies $1.6 billion, but the response fails to provide this figure, instead claiming insufficient information despite other figures being mentioned. It does not match the gold reference.",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001783180-26-000008-43-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 508,
+   "answer": "78% of Carrier's approximately 3,800 U.S. production and maintenance employees were covered under collective bargaining agreements as of December 31, 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 78% exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001403161-25-000089-241-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1589,
+   "answer": "KPMG LLP audited the effectiveness of internal control over financial reporting as of September 30, 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, correctly identifying KPMG LLP as the auditing firm.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000731766-26-000062-72-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1310,
+   "answer": "Debt securities of varying maturities constitute the substantial majority of the fair value of the filer's investments as of December 31, 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, stating that debt securities of varying maturities constitute the substantial majority of the fair value of investments.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000713676-26-000020-312-x-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": -1,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "rtd-mypy-333-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 701,
+   "answer": "Ivan Levkivskyi submitted PR 18787 to fix a crash on decorated getter in settable property.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies Ivan Levkivskyi as the contributor, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001164727-26-000010-488-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 265,
+   "answer": "The carrying value of outstanding debt at December 31, 2024 varied by company according to the context:\n\n- One company (sec/0001628280-26-004195): outstanding principal amount of debt was $21.6 billion (excluding $1.3 billion of unamortized discounts and issuance costs).\n- Another company (sec/0001276187-26-000013): aggregate carrying amount of debt obligations was $59.76 billion.\n- Mondelez International (sec/0001628280-26-005345): total debt was $17.7 billion.\n- Enterprise Products Partners L.P. (sec/0001061219-26-000006): aggregate carrying value of fixed-rate debt obligations was $31.6 billion.\n- Baker Hughes (sec/0001701605-26-000007): estimated fair value of total debt was $5,409 million (carrying value not explicitly stated separately, but includes a net increase adjustment of $91 million to carrying value).",
+   "verdict": "wrong",
+   "judge_reason": "The gold answer specifies $8,476 as the outstanding carrying value of debt, but the response provides a list of unrelated figures from different companies (none matching $8,476), failing to state the correct specific fact.",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001099219-26-000013-591-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "$54,933 million",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-pyinstaller-101-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1062,
+   "answer": "In version 6.10, the bootloader's CTRL_CLOSE_EVENT handler in the onefile parent process gives the child process a 500 milliseconds grace period before explicitly terminating it.",
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold: 500 milliseconds grace period.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001571996-26-000008-270-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": -1,
+   "answer": "Based on the context, there are multiple filings addressing this, with the following dates mentioned:\n\n- December 31, 2025 (sec/0001050915-26-000006, sec/0001373715-26-000007, sec/0001104659-26-015365, and sec/0001104659-26-020831)\n- January 30, 2026 (sec/0001571996-26-000008)",
+   "verdict": "partial",
+   "judge_reason": "The answer lists multiple dates including the correct one (January 30, 2026), but does not definitively identify it as the answer, instead presenting it alongside other dates, making the response ambiguous and not a clear, precise match to the gold answer.",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "wikipedia-physics-1-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 482,
+   "answer": "The ceiling of Senemut's tomb dates from the Eighteenth Dynasty of Egypt.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, stating the Eighteenth Dynasty of Egypt.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-06358v1-37-x-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 124,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000821189-26-000054-148-x-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 460,
+   "answer": "Deloitte & Touche LLP was engaged to audit EOG Resources, Inc.'s consolidated financial statements and internal control over financial reporting as of December 31, 2025.",
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold reference exactly: Deloitte & Touche LLP.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-011430-152-x-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001628280-26-009136-260-x-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001193125-26-057025-259-x-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "arxiv-2608-01405v1-52-x-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "The dataset was collected between March and May 2011.",
+   "verdict": "correct",
+   "judge_reason": "The gold text states the data set was collected between March and May 2011, which matches the answer exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-013098-316-x-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "Keith Johnson is Founding Partner and CEO of HRTG Partners (formerly Sequoia Heritage), a global, evergreen private investment partnership investing on behalf of entrepreneurs, families, and philanthropies established in 2010.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies HRTG Partners (formerly Sequoia Heritage) as the worldwide, evergreen private investment partnership matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000066740-26-000014-285-x-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "Based on the context, under the Stock Option Program, the outstanding options at year-end 2025 had a weighted-average exercise price of **$199.23** per share (4,653,778 options outstanding).",
+   "verdict": "wrong",
+   "judge_reason": "The gold states the weighted-average exercise price for outstanding options as of December 31, 2025 was $155.87 (22,243 thousand options), not $199.23 with 4,653,778 options as stated in the answer.",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "rtd-pytest-385-x-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "Only int, (unescaped) str, bool & None values are supported in marker expressions.",
+   "verdict": "wrong",
+   "judge_reason": "The gold states that pytest 9.2 permits type expressions like int, int | str, or a Literal of strings. The answer instead describes marker expression value types (int, str, bool, None), which is unrelated and does not match the gold's content.",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "rtd-django-1768-x-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 1,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000068505-26-000010-163-x-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  }
+ ]
+}

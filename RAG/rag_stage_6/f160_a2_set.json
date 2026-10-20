@@ -1,0 +1,2626 @@
+{
+ "summary": {
+  "version": "stage5_v3",
+  "corpus": "40pct",
+  "config": {
+   "max_steps": 2,
+   "retry_on_refusal": false,
+   "top_k": 5,
+   "sparse_mode": "plain",
+   "grade_mode": "set",
+   "grader_chars": 1200
+  },
+  "counts": {
+   "negatives": 19,
+   "positives": 141
+  },
+  "refusal": {
+   "correct_refusal_pct": 100.0,
+   "false_refusal_pct": 24.1
+  },
+  "answer_quality": {
+   "answered": 107,
+   "correct_pct": 95.3,
+   "partial_pct": 1.9,
+   "wrong_pct": 2.8,
+   "end_to_end_correct_pct": 72.3
+  },
+  "retrieval": {
+   "retrieval_hit_pct": 89.4,
+   "attribution": {
+    "retrieval_miss": 15,
+    "refused_on_hit": 20,
+    "answered_wrong": 4,
+    "correct": 102
+   }
+  },
+  "cost": {
+   "wall_seconds": 994.0,
+   "sec_per_q": 6.21
+  }
+ },
+ "rows": [
+  {
+   "id": "neg-0",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-1",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-2",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-3",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-4",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-5",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-6",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-7",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-8",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-9",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-10",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-11",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-13",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-14",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-15",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-16",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-17",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-18",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "neg-19",
+   "type": "negative",
+   "refused": true,
+   "steps_used": 2,
+   "trace": [
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refine",
+    "retrieve",
+    "grade",
+    "refuse"
+   ]
+  },
+  {
+   "id": "archive-caorihs-000458-95-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "Mrs. Annie Murphy of Carson City was the matron of honor.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly names Mrs. Annie Murphy as the matron of honor, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2607-25459v1-0-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 495,
+   "answer": "A controlled multivariate stochastic volatility setting, where models observe only returns while the ground-truth latent volatility state is known to the researcher.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly ('controlled multivariate stochastic volatility setting') and adds accurate supporting detail without contradicting the gold.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-00306v2-151-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": 1672,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0000035527-26-000124-190-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The Bancorp's net income available to common shareholders for the year ended December 31, 2025 was $2.4 billion (specifically $2,376 million), which was net of $146 million of preferred stock dividends. Therefore, before deducting the preferred stock dividends, net income would have been approximately $2,522 million (i.e., $2,376 million + $146 million).",
+   "verdict": "wrong",
+   "judge_reason": "The gold reference states net income before preferred dividends was $2.546 billion, but the answer calculates approximately $2.522 billion ($2,376M + $146M), which does not match the gold figure.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "sec-0000037996-26-000015-282-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 661,
+   "answer": "The filing date for Exhibit 10-V Description of Cash Bonus Plan is not directly stated, but it was filed as Exhibit 10.4 to the Quarterly Report on Form 10-Q for the quarter ended June 30, 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies that the exhibit was filed with the Quarterly Report on Form 10-Q for the quarter ended June 30, 2025, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000049826-26-000008-171-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 425,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "rtd-cryptography-204-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 974,
+   "answer": "Version 40.0.0.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference, stating version 40.0.0.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-django-380-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1673,
+   "answer": "The `localized_fields` parameter can be used in `modelformset_factory` to enable localization for specific fields. For example:\n\n```python\n>>> AuthorFormSet = modelformset_factory(\n...     Author, fields=['name', 'title', 'birth_date'],\n...     localized_fields=['birth_date'])\n```\n\nIf `localized_fields` is set to the special value `'__all__'`, all fields will be localized.",
+   "verdict": "correct",
+   "judge_reason": "Answer correctly identifies 'localized_fields' matching the gold reference, with accurate supporting details.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-django-1035-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 924,
+   "answer": "get_paginate_orphans() returns the value of paginate_orphans by default.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, stating that get_paginate_orphans() returns the value of paginate_orphans by default.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-django-1690-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "When you call `save()` on a model with an AutoField for the first time, the auto-incremented value will be calculated and saved as an attribute on your object. For example:\n\n```python\n>>> b2 = Blog(name=\"Cheddar Talk\", tagline=\"Thoughts on cheese.\")\n>>> b2.id\n# Returns None, because b2 doesn't have an ID yet.\n>>> b2.save()\n>>> b2.id\n# Returns the ID of your new object.\n```\n\nThere's no way to tell what the value of an ID will be before you call save(), because that value is calculated by your database, not by Django.",
+   "verdict": "correct",
+   "judge_reason": "The answer states exactly the gold fact\u2014the auto-incremented value is calculated and saved as an attribute on the object\u2014and adds accurate supporting details without contradicting the gold.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-django-2345-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 468,
+   "answer": "Proxy model permission strings must be updated to use their own app_label. For example, for app.MyProxyModel inheriting from other_app.ConcreteModel, update user.has_perm('other_app.add_myproxymodel') to user.has_perm('app.add_myproxymodel').",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold statement exactly and adds a clarifying example without contradicting it.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-django-3001-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": 1297,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "arxiv-2608-01405v1-16-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "mN(\u03b8) \u2261 N\u207b\u00b9 \u03a3_{i\u2208IN} z_{N;i}(y_{N;i} \u2212 d\u22a4_{N;i}\u03b8).",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold formula exactly, just with slightly different notation for the exponent (-1 vs \u207b\u00b9), which represents the same mathematical expression.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-02704v1-94-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 457,
+   "answer": "According to the passage, **limitation information** is demoted to an ordinary state, entering the demand-evaluation process alongside all other perceptual information, which eliminates the cognitive architecture's dependence on a meta-language hierarchy.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies 'limitation information' as what is demoted to an ordinary state, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-03773v1-3-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "After a major intervention, the paper suggests that the same variables may still share common stochastic trends, but the equilibrium relation or the adjustment speed may no longer be the same as before. The pre-intervention estimate of \u03a0 should therefore be viewed as a benchmark, rather than as a fixed relation imposed on the whole sample. A post-intervention change in \u03a0(\u03b4) is interpreted as evidence that the pre-intervention long-run structure has become unstable, consistent with tests for parameter instability in cointegrating regressions and with cointegration tests allowing for regime shifts.",
+   "verdict": "correct",
+   "judge_reason": "The answer explicitly includes the gold statement that the post-intervention change in \u03a0(\u03b4) indicates the pre-intervention long-run structure has become unstable, matching the reference fact, with additional consistent elaboration.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-04629v1-1-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The paper develops a **Bayesian state-space model** that jointly analyzes qualifying and race outcomes, decomposing their shared dynamic predictor into separately evolving driver and constructor abilities.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies the model as a Bayesian state-space model, matching the gold reference, with additional accurate context.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-04983v1-118-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect",
+    "incorrect",
+    "incorrect",
+    "incorrect",
+    "correct",
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The final expression for the variance of B\u207d\u00b9\u207e_n,kl given in equation (72) is:\n\n**Var(B\u207d\u00b9\u207e_n,kl) = O(n\u00b9\u00b9\u221a(p_n,k p_n,l))**",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold expression exactly: O(n^{11}\u221a(p_{n,k} p_{n,l})).",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05112v1-41-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1353,
+   "answer": "The inequality derived is:\n\n\u03f5 \u2264 L\u2225v\u2225+ M\u2225v\u2225\u00b2 \u2264 (L + M\u03f5/\u03b3)\u2225v\u2225\n\n(equation (60) in the context).",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold inequality exactly, with an added (unverified but not contradicting) label.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05283v1-5-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 617,
+   "answer": "~10^6 scatterings.",
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold value of 10^6 scatterings.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05434v1-46-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 61,
+   "answer": "According to TABLE S.1, the \"Proposed method\" (RQDTR) directly targets a tail quantile of the outcome distribution (Quantile \u2713), explicitly considers treatment-related risks (Risk control \u2713), supports multicategory treatment options (Multi-cat. \u2713), and handles \u22652 decision stages (Stage \u22652).",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies \"Proposed method\" (RQDTR) as matching the gold, with accurate supporting details about targeting tail quantiles, risk control, and multi-stage decisions.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05516v1-38-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "According to Giani et al. (2023), a high fractional abundance of CH3CN (\u223c10\u22127) can be achieved in dense (n \u227310\u2076\u201310\u2077 cm\u207b\u00b3) and warm (T \u2273100 K) gas, where efficient, barrierless ion-molecule reactions, particularly involving CH3+ and HCN, rapidly form and sustain CH3CN.",
+   "verdict": "correct",
+   "judge_reason": "The answer includes the exact conditions stated in the gold reference (dense n\u227310^6\u201310^7 cm^-3 and warm T\u2273100 K gas) and adds plausible supporting detail without contradicting the gold answer.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05698v1-55-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The anomalous part of the signal at a0 = 24 is 3.9 \u00d7 10\u207b\u2075 rad, which is 5 \u00d7 10\u207b\u2075 of the total.",
+   "verdict": "correct",
+   "judge_reason": "The answer states the value 3.9 \u00d7 10\u207b\u2075 rad matching the gold reference, with additional supplementary detail that doesn't contradict it.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05882v1-9-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 920,
+   "answer": "According to the passage, the first question examined was \"whether neural representations remain stable over time under fixed cognitive conditions.\"",
+   "verdict": "correct",
+   "judge_reason": "The answer exactly matches the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05990v1-41-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 45,
+   "answer": "6 paired technical repeats per experiment.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 6 paired technical repeats.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-06056v1-44-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The first-order approximation breaks down when the leading-order term of the dissipative drift term in the classical equation of motion vanishes\u2014that is, when the jump operator satisfies condition (c) in Eq. (68). In such cases, the second-order approximation is required to accurately describe the dynamics. Typical examples include Hermitian jump operators and pairs of Hermitian-conjugate jump operators.",
+   "verdict": "correct",
+   "judge_reason": "The answer states the exact gold fact\u2014the leading-order term of the dissipative drift term vanishes\u2014and adds consistent supporting detail without contradicting the gold.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-06141v1-28-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "Refusal is positioned as a governance commitment: defaults, interfaces, and guardrails that restrict capture, limit downstream reuse, and preserve opacity when recognition would amplify risk or reproduce colonial linguistic hierarchies.",
+   "verdict": "correct",
+   "judge_reason": "The answer fully matches the gold reference, including all key elements: defaults, interfaces, guardrails, restricting capture, limiting downstream reuse, and preserving opacity to avoid amplifying risk or reproducing colonial linguistic hierarchies.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-06193v1-26-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "Ngeow, C.-C., Ou, J.-Y., Bhardwaj, A., et al. 2023, The Astronomical Journal, 166, 96",
+   "verdict": "correct",
+   "judge_reason": "The answer cites the exact same publication (The Astronomical Journal, 166, 96) as the gold reference, with additional accurate author/year details.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-06245v1-0-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1531,
+   "answer": "The adopted distance to V420 Vul is ~1.9 kpc.",
+   "verdict": "correct",
+   "judge_reason": "Answer matches the gold value of 1.9 kpc.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-06275v1-25-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1921,
+   "answer": "The instance mask AP75 for the internal test set is 0.774.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 0.774 exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-06358v1-94-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": -1,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "rtd-mypy-417-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct",
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1098,
+   "answer": "The mypy command line option for enabling HTML report generation is **--html-report** (page 144).",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies --html-report, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-networkx-658-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 712,
+   "answer": "419",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-pybind11-90-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The alternative method is to assign a name to the previously bound `Pet` py::class_ object and reference it when binding the `Dog` class, passing it as the parent class_ object:\n\n```cpp\npy::class_<Pet> pet(m, \"Pet\");\npet.def(py::init<const std::string &>())\n   .def_readwrite(\"name\", &Pet::name);\n\n// Method 2: pass parent class_ object:\npy::class_<Dog>(m, \"Dog\", pet /* <- specify Python parent type */)\n   .def(py::init<const std::string &>())\n   .def(\"bark\", &Dog::bark);\n```\n\nThis approach specifies the Python parent type by passing the `pet` object directly, rather than using the C++ base class as a template parameter.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference: it describes assigning a name to the previously bound Pet py::class_ object and referencing it when binding Dog, with accurate supporting code and explanation.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-pytest-2-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 418,
+   "answer": "Section 5.4, titled \"Python version support.\"",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies section 5.4, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-requests-87-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "According to the context, if `prepare_cookies` is called more than once on the same PreparedRequest object, subsequent calls will have no actual effect\u2014because due to cookielib's design, the header will not be regenerated if it already exists. This behavior persists unless the \"Cookie\" header is removed beforehand.",
+   "verdict": "correct",
+   "judge_reason": "The answer states that subsequent calls will have no actual effect, matching the gold reference, and provides consistent additional context without contradicting the gold answer.",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-twisted-355-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 477,
+   "answer": "\"Anonymous\"",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly: \"Anonymous\".",
+   "cause": "correct"
+  },
+  {
+   "id": "rtd-xgboost-389-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": 399,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0000077476-26-000007-77-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 948,
+   "answer": "Based on the context, the specific commodities mentioned as being necessary for products and potentially affected by climate change-induced disruptions are:\n\n- **Sugarcane**\n- **Corn**\n- **Sugar beets**\n- **Citrus and other fruits**\n- **Coffee and tea**\n- **Cocoa**\n\nThe first group (sugarcane, corn, sugar beets, citrus and other fruits, coffee and tea) is described as important ingredients that could face limited availability or increased costs due to decreased agricultural productivity from changing weather patterns. Cocoa is separately identified as a critical raw material for chocolate and biscuits & baked snacks portfolios that is particularly sensitive to changes in climate.",
+   "verdict": "wrong",
+   "judge_reason": "The gold list specifies potatoes, sugar cane, corn, wheat, rice, oats, and oranges. The answer includes sugarcane and corn (matching), but omits potatoes, wheat, rice, and oats, and introduces items not in the gold (sugar beets, citrus/other fruits, coffee and tea, cocoa). Given the significant mismatches and missing key commodities, this is incorrect rather than merely incomplete.",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000086312-26-000065-442-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1496,
+   "answer": "As of December 31, 2025, the Company's claims and claim adjustment expense reserves included $1.36 billion for asbestos-related claims, net of reinsurance.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of $1.36 billion exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000092122-26-000006-632-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": 1748,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0000093410-26-000078-53-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 481,
+   "answer": "According to the passage, the Organization of Petroleum Exporting Countries (OPEC), along with Russia and the United States, are mentioned as major factors in determining worldwide supply.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies OPEC as a major factor, matching the gold reference, even though it adds extra details not explicitly contradicting the gold answer.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000101829-26-000006-153-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 389,
+   "answer": "The charge related to the Raytheon Contract Termination was $0.4 billion, net of tax, which had an unfavorable impact on diluted EPS of $0.33.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states the $0.33 unfavorable impact on diluted EPS, matching the gold reference, with additional supporting detail.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000277948-26-000006-24-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 132,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000316709-26-000009-106-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": -1,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000707549-25-000075-169-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The Company received an initial delivery of approximately 5.2 million shares under the April 2025 ASRs.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly: approximately 5.2 million shares were initially received under the April 2025 ASRs.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000721371-25-000079-205-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "GIA recognized $123 million in share-based compensation expense during fiscal 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of $123 million exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000732717-26-000120-115-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "-70.4%",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of -70.4% exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000764180-26-000017-150-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1469,
+   "answer": "The New York State Office of the Attorney General and the Commonwealth of Massachusetts Office of the Attorney General, separately, issued independent subpoenas seeking documents relating to the former investment in and provision of services to JUUL.",
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold exactly, naming both agencies.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000773840-26-000013-178-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1769,
+   "answer": "Deferred contract fulfillment costs were $1,193 million as of December 31, 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold figure of $1,193 million exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000821189-26-000054-198-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 694,
+   "answer": "$30.24 per barrel.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 30.24 exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000831001-26-000011-602-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1406,
+   "answer": "The total amount of corporate loans managed by Citigroup in North American offices as of December 31, 2025, was **$170,667 million**.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 170,667 exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000858877-25-000111-225-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 108,
+   "answer": "As of July 26, 2025, the total compensation cost related to unvested share-based awards not yet recognized was $4.5 billion, which is expected to be recognized over approximately 1.9 years on a weighted-average basis.",
+   "verdict": "correct",
+   "judge_reason": "Answer states $4.5 billion matching the gold, with additional accurate context.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000882095-26-000006-109-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "According to the passage, nations in the EU have communicated plans to decarbonize their healthcare systems and achieve net zero emissions by 2050, which may require the company to incur material costs in order to do so.",
+   "verdict": "correct",
+   "judge_reason": "The answer accurately states that companies may need to incur material costs to decarbonize or comply with climate-related requirements, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000885725-26-000010-60-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 844,
+   "answer": "Based on the context, one potential consequence is that companies \"have caused or may cause us to experience more uncertainty, risk, expense and delay in obtaining approvals and commercializing products in certain jurisdictions, which could adversely impact our net sales, market share and operating profits from our international operations.\"",
+   "verdict": "correct",
+   "judge_reason": "The answer directly matches the gold reference's key fact, including the exact phrasing about increased uncertainty, risk, expense, and delay in obtaining approvals and commercializing products in certain jurisdictions, with added relevant detail.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000896159-26-000005-134-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 331,
+   "answer": "The most recent Chubb Supervisory College meeting was held in October 2025.",
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold reference exactly: October 2025.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000927628-26-000024-127-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": -1,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001024478-25-000116-89-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 287,
+   "answer": "Cash provided by operating activities for the year ended September 30, 2025 was $1,544 million.",
+   "verdict": "partial",
+   "judge_reason": "The answer matches the gold numeric value ($1,544), but adds a unit 'million' that is not specified in the gold reference, which could be an unsupported addition.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "sec-0001048911-26-000105-282-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 559,
+   "answer": "Following the Spin-Off, FedEx identified two new reportable segments: Express U.S. Domestic and Express International.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, correctly identifying Express U.S. Domestic and Express International as the two new reportable segments.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001061219-26-000006-43-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 350,
+   "answer": "According to the passage, the company reports under four business segments: NGL Pipelines & Services, Crude Oil Pipelines & Services, Natural Gas Pipelines & Services and Petrochemical & Refined Products Services.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states four business segments, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001067701-26-000007-112-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1596,
+   "answer": "Non-compete agreements and customer relationships are valued based on an excess earnings or income approach based on projected cash flows.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, correctly identifying the excess earnings or income approach based on projected cash flows.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001099219-26-000013-531-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 418,
+   "answer": "The net investment income for the Group segment in 2025 was $1,412 million.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 1,412 (million), correctly identifying the net investment income for the Group segment in 2025.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001104659-25-122321-292-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 294,
+   "answer": "November 2, 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold date exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001104659-26-015365-343-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "Mitsubishi made an additional cash capital contribution of $62 million on January 31, 2025, resulting in an additional 15% ownership in the joint venture.",
+   "verdict": "correct",
+   "judge_reason": "Answer states $62 million matching the gold reference exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001104659-26-020831-90-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "According to the passage, for certain flavors purchased from third-party suppliers used in certain Monster Energy\u00ae brand energy drinks, Strategic Brands energy drinks, and/or ready-to-drink alcohol drinks, these third-party flavor suppliers own the proprietary rights to certain of their flavor formulas. The company does not possess the list of such flavor ingredients or formulas used in the production of certain products and certain blended concentrates, and these third-party flavor suppliers generally do not make such flavors and/or blended concentrates available to other third-party customers.",
+   "verdict": "correct",
+   "judge_reason": "The answer includes the gold's specified products (Monster Energy\u00ae brand and Strategic Brands energy drinks) and adds extra detail (ready-to-drink alcohol drinks) that is not contradicted but expands on the gold. The core fact matches the gold reference, so it is correct, though slightly broader.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001193125-26-021017-149-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 229,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001193125-26-051453-407-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": 1844,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001193125-26-059296-384-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "$1,376.8 million",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of $1,376.8 (million), consistent with typical financial reporting units.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001193125-26-082531-1-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1324,
+   "answer": "The Secured Borrowings Due 10/27/2033 and 1/29/2035 were repaid during the year ended December 31, 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, specifying both Secured Borrowings Due dates (10/27/2033 and 1/29/2035).",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001193125-26-082531-755-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "February 16, 2016 (deemed effective March 18, 2015).",
+   "verdict": "correct",
+   "judge_reason": "The answer includes the gold date, February 16, 2016, matching the required fact. The additional detail about the deemed effective date does not contradict the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001193125-26-323660-100-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 1,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "According to the passage, some of the company's devices compete with products made by its OEM partners, which may affect their commitment to the platform.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference, correctly identifying that devices made by the company competing with OEM partners' products could decrease their commitment.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001276187-26-000013-248-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1157,
+   "answer": "January 2025.",
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold exactly: January 2025.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001283699-26-000010-276-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 985,
+   "answer": "As of December 31, 2025, the combined value of research and development, corporate alternative minimum tax, investment and other general business credit carryforwards for federal income tax purposes was $648 million.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of $648 million exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001326160-26-000014-457-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 159,
+   "answer": "Based on the context, there are multiple figures for \"AROs \u2013 nuclear and other\":\n\n- In the Duke Energy regulatory liabilities table: $2,982 million\n- In the Duke Energy Florida regulatory assets table: $10 million\n- As of December 31, 2025, the nuclear decommissioning ARO (Constellation Energy) was $12.9 billion",
+   "verdict": "correct",
+   "judge_reason": "The answer includes the gold figure of $2,982 million for AROs \u2013 nuclear and other, matching the reference, though it adds extra unrequested figures.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001373715-26-000007-173-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 595,
+   "answer": "A loss of $42 million.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly: a loss of $42 million.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001404912-26-000007-182-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The company has made a strategic decision to have a larger balance sheet than most of its asset management competitors, and consequently, the management of its balance sheet has a greater impact on its financial condition and results of operations.",
+   "verdict": "correct",
+   "judge_reason": "The answer directly states the strategic decision to have a larger balance sheet than most asset management competitors, matching the gold reference, with additional accurate context.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001413447-26-000008-25-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "According to the passage, except for any ongoing obligation to disclose material information as required by the United States federal securities laws, NXP does not have any intention or obligation to publicly update or revise any forward-looking statements after filing this document with the U.S. Securities and Exchange Commission, whether to reflect any future events or circumstances or otherwise.",
+   "verdict": "correct",
+   "judge_reason": "The answer accurately captures the gold reference content, including the exception for federal securities law obligations and the lack of intention to update forward-looking statements.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001437749-26-006113-218-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": 1945,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001510295-26-000009-261-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The total payout cap for the earnout payments tied to EBITDA growth from 2026 to 2029 is $275 million.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, stating $275 million as the total payout cap.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001539838-26-000010-49-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1675,
+   "answer": "At December 31, 2025, Diamondback's net acreage position in the Midland Basin was approximately 774,645 net acres.",
+   "verdict": "correct",
+   "judge_reason": "The answer states 774,645 net acres, matching the gold reference exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001551152-26-000008-79-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1548,
+   "answer": "A PMA (premarket approval) application almost always requires a clinical trial to support it, and a clinical trial is sometimes required for a 510(k) premarket notification.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies PMA (premarket approval) application as requiring a clinical trial, matching the gold reference. The additional information about 510(k) is extra but not incorrect.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001559720-26-000004-105-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 702,
+   "answer": "California",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001594805-26-000007-30-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1158,
+   "answer": "In 2019, Shopify launched its Sustainability Fund, which is designed to identify and support impactful carbon-removal and reduction technologies and projects.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies the Sustainability Fund as the initiative, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001601046-25-000127-253-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 114,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001628280-26-003942-24-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": 1182,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001628280-26-004195-197-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The carrying amounts of the investments were $669 million at December 31, 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference value of $669 million exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-005345-168-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 794,
+   "answer": "A parametric delta-gamma approximation technique was used to determine the expected return distribution in interest rates, currencies and commodity prices for the purpose of calculating the fixed income, currency exchange and commodity VAR, respectively.",
+   "verdict": "correct",
+   "judge_reason": "Answer matches gold exactly, stating the parametric delta-gamma approximation technique.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-006268-71-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "Railway operating expenses decreased by 3% from 2024 to 2025 ($8,052 million to $7,824 million).",
+   "verdict": "wrong",
+   "judge_reason": "The gold reference states a -1% change, but the answer claims a 3% decrease, which conflicts with the gold value.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "sec-0001628280-26-007703-23-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 499,
+   "answer": "As of June 30, 2025, the aggregate market value of Nasdaq, Inc.'s common stock held by non-affiliates was approximately $40.6 billion.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference value of $40.6 billion exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-008819-139-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 185,
+   "answer": "As of December 31, 2025, the trailing 12-month dollar-based net retention rate was about 120%.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, stating the net retention rate was about 120%.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-009136-169-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 1440,
+   "answer": "Approximately 39% of the Company's revenue was denominated in functional currencies other than the U.S. dollar in 2025.",
+   "verdict": "correct",
+   "judge_reason": "The answer states 39%, matching the gold reference exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-011430-63-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": 1378,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001628280-26-013098-296-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "The total value of this warehouse was $103 million.",
+   "verdict": "correct",
+   "judge_reason": "The answer states $103 million, matching the gold reference exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001645590-25-000130-129-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "Failing to satisfy pre-closing conditions and necessary regulatory and governmental approvals on acceptable terms could prevent Hewlett Packard Enterprise from completing the transaction.",
+   "verdict": "correct",
+   "judge_reason": "The answer accurately restates the gold reference: failure to satisfy pre-closing conditions and necessary regulatory/governmental approvals on acceptable terms could prevent completion of the transaction.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001674101-26-000008-203-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 353,
+   "answer": "The unused line fee is 0.25% per annum on the unused portion of the commitments under the ABL Revolving Credit Facility.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold value of 0.25% per annum.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001730168-25-000121-180-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 28,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001783879-26-000023-64-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": 444,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001835632-26-000011-57-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "According to the passage, a significant reduction in AI-related spending could occur if AI training and inference costs drop dramatically due to customer adoption of less expensive alternative technologies, making the current level of capital expenditure on AI infrastructure unsustainable over the long term.",
+   "verdict": "partial",
+   "judge_reason": "The answer includes the gold's core fact (unsustainable capital expenditure on AI infrastructure) and adds a specific cause (cheaper alternative technologies reducing training/inference costs), which is plausible and consistent with the passage's general theme but adds detail not confirmed in the gold reference. Since it fully contains the gold fact plus additional unverified specifics, it's considered partial due to added unsupported specificity.",
+   "cause": "answered_wrong"
+  },
+  {
+   "id": "sec-0001858681-26-000013-544-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": 168,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001996810-26-000015-197-f",
+   "type": "factual",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 10,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "wikipedia-algorithmic-bi-13-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 309,
+   "answer": "Women of color were the least likely to be identified as scientists by Google Cloud Vision AI, indicating compounding effects of race and gender in model outputs.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly, identifying women of color as the group least likely to be identified as scientists.",
+   "cause": "correct"
+  },
+  {
+   "id": "wikipedia-environmental--2-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": -1,
+   "answer": "According to J. Donald Hughes (2006), environmental history is \"history that seeks understanding of human beings as they have lived, worked and thought in relationship to the rest of nature through the changes brought by time.\"",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference verbatim, providing the exact definition requested.",
+   "cause": "correct"
+  },
+  {
+   "id": "wikipedia-law-62-f",
+   "type": "factual",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": 406,
+   "answer": "Second Treatise of Government",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "archive-cabrbhc-000058-0-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "Alfreda Pistohl was characterized with a 'GRAVEL-VOICE'.",
+   "verdict": "correct",
+   "judge_reason": "Gold text identifies \"Alfreda 'GiRA VEL-VOICE' Pistohl\" as the person described with gravel-voice, matching the answer's identification of Alfreda Pistohl.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-00306v2-151-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0000035527-26-000124-190-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "rtd-cryptography-204-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "Version 40.0.0",
+   "verdict": "correct",
+   "judge_reason": "The gold states \"Added in version 40.0.0.\" The answer \"Version 40.0.0\" matches this fact correctly.",
+   "cause": "correct"
+  },
+  {
+   "id": "archive-dlibra-bibliotek-4-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "Abg. Ple\u00df (Centr.) complains about the damage done to farmers (Landwirthen) by the wastewater (Abw\u00e4sser) from industrial establishments, and calls for the minister to provide a remedy soon.",
+   "verdict": "correct",
+   "judge_reason": "The answer accurately captures the gold's specific fact: damage to farmers from industrial wastewater and the call for ministerial remedy.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-03773v1-3-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "arxiv-2608-05112v1-41-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "\u03f5 \u2264L\u2225v\u2225+ M\u2225v\u2225\u00b2",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies the inequality \u03f5 \u2264 L\u2016v\u2016 + M\u2016v\u2016\u00b2, which matches the gold reference's equation (60) resulting from substituting \u2016\u03be(x\u0303)\u2016=\u03f5 into eq. (59). This is exactly the specific fact requested.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05516v1-38-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 1,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "According to Giani et al. (2023), a high fractional abundance of CH3CN (\u223c10\u22127) can be achieved in dense (n \u227310\u2076\u201310\u2077 cm\u207b\u00b3) and warm (T \u2273100 K) gas, where efficient, barrierless ion-molecule reactions, particularly involving CH3+ and HCN, rapidly form and sustain CH3CN.",
+   "verdict": "correct",
+   "judge_reason": "The answer accurately reproduces the specific requirements (density \u227310^6\u201310^7 cm^-3, temperature \u2273100 K, barrierless ion-molecule reactions involving CH3+ and HCN) attributed to Giani et al. (2023), matching the gold reference's relevant portion.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-05990v1-41-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "n = 6 paired technical repeats per experiment.",
+   "verdict": "correct",
+   "judge_reason": "The answer states n = 6 paired technical repeats per experiment, matching the gold reference exactly on the specific fact requested.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-06193v1-26-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 1,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "According to the context, Ngeow, C.-C., Ou, J.-Y., Bhardwaj, A., et al. 2023, The Astronomical Journal, 166, 96.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies the 2023 Ngeow et al. publication matching the gold reference: The Astronomical Journal, 166, 96.",
+   "cause": "correct"
+  },
+  {
+   "id": "arxiv-2608-06336v1-13-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "rtd-networkx-658-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "rtd-requests-87-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "Any subsequent calls to prepare_cookies will have no actual effect, unless the \"Cookie\" header is removed beforehand. This is because, due to cookielib's design, the header will not be regenerated if it already exists (the function can only be called once for the life of the PreparedRequest object).",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly captures the documented behavior that prepare_cookies has no effect on subsequent calls unless the Cookie header is deleted first, consistent with the API's known note on this function (that it can only be called once per PreparedRequest due to cookielib's design regenerating the header only if absent).",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000064040-26-000013-177-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000086312-26-000065-442-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 1,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "As of December 31, 2025, the Company's claims and claim adjustment expense reserves included $1.36 billion for asbestos-related claims, net of reinsurance.",
+   "verdict": "correct",
+   "judge_reason": "The gold reference indicates the reserve was $1.3 billion (truncated), consistent with \"net of reinsurance\" wording. The answer states $1.36 billion, net of reinsurance, which matches the gold's figure of $1.3 (billion) and the net of reinsurance framing. This aligns with the available gold text.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000101829-26-000006-153-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "The Raytheon Contract Termination resulted in a charge of $0.4 billion, net of tax, which had an unfavorable impact on diluted EPS of $0.33.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies the specific fact from the gold reference regarding the Raytheon Contract Termination: $0.4 billion charge, net of tax, with an unfavorable impact on diluted EPS of $0.33, matching the gold exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000316709-26-000009-106-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0000721371-25-000079-205-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "GIA's share-based compensation expense recognized during fiscal 2025 was $123 million.",
+   "verdict": "correct",
+   "judge_reason": "The gold states GIA's share-based compensation expense recognized during fiscal 2025 was $123 million, which matches the answer exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000773840-26-000013-178-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0000831001-26-000011-602-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "As at December 31, 2025, Citigroup's North America office corporate loan total was $170,667 million.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold total of $170,667 million for North America office corporate loans as of Dec 31, 2025.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000885725-26-000010-60-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "Based on the context, several countries that previously did not have regulatory requirements for medical devices have established such requirements in recent years, and other countries have expanded, or plan to expand, existing regulations, including requiring local clinical data in addition to global clinical data. These factors have caused or may cause companies to experience more uncertainty, risk, expense and delay in obtaining approvals and commercializing products in certain jurisdictions, which could adversely impact net sales, market share and operating profits from international operations.",
+   "verdict": "correct",
+   "judge_reason": "The answer accurately captures the key facts from the gold reference: new regulations in countries lacking prior rules, expansion of existing regulations requiring local clinical data, and the resulting uncertainty, risk, expense, delay, and adverse impact on sales, market share, and operating profits.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0000927628-26-000024-127-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001048911-26-000105-282-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001099219-26-000013-531-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001104659-26-015365-343-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "Mitsubishi paid $62 million on January 31, 2025, for an additional 15% ownership interest in the joint venture.",
+   "verdict": "correct",
+   "judge_reason": "Matches gold: $62 million payment on 1/31/2025 for additional 15% stake.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001156039-26-000013-105-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "CMS made changes to the structure of the hierarchical condition category model in version 28, which may impact RAF scores for a larger percentage of Medicare Advantage beneficiaries and could result in changes to beneficiary RAF scores with or without a change in the patient's health status.",
+   "verdict": "correct",
+   "judge_reason": "The answer accurately captures the key fact from the gold reference: CMS changed the structure of the hierarchical condition category model in v28, impacting RAF scores for a larger percentage of MA beneficiaries, with changes occurring regardless of health status change. This matches the specific fact required.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001193125-26-051453-407-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001193125-26-082531-755-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "The Second Amended and Restated Agreement of Exempted Limited Partnership of BPP Core Asia Associates L.P. was dated February 16, 2016 (deemed effective March 18, 2015).",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states the date February 16, 2016 (deemed effective March 18, 2015), matching the gold reference exactly.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001283699-26-000010-276-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "$648 million",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold figure of $648 million for the combined R&D, corporate AMT, investment, and other general business credit carryforwards for federal income tax purposes as of Dec 31, 2025.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001404912-26-000007-182-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "The firm made a strategic decision to have a larger balance sheet than most of its asset management competitors, and consequently, the management of its balance sheet has a greater impact on its financial condition and results of operations.",
+   "verdict": "correct",
+   "judge_reason": "The answer directly matches the gold's key fact: the firm strategically chose a larger balance sheet than most asset management competitors, affecting its financial condition and results.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001477333-26-000016-144-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "The highest fine for violating GDPR is up to \u20ac20 million or 4% of worldwide annual revenue (for the preceding financial year), whichever is higher/greater.",
+   "verdict": "correct",
+   "judge_reason": "The answer matches the gold reference's specific fact: penalties up to the greater of \u20ac20 million or 4% of worldwide annual revenue.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001551152-26-000008-79-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "A PMA application typically needs a clinical trial for support, as stated in the context: \"A clinical trial is almost always required to support a PMA application and is sometimes required for a 510(k) premarket notification.\"",
+   "verdict": "correct",
+   "judge_reason": "The gold text discusses Class III devices requiring PMA approval, and the answer correctly identifies that a PMA application typically needs a clinical trial, which is directly supported by the referenced regulatory pathway (Class III devices require PMA, and PMA requires clinical trials). The answer accurately captures the key fact about which program requires clinical testing.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001601046-25-000127-253-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001628280-26-005345-168-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "A parametric delta-gamma approximation technique was used to determine the expected return distribution in interest rates, currencies and commodity prices for the purpose of calculating the fixed income, currency exchange and commodity VAR, respectively.",
+   "verdict": "correct",
+   "judge_reason": "The answer directly quotes the exact method stated in the gold reference, fully matching the key fact.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-008819-139-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "As of December 31, 2025, the trailing 12-month dollar-based net retention rate was about 120%.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly states the trailing 12-month dollar-based net retention rate as of Dec 31, 2025 was about 120%, matching the gold reference.",
+   "cause": "correct"
+  },
+  {
+   "id": "sec-0001628280-26-013098-296-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "incorrect",
+    "incorrect",
+    "incorrect"
+   ],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "refused_on_hit"
+  },
+  {
+   "id": "sec-0001730168-25-000121-180-p",
+   "type": "paraphrase",
+   "refused": true,
+   "steps_used": 2,
+   "retrieval_hit": false,
+   "gold_verdicts": [],
+   "gold_in_kept": false,
+   "answer_pos": null,
+   "answer": "I don't have enough information in the corpus to answer that.",
+   "verdict": "refused",
+   "cause": "retrieval_miss"
+  },
+  {
+   "id": "sec-0001835632-26-000011-57-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "Based on the text, the current level of capital expenditure (capex) on AI infrastructure may not be sustainable over the long term, and a significant reduction in AI-related spending will likely harm financial results. Additionally, demand for data center and communication products may be unpredictable, and markets may not develop as anticipated if AI training and inference costs drop dramatically due to customer adoption of less expensive alternative technologies. Customers may also decelerate or reallocate their capital expenditures for other uses, which could delay or reduce demand for products and negatively impact revenue.",
+   "verdict": "correct",
+   "judge_reason": "The answer captures the key points from the gold reference: unsustainable AI capex leading to harm if reduced, unpredictability of demand, risk of cheaper alternative technologies reducing AI costs, and customers reallocating capital expenditures. It accurately reflects the gold's substance without adding unsupported claims.",
+   "cause": "correct"
+  },
+  {
+   "id": "wikipedia-algorithmic-bi-13-p",
+   "type": "paraphrase",
+   "refused": false,
+   "steps_used": 0,
+   "retrieval_hit": true,
+   "gold_verdicts": [
+    "correct"
+   ],
+   "gold_in_kept": true,
+   "answer_pos": null,
+   "answer": "Women of color were the least likely to be identified as scientists in Google Cloud Vision AI, indicating compounding effects of race and gender in model outputs.",
+   "verdict": "correct",
+   "judge_reason": "The answer correctly identifies women of color as the category with the lowest probability of being recognized as scientists, matching the gold reference exactly, including the mention of compounding race and gender effects.",
+   "cause": "correct"
+  }
+ ]
+}

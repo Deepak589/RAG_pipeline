@@ -1,0 +1,27 @@
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+/opt/anaconda3/envs/ragenv/lib/python3.12/site-packages/langchain_community/cache.py:265: LangChainPendingDeprecationWarning: The default value of `allowed_objects` will change in a future version. Pass an explicit list of allowed classes (or 'messages' for untrusted input that contains only chat messages) to suppress this warning.
+  return [loads(row[0]) for row in rows]
+  rejudged 25/279  $0.11
+  rejudged 50/279  $0.21
+  rejudged 75/279  $0.31
+  rejudged 100/279  $0.39
+  rejudged 175/279  $0.64
+  rejudged 200/279  $0.72
+  rejudged 275/279  $1.01
+
+====================================================================
+CRAG eval — qa stage6_v4-40pct-318q   corpus=40pct   max_steps=2   retry_on_refusal=False   top_k=5   sparse_mode=plain   grade_mode=doc   grader_chars=4000
+====================================================================
+REFUSAL   correct-refusal (39 neg):  92.3%   false-refusal (pos):  13.3%
+ANSWER    correct:  92.6%   partial:   2.1%   wrong:   5.4%   (of 242 answered)
+END-TO-END correct (of all positives): 80.3%
+RETRIEVAL gold-in-topK:  87.1%   lost to -> retrieval_miss:34  refused_on_hit:11  answered_wrong:10  correct:224
+COST      3603.7s total, 11.33s/q   $1.0104   cache_hits=4
+====================================================================
+written v4_a3_rejudge.json
+A/B: run again with --max-steps 0 (control) and diff correct-refusal + end-to-end-correct. That delta = CRAG's measured effect.

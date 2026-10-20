@@ -1,0 +1,671 @@
+{
+ "version": "stage6_v4-40pct-318q-slice78-cause[answered_wrong+refused_on_hit]-s0",
+ "questions": [
+  {
+   "id": "sec-0000035527-26-000124-190-f",
+   "type": "factual",
+   "query": "What was The Bancorp's net income available to common shareholders for the year ended December 31, 2025, before deducting preferred stock dividends?",
+   "relevant_parent_ids": [
+    "sec/0000035527-26-000124#190"
+   ],
+   "_answer": "$2.546 billion",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000049826-26-000008-171-f",
+   "type": "factual",
+   "query": "What is the filing date of the document containing the Form of Stock Option Agreement pursuant to the Illinois Tool Works Inc. 2024 Long-Term Incentive Plan?",
+   "relevant_parent_ids": [
+    "sec/0000049826-26-000008#171"
+   ],
+   "_answer": "December 31, 2024",
+   "_gen": true
+  },
+  {
+   "id": "rtd-django-3001-f",
+   "type": "factual",
+   "query": "What is the CVE number associated with index 2816?",
+   "relevant_parent_ids": [
+    "rtd/django#3001"
+   ],
+   "_answer": "CVE 2021-3281",
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-02704v1-94-f",
+   "type": "factual",
+   "query": "According to the passage, what is demoted to an ordinary state in comparison operations, eliminating the need for a meta-language hierarchy?",
+   "relevant_parent_ids": [
+    "arxiv/2608.02704v1#94"
+   ],
+   "_answer": "Limitation information",
+   "_gen": true
+  },
+  {
+   "id": "rtd-xgboost-389-f",
+   "type": "factual",
+   "query": "What are the keys of the dictionary returned by the function train_interval_model when training both quantile and expectile models?",
+   "relevant_parent_ids": [
+    "rtd/xgboost#389"
+   ],
+   "_answer": "{\"quantile\": quantile_evals, \"expectile\": expectile_evals}",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000092122-26-000006-632-f",
+   "type": "factual",
+   "query": "What was the revenue related to alternative revenue programs for Atlanta Gas Light in 2025?",
+   "relevant_parent_ids": [
+    "sec/0000092122-26-000006#632"
+   ],
+   "_answer": "$(53) million",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001024478-25-000116-89-f",
+   "type": "factual",
+   "query": "What was the amount of cash provided by operating activities for the year ended September 30, 2025?",
+   "relevant_parent_ids": [
+    "sec/0001024478-25-000116#89"
+   ],
+   "_answer": "$1,544",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001539838-26-000010-49-f",
+   "type": "factual",
+   "query": "What was the total net acreage position of Diamondback in the Midland Basin at December 31, 2025?",
+   "relevant_parent_ids": [
+    "sec/0001539838-26-000010#49"
+   ],
+   "_answer": "774,645",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001628280-26-006268-71-f",
+   "type": "factual",
+   "query": "What was the percentage change in railway operating expenses from 2024 to 2025?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-006268#71",
+    "sec/0001628280-26-006268#68"
+   ],
+   "_answer": "-1%",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001628280-26-011430-63-f",
+   "type": "factual",
+   "query": "According to the passage, in which country do legal risks related to product liability tend to be more significant for Linde due to historical trends?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-011430#63"
+   ],
+   "_answer": "the United States",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001783879-26-000023-64-f",
+   "type": "factual",
+   "query": "What specific licenses does the company hold that allow it to operate as an introducing broker-dealer, clearing broker-dealer, money transmitter, and futures commission merchant?",
+   "relevant_parent_ids": [
+    "sec/0001783879-26-000023#64"
+   ],
+   "_answer": "a licensed introducing broker-dealer, a licensed clearing broker-dealer, a licensed money-transmitter, and a registered futures commission merchant",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001996810-26-000015-197-f",
+   "type": "factual",
+   "query": "What was the funding amount for GE Vernova's pension plans in millions of dollars for the year ended December 31, 2025?",
+   "relevant_parent_ids": [
+    "sec/0001996810-26-000015#197"
+   ],
+   "_answer": "144",
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-00306v2-151-p",
+   "type": "paraphrase",
+   "query": "What duration was needed for feature extraction across entire dataset employing 128 V100 GPUs, each having 32GB RAM?",
+   "relevant_parent_ids": [
+    "arxiv/2608.00306v2#151"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0000035527-26-000124-190-p",
+   "type": "paraphrase",
+   "query": "For 2025's end, what did The Bancorp report as earnings per common share prior to subtracting preferred dividends?",
+   "relevant_parent_ids": [
+    "sec/0000035527-26-000124#190"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-06193v1-26-p",
+   "type": "paraphrase",
+   "query": "What publication from Ngeow et al. came out in 2023?",
+   "relevant_parent_ids": [
+    "arxiv/2608.06193v1#26"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0000773840-26-000013-178-p",
+   "type": "paraphrase",
+   "query": "As at Dec 31, 2025, what were delayed履约成本总额？",
+   "relevant_parent_ids": [
+    "sec/0000773840-26-000013#178"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0000927628-26-000024-127-p",
+   "type": "paraphrase",
+   "query": "As per the text, what legislation mandates evaluating a customer's capacity to repay before granting or raising credit limits?",
+   "relevant_parent_ids": [
+    "sec/0000927628-26-000024#127"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0001193125-26-051453-407-p",
+   "type": "paraphrase",
+   "query": "When was the filing for the 3rd amendment to the 13th amended limited partnership agreement of Prologis, L.P.?",
+   "relevant_parent_ids": [
+    "sec/0001193125-26-051453#407"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0001404912-26-000007-182-p",
+   "type": "paraphrase",
+   "query": "What choice was made about the firm's balance sheet scale versus rivals?",
+   "relevant_parent_ids": [
+    "sec/0001404912-26-000007#182"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0001601046-25-000127-253-p",
+   "type": "paraphrase",
+   "query": "What does the text predict for non-U.S. defined benefit plans' contribution in 2025?",
+   "relevant_parent_ids": [
+    "sec/0001601046-25-000127#253"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0001628280-26-008819-139-p",
+   "type": "paraphrase",
+   "query": "As of Dec 31, 2025, what was the dollar-based net retention rate for the past year?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-008819#139"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0001628280-26-013098-296-p",
+   "type": "paraphrase",
+   "query": "What was BAM's mandated warehouse investment sum because of sync problems with a joint venture in 2025?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-013098#296"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "neg-0",
+   "type": "negative",
+   "query": "What was the exact stock price of cabrbhc_000058 on January 1, 2023?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-1",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000999 [1] and its interaction with modern semiconductors?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-2",
+   "type": "negative",
+   "query": "What are the specific amino acid sequences of newly discovered proteins related to cabrbhc_000058 [14] that were identified after 2023?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-3",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000999 [15] and its interaction with newly discovered element 119?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-4",
+   "type": "negative",
+   "query": "What are the specific financial regulations introduced by the European Union in 2023?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-5",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000999 [17] and its interaction with newly discovered element 119?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-6",
+   "type": "negative",
+   "query": "What are the specific regulations regarding cryptocurrency mining as of October 2023 in Cabra?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-7",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000999 [23], including its boiling point and solubility in water at 25 degrees Celsius?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-8",
+   "type": "negative",
+   "query": "What are the specific genetic markers identified for a newly discovered species of butterfly in 2023?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-9",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000987, including its boiling point and solubility in water at 25 degrees Celsius?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-10",
+   "type": "negative",
+   "query": "What are the specific financial details of cabrbhc_000058 [9], including its revenue and expenses for the fiscal year 2023?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-11",
+   "type": "negative",
+   "query": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-13",
+   "type": "negative",
+   "query": "What was the exact temperature in Beijing on July 15, 2023 at 3 PM?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-14",
+   "type": "negative",
+   "query": "What was the exact temperature in Beijing on January 1, 2023 at midnight?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-15",
+   "type": "negative",
+   "query": "What was the exact temperature in Cabra on St. Patrick's Day 2023 at noon?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-16",
+   "type": "negative",
+   "query": "What was the exact weather condition in Shanghai on July 15, 2023 at 3 PM?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-17",
+   "type": "negative",
+   "query": "What was the exact weather condition in Shanghai on February 29, 2024?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-18",
+   "type": "negative",
+   "query": "What was the exact weather condition in Beijing on February 29, 2024?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-19",
+   "type": "negative",
+   "query": "What was the exact stock price of Alibaba Holding Group Limited on December 31, 2022?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "sec-0000092122-26-000006-812-x-f",
+   "type": "factual",
+   "query": "What was the total net regulatory liability related to other postretirement benefit plans for Southern Company Gas at December 31, 2025?",
+   "relevant_parent_ids": [
+    "sec/0000092122-26-000006#812"
+   ],
+   "_answer": "$93 million",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "rtd-django-1255-x-f",
+   "type": "factual",
+   "query": "In the Django documentation for rtd/django, what is the layer name returned by the city.layer_name property?",
+   "relevant_parent_ids": [
+    "rtd/django#1255"
+   ],
+   "_answer": "'cities'",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0000732717-26-000120-217-x-f",
+   "type": "factual",
+   "query": "What was the projected benefit obligation for AT&T Inc.'s supplemental retirement plans at December 31, 2025?",
+   "relevant_parent_ids": [
+    "sec/0000732717-26-000120#217"
+   ],
+   "_answer": "$1,199 million",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0001075531-26-000009-90-x-f",
+   "type": "factual",
+   "query": "What percentage did Booking.com's global room nights increase year-over-year in 2025?",
+   "relevant_parent_ids": [
+    "sec/0001075531-26-000009#90"
+   ],
+   "_answer": "8% year-over-year in 2025, with 9% growth in the fourth quarter of 2025",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0001628280-26-013098-316-x-f",
+   "type": "factual",
+   "query": "What is the name of the global, evergreen private investment partnership that Keith Johnson founded and serves as CEO of?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-013098#316"
+   ],
+   "_answer": "HRTG Partners (formerly Sequoia Heritage)",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0000316709-26-000009-73-x-f",
+   "type": "factual",
+   "query": "What is the deposit insurance coverage limit per depositor per account ownership type that the FDIC's Deposit Insurance Fund provides?",
+   "relevant_parent_ids": [
+    "sec/0000316709-26-000009#73"
+   ],
+   "_answer": "$250,000",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0001628280-26-006268-83-x-f",
+   "type": "factual",
+   "query": "What was the negative working capital amount for Conrail Inc. at December 31, 2025?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-006268#83"
+   ],
+   "_answer": "$577 million",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0000313616-26-000062-273-x-f",
+   "type": "factual",
+   "query": "How many shares of common stock did Danaher Corporation repurchase from the Danaher Corporation & Subsidiaries Pension Plan in 2024?",
+   "relevant_parent_ids": [
+    "sec/0000313616-26-000062#273"
+   ],
+   "_answer": "$173 million of shares at fair market value (specific share count not disclosed in passage)",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0000773840-26-000013-224-x-f",
+   "type": "factual",
+   "query": "In the year ended December 31, 2024, what was the gain or loss on foreign currency exchange contracts that were not designated as hedging instruments for Honeywell International Inc., as reflected in Other Income (Expense)?",
+   "relevant_parent_ids": [
+    "sec/0000773840-26-000013#224"
+   ],
+   "_answer": "$147 million gain in Other Income (Expense) and $90 million in Interest and Other Financial Charges",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "rtd-rich-16-x-p",
+   "type": "paraphrase",
+   "query": "Based on the documentation for Rich version 14.1.0, when Rich creates SVG output, which font does it use as the default?",
+   "relevant_parent_ids": [
+    "rtd/rich#16"
+   ],
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0001035267-26-000010-269-x-p",
+   "type": "paraphrase",
+   "query": "For the fiscal year that concluded on December 31, 2023, how much total comprehensive income was reported as belonging to Intuitive Surgical, Inc.?",
+   "relevant_parent_ids": [
+    "sec/0001035267-26-000010#269"
+   ],
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0001467858-26-000013-175-x-p",
+   "type": "paraphrase",
+   "query": "In the GMNA segment, toward what particular area of autonomous technology did General Motors Company redirect the engineering efforts of its Cruise unit?",
+   "relevant_parent_ids": [
+    "sec/0001467858-26-000013#175"
+   ],
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0001467858-26-000013-204-x-p",
+   "type": "paraphrase",
+   "query": "As of December 31, 2025, what share of GM Financial's portfolio of dealer finance receivables fell into the Category II classification, representing performing accounts that show signs of possible weakness?",
+   "relevant_parent_ids": [
+    "sec/0001467858-26-000013#204"
+   ],
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0001075531-26-000009-90-x-p",
+   "type": "paraphrase",
+   "query": "By what percentage did Booking.com's worldwide room nights grow compared to the previous year in 2025?",
+   "relevant_parent_ids": [
+    "sec/0001075531-26-000009#90"
+   ],
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0001628280-26-013098-316-x-p",
+   "type": "paraphrase",
+   "query": "Keith Johnson is the founder and CEO of which worldwide, evergreen private investment partnership?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-013098#316"
+   ],
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0001628280-26-010047-318-x-p",
+   "type": "paraphrase",
+   "query": "In 2024, what was the amount that Coca-Cola reported as other operating charges for amortizing noncompete agreements tied to its BodyArmor acquisition?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-010047#318"
+   ],
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "sec-0001276187-26-000013-245-x-p",
+   "type": "paraphrase",
+   "query": "What became of the methane emissions fee regulation that the EPA finalized back in November 2024?",
+   "relevant_parent_ids": [
+    "sec/0001276187-26-000013#245"
+   ],
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0000766704-26-000010-125",
+   "type": "negative",
+   "query": "What specific allocation method under Section 704(c) has Welltower OP elected or chosen to use for accounting for Book-Tax Differences on any particular contributed or revalued property?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0000766704-26-000010#125",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0001467858-26-000013-128",
+   "type": "negative",
+   "query": "What interest rate did General Motors charge on the $1.8 billion five-year term loan it funded to Ultium Cells LLC in 2025?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0001467858-26-000013#128",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0001104659-26-012049-223",
+   "type": "negative",
+   "query": "What is the name of the independent registered public accounting firm that issued this report on Waste Management, Inc.'s internal control over financial reporting as of December 31, 2025?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0001104659-26-012049#223",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0000773840-26-000013-252",
+   "type": "negative",
+   "query": "What specific business or assets does the $19 million \"Reclassifications to Liabilities held for sale\" in the 2025 warranty accrual table relate to?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0000773840-26-000013#252",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-wikipedia-machine-learni-9",
+   "type": "negative",
+   "query": "In the Wikipedia article on Machine Learning, what specific example or case study is cited as reference [49] to support the description of regression tasks like forecasting future temperatures based on historical data?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "wikipedia/Machine_learning#9",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0001559720-26-000004-170",
+   "type": "negative",
+   "query": "What was Airbnb, Inc.'s diluted earnings per share for the year ended December 31, 2025?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0001559720-26-000004#170",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-arxiv-2608-05996v1-10",
+   "type": "negative",
+   "query": "In arXiv paper 2608.05996v1, what specific numerical threshold or value was used to define 'near-duplicate feature partners' based on the mean largest absolute cosine similarity metric described in the weight-space redundancy analysis?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "arxiv/2608.05996v1#10",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-rtd-pillow-326",
+   "type": "negative",
+   "query": "In Pillow's 5.0.0 release notes, what is the exact date on which Python 3.3 reached end-of-life (EOL) that led to it being dropped?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "rtd/pillow#326",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0000884887-26-000007-127",
+   "type": "negative",
+   "query": "What was the total notional amount of Silversea's outstanding fuel swap contracts as of the end of 2025?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0000884887-26-000007#127",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0001755672-26-000004-255",
+   "type": "negative",
+   "query": "What was Corteva, Inc.'s total depreciation expense for the year ended December 31, 2025?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0001755672-26-000004#255",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0001640147-26-000008-76",
+   "type": "negative",
+   "query": "How many of Snowflake's customer accounts were confirmed to have been accessed by cybersecurity threat actors in the May 2024 incident?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0001640147-26-000008#76",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0000026172-26-000009-275",
+   "type": "negative",
+   "query": "What is the maximum number of shares of Cummins Inc. common stock authorized for issuance under the 2012 Omnibus Incentive Plan, as amended and restated?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0000026172-26-000009#275",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0001104659-26-012049-115",
+   "type": "negative",
+   "query": "What was the total dollar amount of revenue generated by Waste Management's Renewable Energy segment from RIN sales in 2024?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0001104659-26-012049#115",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0000004281-26-000012-62",
+   "type": "negative",
+   "query": "Has Howmet Aerospace disclosed a specific date or incident in which it experienced a material cybersecurity breach or information technology system failure, and what was the financial impact?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0000004281-26-000012#62",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0001783879-26-000023-298",
+   "type": "negative",
+   "query": "What was the acquisition date of Bitstamp by Robinhood Markets, Inc.?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0001783879-26-000023#298",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0001510295-26-000009-293",
+   "type": "negative",
+   "query": "In MPLX's lease disclosures, what was the total short-term lease cost reported for fiscal year 2026, and how does it compare to the 2025 figure of $964 million?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0001510295-26-000009#293",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0000753308-26-000015-227",
+   "type": "negative",
+   "query": "Under NextEra Energy's structured payables program, what is the average service fee rate charged on the negotiable drafts issued to settle supplier invoices?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0000753308-26-000015#227",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-arxiv-2608-05408v1-22",
+   "type": "negative",
+   "query": "What specific value or range does the paper propose or assume for the single failure rate R0 used to characterize node failures across applications on the machine?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "arxiv/2608.05408v1#22",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-rtd-xgboost-561",
+   "type": "negative",
+   "query": "In the XGBoost 3.5.0-dev release notes, what is the specific maximum data size (in terabytes) that the GPU-based external memory training with NVLink-C2C can handle?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "rtd/xgboost#561",
+   "_gen": "claude-expand"
+  },
+  {
+   "id": "neg-x-sec-0001099219-26-000013-727",
+   "type": "negative",
+   "query": "What was MLIC's statutory net gain from operations (excluding realized capital gains) for the immediately preceding calendar year referenced in this dividend restriction disclosure?",
+   "relevant_parent_ids": [],
+   "_near_miss_of": "sec/0001099219-26-000013#727",
+   "_gen": "claude-expand"
+  }
+ ]
+}

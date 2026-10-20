@@ -1,0 +1,12 @@
+{
+ "corpus": "40pct",
+ "frac": 0.4,
+ "seed": 42,
+ "db": "ragdev_40pct",
+ "collection": "rag_stage5__bge_m3__40pct",
+ "gold_parents": 144,
+ "total_parents": 87499,
+ "qa": "qa_stage5_v3.json",
+ "parents": 35000,
+ "children": 199128
+}

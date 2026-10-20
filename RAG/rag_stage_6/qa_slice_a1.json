@@ -1,0 +1,434 @@
+{
+ "version": "stage5_v3-slice48-cause[refused_on_hit]-s0",
+ "questions": [
+  {
+   "id": "rtd-cryptography-204-f",
+   "type": "factual",
+   "query": "According to the passage, which version added the type alias for CertificateIssuerPrivateKeyTypes?",
+   "relevant_parent_ids": [
+    "rtd/cryptography#186",
+    "rtd/cryptography#178",
+    "rtd/cryptography#58",
+    "rtd/cryptography#204"
+   ],
+   "_answer": "40.0.0",
+   "_gen": true
+  },
+  {
+   "id": "rtd-django-380-f",
+   "type": "factual",
+   "query": "What parameter can be used in modelformset_factory to enable localization for specific fields?",
+   "relevant_parent_ids": [
+    "rtd/django#380"
+   ],
+   "_answer": "localized_fields",
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-05434v1-46-f",
+   "type": "factual",
+   "query": "According to TABLE S.1, which proposed method directly targets a tail quantile of the outcome distribution and explicitly considers treatment-related risks for multiple decision stages?",
+   "relevant_parent_ids": [
+    "arxiv/2608.05434v1#47",
+    "arxiv/2608.05434v1#46",
+    "arxiv/2608.05434v1#4"
+   ],
+   "_answer": "Proposed method",
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-05698v1-55-f",
+   "type": "factual",
+   "query": "What is the value of the anomalous part of the signal at a0 = 24?",
+   "relevant_parent_ids": [
+    "arxiv/2608.05698v1#21",
+    "arxiv/2608.05698v1#55",
+    "arxiv/2608.05698v1#22"
+   ],
+   "_answer": "3.9 × 10⁻⁵ rad",
+   "_gen": true
+  },
+  {
+   "id": "rtd-pybind11-90-f",
+   "type": "factual",
+   "query": "What is the alternative method to specify a hierarchical relationship in pybind11 when binding the Dog class, besides using the template parameter approach?",
+   "relevant_parent_ids": [
+    "rtd/pybind11#90"
+   ],
+   "_answer": "assign a name to the previously bound Pet py::class_ object and reference it when binding the Dog class",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000092122-26-000006-632-f",
+   "type": "factual",
+   "query": "What was the revenue related to alternative revenue programs for Atlanta Gas Light in 2025?",
+   "relevant_parent_ids": [
+    "sec/0000092122-26-000006#632"
+   ],
+   "_answer": "$(53) million",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000101829-26-000006-153-f",
+   "type": "factual",
+   "query": "What was the charge related to the Raytheon Contract Termination that had an unfavorable impact on diluted EPS?",
+   "relevant_parent_ids": [
+    "sec/0000101829-26-000006#153"
+   ],
+   "_answer": "$0.33",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000773840-26-000013-178-f",
+   "type": "factual",
+   "query": "What was the amount of deferred contract fulfillment costs as of December 31, 2025?",
+   "relevant_parent_ids": [
+    "sec/0000773840-26-000013#178"
+   ],
+   "_answer": "$1,193 million",
+   "_gen": true
+  },
+  {
+   "id": "sec-0000821189-26-000054-198-f",
+   "type": "factual",
+   "query": "What was the weighted average price per barrel for Mont Belvieu Propane (Tet) contracts sold in January - December 2026?",
+   "relevant_parent_ids": [
+    "sec/0000821189-26-000054#122",
+    "sec/0000821189-26-000054#198"
+   ],
+   "_answer": "30.24",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001024478-25-000116-89-f",
+   "type": "factual",
+   "query": "What was the amount of cash provided by operating activities for the year ended September 30, 2025?",
+   "relevant_parent_ids": [
+    "sec/0001024478-25-000116#89"
+   ],
+   "_answer": "$1,544",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001104659-26-015365-343-f",
+   "type": "factual",
+   "query": "How much did Mitsubishi contribute on January 31, 2025, for an additional 15% ownership in the joint venture with Digital Realty?",
+   "relevant_parent_ids": [
+    "sec/0001104659-26-015365#343"
+   ],
+   "_answer": "$62 million",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001193125-26-051453-407-f",
+   "type": "factual",
+   "query": "What is the date of filing for the Third Amendment to Thirteenth Amended and Restated Agreement of Limited Partnership of Prologis, L.P.?",
+   "relevant_parent_ids": [
+    "sec/0001193125-26-051453#407"
+   ],
+   "_answer": "February 4, 2020",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001193125-26-082531-1-f",
+   "type": "factual",
+   "query": "What specific Secured Borrowings Due were repaid during the year ended December 31, 2025?",
+   "relevant_parent_ids": [
+    "sec/0001193125-26-082531#557",
+    "sec/0001193125-26-082531#554",
+    "sec/0001193125-26-082531#1"
+   ],
+   "_answer": "Secured Borrowings Due 10/27/2033 and 1/29/2035",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001413447-26-000008-25-f",
+   "type": "factual",
+   "query": "According to the passage, what obligation does NXP have regarding updating forward-looking statements after filing with the U.S. Securities and Exchange Commission?",
+   "relevant_parent_ids": [
+    "sec/0001413447-26-000008#25"
+   ],
+   "_answer": "Except for any ongoing obligation to disclose material information as required by the United States federal securities laws, NXP does not have any intention or obligation to publicly update or revise any forward-looking statements.",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001510295-26-000009-261-f",
+   "type": "factual",
+   "query": "What is the total payout cap for the earnout payments tied to EBITDA growth from 2026 to 2029?",
+   "relevant_parent_ids": [
+    "sec/0001510295-26-000009#261",
+    "sec/0001510295-26-000009#260"
+   ],
+   "_answer": "$275 million",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001551152-26-000008-79-f",
+   "type": "factual",
+   "query": "What type of application almost always requires a clinical trial to support it according to the passage?",
+   "relevant_parent_ids": [
+    "sec/0001551152-26-000008#79"
+   ],
+   "_answer": "PMA application",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001559720-26-000004-105-f",
+   "type": "factual",
+   "query": "Which U.S. state finalized regulations under the CCPA regarding the use of automated decision-making technology in relation to AI and ML Technologies?",
+   "relevant_parent_ids": [
+    "sec/0001559720-26-000004#105"
+   ],
+   "_answer": "California",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001594805-26-000007-30-f",
+   "type": "factual",
+   "query": "What is one of the initiatives Shopify launched to address sustainability in 2019?",
+   "relevant_parent_ids": [
+    "sec/0001594805-26-000007#30"
+   ],
+   "_answer": "Sustainability Fund",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001601046-25-000127-253-f",
+   "type": "factual",
+   "query": "What is the expected contribution to Non-U.S. Defined Benefit Plans in 2025 according to the passage?",
+   "relevant_parent_ids": [
+    "sec/0001601046-25-000127#253"
+   ],
+   "_answer": "$14 million",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001628280-26-009136-169-f",
+   "type": "factual",
+   "query": "What percentage of Moody's revenue was denominated in currencies other than the U.S. dollar in 2025?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-009136#169"
+   ],
+   "_answer": "39%",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001628280-26-013098-296-f",
+   "type": "factual",
+   "query": "What was the total value of the warehouse investment that BAM was required to hold due to timing issues with a co-investment in 2025?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-013098#296"
+   ],
+   "_answer": "$103 million",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001783879-26-000023-64-f",
+   "type": "factual",
+   "query": "What specific licenses does the company hold that allow it to operate as an introducing broker-dealer, clearing broker-dealer, money transmitter, and futures commission merchant?",
+   "relevant_parent_ids": [
+    "sec/0001783879-26-000023#64"
+   ],
+   "_answer": "a licensed introducing broker-dealer, a licensed clearing broker-dealer, a licensed money-transmitter, and a registered futures commission merchant",
+   "_gen": true
+  },
+  {
+   "id": "sec-0001996810-26-000015-197-f",
+   "type": "factual",
+   "query": "What was the funding amount for GE Vernova's pension plans in millions of dollars for the year ended December 31, 2025?",
+   "relevant_parent_ids": [
+    "sec/0001996810-26-000015#197"
+   ],
+   "_answer": "144",
+   "_gen": true
+  },
+  {
+   "id": "wikipedia-algorithmic-bi-13-f",
+   "type": "factual",
+   "query": "According to the passage, which group was least likely to be identified as scientists by Google Cloud Vision AI, highlighting issues of race and gender bias?",
+   "relevant_parent_ids": [
+    "wikipedia/Algorithmic_bias#13"
+   ],
+   "_answer": "women of color",
+   "_gen": true
+  },
+  {
+   "id": "arxiv-2608-00306v2-151-p",
+   "type": "paraphrase",
+   "query": "What duration was needed for feature extraction across entire dataset employing 128 V100 GPUs, each having 32GB RAM?",
+   "relevant_parent_ids": [
+    "arxiv/2608.00306v2#151"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0000035527-26-000124-190-p",
+   "type": "paraphrase",
+   "query": "For 2025's end, what did The Bancorp report as earnings per common share prior to subtracting preferred dividends?",
+   "relevant_parent_ids": [
+    "sec/0000035527-26-000124#190"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0001601046-25-000127-253-p",
+   "type": "paraphrase",
+   "query": "What does the text predict for non-U.S. defined benefit plans' contribution in 2025?",
+   "relevant_parent_ids": [
+    "sec/0001601046-25-000127#253"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "sec-0001628280-26-013098-296-p",
+   "type": "paraphrase",
+   "query": "What was BAM's mandated warehouse investment sum because of sync problems with a joint venture in 2025?",
+   "relevant_parent_ids": [
+    "sec/0001628280-26-013098#296"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "wikipedia-algorithmic-bi-13-p",
+   "type": "paraphrase",
+   "query": "Per the text, which category had the lowest probability of being recognized as scientists by Google Cloud Vision AI, underscoring problems with racial and gender prejudice?",
+   "relevant_parent_ids": [
+    "wikipedia/Algorithmic_bias#13"
+   ],
+   "_gen": true
+  },
+  {
+   "id": "neg-0",
+   "type": "negative",
+   "query": "What was the exact stock price of cabrbhc_000058 on January 1, 2023?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-1",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000999 [1] and its interaction with modern semiconductors?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-2",
+   "type": "negative",
+   "query": "What are the specific amino acid sequences of newly discovered proteins related to cabrbhc_000058 [14] that were identified after 2023?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-3",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000999 [15] and its interaction with newly discovered element 119?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-4",
+   "type": "negative",
+   "query": "What are the specific financial regulations introduced by the European Union in 2023?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-5",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000999 [17] and its interaction with newly discovered element 119?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-6",
+   "type": "negative",
+   "query": "What are the specific regulations regarding cryptocurrency mining as of October 2023 in Cabra?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-7",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000999 [23], including its boiling point and solubility in water at 25 degrees Celsius?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-8",
+   "type": "negative",
+   "query": "What are the specific genetic markers identified for a newly discovered species of butterfly in 2023?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-9",
+   "type": "negative",
+   "query": "What are the specific chemical properties of cabrbhc_000987, including its boiling point and solubility in water at 25 degrees Celsius?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-10",
+   "type": "negative",
+   "query": "What are the specific financial details of cabrbhc_000058 [9], including its revenue and expenses for the fiscal year 2023?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-11",
+   "type": "negative",
+   "query": "What was the exact stock price of Alibaba Group Holding Limited on December 31, 2022?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-13",
+   "type": "negative",
+   "query": "What was the exact temperature in Beijing on July 15, 2023 at 3 PM?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-14",
+   "type": "negative",
+   "query": "What was the exact temperature in Beijing on January 1, 2023 at midnight?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-15",
+   "type": "negative",
+   "query": "What was the exact temperature in Cabra on St. Patrick's Day 2023 at noon?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-16",
+   "type": "negative",
+   "query": "What was the exact weather condition in Shanghai on July 15, 2023 at 3 PM?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-17",
+   "type": "negative",
+   "query": "What was the exact weather condition in Shanghai on February 29, 2024?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-18",
+   "type": "negative",
+   "query": "What was the exact weather condition in Beijing on February 29, 2024?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  },
+  {
+   "id": "neg-19",
+   "type": "negative",
+   "query": "What was the exact stock price of Alibaba Holding Group Limited on December 31, 2022?",
+   "relevant_parent_ids": [],
+   "_gen": true
+  }
+ ]
+}
